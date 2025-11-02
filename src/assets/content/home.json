@@ -1,0 +1,51 @@
+{
+  "sections": [
+    {
+      "id": "hero-iphone",
+      "theme": "dark",
+      "eyebrow": "Nouveau",
+      "title": "Phone Pro Max",
+      "subtitle": "Plus puissant. Plus pro. Plus toi.",
+      "ctas": [
+        {
+          "label": "En savoir plus",
+          "link": "/iphone",
+          "variant": "light"
+        },
+        {
+          "label": "Acheter",
+          "link": "/iphone",
+          "variant": "dark"
+        }
+      ],
+      "img": {
+        "src": "/assets/hero/iphone.svg",
+        "alt": "Phone Pro"
+      },
+      "bg": "linear-gradient(180deg,#000 0%,#0b0b0c 100%)"
+    },
+    {
+      "id": "hero-mac",
+      "theme": "light",
+      "title": "MacBook Ultra",
+      "subtitle": "Des performances qui déplacent les lignes.",
+      "ctas": [
+        {
+          "label": "Découvrir",
+          "link": "/mac",
+          "variant": "dark"
+        },
+        {
+          "label": "Acheter",
+          "link": "/mac",
+          "variant": "dark"
+        }
+      ],
+      "img": {
+        "src": "/assets/hero/mac.svg",
+        "alt": "MacBook Ultra"
+      },
+      "bg": "linear-gradient(180deg,#fff 0%,#f5f5f7 100%)"
+    }
+  ]
+}

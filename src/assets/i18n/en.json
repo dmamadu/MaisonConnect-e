@@ -1,0 +1,23 @@
+{
+  "brand": "Brand",
+  "nav": {
+    "store": "Store",
+    "mac": "Mac",
+    "ipad": "iPad",
+    "iphone": "iPhone",
+    "watch": "Watch",
+    "airpods": "AirPods",
+    "support": "Support"
+  },
+  "cta": {
+    "learnMore": "Learn more",
+    "buy": "Buy"
+  },
+  "promo": "Free delivery & returns — See terms",
+  "footer": {
+    "privacy": "Privacy",
+    "terms": "Terms of Use",
+    "sitemap": "Site Map",
+    "rights": "All rights reserved."
+  }
+}

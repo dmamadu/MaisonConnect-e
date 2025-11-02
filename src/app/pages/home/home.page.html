@@ -1,0 +1,56 @@
+<app-header />
+
+<main class="flex flex-col">
+  <div class="w-full bg-emerald-600 text-white text-center text-sm py-2">
+    {{ 'promo' | translate }}
+  </div>
+
+  <section *ngFor="let s of sections" class="w-full" [ngStyle]="{'background': s.bg}">
+    <div class="container-apple py-16 md:py-24" [class.text-white]="s.theme==='dark'">
+      <div class="text-center space-y-3" fadeInOnView>
+        <p *ngIf="s.eyebrow" class="text-sm tracking-wide opacity-80">{{ s.eyebrow }}</p>
+        <h1 class="text-4xl md:text-6xl font-semibold">{{ s.title }}</h1>
+        <p *ngIf="s.subtitle" class="text-base md:text-lg text-gray2" >
+          {{ s.subtitle }}
+        </p>
+
+        <div class="mt-4 flex items-center justify-center gap-3">
+          <a *ngFor="let cta of s.ctas"
+             [routerLink]="cta.link"
+             class="btn"
+             [ngClass]="cta.variant==='dark' ? 'btn-dark' : 'btn-light'">
+            {{ cta.label }}
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-8 md:mt-12 flex justify-center">
+        <img [src]="s.img.src" [alt]="s.img.alt" class="max-h-[420px] object-contain" loading="eager">
+      </div>
+    </div>
+  </section>
+
+  <section class="container-apple py-16 grid grid-cols-1 md:grid-cols-2 gap-6">
+    <article class="rounded-3xl overflow-hidden bg-gradient-to-b from-white to-gray-100 p-8">
+      <h2 class="text-3xl font-semibold">Watch Series</h2>
+      <p class="text-gray2 mt-2">Ta journée, à ton rythme.</p>
+      <div class="mt-4 flex gap-3">
+        <a routerLink="/watch" class="btn btn-dark">{{ 'cta.learnMore' | translate }}</a>
+        <a routerLink="/watch" class="btn btn-light">{{ 'cta.buy' | translate }}</a>
+      </div>
+      <img src="/assets/tiles/watch.svg" alt="Watch" class="mt-6 w-full object-contain">
+    </article>
+
+    <article class="rounded-3xl overflow-hidden bg-black p-8 text-white">
+      <h2 class="text-3xl font-semibold">AirPods</h2>
+      <p class="text-white/70 mt-2">Plonge dans le son.</p>
+      <div class="mt-4 flex gap-3">
+        <a routerLink="/airpods" class="btn btn-light">{{ 'cta.learnMore' | translate }}</a>
+        <a routerLink="/airpods" class="btn btn-dark">{{ 'cta.buy' | translate }}</a>
+      </div>
+      <img src="/assets/tiles/airpods.svg" alt="AirPods" class="mt-6 w-full object-contain">
+    </article>
+  </section>
+</main>
+
+<app-footer />

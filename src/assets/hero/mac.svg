@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="420" viewBox="0 0 840 420">
+  <rect width="100%" height="100%" fill="#f5f5f7"/>
+  <rect x="170" y="80" width="500" height="260" rx="12" ry="12" fill="#ddd" stroke="#cfcfcf"/>
+  <rect x="320" y="350" width="200" height="10" fill="#c0c0c0"/>
+  <text x="50%" y="50%" text-anchor="middle" fill="#555" font-size="24" font-family="system-ui">Mac Placeholder</text>
+</svg>

@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{ --container: 980px; }
+.container-apple { margin-left:auto; margin-right:auto; padding-left:1rem; padding-right:1rem; max-width: var(--container); }
+
+html, body { height: 100%; }
+body { @apply bg-white text-black dark:bg-[#0b0b0c] dark:text-white; }
+.btn { @apply inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium transition; }
+.btn-dark { @apply bg-black text-white hover:bg-neutral-800; }
+.btn-light{ @apply bg-white text-black hover:bg-neutral-100; }
+
+:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; }

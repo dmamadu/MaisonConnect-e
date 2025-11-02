@@ -1,0 +1,23 @@
+<footer class="bg-[#f5f5f7] text-[#6e6e73] border-t border-black/5 mt-16">
+  <div class="container-apple py-8 text-sm">
+    <p class="mb-4">{{ 'promo' | translate }}</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div *ngFor="let c of cols">
+        <h3 class="text-[#1d1d1f] font-semibold mb-2">{{ c.title }}</h3>
+        <ul class="space-y-1">
+          <li *ngFor="let l of c.links">
+            <a routerLink="/" class="hover:underline">{{ l }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-6 border-t border-black/10 pt-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-2">
+      <!-- <span>© {{ new Date().getFullYear() }} {{ 'brand' | translate }}. {{ 'footer.rights' | translate }}</span> -->
+      <div class="flex gap-4">
+        <a routerLink="/">{{ 'footer.privacy' | translate }}</a>
+        <a routerLink="/">{{ 'footer.terms' | translate }}</a>
+        <a routerLink="/">{{ 'footer.sitemap' | translate }}</a>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,23 @@
+{
+  "brand": "Marque",
+  "nav": {
+    "store": "Store",
+    "mac": "Mac",
+    "ipad": "iPad",
+    "iphone": "iPhone",
+    "watch": "Watch",
+    "airpods": "AirPods",
+    "support": "Support"
+  },
+  "cta": {
+    "learnMore": "En savoir plus",
+    "buy": "Acheter"
+  },
+  "promo": "Livraison et retours gratuits — Voir conditions",
+  "footer": {
+    "privacy": "Confidentialité",
+    "terms": "Conditions d’utilisation",
+    "sitemap": "Plan du site",
+    "rights": "Tous droits réservés."
+  }
+}

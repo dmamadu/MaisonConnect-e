@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Apple-like Angular</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      (function() {
+        try {
+          var t = localStorage.getItem('theme') || 'system';
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (t === 'dark' || (t === 'system' && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
+</html>

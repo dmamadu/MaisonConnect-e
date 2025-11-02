@@ -1,13 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { LangService } from './shared/services/lang.service';
+import { ThemeService } from './shared/services/theme.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  template: `<router-outlet></router-outlet>`
 })
 export class AppComponent {
-  title = 'apple-like';
+  private lang = inject(LangService);
+  private theme = inject(ThemeService);
+  constructor(){
+    this.lang.init();
+    this.theme.init();
+  }
 }

@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "name": "MacBook Air",
+      "tagline": "Fin, léger, super puissant.",
+      "price": "À partir de 1199€",
+      "img": "/assets/hero/mac.svg"
+    },
+    {
+      "name": "MacBook Pro",
+      "tagline": "Puissance au niveau Pro.",
+      "price": "À partir de 1999€",
+      "img": "/assets/hero/mac.svg"
+    },
+    {
+      "name": "iMac",
+      "tagline": "Le tout‑en‑un de la famille.",
+      "price": "À partir de 1599€",
+      "img": "/assets/hero/mac.svg"
+    },
+    {
+      "name": "Mac mini",
+      "tagline": "Petit mais costaud.",
+      "price": "À partir de 799€",
+      "img": "/assets/hero/mac.svg"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+<header class="sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-black/40 border-b border-black/5">
+  <nav class="container-apple h-12 flex items-center justify-between">
+    <a routerLink="/" class="font-semibold text-base">{{ 'brand' | translate }}</a>
+
+    <ul class="hidden md:flex gap-6 text-sm text-gray-600 dark:text-gray-300">
+      <li *ngFor="let it of items">
+        <a [routerLink]="it.link" class="hover:opacity-80 transition">
+          {{ ('nav.' + it.key) | translate }}
+        </a>
+      </li>
+    </ul>
+
+    <div class="hidden md:flex items-center gap-3">
+      <!-- <select class="border rounded px-2 py-1 bg-white dark:bg-zinc-800"
+              (change)="setLang(($event.target as HTMLSelectElement).value)">
+        <option *ngFor="let l of langs" [value]="l" [selected]="t.currentLang===l">{{ l.toUpperCase() }}</option>
+      </select> -->
+      <button class="text-sm border rounded px-3 py-1 bg-white dark:bg-zinc-800"
+              (click)="toggleTheme()" aria-label="Toggle theme">
+        🌙/☀️
+      </button>
+    </div>
+
+    <button class="md:hidden" (click)="open.set(!open())" aria-label="Menu">☰</button>
+  </nav>
+
+  <!-- Mobile -->
+  <div *ngIf="open()" class="md:hidden border-t border-black/5">
+    <ul class="container-apple py-3 space-y-2 text-base">
+      <li *ngFor="let it of items">
+        <a [routerLink]="it.link" class="block py-2" (click)="open.set(false)">
+          {{ ('nav.' + it.key) | translate }}
+        </a>
+      </li>
+      <li class="pt-2 flex gap-3 items-center">
+        <label class="text-sm">Langue</label>
+        <!-- <select class="border rounded px-2 py-1"
+                (change)="setLang(($event.target as HTMLSelectElement).value)">
+          <option *ngFor="let l of langs" [value]="l" [selected]="t.currentLang===l">{{ l.toUpperCase() }}</option>
+        </select> -->
+        <button class="text-sm border rounded px-3 py-1" (click)="toggleTheme()">🌙/☀️</button>
+      </li>
+    </ul>
+  </div>
+</header>

@@ -1,0 +1,5 @@
+// Ajoute cette route dans src/app/app.routes.ts
+{
+  path: 'mac',
+  loadComponent: () => import('./pages/mac/mac.page').then(m => m.MacPage)
+},
