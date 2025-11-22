@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface SolarProduct {
   id: number;
@@ -17,7 +18,7 @@ interface SolarProduct {
 @Component({
   selector: 'app-energie',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,TranslateModule],
   templateUrl: './energie.component.html',
   styleUrl: './energie.component.scss'
 })
@@ -58,7 +59,7 @@ export class EnergieComponent {
       title: 'Onduleur Hybride 5KW MPPT',
       description: 'Compatible réseau, gestion intelligente charge/solaire/batterie.',
       price: '350 000 FCFA',
-      image: 'https://images.unsplash.com/photo-1614608687887-d4578b14cc9c?auto=format&fit=crop&w=1200&q=80',
+      image: 'https://i.pinimg.com/1200x/da/c5/ba/dac5ba9b284d64d3c0c1aae10f52678a.jpg',
       link: 'https://www.amazon.com/solar-inverter',
       highlights: ['MPPT 120A', 'Mode hybride', 'Écran LCD'],
       specs: { Puissance: '5000W', Tension: '48V', MPPT: '120A' }
@@ -69,7 +70,7 @@ export class EnergieComponent {
       title: 'Kit Câbles Solaires + Connecteurs MC4',
       description: 'Câbles 4mm² haute qualité + connecteurs étanches.',
       price: '18 000 FCFA',
-      image: 'https://images.unsplash.com/photo-1592833159154-73d4e79d4981?auto=format&fit=crop&w=1200&q=80',
+      image: 'https://i.pinimg.com/1200x/db/18/60/db1860142120734da4c2fb33e0fb440a.jpg',
       link: 'https://www.amazon.com/mc4-kit',
       highlights: ['Norme IP67', 'Haute conductivité', 'Résistant UV'],
       specs: { Section: '4mm²', Longueur: '5m', Type: 'MC4' }
@@ -80,7 +81,7 @@ export class EnergieComponent {
       title: 'Mini Panneau Solaire Portable 100W',
       description: 'Idéal camping, recharge powerbank, autonome et léger.',
       price: '45 000 FCFA',
-      image: 'https://images.unsplash.com/photo-1592833159154-aedfb6df75c1?auto=format&fit=crop&w=1200&q=80',
+      image: 'https://i.pinimg.com/1200x/c1/09/e6/c109e6f6ab30ff323a5ed257fb3a7573.jpg',
       link: 'https://www.amazon.com/portable-solar-panel',
       highlights: ['Portable', 'USB 5V/12V', 'Résistant outdoor'],
       specs: { Puissance: '100W', Poids: '2.5kg', Format: 'pliable' }

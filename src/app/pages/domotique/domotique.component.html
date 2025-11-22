@@ -15,11 +15,10 @@
 
   <div class="relative z-10 text-white px-4">
     <h1 class="text-4xl md:text-5xl font-bold drop-shadow-lg animate-fade-in">
-      Domotique & Maison Intelligente
+      {{ 'domotique.title' | translate }}
     </h1>
     <p class="mt-4 max-w-2xl mx-auto text-lg opacity-90 animate-fade-in-delayed">
-      Automatisations, capteurs intelligents, éclairages connectés…  
-      Contrôlez votre maison comme jamais auparavant.
+      {{ 'domotique.subtitle' | translate }}
     </p>
   </div>
 </section>
@@ -32,7 +31,7 @@
     [class.text-white]="filter === 'all'"
     class="px-5 py-2 rounded-full border border-gray-300 dark:border-gray-600 transition hover:bg-gray-100 dark:hover:bg-gray-800"
   >
-    Tous
+    {{ 'filters.all' | translate }}
   </button>
 
   <button
@@ -41,7 +40,7 @@
     [class.text-white]="filter === 'light'"
     class="px-5 py-2 rounded-full border border-gray-300 dark:border-gray-600 transition hover:bg-gray-100 dark:hover:bg-gray-800"
   >
-    Lumières
+    {{ 'filters.light' | translate }}
   </button>
 
   <button
@@ -50,7 +49,7 @@
     [class.text-white]="filter === 'sensor'"
     class="px-5 py-2 rounded-full border border-gray-300 dark:border-gray-600 transition hover:bg-gray-100 dark:hover:bg-gray-800"
   >
-    Capteurs
+    {{ 'filters.sensors' | translate }}
   </button>
 
   <button
@@ -59,7 +58,7 @@
     [class.text-white]="filter === 'automation'"
     class="px-5 py-2 rounded-full border border-gray-300 dark:border-gray-600 transition hover:bg-gray-100 dark:hover:bg-gray-800"
   >
-    Automatisation
+    {{ 'filters.automation' | translate }}
   </button>
 </div>
 
@@ -87,14 +86,14 @@
       {{ p.description }}
     </p>
 
-    <!-- Prix en haut -->
+    <!-- Prix -->
     <div class="mt-4">
       <span class="font-bold text-xl text-gray-900 dark:text-white">
         {{ p.price }}
       </span>
     </div>
 
-    <!-- Boutons en bas -->
+    <!-- Boutons -->
     <div class="mt-4 flex justify-end gap-2">
       <button
         (click)="openDetail(p)"
@@ -106,7 +105,7 @@
           hover:bg-gray-100 dark:hover:bg-gray-800
           transition font-medium"
       >
-        Détails
+        {{ 'buttons.details' | translate }}
       </button>
 
       <a
@@ -117,7 +116,7 @@
           rounded-full bg-gray-900 text-white dark:bg-white dark:text-gray-900
           hover:bg-gray-800 dark:hover:bg-gray-200 transition font-medium"
       >
-        Acheter
+      {{ 'buttons.buy' | translate }}
       </a>
     </div>
   </div>
@@ -153,7 +152,9 @@
 
     <!-- Points forts -->
     <div class="mt-4" *ngIf="selectedProduct.highlights">
-      <h3 class="font-semibold text-gray-900 dark:text-white">Points forts</h3>
+      <h3 class="font-semibold text-gray-900 dark:text-white">
+        {{ 'product.highlights' | translate }}
+      </h3>
       <ul class="list-disc ml-6 text-gray-700 dark:text-gray-300">
         <li *ngFor="let h of selectedProduct.highlights">{{ h }}</li>
       </ul>
@@ -161,7 +162,9 @@
 
     <!-- Spécifications -->
     <div class="mt-4" *ngIf="selectedProduct.specs">
-      <h3 class="font-semibold text-gray-900 dark:text-white">Spécifications</h3>
+      <h3 class="font-semibold text-gray-900 dark:text-white">
+        {{ 'product.specs' | translate }}
+      </h3>
       <div class="grid grid-cols-2 gap-2 mt-2 text-gray-700 dark:text-gray-300">
         <div *ngFor="let key of (selectedProduct.specs | keyvalue)">
           <strong>{{ key.key }}:</strong> {{ key.value }}
@@ -180,7 +183,7 @@
         target="_blank"
         class="px-5 py-2 rounded-full bg-gray-900 text-white dark:bg-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-200 transition"
       >
-        Commander
+        {{ 'buttons.order' | translate }}
       </a>
     </div>
   </div>

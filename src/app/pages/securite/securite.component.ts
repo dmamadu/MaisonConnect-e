@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface Product {
   id: number;
@@ -17,7 +18,7 @@ interface Product {
 @Component({
   selector: 'app-securite',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,TranslateModule],
   templateUrl: './securite.component.html',
   styleUrl: './securite.component.scss'
 })
@@ -39,7 +40,7 @@ export class SecuriteComponent {
       title: `Caméra Wi-Fi 1080p — Vision Nocturne`,
       description: `Caméra intérieure/extérieure, audio bidirectionnel et détection de mouvement intelligente.`,
       price: '29 000 FCFA',
-      image: 'https://www.google.com/imgres?q=Cam%C3%A9ra%20Wi-Fi%201080p%20%E2%80%94%20Vision%20Nocturne&imgurl=https%3A%2F%2Fwww.anyrec.io%2Fimages%2F2022%2F03%2Fprosia-hidden-camera-with-audio.jpg&imgrefurl=https%3A%2F%2Fwww.agrofor.info%2Fdiscr-te-Enregistrement-Audio-vid-o-HD-Vision-Nocturne-D-391517%2F&docid=FW-OdVRRmlBUGM&tbnid=we0ti5KpjHjztM&vet=12ahUKEwidj-qN14GRAxVGAPsDHTGtEXoQM3oECEYQAA..i&w=600&h=400&hcb=2&itg=1&ved=2ahUKEwidj-qN14GRAxVGAPsDHTGtEXoQM3oECEYQAA',
+      image: 'https://i.pinimg.com/736x/2f/89/53/2f89530cbdb9f40744f9889c245cee87.jpg',
       link: 'https://www.amazon.com/dp/B08XYZEXAMPLE',
       highlights: [`Vision nocturne`, `Audio bidirectionnel`, `App mobile`],
       specs: { 'Résolution': '1080p', 'Connexion': 'Wi-Fi', 'Étanchéité': 'IP65' }
@@ -50,8 +51,8 @@ export class SecuriteComponent {
       title: `Caméra PTZ Motorisée 4K`,
       description: `Rotation 360°, zoom optique, idéale pour surveillance extérieur/industriel.`,
       price: '150 000 FCFA',
-      image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.allwan.eu%2Ffr%2Fdome-ptz%2F323-ds-2df8836i5x-ael-dome-ptz-4k-ir-500m.html&psig=AOvVaw3Y1vgJ7GCNLp21TUzQn1LR&ust=1763760767408000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCJCP44LXgZEDFQAAAAAdAAAAABAE',
-      link: 'https://www.amazon.com/dp/B07EXAMPLEPTZ',
+      image: 'https://i.pinimg.com/1200x/d3/55/df/d355df4f7e17e1ed75b6852c8ce22656.jpg',
+      link: 'https://www.amazon.com/dp/B07PTZEXAMPLE',
       highlights: [`Zoom optique`, `PTZ 360°`, `Contrôle mobile`],
       specs: { 'Résolution': '4K', 'Zoom': '20x optique', 'Alimentation': 'PoE / 12V' }
     },
@@ -61,7 +62,7 @@ export class SecuriteComponent {
       title: `Kit Alarme Sans Fil Maison`,
       description: `Détecteurs d'ouverture, capteurs de mouvement et sirène 120 dB.`,
       price: '89 000 FCFA',
-      image: 'https://sugunii.com/wp-content/uploads/2025/02/Systeme-d-alarme-de-securite-Hikvision-AX-Pro-2.jpg?v=1746537363',
+      image: 'https://i.pinimg.com/1200x/e8/ad/7c/e8ad7cc49ee63dd29ee4090cc21c24a1.jpg',
       link: 'https://www.amazon.com/dp/B07ALARMEXAMPLE',
       highlights: [`Installation facile`, `Sirène 120dB`, `Notifications mobile`],
       specs: { 'Détecteurs inclus': '3 portes + 1 mouvement', 'Autonomie': '2 ans', 'Compatibilité': 'Wi-Fi' }
@@ -72,7 +73,7 @@ export class SecuriteComponent {
       title: `Enregistreur NVR 8 canaux`,
       description: `Supporte caméras IP jusqu'à 5MP, accès distant et stockage sécurisé.`,
       price: '110 000 FCFA',
-      image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.usinenouvelle.com%2Fexpo%2Fenregistreur-nvr-8-canaux-linux-hdmi-pla-p51244118.html&psig=AOvVaw0XfgfSEOLPi_PHEVacoQvz&ust=1763760815623000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCKiilZnXgZEDFQAAAAAdAAAAABAE',
+      image: 'https://i.pinimg.com/1200x/2e/84/40/2e844002a18ae93dbc7da7cb7901b19b.jpg',
       link: 'https://www.amazon.com/dp/B08NVREXAMPLE',
       highlights: [`8 canaux`, `Accès distant`, `Raid/backup`],
       specs: { 'Entrées': '8 PoE', 'Stockage': '2 x SATA (max 16TB)', 'Sortie': 'HDMI' }
@@ -83,7 +84,7 @@ export class SecuriteComponent {
       title: `Caméra Discrete Bullet 2K`,
       description: `Bullet camera compacte, vision longue portée et weatherproof.`,
       price: '45 000 FCFA',
-      image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fmontavue.com%2Fproducts%2F4mp-full-color-smart-dual-illumination-bullet-camera%3Fsrsltid%3DAfmBOoqdI-y8I0hK0vDgk1oKmBqGwyMd6IMl9PSBOdHMR6LrBrObVwxJ&psig=AOvVaw3HoPIFy3qyKLGmLLaCruIn&ust=1763760840074000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCNC_1aTXgZEDFQAAAAAdAAAAABAE',
+      image: 'https://i.pinimg.com/736x/ed/3b/2c/ed3b2c3f4f6f4e1f4c8e4b2a5c9e8f7d.jpg',
       link: 'https://www.amazon.com/dp/B08BULLET',
       highlights: [`Longue portée`, `HD 2K`, `IP67`],
       specs: { 'Résolution': '2K', 'Portée IR': '40m', 'Indice': 'IP67' }

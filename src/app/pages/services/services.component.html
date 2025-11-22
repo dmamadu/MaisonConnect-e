@@ -1,39 +1,52 @@
 <!-- Fond dynamique -->
 <div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-50 dark:from-black/80 dark:to-black/60 -z-10"></div>
 
-<section class="min-h-screen px-6 py-14 lg:py-20 relative">
+<section class="min-h-screen px-6 py-14 lg:py-20 relative flex flex-col items-center justify-center">
 
   <!-- HERO -->
   <header class="text-center mb-12 lg:mb-16">
     <h1 class="text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white">
-      Nos Services
+      {{ 'services.title' | translate }}
     </h1>
     <p class="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto mt-4">
-      Découvrez l'ensemble de nos services pour accompagner vos projets, sécuriser vos installations et garantir votre satisfaction.
+      {{ 'services.subtitle' | translate }}
     </p>
   </header>
 
   <!-- GRID SERVICES -->
-  <section class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+  <section class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl w-full mx-auto">
     <article *ngFor="let s of visibleServices; let i = index"
-             class="bg-white dark:bg-gray-900 rounded-2xl shadow-md dark:shadow-lg overflow-hidden p-6 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-[1.02] opacity-0 animate-fade-up"
+             class="bg-white dark:bg-gray-900 rounded-2xl shadow-md dark:shadow-lg overflow-hidden flex flex-col transition transform hover:-translate-y-2 hover:scale-[1.02] opacity-0 animate-fade-up"
+             [class.lg:col-start-2]="visibleServices.length === 4 && i === 3"
              [style.animationDelay]="delayForIndex(i)">
       
-      <!-- Icone ou image -->
-      <div class="w-20 h-20 mb-4 flex items-center justify-center bg-gray-50 dark:bg-gray-800 rounded-full">
-        <img [src]="s.icon" [alt]="s.title" class="w-12 h-12 object-contain" loading="lazy" />
+      <!-- Image pleine largeur -->
+      <div class="w-full h-48 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center overflow-hidden">
+        <img 
+          [src]="s.icon" 
+          [alt]="s.title" 
+          class="w-full h-full object-cover" 
+          loading="lazy" 
+        />
       </div>
 
-      <!-- Titre & description -->
-      <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{{ s.title }}</h3>
-      <p class="text-gray-600 dark:text-gray-300 mt-2">{{ s.description }}</p>
+      <!-- Contenu centré -->
+      <div class="p-6 flex flex-col items-center text-center flex-1">
+        <!-- Titre & description -->
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+          {{ s.title }}
+        </h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-1">
+          {{ s.description }}
+        </p>
 
-      <!-- Bouton détails -->
-      <button *ngIf="s.link"
-              [routerLink]="s.link"
-              class="mt-4 px-4 py-2 rounded-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition font-medium">
-        En savoir plus
-      </button>
+        <!-- Bouton détails (optionnel) -->
+        <!-- <button *ngIf="s.link"
+                [routerLink]="s.link"
+                class="mt-auto px-6 py-2 rounded-full border-2 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 hover:border-gray-400 dark:hover:border-gray-600 transition-all duration-300 font-medium">
+          {{ 'services.buttons.learn_more' | translate }}
+        </button> -->
+      </div>
     </article>
   </section>
 
@@ -42,11 +55,23 @@
 <!-- ANIMATIONS CSS -->
 <style>
   @keyframes fade-up {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
+    0% { 
+      opacity: 0; 
+      transform: translateY(20px); 
+    }
+    100% { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
   }
 
   .animate-fade-up {
     animation: fade-up 0.5s ease forwards;
+  }
+
+  /* Effet au survol sur l'image */
+  article:hover img {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
   }
 </style>

@@ -19,10 +19,339 @@
     "buy": "Buy"
   },
   "promo": "Free delivery & returns — See terms",
+
+
+
+
+  "smartHome": {
+    "title": "Quatre good reasons to make your home smart",
+
+    "tabs": {
+      "energy": "Improve your energy performance",
+      "centralize": "Centralise and control",
+      "remote": "Control remotely",
+      "security": "Protect your home"
+    },
+
+    "features": {
+      "energy": {
+        "title": "Improve your energy performance",
+        "description": "Automate your blinds and shutters according to the weather.",
+        "details": [
+          "In summer, when indoor temperature exceeds 25°C, your blinds automatically lower to protect your furniture, pets and plants while keeping your home cooler.",
+          "In winter, blinds open when the sun is out to let heat in, and close to retain warmth."
+        ],
+        "button": "Learn more about thermal comfort"
+      },
+
+      "centralize": {
+        "title": "Centralise and control",
+        "description": "Control all your equipment from one app.",
+        "details": [
+          "Manage heating, blinds, lights and alarms from your smartphone.",
+          "Create personalised scenarios to automate your daily life."
+        ],
+        "button": "Discover the scenarios"
+      },
+
+      "remote": {
+        "title": "Control remotely",
+        "description": "Stay connected to your home from anywhere.",
+        "details": [
+          "Control your home from anywhere in the world.",
+          "Receive real-time notifications about your home's status."
+        ],
+        "button": "Learn more about remote control"
+      },
+
+      "security": {
+        "title": "Protect your home",
+        "description": "Secure your home with intelligent solutions.",
+        "details": [
+          "Simulate presence when you're away.",
+          "Receive alerts in case of intrusion or anomaly."
+        ],
+        "button": "Discover security solutions"
+      }
+    }
+  },
+   "home": {
+    "hero": {
+      "title": "Welcome to Us",
+      "subtitle": "Discover our products, packs, and services to secure and automate your home while saving energy.",
+      "shop": "Visit the shop",
+      "services": "Our services"
+    },
+    "products": {
+      "title": "Our Products",
+      "items": [
+        { "title": "Solar Panel 300W", "description": "High efficiency and durability.", "price": "350€" },
+        { "title": "Li-ion Battery 5kWh", "description": "Optimal storage for your needs.", "price": "1200€" },
+        { "title": "Inverter 5kW", "description": "Efficiently converts your energy.", "price": "600€" }
+      ]
+    },
+    "packs": {
+      "title": "Our Packs",
+      "items": [
+        { "title": "Smart Home Pack", "description": "Security and comfort for your home.", "price": "1800€" },
+        { "title": "Solar Energy Pack", "description": "Energy production and storage.", "price": "2500€" }
+      ]
+    },
+    "services": {
+      "title": "Our Services",
+      "items": [
+        { "title": "Home Automation Installation", "description": "Automate your home easily.", "icon": "🏠" },
+        { "title": "Maintenance & Support", "description": "Fast and reliable technical assistance.", "icon": "🛠️" },
+        { "title": "Custom Quote", "description": "Solutions tailored to your needs.", "icon": "📄" }
+      ]
+    },
+    "realizations": {
+      "title": "Our Realizations"
+    },
+    "testimonials": {
+      "title": "Customer Testimonials"
+    },
+    "inspire": {
+      "title": "Get Inspired",
+      "readMore": "Read more →"
+    },
+    "whyUs": {
+      "title": "Why Choose Us?"
+    },
+    "smartHome": {
+      "title": "4 Good Reasons to Make Your Home Smart",
+      "tabs": [
+        "Improve Your Energy Performance",
+        "Centralize and Control",
+        "Remote Control",
+        "Protect Your Home"
+      ]
+    },
+    "faqs": {
+      "title": "Smart Home",
+      "subtitle": "Everything You Need to Know!",
+      "items": [
+        {
+          "question": "How to add new devices in the TaHoma® app?",
+          "answer": "To add a new device, open the TaHoma® app, click 'Add Device', select the device type, and follow the instructions to connect it to your Wi-Fi network and integrate it into your home automation system."
+        },
+        {
+          "question": "How to add a voice assistant in the TaHoma® app?",
+          "answer": "In the TaHoma® app, go to settings, select 'Voice Assistants', then choose the desired assistant (Amazon Alexa, Google Assistant…). Follow the steps to link your account and enable voice control for your devices."
+        },
+        {
+          "question": "How to choose the right automation hub?",
+          "answer": "The choice depends on the number of devices you want to manage, the protocol type (Zigbee, RTS, Z-Wave), and the desired features (scenes, alerts, remote control). Our experts can guide you to select the right hub for your home."
+        },
+        {
+          "question": "How do I know if my device is compatible with your smart solutions?",
+          "answer": "All compatible devices are listed in the TaHoma® app or on our website. Check the compatibility logos (RTS, Somfy, Zigbee, etc.) or contact support for confirmation."
+        },
+        {
+          "question": "Connected devices: Somfy checklist",
+          "answer": "• Automation hub installed and connected.\n• Motion, opening, or temperature sensors correctly positioned.\n• Commands and scenes configured to automate your home.\n• Mobile apps installed on your devices for remote control.\n• Check compatibility of each new device before adding."
+        },
+        {
+          "question": "Is my data secure with TaHoma® switch?",
+          "answer": "Yes. TaHoma® uses a secure protocol to protect your personal data and device information. Communications are encrypted and servers comply with European security standards."
+        }
+      ]
+    }
+  },
+
   "footer": {
-    "privacy": "Privacy",
-    "terms": "Terms of Use",
-    "sitemap": "Site Map",
-    "rights": "All rights reserved."
+    "promo": "Enjoy our special offers!",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "sitemap": "Sitemap",
+    "columns": {
+      "produits": "Products",
+      "services": "Services",
+      "boutique": "Shop",
+      "contact": "Contact",
+      "links": {
+        "securite": "Security",
+        "domotique": "Home Automation",
+        "energie": "Energy",
+        "packs": "Packs",
+        "accessoires": "Accessories",
+        "services": "Services",
+        "support": "Support",
+        "devis": "Quote",
+        "shop": "Shop",
+        "contact": "Contact",
+        "recherche": "Search"
+      }
+    }
+  },
+
+  "securite": {
+    
+      "title": "Electronic Security",
+      "subtitle": "Professional & elegant solutions to protect what matters."
+    }
+  ,
+  "domotique": {
+    "title": "Smart Home & Automation",
+    "subtitle": "Automations, smart sensors, connected lighting… Control your home like never before."
+  },
+
+  "filters": {
+    "all": "All",
+    "light": "Lights",
+    "sensors": "Sensors",
+    "automation": "Automation"
+  },
+
+  "buttons": {
+    "details": "Details",
+    "buy": "Buy",
+    "order": "Order"
+  },
+
+  "product": {
+    "highlights": "Highlights",
+    "specs": "Specifications"
+  },
+
+  "energy": {
+    "title": "Solar Energy & Photovoltaics",
+    "subtitle": "Turnkey solutions: panels, batteries, inverters and accessories to reduce your bill and gain autonomy.",
+  
+
+  "filtersE": {
+    "all": "All",
+    "panels": "Panels",
+    "batteries": "Batteries",
+    "inverters": "Inverters",
+    "accessories": "Accessories"
+  },
+
+  "search": {
+    "placeholder": "Search a product…"
+  },
+
+  "buttonsE": {
+    "details": "View details",
+    "order": "Order",
+    "orderNow": "Order now"
+  },
+
+  "modal": {
+    "close": "Close"
   }
+  }
+  ,
+  "packs": {
+    "title": "Our Solar Kits",
+    "subtitle": "Discover our turnkey solutions tailored to all your needs."
+  ,
+  "filters": {
+    "all": "All",
+    "starter": "Starter",
+    "pro": "Pro",
+    "premium": "Premium"
+  },
+  "search": {
+    "placeholder": "Search a kit…"
+  },
+  "buttons": {
+    "details": "View details",
+    "order": "Order",
+    "order_now": "Order now"
+  },
+  "modal": {
+    "close": "Close"
+  }
+  },
+  "accessories": {
+    "title": "Electronic Accessories",
+    "subtitle": "Discover our accessories to complement your devices and installations."
+  ,
+  "filters": {
+    "all": "All",
+    "accessories": "Accessories"
+  },
+  "search": {
+    "placeholder": "Search a product…"
+  },
+  "buttons": {
+    "details": "View details",
+    "order": "Order",
+    "order_now": "Order now"
+  },
+  "modal": {
+    "close": "Close"
+  }
+},
+"services": {
+    "title": "Our Services",
+    "subtitle": "Discover all our services to support your projects, secure your installations, and ensure your satisfaction."
+  ,
+  "buttons": {
+    "learn_more": "Learn more"
+  }
+},
+"support": {
+    "title": "Customer Support",
+    "subtitle": "Our team is here to help. Quickly find answers or contact us directly."
+  ,
+  "buttons": {
+    "access": "Access"
+  },
+  "form": {
+    "title": "Send us a message",
+    "name": "Full Name",
+    "name_placeholder": "Your name",
+    "email": "Email",
+    "email_placeholder": "your.email@example.com",
+    "message": "Message",
+    "message_placeholder": "Describe your request...",
+    "submit": "Send Message"
+  }
+},
+"contact": {
+    "title": "Contact Us",
+    "subtitle": "We are here to answer your questions. Feel free to send us a message or check our contact info."
+  ,
+  "info": {
+    "title": "Contact Information",
+    "address": "123 Example Street, Dakar, Senegal",
+    "phone": "+221 77 123 45 67",
+    "email": "contact@mycompany.com",
+    "hours": "Mon - Fri: 9am - 6pm"
+  },
+  "form": {
+    "title": "Send us a message",
+    "name_placeholder": "Name",
+    "email_placeholder": "Email",
+    "message_placeholder": "Your message",
+    "submit": "Send"
+  }
+},
+
+"shop": {
+    "title": "Shop",
+    "subtitle": "Browse our products and easily add them to your cart."
+  ,
+  "search": {
+    "placeholder": "Search for a product…"
+  },
+  "buttons": {
+    "add_to_cart": "Add to cart",
+    "buy": "Buy"
+  },
+  "specs": {
+    "title": "Specifications"
+  },
+  "categories": {
+    "all": "All",
+    "securite": "Security",
+    "domotique": "Home Automation",
+    "energie": "Energy",
+    "packs": "Packs",
+    "accessory": "Accessories"
+  }
+
+}
 }

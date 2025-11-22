@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface Product {
   id: number;
@@ -17,7 +18,7 @@ interface Product {
 @Component({
   selector: 'app-domotique',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,TranslateModule],
   templateUrl: './domotique.component.html',
   styleUrl: './domotique.component.scss'
 })
@@ -53,7 +54,7 @@ export class DomotiqueComponent {
       title: `Capteur de Mouvement Intelligent`,
       description: `Active automatiquement vos lumières ou déclenche une alerte en cas de mouvement.`,
       price: '18 500 FCFA',
-      image: 'https://www.aqara.com/us/wp-content/uploads/2023/05/motion_sensor_p1_2.png',
+      image: 'https://i.pinimg.com/1200x/0a/79/b5/0a79b52c6df8e3e3dc0634db93486708.jpg',
       link: '#',
       highlights: ['Haute sensibilité', 'Automatisations', 'Basse consommation'],
       specs: {
@@ -68,7 +69,7 @@ export class DomotiqueComponent {
       title: `Prise Connectée Wi-Fi`,
       description: `Contrôlez vos appareils à distance, mesurez la consommation et planifiez des routines.`,
       price: '9 500 FCFA',
-      image: 'https://i.ebayimg.com/images/g/FJkAAOSw5mNb~Lbs/s-l1200.webp',
+      image: 'https://i.pinimg.com/1200x/b1/d6/34/b1d63417cabf71c6475aace3bf76d527.jpg',
       link: '#',
       highlights: ['Programmation', 'Suivi énergie', 'Mode absence'],
       specs: {
@@ -83,7 +84,7 @@ export class DomotiqueComponent {
       title: `Bande LED RGBIC Intelligente`,
       description: `Idéal pour salon, chambre, TV ou éclairage d’ambiance.`,
       price: '20 000 FCFA',
-      image: 'https://m.media-amazon.com/images/I/71nSpbSOi0L._AC_SL1500_.jpg',
+      image: 'https://i.pinimg.com/1200x/37/e8/3f/37e83ff4f9b59901bfa82ae08a43cdfb.jpg',
       link: '#',
       highlights: ['Effets dynamiques', 'Synchronisation musicale', 'Découpe possible'],
       specs: {
@@ -98,7 +99,7 @@ export class DomotiqueComponent {
       title: `Capteur d’Ouverture Portes/Fenêtres`,
       description: `Recevez une alerte instantanée dès qu’une porte ou fenêtre s’ouvre.`,
       price: '7 000 FCFA',
-      image: 'https://m.media-amazon.com/images/I/51W6iZVYphL._AC_SL1500_.jpg',
+      image: 'https://i.pinimg.com/1200x/cd/23/57/cd2357830d8b654b8ccea866241f86b7.jpg',
       link: '#',
       highlights: ['Ultra compact', 'Alerte en temps réel', 'Automatisation'],
       specs: {

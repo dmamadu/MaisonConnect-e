@@ -1,62 +1,16 @@
-<!-- <header class="sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-black/40 border-b border-black/5">
-  <nav class="container-apple h-12 flex items-center justify-between">
-    <a routerLink="/" class="font-semibold text-base">{{ 'brand' | translate }}</a>
-
-    <ul class="hidden md:flex gap-6 text-sm text-gray-600 dark:text-gray-300">
-      <li *ngFor="let it of items">
-        <a [routerLink]="it.link" class="hover:opacity-80 transition">
-          {{ ('nav.' + it.key) | translate }}
-        </a>
-      </li>
-    </ul>
-
-    <div class="hidden md:flex items-center gap-3">
-      <select class="border rounded px-2 py-1 bg-white dark:bg-zinc-800"
-              (change)="setLang(($event.target as HTMLSelectElement).value)">
-        <option *ngFor="let l of langs" [value]="l" [selected]="t.currentLang===l">{{ l.toUpperCase() }}</option>
-      </select>
-      <button class="text-sm border rounded px-3 py-1 bg-white dark:bg-zinc-800"
-              (click)="toggleTheme()" aria-label="Toggle theme">
-        🌙/☀️
-      </button>
-    </div>
-
-    <button class="md:hidden" (click)="open.set(!open())" aria-label="Menu">☰</button>
-  </nav>
-
-  <div *ngIf="open()" class="md:hidden border-t border-black/5">
-    <ul class="container-apple py-3 space-y-2 text-base">
-      <li *ngFor="let it of items">
-        <a [routerLink]="it.link" class="block py-2" (click)="open.set(false)">
-          {{ ('nav.' + it.key) | translate }}
-        </a>
-      </li>
-      <li class="pt-2 flex gap-3 items-center">
-        <label class="text-sm">Langue</label>
-        <select class="border rounded px-2 py-1"
-                (change)="setLang(($event.target as HTMLSelectElement).value)">
-          <option *ngFor="let l of langs" [value]="l" [selected]="t.currentLang===l">{{ l.toUpperCase() }}</option>
-        </select>
-        <button class="text-sm border rounded px-3 py-1" (click)="toggleTheme()">🌙/☀️</button>
-      </li>
-    </ul>
-  </div>
-</header> -->
-
-<header class="sticky top-0 z-50 backdrop-blur-xl bg-white/60 dark:bg-black/40 border-b border-black/10">
+<header class="sticky p-2 top-0 z-50 backdrop-blur-xl bg-white/60 dark:bg-black/40 border-b border-black/10">
   <nav class="container-apple h-12 flex items-center justify-between px-4">
-
-    <!-- Logo Apple -->
     <a routerLink="/" class="text-xl font-semibold tracking-tight hover:opacity-70 transition">
-      
+      <img 
+  src="assets/images/logoDomo.png" 
+  alt="Domotique Senegal Logo"
+  class="h-8 md:h-10 lg:h-12 object-contain rounded-full"
+/>
     </a>
-
-    <!-- Desktop Menu -->
     <ul class="hidden md:flex items-center gap-8 text-sm text-gray-800 dark:text-gray-200">
 
       <li *ngFor="let group of menu; index as i" class="relative dropdown-container">
 
-        <!-- Label -->
         <button 
           (click)="toggleMenu(i)"
           class="cursor-pointer hover:text-black dark:hover:text-white transition focus:outline-none flex items-center gap-1"
@@ -65,7 +19,6 @@
           <span class="text-xs opacity-60">▾</span>
         </button>
 
-        <!-- Dropdown -->
         <ul
           *ngIf="activeMenu() === i"
           class="absolute left-1/2 -translate-x-1/2 top-7
@@ -88,10 +41,8 @@
 
     </ul>
 
-    <!-- Actions desktop -->
     <div class="hidden md:flex items-center gap-4">
 
-      <!-- Lang Switch -->
       <div class="relative lang-switcher">
         <button
           (click)="toggleLangMenu()"
@@ -123,14 +74,12 @@
         </div>
       </div>
 
-      <!-- Theme -->
       <button
         class="text-sm px-2 py-1 rounded-full bg-gray-100 dark:bg-zinc-800 hover:bg-gray-200 dark:hover:bg-zinc-700 transition"
         (click)="toggleTheme()"
       >
         🌙
       </button>
-      <!-- Cart -->
 <button class="relative">
   🛒
   <span class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center">
@@ -141,11 +90,9 @@
 
     </div>
 
-    <!-- Mobile open button -->
     <button class="md:hidden text-xl" (click)="open.set(!open())">☰</button>
   </nav>
 
-  <!-- Mobile Menu -->
   <div *ngIf="open()" class="md:hidden border-t border-black/10 bg-white/90 dark:bg-black/70 backdrop-blur-xl">
     <ul class="px-4 py-4 space-y-4">
 

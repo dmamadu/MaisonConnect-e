@@ -6,10 +6,10 @@
   <!-- HERO -->
   <header class="text-center mb-12 lg:mb-16">
     <h1 class="text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white">
-      Contactez-nous
+      {{ 'contact.title' | translate }}
     </h1>
     <p class="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto mt-4">
-      Nous sommes là pour répondre à vos questions. N’hésitez pas à nous envoyer un message ou à consulter nos coordonnées.
+      {{ 'contact.subtitle' | translate }}
     </p>
   </header>
 
@@ -18,43 +18,47 @@
 
     <!-- Carte infos -->
     <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-md dark:shadow-lg p-6 flex flex-col gap-4">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Nos coordonnées</h2>
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+        {{ 'contact.info.title' | translate }}
+      </h2>
       
       <div class="flex items-center gap-4">
         <span class="text-gray-900 dark:text-white font-semibold">📍</span>
-        <p class="text-gray-600 dark:text-gray-300">123 Rue Exemple, Dakar, Sénégal</p>
+        <p class="text-gray-600 dark:text-gray-300">{{ 'contact.info.address' | translate }}</p>
       </div>
 
       <div class="flex items-center gap-4">
         <span class="text-gray-900 dark:text-white font-semibold">📞</span>
-        <p class="text-gray-600 dark:text-gray-300">+221 77 123 45 67</p>
+        <p class="text-gray-600 dark:text-gray-300">{{ 'contact.info.phone' | translate }}</p>
       </div>
 
       <div class="flex items-center gap-4">
         <span class="text-gray-900 dark:text-white font-semibold">✉️</span>
-        <p class="text-gray-600 dark:text-gray-300">contactmonentreprise.com</p>
+        <p class="text-gray-600 dark:text-gray-300">{{ 'contact.info.email' | translate }}</p>
       </div>
 
       <div class="flex items-center gap-4">
         <span class="text-gray-900 dark:text-white font-semibold">⏰</span>
-        <p class="text-gray-600 dark:text-gray-300">Lun - Ven : 9h - 18h</p>
+        <p class="text-gray-600 dark:text-gray-300">{{ 'contact.info.hours' | translate }}</p>
       </div>
     </div>
 
     <!-- Formulaire de contact -->
     <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-md dark:shadow-lg p-6">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Envoyez-nous un message</h2>
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+        {{ 'contact.form.title' | translate }}
+      </h2>
       <form (submit)="submitForm()">
         <div class="grid gap-4">
-          <input type="text" placeholder="Nom" [(ngModel)]="form.name" name="name"
+          <input type="text" placeholder="{{ 'contact.form.name_placeholder' | translate }}" [(ngModel)]="form.name" name="name"
                  class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition" />
-          <input type="email" placeholder="Email" [(ngModel)]="form.email" name="email"
+          <input type="email" placeholder="{{ 'contact.form.email_placeholder' | translate }}" [(ngModel)]="form.email" name="email"
                  class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition" />
-          <textarea placeholder="Votre message" [(ngModel)]="form.message" name="message" rows="5"
+          <textarea placeholder="{{ 'contact.form.message_placeholder' | translate }}" [(ngModel)]="form.message" name="message" rows="5"
                     class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition"></textarea>
           <button type="submit"
                   class="px-6 py-3 rounded-full bg-gray-900 text-white dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition font-semibold">
-            Envoyer
+            {{ 'contact.form.submit' | translate }}
           </button>
         </div>
       </form>

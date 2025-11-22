@@ -19,10 +19,355 @@
     "buy": "Acheter"
   },
   "promo": "Livraison et retours gratuits — Voir conditions",
-  "footer": {
-    "privacy": "Confidentialité",
-    "terms": "Conditions d’utilisation",
+
+
+  "smartHome": {
+    "title": "Les quatre bonnes raisons pour rendre votre maison connectée",
+
+    "tabs": {
+      "energy": "Améliorez vos performances énergétiques",
+      "centralize": "Centralisez et pilotez",
+      "remote": "Pilotez et contrôlez à distance",
+      "security": "Protéger votre maison"
+    },
+
+    "features": {
+      "energy": {
+        "title": "Améliorez vos performances énergétiques",
+        "description": "Programmez vos volets électriques et stores intérieurs en fonction de la météo.",
+        "details": [
+          "En été, dès que la température intérieure excède 25°C, vos volets ou stores Somfy se baissent automatiquement. Vous protégez vos meubles, animaux et plantes du soleil, et votre maison reste plus au frais. Vous retardez également le besoin d'allumer la climatisation.",
+          "En hiver, quand le soleil est là, vos volets et stores électriques s'ouvrent pour laisser rentrer la chaleur, et se ferment quand il n'y a plus de soleil pour conserver la chaleur intérieure."
+        ],
+        "button": "En savoir plus sur le confort thermique"
+      },
+
+      "centralize": {
+        "title": "Centralisez et pilotez",
+        "description": "Contrôlez tous vos équipements depuis une seule application.",
+        "details": [
+          "Gérez votre chauffage, vos volets, votre éclairage et vos alarmes depuis votre smartphone.",
+          "Créez des scénarios personnalisés pour automatiser votre quotidien."
+        ],
+        "button": "Découvrir les scénarios"
+      },
+
+      "remote": {
+        "title": "Pilotez et contrôlez à distance",
+        "description": "Restez connecté à votre maison où que vous soyez.",
+        "details": [
+          "Contrôlez votre maison depuis n'importe où dans le monde.",
+          "Recevez des notifications en temps réel sur l'état de votre habitation."
+        ],
+        "button": "En savoir plus sur le contrôle à distance"
+      },
+
+      "security": {
+        "title": "Protéger votre maison",
+        "description": "Sécurisez votre habitation avec des solutions intelligentes.",
+        "details": [
+          "Simulez votre présence lorsque vous êtes absent.",
+          "Recevez des alertes en cas d'intrusion ou d'anomalie."
+        ],
+        "button": "Découvrir les solutions de sécurité"
+      }
+    }
+  },
+
+   "home": {
+    "hero": {
+      "title": "Bienvenue chez Nous",
+      "subtitle": "Découvrez nos produits, packs et services pour sécuriser et automatiser votre maison tout en économisant de l’énergie.",
+      "shop": "Voir la boutique",
+      "services": "Nos services"
+    },
+    "products": {
+      "title": "Nos Produits",
+      "items": [
+        { "title": "Panneau Solaire 300W", "description": "Haute efficacité et durabilité.", "price": "350€" },
+        { "title": "Batterie Li-ion 5kWh", "description": "Stockage optimal pour vos besoins.", "price": "1200€" },
+        { "title": "Onduleur 5kW", "description": "Convertit efficacement votre énergie.", "price": "600€" }
+      ]
+    },
+    "packs": {
+      "title": "Nos Packs",
+      "items": [
+        { "title": "Pack Maison Connectée", "description": "Sécurité et confort pour votre domicile.", "price": "1800€" },
+        { "title": "Pack Énergie Solaire", "description": "Production et stockage d’énergie.", "price": "2500€" }
+      ]
+    },
+    "services": {
+      "title": "Nos Services",
+      "items": [
+        { "title": "Installation domotique", "description": "Automatisez votre maison facilement.", "icon": "🏠" },
+        { "title": "Maintenance & support", "description": "Assistance technique rapide et fiable.", "icon": "🛠️" },
+        { "title": "Devis personnalisé", "description": "Solutions adaptées à vos besoins.", "icon": "📄" }
+      ]
+    },
+    "realizations": {
+      "title": "Nos Réalisations"
+    },
+    "testimonials": {
+      "title": "Témoignages Clients"
+    },
+    "inspire": {
+      "title": "Inspirez-vous",
+      "readMore": "Lire la suite →"
+    },
+    "whyUs": {
+      "title": "Pourquoi nous choisir ?"
+    },
+    "smartHome": {
+      "title": "Les quatre bonnes raisons pour rendre votre maison connectée",
+      "tabs": [
+        "Améliorez vos performances énergétiques",
+        "Centralisez et pilotez",
+        "Pilotez et contrôlez à distance",
+        "Protéger votre maison"
+      ]
+    },
+    "faqs": {
+      "title": "La Maison Connectée",
+      "subtitle": "Tout ce que vous devez savoir !",
+      "items": [
+        {
+          "question": "Comment ajouter de nouveaux équipements dans l’application TaHoma® ?",
+          "answer": "Pour ajouter un nouvel équipement, ouvrez l’application TaHoma®, cliquez sur « Ajouter un appareil », choisissez le type d’équipement, puis suivez les instructions pour le connecter au réseau Wi-Fi et l’intégrer à votre installation domotique."
+        },
+        {
+          "question": "Comment ajouter un assistant vocal dans l’application TaHoma® ?",
+          "answer": "Dans l’application TaHoma®, allez dans les paramètres, sélectionnez « Assistants vocaux », puis choisissez l’assistant souhaité (Amazon Alexa, Google Assistant…). Suivez les étapes pour connecter votre compte et autoriser le contrôle vocal des équipements."
+        },
+        {
+          "question": "Comment choisir la box domotique qui vous convient ?",
+          "answer": "Le choix dépend du nombre d’équipements que vous souhaitez gérer, du type de protocole (Zigbee, RTS, Z-Wave), et des fonctionnalités souhaitées (scènes, alertes, contrôle à distance). Nos experts peuvent vous conseiller pour sélectionner la box adaptée à votre logement."
+        },
+        {
+          "question": "Comment savoir si votre équipement est compatible avec nos solutions connectées ?",
+          "answer": "Tous les équipements compatibles sont listés dans l’application TaHoma® ou sur notre site. Vérifiez les logos de compatibilité (RTS, Somfy, Zigbee, etc.) ou contactez notre support pour confirmation."
+        },
+        {
+          "question": "Équipements connectés : la checklist Somfy",
+          "answer": "• Box domotique installée et connectée.\n• Capteurs de mouvement, ouverture, ou température correctement positionnés.\n• Commandes et scénarios configurés pour automatiser votre logement.\n• Applications mobiles installées sur vos appareils pour le contrôle à distance.\n• Vérification de la compatibilité de chaque nouvel équipement avant l’ajout."
+        },
+        {
+          "question": "Mes données sont-elles sécurisées avec TaHoma® switch ?",
+          "answer": "Oui. TaHoma® utilise un protocole sécurisé pour protéger vos données personnelles et les informations de vos équipements. Les communications sont cryptées et les serveurs sont conformes aux normes de sécurité européennes."
+        }
+      ]
+    }
+  },
+
+
+   "footer": {
+    "promo": "Profitez de nos offres exceptionnelles !",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions générales",
     "sitemap": "Plan du site",
-    "rights": "Tous droits réservés."
+    "columns": {
+      "produits": "Produits",
+      "services": "Services",
+      "boutique": "Boutique",
+      "contact": "Contact",
+      "links": {
+        "securite": "Sécurité",
+        "domotique": "Domotique",
+        "energie": "Énergie",
+        "packs": "Packs",
+        "accessoires": "Accessoires",
+        "services": "Services",
+        "support": "Support",
+        "devis": "Devis",
+        "shop": "Shop",
+        "contact": "Contact",
+        "recherche": "Recherche"
+      }
+    }
+  },
+
+
+
+  "securite": {
+   
+      "title": "Sécurité Électronique",
+      "subtitle": "Solutions professionnelles & élégantes pour protéger ce qui compte."
+    
+  },
+
+
+  "domotique": {
+    "title": "Domotique & Maison Intelligente",
+    "subtitle": "Automatisations, capteurs intelligents, éclairages connectés… Contrôlez votre maison comme jamais auparavant."
+  },
+
+  "filters": {
+    "all": "Tous",
+    "light": "Lumières",
+    "sensors": "Capteurs",
+    "automation": "Automatisation"
+  },
+
+  "buttons": {
+    "details": "Détails",
+    "buy": "Acheter",
+    "order": "Commander"
+  },
+
+  "product": {
+    "highlights": "Points forts",
+    "specs": "Spécifications"
+  },
+
+
+  "energy": {
+    "title": "Énergie Solaire & Photovoltaïque",
+    "subtitle": "Solutions clé en main : panneaux, batteries, onduleurs et accessoires pour réduire votre facture et gagner en autonomie."
+  ,
+
+  "filtersE": {
+    "all": "Tous",
+    "panels": "Panneaux",
+    "batteries": "Batteries",
+    "inverters": "Onduleurs",
+    "accessories": "Accessoires"
+  },
+
+  "search": {
+    "placeholder": "Rechercher un produit…"
+  },
+
+  "buttonsE": {
+    "details": "Voir détails",
+    "order": "Commander",
+    "orderNow": "Commander maintenant"
+  },
+
+  "modal": {
+    "close": "Fermer"
   }
+},
+
+"packs": {
+    "title": "Nos Packs Solaires",
+    "subtitle": "Découvrez nos solutions clé en main adaptées à tous vos besoins.",
+
+    "filters": {
+      "all": "Tous",
+      "starter": "Starter",
+      "pro": "Pro",
+      "premium": "Premium"
+    },
+
+    "search": {
+      "placeholder": "Rechercher un pack…"
+    },
+
+    "imageAlt": "Packs solaires",
+
+    "buttons": {
+      "details": "Voir détails",
+      "order": "Commander",
+      "orderNow": "Commander maintenant"
+    },
+
+    "modal": {
+      "close": "Fermer"
+    }
+  },
+
+   "accessories": {
+    "title": "Accessoires Électroniques",
+    "subtitle": "Découvrez nos accessoires pour compléter vos installations et vos appareils."
+  ,
+  "filters": {
+    "all": "Tous",
+    "accessories": "Accessoires"
+  },
+  "search": {
+    "placeholder": "Rechercher un produit…"
+  },
+  "buttons": {
+    "details": "Voir détails",
+    "order": "Commander",
+    "order_now": "Commander maintenant"
+  },
+  "modal": {
+   "close": "Fermer"
+  }
+  },
+
+  "services": {
+    "title": "Nos Services",
+    "subtitle": "Découvrez l'ensemble de nos services pour accompagner vos projets, sécuriser vos installations et garantir votre satisfaction."
+  ,
+  "buttons": {
+    "learn_more": "En savoir plus"
+  }
+
+  },
+
+
+  "support": {
+    "title": "Support Client",
+    "subtitle": "Notre équipe est là pour vous aider. Trouvez rapidement des réponses ou contactez-nous directement."
+  ,
+  "buttons": {
+    "access": "Accéder"
+  },
+  "form": {
+    "title": "Envoyez-nous un message",
+    "name": "Nom complet",
+    "name_placeholder": "Votre nom",
+    "email": "Email",
+    "email_placeholder": "votre.email@exemple.com",
+    "message": "Message",
+    "message_placeholder": "Décrivez votre besoin...",
+    "submit": "Envoyer le message"
+  }
+},
+
+
+"contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Nous sommes là pour répondre à vos questions. N’hésitez pas à nous envoyer un message ou à consulter nos coordonnées."
+  ,
+  "info": {
+    "title": "Nos coordonnées",
+    "address": "123 Rue Exemple, Dakar, Sénégal",
+    "phone": "+221 77 123 45 67",
+    "email": "contact@monentreprise.com",
+    "hours": "Lun - Ven : 9h - 18h"
+  },
+  "form": {
+    "title": "Envoyez-nous un message",
+    "name_placeholder": "Nom",
+    "email_placeholder": "Email",
+    "message_placeholder": "Votre message",
+    "submit": "Envoyer"
+  }
+},
+
+"shop": {
+    "title": "Boutique",
+    "subtitle": "Parcourez nos produits et ajoutez-les facilement à votre panier."
+  ,
+  "search": {
+    "placeholder": "Rechercher un produit…"
+  },
+  "buttons": {
+    "add_to_cart": "Ajouter au panier",
+    "buy": "Acheter"
+  },
+  "specs": {
+    "title": "Spécifications"
+  },
+  "categories": {
+    "all": "Tous",
+    "securite": "Sécurité",
+    "domotique": "Domotique",
+    "energie": "Énergie",
+    "packs": "Packs",
+    "accessory": "Accessoires"
+  }
+}
 }

@@ -1,113 +1,3 @@
-// import { Component, signal, inject } from '@angular/core';
-// import { RouterLink } from '@angular/router';
-// import { CommonModule, NgFor } from '@angular/common';
-// import { TranslateModule, TranslateService } from '@ngx-translate/core';
-// import { LangService } from '../services/lang.service';
-// import { ThemeService } from '../services/theme.service';
-
-// @Component({
-//   selector: 'app-header',
-//   standalone: true,
-//   imports: [RouterLink, NgFor, TranslateModule,CommonModule],
-//   templateUrl: './header.component.html'
-// })
-// export class HeaderComponent {
-//   open = signal(false);
-//   langs = ['fr','en','ar'];
-
-//   t = inject(TranslateService);
-//   lang = inject(LangService);
-//   theme = inject(ThemeService);
-//   items = [
-//     { key: 'accueil', link: '/' },
-//     { key: 'securite', link: '/securite' },
-//     { key: 'domotique', link: '/domotique' },
-//     { key: 'energie', link: '/energie' },
-//     { key: 'packs', link: '/packs' },
-//     { key: 'services', link: '/services' },
-//     { key: 'accessoires', link: '/accessoires' },
-//     { key: 'shop', link: '/shop' },
-//     { key: 'devis', link: '/devis' },
-//     { key: 'support', link: '/support' },
-//     { key: 'contact', link: '/contact' },
-//     { key: 'recherche', link: '/recherche' }
-//   ];
-
-//   setLang(l: string){ this.lang.setLang(l); }
-//   toggleTheme(){ this.theme.toggle(); }
-// }
-// import { Component, signal, inject } from '@angular/core';
-// import { RouterLink } from '@angular/router';
-// import { CommonModule, NgFor, NgIf } from '@angular/common';
-// import { TranslateModule, TranslateService } from '@ngx-translate/core';
-// import { LangService } from '../services/lang.service';
-// import { ThemeService } from '../services/theme.service';
-
-// @Component({
-//   selector: 'app-header',
-//   standalone: true,
-//   imports: [RouterLink, NgFor, NgIf, TranslateModule, CommonModule],
-//   templateUrl: './header.component.html'
-// })
-// export class HeaderComponent {
-//   open = signal(false);
-//   submenuOpen = signal<number | null>(null);
-
-//   t = inject(TranslateService);
-//   lang = inject(LangService);
-//    langs = ['fr','en','ar'];
-
-//   theme = inject(ThemeService);
-
-//   menu = [
-//     {
-//       label: 'Produits',
-//       children: [
-//         { key: 'securite', link: '/securite' },
-//         { key: 'domotique', link: '/domotique' },
-//         { key: 'energie', link: '/energie' },
-//         { key: 'packs', link: '/packs' },
-//         { key: 'accessoires', link: '/accessoires' },
-//       ]
-//     },
-//     {
-//       label: 'Services',
-//       children: [
-//         { key: 'services', link: '/services' },
-//         { key: 'support', link: '/support' },
-//         { key: 'devis', link: '/devis' },
-//       ]
-//     },
-//     {
-//       label: 'Boutique',
-//       children: [
-//         { key: 'shop', link: '/shop' },
-//       ]
-//     },
-//     {
-//       label: 'Contact',
-//       children: [
-//         { key: 'contact', link: '/contact' },
-//         { key: 'recherche', link: '/recherche' },
-//       ]
-//     }
-//   ];
-//   activeMenu = signal<number | null>(null);
-
-// toggleMenu(i: number) {
-//   this.activeMenu.set(
-//     this.activeMenu() === i ? null : i
-//   );
-// }
-
-// // Fermer si on clique en dehors
-// closeMenu() {
-//   this.activeMenu.set(null);
-// }
-//  setLang(l: string){ this.lang.setLang(l); }
-
-//   toggleTheme() { this.theme.toggle(); }
-// }
 import { Component, signal, inject, effect } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
@@ -115,6 +5,9 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LangService } from '../services/lang.service';
 import { ThemeService } from '../services/theme.service';
 import { CartService } from '../services/cart.service';
+
+
+
 
 @Component({
   selector: 'app-header',

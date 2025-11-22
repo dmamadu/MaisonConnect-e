@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface Product {
   id: number;
@@ -16,7 +17,7 @@ interface Product {
 @Component({
   selector: 'app-packs',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,TranslateModule],
   templateUrl: './packs.component.html',
   styleUrls: ['./packs.component.scss']
 })
@@ -31,8 +32,8 @@ export class PacksComponent {
       category: 'starter',
       title: 'Pack Starter',
       description: 'Idéal pour une petite installation, avec les essentiels.',
-      price: '299€',
-      image: 'https://via.placeholder.com/300x200?text=Pack+Starter',
+      price: '299CFA',
+      image: 'https://i.pinimg.com/1200x/e5/9e/4f/e59e4f947f80ac4a7da3eb3fbeb06c05.jpg',
       highlights: ['Panneau solaire 100W', 'Batterie 50Ah', 'Onduleur 300W'],
       specs: { 'Nombre de panneaux': '1', 'Capacité batterie': '50Ah', 'Puissance onduleur': '300W' },
       link: '#'
@@ -42,8 +43,8 @@ export class PacksComponent {
       category: 'pro',
       title: 'Pack Pro',
       description: 'Pour une installation complète avec plus d’autonomie.',
-      price: '699€',
-      image: 'https://via.placeholder.com/300x200?text=Pack+Pro',
+      price: '699CFA',
+      image: 'https://i.pinimg.com/736x/b6/f9/3d/b6f93d1b6c4ed4884350391532adf290.jpg',
       highlights: ['Panneau solaire 300W', 'Batterie 150Ah', 'Onduleur 1000W'],
       specs: { 'Nombre de panneaux': '3', 'Capacité batterie': '150Ah', 'Puissance onduleur': '1000W' },
       link: '#'
@@ -53,8 +54,8 @@ export class PacksComponent {
       category: 'premium',
       title: 'Pack Premium',
       description: 'Solution haut de gamme pour grande autonomie et performance.',
-      price: '1299€',
-      image: 'https://via.placeholder.com/300x200?text=Pack+Premium',
+      price: '1299CFA',
+      image: 'https://i.pinimg.com/736x/d9/2d/f5/d92df557673f63ab799fd94fcbda752c.jpg',
       highlights: ['Panneau solaire 500W', 'Batterie 300Ah', 'Onduleur 2000W'],
       specs: { 'Nombre de panneaux': '5', 'Capacité batterie': '300Ah', 'Puissance onduleur': '2000W' },
       link: '#'
