@@ -2,6 +2,8 @@ import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { CartService } from '../../shared/services/cart.service';
+import { CartComponent } from "../cart/cart.component";
 
 interface Product {
   id: number;
@@ -18,7 +20,7 @@ interface Product {
 @Component({
   selector: 'app-domotique',
   standalone: true,
-  imports: [CommonModule, FormsModule,TranslateModule],
+  imports: [CommonModule, FormsModule, TranslateModule, CartComponent],
   templateUrl: './domotique.component.html',
   styleUrl: './domotique.component.scss'
 })
@@ -136,4 +138,18 @@ export class DomotiqueComponent {
   delayForIndex(i: number) {
     return `${0.06 * i}s`;
   }
+    cart: { product: any, quantity: number }[] = [];
+  constructor(public cartService: CartService) {}
+
+
+    addToCart(product: any) {
+    const existing = this.cart.find(c => c.product.id === product.id);
+    if(existing) {
+      existing.quantity++;
+    } else {
+      this.cart.push({ product, quantity: 1 });
+    }
+        this.cartService.addToCart(product);
+  }
+
 }

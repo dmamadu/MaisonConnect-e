@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 interface Product {
   id: number;
@@ -35,12 +35,12 @@ interface Testimonial {
   avatar?: string;
 }
 
-interface Article {
-  date: string;
-  title: string;
-  summary: string;
-  image: string;
-}
+// interface Article {
+//   date: string;
+//   title: string;
+//   summary: string;
+//   image: string;
+// }
 
 interface FAQ {
   question: string;
@@ -56,11 +56,13 @@ interface WhyUs {
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { SmartHomeSectionComponent } from "./smart-home-section/smart-home-section.component";
 import { TranslateModule } from '@ngx-translate/core';
+import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/router';
+import { Article, ArticleService } from '../services/article.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, SmartHomeSectionComponent,TranslateModule],
+  imports: [CommonModule, SmartHomeSectionComponent,TranslateModule,RouterModule,RouterLink ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   animations: [
@@ -83,7 +85,7 @@ import { TranslateModule } from '@ngx-translate/core';
     ])
   ]
 })
-export class HomeComponent {
+export class HomeComponent  implements  OnInit{
   // -------------------------- Hero --------------------------
   heroTitle = 'Bienvenue chez Nous';
   heroSubtitle = 'Découvrez nos produits, packs et services pour sécuriser et automatiser votre maison tout en économisant de l’énergie.';
@@ -96,9 +98,46 @@ export class HomeComponent {
   ];
 
   // -------------------------- Packs --------------------------
-  packs: Pack[] = [
-    { id: 1, title: 'Pack Maison Connectée', description: 'Sécurité et confort pour votre domicile.', price: '1800CFA', image: 'https://i.pinimg.com/736x/2f/fc/e6/2ffce627954199c172bd5947d589da92.jpg' },
-    { id: 2, title: 'Pack Énergie Solaire', description: 'Production et stockage d’énergie.', price: '2500CFA', image: 'https://i.pinimg.com/736x/2f/fc/e6/2ffce627954199c172bd5947d589da92.jpg' },
+  // packs: Pack[] = [
+  //   { id: 1, title: 'Pack Maison Connectée', description: 'Sécurité et confort pour votre domicile.', price: '1800CFA', image: 'https://i.pinimg.com/736x/2f/fc/e6/2ffce627954199c172bd5947d589da92.jpg' },
+  //   { id: 2, title: 'Pack Énergie Solaire', description: 'Production et stockage d’énergie.', price: '2500CFA', image: 'https://i.pinimg.com/736x/2f/fc/e6/2ffce627954199c172bd5947d589da92.jpg' },
+  // ];
+
+
+    packs: Pack[] = [
+    {
+      id: 1,
+      // category: 'starter',
+      title: 'Pack Starter',
+      description: 'Idéal pour une petite installation, avec les essentiels.',
+      price: '299CFA',
+      image: 'https://i.pinimg.com/1200x/e5/9e/4f/e59e4f947f80ac4a7da3eb3fbeb06c05.jpg',
+      // highlights: ['Panneau solaire 100W', 'Batterie 50Ah', 'Onduleur 300W'],
+      // specs: { 'Nombre de panneaux': '1', 'Capacité batterie': '50Ah', 'Puissance onduleur': '300W' },
+      // link: '#'
+    },
+    {
+      id: 2,
+      // category: 'pro',
+      title: 'Pack Pro',
+      description: 'Pour une installation complète avec plus d’autonomie.',
+      price: '699CFA',
+      image: 'https://i.pinimg.com/736x/b6/f9/3d/b6f93d1b6c4ed4884350391532adf290.jpg',
+      // highlights: ['Panneau solaire 300W', 'Batterie 150Ah', 'Onduleur 1000W'],
+      //  specs: { 'Nombre de panneaux': '3', 'Capacité batterie': '150Ah', 'Puissance onduleur': '1000W' },
+      // link: '#'
+    },
+    {
+      id: 3,
+      // category: 'premium',
+      title: 'Pack Premium',
+      description: 'Solution haut de gamme pour grande autonomie et performance.',
+      price: '1299CFA',
+      image: 'https://i.pinimg.com/736x/d9/2d/f5/d92df557673f63ab799fd94fcbda752c.jpg',
+      // highlights: ['Panneau solaire 500W', 'Batterie 300Ah', 'Onduleur 2000W'],
+      // specs: { 'Nombre de panneaux': '5', 'Capacité batterie': '300Ah', 'Puissance onduleur': '2000W' },
+      // link: '#'
+    }
   ];
 
   // -------------------------- Services --------------------------
@@ -137,11 +176,29 @@ export class HomeComponent {
   }
 
   // -------------------------- Articles / Inspirez-vous --------------------------
-  articles: Article[] = [
-    { date: '22.07.2022', title: 'Un quotidien plus confortable grâce à la maison connectée', summary: 'Découvrez comment la domotique simplifie la vie de tous les jours.', image: 'https://i.pinimg.com/1200x/fa/09/26/fa0926e1a56aaa1c1d5eb8bb84f3f29f.jpg' },
-    { date: '21.07.2022', title: 'Logement connecté : des avantages au quotidien', summary: 'Optimisez votre confort et votre sécurité grâce aux équipements connectés.', image: 'https://i.pinimg.com/736x/bb/13/90/bb1390a3aa49a00f645c579b20f3f9fe.jpg' },
-    { date: '21.07.2022', title: 'La domotique dans un appartement', summary: 'Solutions pour un habitat intelligent et sûr.', image: 'https://i.pinimg.com/736x/36/3f/f3/363ff31a4fc98252842a58407c119999.jpg' },
-  ];
+  // articles: Article[] = [
+  //   { date: '22.07.2022', title: 'Un quotidien plus confortable grâce à la maison connectée', summary: 'Découvrez comment la domotique simplifie la vie de tous les jours.', image: 'https://i.pinimg.com/1200x/fa/09/26/fa0926e1a56aaa1c1d5eb8bb84f3f29f.jpg' },
+  //   { date: '21.07.2022', title: 'Logement connecté : des avantages au quotidien', summary: 'Optimisez votre confort et votre sécurité grâce aux équipements connectés.', image: 'https://i.pinimg.com/736x/bb/13/90/bb1390a3aa49a00f645c579b20f3f9fe.jpg' },
+  //   { date: '21.07.2022', title: 'La domotique dans un appartement', summary: 'Solutions pour un habitat intelligent et sûr.', image: 'https://i.pinimg.com/736x/36/3f/f3/363ff31a4fc98252842a58407c119999.jpg' },
+  // ];
+
+    articles: Article[]= [];
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private articleService: ArticleService
+  ) {}
+
+
+  ngOnInit(): void {
+       this.articles = this.articleService.getArticles();
+  }
+
+  goBack(): void {
+    this.router.navigate(['/']);
+  }
+
 
   // -------------------------- Pourquoi nous choisir ? --------------------------
   whyUs: WhyUs[] = [

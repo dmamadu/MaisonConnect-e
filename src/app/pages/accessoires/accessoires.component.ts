@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { CartService } from '../../shared/services/cart.service';
+import { CartComponent } from "../cart/cart.component";
 
 interface Product {
   id: number;
@@ -17,11 +19,12 @@ interface Product {
 @Component({
   selector: 'app-accessoires',
   standalone: true,
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, TranslateModule, CartComponent],
   templateUrl: './accessoires.component.html',
   styleUrls: ['./accessoires.component.scss']
 })
 export class AccessoiresComponent {
+  constructor(public cartService: CartService) {}
   // Liste des produits accessoires
   products: Product[] = [
     {
@@ -86,5 +89,18 @@ export class AccessoiresComponent {
   // Optionnel : pour l'animation des cartes
   delayForIndex(index: number): string {
     return `${index * 100}ms`;
+  }
+
+
+  cart: { product: Product, quantity: number }[] = [];
+
+    addToCart(product: any) {
+    const existing = this.cart.find(c => c.product.id === product.id);
+    if(existing) {
+      existing.quantity++;
+    } else {
+      this.cart.push({ product, quantity: 1 });
+    }
+        this.cartService.addToCart(product);
   }
 }

@@ -2,6 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { CartService } from '../../shared/services/cart.service';
 
 interface Product {
   id: number;
@@ -84,7 +85,7 @@ export class SecuriteComponent {
       title: `Caméra Discrete Bullet 2K`,
       description: `Bullet camera compacte, vision longue portée et weatherproof.`,
       price: '45 000 FCFA',
-      image: 'https://i.pinimg.com/736x/ed/3b/2c/ed3b2c3f4f6f4e1f4c8e4b2a5c9e8f7d.jpg',
+      image: 'https://i.pinimg.com/1200x/2e/84/40/2e844002a18ae93dbc7da7cb7901b19b.jpg',
       link: 'https://www.amazon.com/dp/B08BULLET',
       highlights: [`Longue portée`, `HD 2K`, `IP67`],
       specs: { 'Résolution': '2K', 'Portée IR': '40m', 'Indice': 'IP67' }
@@ -122,4 +123,19 @@ export class SecuriteComponent {
   delayForIndex(i: number) {
     return `${0.06 * i}s`;
   }
+
+      cart: { product: any, quantity: number }[] = [];
+    constructor(public cartService: CartService) {}
+  
+  
+      addToCart(product: any) {
+      const existing = this.cart.find(c => c.product.id === product.id);
+      if(existing) {
+        existing.quantity++;
+      } else {
+        this.cart.push({ product, quantity: 1 });
+      }
+          this.cartService.addToCart(product);
+    }
+  
 }

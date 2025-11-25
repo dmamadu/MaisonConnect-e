@@ -30,13 +30,13 @@ export class HeaderComponent {
   lang = inject(LangService);
   theme = inject(ThemeService);
 
-  langs = ['fr', 'en', 'ar'];
+  langs = ['fr', 'en'];
 
   // Flags for Apple-like UI
   flags: Record<string, string> = {
     fr: '🇫🇷',
     en: '🇬🇧',
-    ar: '🇦🇪'
+    // ar: '🇦🇪'
   };
 
   // Current language as signal

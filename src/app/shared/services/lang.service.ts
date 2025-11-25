@@ -7,7 +7,9 @@ export class LangService {
   private translate = inject(TranslateService);
   private doc = inject(DOCUMENT);
 
-  supported = ['fr', 'en', 'ar'] as const;
+  // supported = ['fr', 'en', 'ar'] as const;
+    supported = ['fr', 'en'] as const;
+
 
   init() {
     const saved = localStorage.getItem('lang');

@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { CartService } from '../../shared/services/cart.service';
+import { CartComponent } from "../cart/cart.component";
 
 interface Product {
   id: number;
@@ -17,11 +19,15 @@ interface Product {
 @Component({
   selector: 'app-packs',
   standalone: true,
-  imports: [CommonModule,TranslateModule],
+  imports: [CommonModule, TranslateModule, CartComponent],
   templateUrl: './packs.component.html',
   styleUrls: ['./packs.component.scss']
 })
 export class PacksComponent {
+
+constructor(public cartService: CartService) {}
+
+
   filter: 'all' | 'starter' | 'pro' | 'premium' = 'all';
   query: string = '';
   selectedPack?: Product;
@@ -81,6 +87,20 @@ export class PacksComponent {
 
   closeDetail() {
     this.selectedPack = undefined;
+  }
+
+
+      cart: { product: Product, quantity: number }[] = [];
+
+    addToCart(product: any) {
+    const existing = this.cart.find(c => c.product.id === product.id);
+    if(existing) {
+      existing.quantity++;
+    } else {
+      this.cart.push({ product, quantity: 1 });
+    }
+        this.cartService.addToCart(product);
+
   }
 }
 

@@ -2,6 +2,8 @@ import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { CartService } from '../../shared/services/cart.service';
+import { CartComponent } from "../cart/cart.component";
 
 interface SolarProduct {
   id: number;
@@ -18,11 +20,13 @@ interface SolarProduct {
 @Component({
   selector: 'app-energie',
   standalone: true,
-  imports: [CommonModule, FormsModule,TranslateModule],
+  imports: [CommonModule, FormsModule, TranslateModule, CartComponent],
   templateUrl: './energie.component.html',
   styleUrl: './energie.component.scss'
 })
-export class EnergieComponent {
+export class EnergieComponent  {
+
+  constructor(private cartService: CartService) {}
   bgOffset = 0;
 
   filter: 'all' | SolarProduct['category'] = 'all';
@@ -123,4 +127,23 @@ export class EnergieComponent {
   delayForIndex(i: number) {
     return `${i * 0.06}s`;
   }
+
+      cart: { product: any, quantity: number }[] = [];
+
+
+//   addToCart(product: any) {
+//   this.cartService.addToCart(product);
+// }
+
+    addToCart(product: any) {
+    const existing = this.cart.find(c => c.product.id === product.id);
+    if(existing) {
+      existing.quantity++;
+    } else {
+      this.cart.push({ product, quantity: 1 });
+    }
+        this.cartService.addToCart(product);
+
+  }
+
 }

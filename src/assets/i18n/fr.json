@@ -369,5 +369,8 @@
     "packs": "Packs",
     "accessory": "Accessoires"
   }
-}
+},
+  "details": {
+    "title": "Retour aux articles"
+  }
 }
