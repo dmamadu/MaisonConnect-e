@@ -1,9 +1,12 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { CartService } from '../../shared/services/cart.service';
 import { CartComponent } from "../cart/cart.component";
+import { Subject, takeUntil } from 'rxjs';
+import { RootService } from '../../shared/services/root.service';
+import { SnackBarService } from '../../shared/services/snackBar.service';
 
 interface SolarProduct {
   id: number;
@@ -24,7 +27,24 @@ interface SolarProduct {
   templateUrl: './energie.component.html',
   styleUrl: './energie.component.scss'
 })
-export class EnergieComponent  {
+export class EnergieComponent implements  OnInit , OnDestroy {
+
+
+  // Pour indiquer le chargement (spinner)
+    loadData: boolean = false;
+  // Pour gérer les subscriptions et éviter les memory leaks
+    private destroy$ = new Subject<void>();
+    private  baseService= inject(RootService)
+    private snackbar= inject(SnackBarService)
+  
+    ngOnDestroy(): void {
+      this.destroy$.next();
+      this.destroy$.complete();
+    }
+  
+      ngOnInit(): void {
+      }
+
 
   constructor(private cartService: CartService) {}
   bgOffset = 0;
@@ -145,5 +165,42 @@ export class EnergieComponent  {
         this.cartService.addToCart(product);
 
   }
+
+
+
+
+
+
+getEnergie() {
+  this.loadData = true;
+  console.log('Chargement des accessoires...');
+  return this.baseService
+    .all('accessories')
+    .pipe(takeUntil(this.destroy$))
+    .subscribe(
+      (data: any) => {
+        this.loadData = false;
+        console.log('Accessoires chargés :', data);
+
+        if (data && data.length > 0) {
+          this.products = data;
+        } else {
+          this.products = [];
+        }
+      },
+      (error) => {
+        this.loadData = false;
+        console.error('Erreur lors du chargement des accessoires :', error);
+      }
+    );
+}
+
+
+
+
+
+
+
+
 
 }

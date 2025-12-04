@@ -1,8 +1,11 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { CartService } from '../../shared/services/cart.service';
+import { Subject, takeUntil } from 'rxjs';
+import { SnackBarService } from '../../shared/services/snackBar.service';
+import { RootService } from '../../shared/services/root.service';
 
 interface Product {
   id: number;
@@ -23,7 +26,27 @@ interface Product {
   templateUrl: './securite.component.html',
   styleUrl: './securite.component.scss'
 })
-export class SecuriteComponent {
+export class SecuriteComponent  implements   OnDestroy , OnInit  {
+
+
+
+  private destroy$ = new Subject<void>();
+  private  baseService= inject(RootService)
+  private snackbar= inject(SnackBarService)   
+
+  
+  // Pour indiquer le chargement (spinner)
+    loadData: boolean = false;
+
+
+  ngOnInit(): void {
+  }
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+
   // Parallax / background reactive values
   bgOffset = 0;
 
@@ -136,6 +159,30 @@ export class SecuriteComponent {
         this.cart.push({ product, quantity: 1 });
       }
           this.cartService.addToCart(product);
+    }
+
+    getEnergie() {
+      this.loadData = true;
+      console.log('Chargement des accessoires...');
+      return this.baseService
+        .all('accessories')
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(
+          (data: any) => {
+            this.loadData = false;
+            console.log('Accessoires chargés :', data);
+    
+            if (data && data.length > 0) {
+              this.products = data;
+            } else {
+              this.products = [];
+            }
+          },
+          (error) => {
+            this.loadData = false;
+            console.error('Erreur lors du chargement des accessoires :', error);
+          }
+        );
     }
   
 }

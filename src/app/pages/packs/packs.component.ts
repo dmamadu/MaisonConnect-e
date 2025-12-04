@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { CartService } from '../../shared/services/cart.service';
 import { CartComponent } from "../cart/cart.component";
+import { Subject, takeUntil } from 'rxjs';
+import { RootService } from '../../shared/services/root.service';
 
 interface Product {
   id: number;
@@ -23,9 +25,62 @@ interface Product {
   templateUrl: './packs.component.html',
   styleUrls: ['./packs.component.scss']
 })
-export class PacksComponent {
+export class PacksComponent implements  OnInit , OnDestroy {
 
-constructor(public cartService: CartService) {}
+
+
+
+
+// Pour indiquer le chargement (spinner)
+  loadData: boolean = false;
+// Pour gérer les subscriptions et éviter les memory leaks
+  private destroy$ = new Subject<void>();
+  private  baseService= inject(RootService)
+
+
+  constructor(public cartService: CartService) {}
+
+
+  ngOnInit(): void {
+    //  this.getPacks();
+  }
+
+
+
+
+ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+
+getPacks() {
+  this.loadData = true;
+  console.log('Chargement des packs...');
+  return this.baseService
+    .all('packs')
+    .pipe(takeUntil(this.destroy$))
+    .subscribe(
+      (data: any) => {
+        this.loadData = false;
+        console.log('Accessoires chargés :', data);
+
+        if (data && data.length > 0) {
+          this.packs = data;
+        } else {
+          this.packs = [];
+        }
+      },
+      (error) => {
+        this.loadData = false;
+        console.error('Erreur lors du chargement des packs :', error);
+      }
+    );
+}
+
+
+
+
 
 
   filter: 'all' | 'starter' | 'pro' | 'premium' = 'all';

@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { Subject, takeUntil } from 'rxjs';
+import { RootService } from '../../shared/services/root.service';
+import { SnackBarService } from '../../shared/services/snackBar.service';
 
 interface FormData {
   // Step 1
   serviceType: string;
   residenceType: string;
   estimatedDate: string;
-
   // Step 2 - Project Types (checkboxes)
   securityElectronic: boolean;
   smartHome: boolean;
@@ -40,7 +42,25 @@ interface FormData {
   templateUrl: './devis.component.html',
   styleUrl: './devis.component.scss'
 })
-export class DevisComponent {
+  export class DevisComponent implements OnInit,OnDestroy {
+
+// Pour indiquer le chargement (spinner)
+  loadData: boolean = false;
+// Pour gérer les subscriptions et éviter les memory leaks
+  private destroy$ = new Subject<void>();
+  private  baseService= inject(RootService)
+  private snackbar= inject(SnackBarService)
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+    ngOnInit(): void {
+    }
+ 
+
+
   currentStep = 1;
   totalSteps = 3;
 
@@ -141,12 +161,36 @@ export class DevisComponent {
         return false;
     }
   }
-
   submitForm(): void {
     if (this.isCurrentStepValid()) {
       console.log('Form submitted:', this.formData);
       // Ici vous pouvez ajouter votre logique d'envoi
       alert('Votre demande de devis a été envoyée avec succès !');
     }
+     this.snackbar
+      .showConfirmation(`Voulez-vous vraiment envoyer cette demande de devis ?`)
+      .then((result) => {
+        if (result["value"] == true) {
+          this.loadData = true;
+          this.baseService.add("contact",this.formData)
+          .pipe(takeUntil(this.destroy$))
+          .subscribe(
+            (resp) => {
+              if (resp) {
+                this.snackbar.showSimpleNotification(
+                  "Ok",
+                  "Demande de devis  ajouté avec succés",
+                );
+                this.loadData = false;
+              } else {
+                this.loadData = false;
+              }
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
+        }
+      });
+   }
   }
-}

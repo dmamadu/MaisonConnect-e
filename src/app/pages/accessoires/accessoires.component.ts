@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { CartService } from '../../shared/services/cart.service';
 import { CartComponent } from "../cart/cart.component";
+import { RootService } from '../../shared/services/root.service';
+import { Subject, takeUntil } from 'rxjs';
 
 interface Product {
   id: number;
@@ -23,8 +25,40 @@ interface Product {
   templateUrl: './accessoires.component.html',
   styleUrls: ['./accessoires.component.scss']
 })
-export class AccessoiresComponent {
+export class AccessoiresComponent  implements  OnInit , OnDestroy {
+// Liste des accessoires
+// accessoires: any[] = [];
+
+// Pour indiquer le chargement (spinner)
+loadData: boolean = false;
+
+// Pour gérer les subscriptions et éviter les memory leaks
+ private destroy$ = new Subject<void>();
+
+  private  baseService= inject(RootService)
+
+
   constructor(public cartService: CartService) {}
+
+
+
+  ngOnInit(): void {
+    // this.getAccessoires();
+  }
+
+
+
+
+ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+
+
+
+
+  
   // Liste des produits accessoires
   products: Product[] = [
     {
@@ -103,4 +137,40 @@ export class AccessoiresComponent {
     }
         this.cartService.addToCart(product);
   }
+
+
+
+
+
+getAccessoires() {
+  this.loadData = true;
+  console.log('Chargement des accessoires...');
+  return this.baseService
+    .all('accessories')
+    .pipe(takeUntil(this.destroy$))
+    .subscribe(
+      (data: any) => {
+        this.loadData = false;
+        console.log('Accessoires chargés :', data);
+
+        if (data && data.length > 0) {
+          this.products = data;
+        } else {
+          this.products = [];
+        }
+      },
+      (error) => {
+        this.loadData = false;
+        console.error('Erreur lors du chargement des accessoires :', error);
+      }
+    );
+}
+
+
+
+
+
+
+
+
 }

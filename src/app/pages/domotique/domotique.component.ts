@@ -1,9 +1,11 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { CartService } from '../../shared/services/cart.service';
 import { CartComponent } from "../cart/cart.component";
+import { Subject, takeUntil } from 'rxjs';
+import { RootService } from '../../shared/services/root.service';
 
 interface Product {
   id: number;
@@ -24,7 +26,24 @@ interface Product {
   templateUrl: './domotique.component.html',
   styleUrl: './domotique.component.scss'
 })
-export class DomotiqueComponent {
+export class DomotiqueComponent implements  OnInit , OnDestroy  {
+
+    // Pour indiquer le chargement (spinner)
+  loadData: boolean = false;
+
+  private destroy$ = new Subject<void>();
+  private  baseService= inject(RootService)
+  
+  ngOnInit(): void {
+  }
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+
+
+
   // Parallax
   bgOffset = 0;
 
@@ -151,5 +170,29 @@ export class DomotiqueComponent {
     }
         this.cartService.addToCart(product);
   }
+
+      getDomotique() {
+        this.loadData = true;
+        console.log('Chargement des accessoires...');
+        return this.baseService
+          .all('accessories')
+          .pipe(takeUntil(this.destroy$))
+          .subscribe(
+            (data: any) => {
+              this.loadData = false;
+              console.log('Accessoires chargés :', data);
+      
+              if (data && data.length > 0) {
+                this.products = data;
+              } else {
+                this.products = [];
+              }
+            },
+            (error) => {
+              this.loadData = false;
+              console.error('Erreur lors du chargement des accessoires :', error);
+            }
+          );
+      }
 
 }
