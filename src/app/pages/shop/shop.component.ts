@@ -136,8 +136,8 @@ export class ShopComponent {
   { key: 'securite', label: 'shop.categories.securite' },
   { key: 'domotique', label: 'shop.categories.domotique' },
   { key: 'energie', label: 'shop.categories.energie' },
-  { key: 'packs', label: 'shop.categories.packs' },
-  { key: 'accessory', label: 'shop.categories.accessory' },
+  // { key: 'packs', label: 'shop.categories.packs' },
+  // { key: 'accessory', label: 'shop.categories.accessory' },
 ];
 
 

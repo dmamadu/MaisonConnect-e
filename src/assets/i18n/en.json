@@ -519,6 +519,167 @@
         "cta": "Discover"
       }
     }
+  },
+
+  "devis": {
+    "title": "Request Your Free Quote",
+    "subtitle": "Get a professional quote at no cost!",
+    "step1": {
+      "title": "Project Information",
+      "serviceType": "Service Type",
+      "selectService": "Select a service type",
+      "residenceType": "Property Type",
+      "selectResidence": "Select a property type",
+      "estimatedDate": "Estimated Completion Date"
+    },
+    "step2": {
+      "title": "Project Details",
+      "projectDetails": "Tell us as much as possible about your request",
+      "detailsPlaceholder": "Describe your project in detail...",
+      "projectAddress": "Project Address",
+      "addressPlaceholder": "Ex: 123 Main Street",
+      "postalCode": "Postal Code",
+      "city": "City"
+    },
+    "step3": {
+      "title": "Your Contact Information",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "acceptTerms": "I have read and accept the",
+      "termsLink": "Terms of Service"
+    },
+    "services": {
+      "installation": "Complete Installation",
+      "maintenance": "Maintenance and Repair",
+      "consultation": "Consultation and Advisory",
+      "upgrade": "System Upgrade"
+    },
+    "residence": {
+      "house": "House",
+      "apartment": "Apartment",
+      "office": "Office",
+      "commercial": "Commercial Space"
+    },
+    "buttons": {
+      "previous": "Previous",
+      "next": "Next",
+      "submit": "Submit Request"
+    },
+    "trust": {
+      "item1": {
+        "title": "100% Free Quote",
+        "text": "Receive a detailed estimate with no obligation on your part"
+      },
+      "item2": {
+        "title": "Quick Response",
+        "text": "An expert will contact you within 24 hours to schedule a technical visit"
+      },
+      "item3": {
+        "title": "Secure Data",
+        "text": "Your information is protected and will never be shared"
+      }
+    }
+  },
+  "devis": {
+    "title": "Request Your Free Quote",
+    "subtitle": "Get a professional quote at no cost!",
+    "step1": {
+      "title": "Project Information",
+      "serviceType": "Service Type",
+      "selectService": "Select a service type",
+      "residenceType": "Property Type",
+      "selectResidence": "Select a property type",
+      "estimatedDate": "Estimated Completion Date"
+    },
+    "step2": {
+      "title": "I would like to get a quote for a project concerning:",
+      "subtitle": "Check / specify",
+      "projectTypes": "Project Types",
+      "security": "Electronic security (cameras, alarm, access control...)",
+      "smartHome": "Home automation / smart home",
+      "solar": "Solar installation (off-grid, hybrid or back-up)",
+      "finishes": "High-end interior finishes",
+      "complete": "Complete project (security + home automation + solar + finishes)",
+      "siteInfo": "Installation Site Information",
+      "propertyType": "Property Type",
+      "selectProperty": "Select a property type",
+      "address": "Address or area",
+      "surface": "Surface area",
+      "floors": "Floors",
+      "selectFloors": "Select floors",
+      "currentState": "Current state",
+      "selectState": "Select current state",
+      "needsDetails": "Needs Details",
+      "needsSubtitle": "Please briefly indicate what you are looking for:",
+      "needsPlaceholder": "Describe your needs in detail...",
+      "budgetTitle": "Estimated budget (optional)",
+      "interventionDate": "Desired date for intervention"
+    },
+    "step3": {
+      "title": "Your Contact Information",
+      "name": "Name",
+      "phone": "Phone / WhatsApp",
+      "email": "Email",
+      "contactMessage": "Please contact me for an estimate or to arrange a technical visit. Best regards,",
+      "acceptTerms": "I have read and accept the",
+      "termsLink": "Terms of Service"
+    },
+    "services": {
+      "installation": "Complete Installation",
+      "maintenance": "Maintenance and Repair",
+      "consultation": "Consultation and Advisory",
+      "upgrade": "System Upgrade"
+    },
+    "residence": {
+      "house": "House",
+      "apartment": "Apartment",
+      "office": "Office",
+      "commercial": "Commercial Space"
+    },
+    "propertyTypes": {
+      "villa": "Villa",
+      "apartment": "Apartment",
+      "office": "Office"
+    },
+    "floors": {
+      "rdc": "Ground Floor",
+      "r1": "1st Floor",
+      "r2": "2nd Floor",
+      "basement": "Basement"
+    },
+    "currentState": {
+      "construction": "Under construction",
+      "occupied": "Already occupied",
+      "renovation": "Renovation"
+    },
+    "budget": {
+      "less1m": "Less than 1,000,000 FCFA",
+      "range1m3m": "1,000,000 – 3,000,000 FCFA",
+      "range3m7m": "3,000,000 – 7,000,000 FCFA",
+      "more7m": "More than 7,000,000 FCFA",
+      "custom": "I would like a personalized proposal"
+    },
+    "buttons": {
+      "previous": "Previous",
+      "next": "Next",
+      "submit": "Submit Request"
+    },
+    "trust": {
+      "item1": {
+        "title": "100% Free Quote",
+        "text": "Receive a detailed estimate with no obligation on your part"
+      },
+      "item2": {
+        "title": "Quick Response",
+        "text": "An expert will contact you within 24 hours to schedule a technical visit"
+      },
+      "item3": {
+        "title": "Secure Data",
+        "text": "Your information is protected and will never be shared"
+      }
+    }
   }
   
 

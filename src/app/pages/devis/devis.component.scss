@@ -1,0 +1,375 @@
+.devis-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+}
+
+// Hero Section
+.hero-section {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: white;
+  padding: 120px 24px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    margin: 0 0 24px 0;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    animation: fadeInUp 0.8s ease-out;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+    line-height: 1.5;
+    animation: fadeInUp 0.8s ease-out 0.2s backwards;
+  }
+}
+
+// Form Section
+.form-section {
+  padding: 60px 24px 120px;
+  
+  .form-container {
+    max-width: 720px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 24px;
+    padding: 48px;
+    box-shadow: 
+      0 20px 60px rgba(0, 0, 0, 0.08),
+      0 4px 16px rgba(0, 0, 0, 0.04);
+    animation: fadeInScale 0.6s ease-out 0.3s backwards;
+
+    @media (max-width: 768px) {
+      padding: 32px 24px;
+      border-radius: 20px;
+    }
+  }
+}
+
+// Progress Bar
+.progress-wrapper {
+  margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  .progress-bar {
+    flex: 1;
+    height: 4px;
+    background: #e8ecf1;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #0071e3 0%, #0077ed 100%);
+      border-radius: 2px;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 0 12px rgba(0, 113, 227, 0.3);
+    }
+  }
+
+  .progress-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    min-width: 48px;
+    text-align: right;
+  }
+}
+
+// Step Content
+.step-content {
+  animation: stepFadeIn 0.4s ease-out;
+
+  .step-title {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 32px 0;
+    letter-spacing: -0.01em;
+  }
+}
+
+// Form Elements
+.form-group {
+  margin-bottom: 24px;
+
+  &.form-group-half {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+.form-label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 1rem;
+  border: 2px solid #d2d6dc;
+  border-radius: 12px;
+  background: white;
+  color: #1a1a1a;
+  transition: all 0.2s ease;
+  font-family: inherit;
+
+  &:focus {
+    outline: none;
+    border-color: #0071e3;
+    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+  }
+
+  &::placeholder {
+    color: #86868b;
+  }
+}
+
+.form-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%231a1a1a' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 44px;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: inherit;
+  line-height: 1.6;
+}
+
+// Checkbox
+.checkbox-group {
+  margin-top: 32px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  
+  .form-checkbox {
+    margin-top: 2px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #d2d6dc;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+
+    &:checked {
+      background: #0071e3;
+      border-color: #0071e3;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+    }
+  }
+
+  .checkbox-text {
+    font-size: 0.9rem;
+    color: #515154;
+    line-height: 1.5;
+
+    .terms-link {
+      color: #0071e3;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: #0077ed;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// Buttons
+.button-container {
+  display: flex;
+  gap: 12px;
+  margin-top: 40px;
+  
+  @media (max-width: 480px) {
+    flex-direction: column-reverse;
+  }
+}
+
+.btn {
+  flex: 1;
+  padding: 16px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: -0.01em;
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &.btn-primary {
+    background: linear-gradient(135deg, #0071e3 0%, #0077ed 100%);
+    color: white;
+    box-shadow: 0 4px 16px rgba(0, 113, 227, 0.3);
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 113, 227, 0.4);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+  }
+
+  &.btn-secondary {
+    background: white;
+    color: #1a1a1a;
+    border: 2px solid #d2d6dc;
+
+    &:hover:not(:disabled) {
+      background: #f5f7fa;
+      border-color: #86868b;
+    }
+  }
+}
+
+// Trust Section
+.trust-section {
+  padding: 80px 24px;
+  background: white;
+  
+  .trust-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 48px;
+  }
+
+  .trust-item {
+    text-align: center;
+    animation: fadeInUp 0.6s ease-out backwards;
+
+    &:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+  }
+
+  .trust-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+  }
+
+  .trust-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 12px 0;
+    letter-spacing: -0.01em;
+  }
+
+  .trust-text {
+    font-size: 0.95rem;
+    color: #515154;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+// Animations
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes stepFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

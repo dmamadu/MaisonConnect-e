@@ -1,1 +1,379 @@
-<p>devis works!</p>
+<div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+  <!-- Hero Section -->
+  <div class="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.05),transparent_50%),radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.03),transparent_50%)]"></div>
+    
+    <div class="relative z-10 mx-auto max-w-4xl px-6 py-20 text-center md:py-32">
+      <h1 class="mb-6 text-4xl font-bold leading-tight tracking-tight md:text-5xl lg:text-6xl animate-[fadeInUp_0.8s_ease-out]">
+        {{ 'devis.title' | translate }}
+      </h1>
+      <p class="text-lg text-gray-200 md:text-xl lg:text-2xl animate-[fadeInUp_0.8s_ease-out_0.2s_backwards]">
+        {{ 'devis.subtitle' | translate }}
+      </p>
+    </div>
+  </div>
+
+  <!-- Form Section -->
+  <div class="px-6 py-12 md:py-16">
+    <div class="mx-auto max-w-3xl rounded-3xl bg-white p-8 shadow-[0_20px_60px_rgba(0,0,0,0.08),0_4px_16px_rgba(0,0,0,0.04)] animate-[fadeInScale_0.6s_ease-out_0.3s_backwards] md:p-12">
+      
+      <!-- Progress Bar -->
+      <div class="mb-12 flex items-center gap-4">
+        <div class="flex-1 h-1 bg-gray-200 rounded-full overflow-hidden">
+          <div 
+            class="h-full bg-gradient-to-r from-blue-600 to-blue-500 rounded-full transition-all duration-400 shadow-[0_0_12px_rgba(0,113,227,0.3)]"
+            [style.width.%]="progressPercentage">
+          </div>
+        </div>
+        <span class="min-w-[48px] text-right text-sm font-semibold text-gray-900">
+          {{ currentStep }} / {{ totalSteps }}
+        </span>
+      </div>
+
+      <!-- Step 1: Service Selection -->
+      <div *ngIf="currentStep === 1" class="animate-[stepFadeIn_0.4s_ease-out]">
+        <h2 class="mb-8 text-3xl font-bold text-gray-900 tracking-tight md:text-4xl">
+          {{ 'devis.step1.title' | translate }}
+        </h2>
+        
+        <div class="mb-6">
+          <label class="mb-2 block text-sm font-semibold text-gray-900">
+            {{ 'devis.step1.serviceType' | translate }}
+          </label>
+          <select 
+            class="w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3.5 text-base text-gray-900 transition-all focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10 appearance-none bg-[url('data:image/svg+xml,%3Csvg%20width=%2712%27%20height=%278%27%20viewBox=%270%200%2012%208%27%20fill=%27none%27%20xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath%20d=%27M1%201L6%206L11%201%27%20stroke=%27%231a1a1a%27%20stroke-width=%272%27%20stroke-linecap=%27round%27/%3E%3C/svg%3E')] bg-[right_1rem_center] bg-no-repeat pr-11"
+            [(ngModel)]="formData.serviceType">
+            <option value="">{{ 'devis.step1.selectService' | translate }}</option>
+            <option *ngFor="let service of serviceTypes" [value]="service.value">
+              {{ service.labelKey | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="mb-6">
+          <label class="mb-2 block text-sm font-semibold text-gray-900">
+            {{ 'devis.step1.residenceType' | translate }}
+          </label>
+          <select 
+            class="w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3.5 text-base text-gray-900 transition-all focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10 appearance-none bg-[url('data:image/svg+xml,%3Csvg%20width=%2712%27%20height=%278%27%20viewBox=%270%200%2012%208%27%20fill=%27none%27%20xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath%20d=%27M1%201L6%206L11%201%27%20stroke=%27%231a1a1a%27%20stroke-width=%272%27%20stroke-linecap=%27round%27/%3E%3C/svg%3E')] bg-[right_1rem_center] bg-no-repeat pr-11"
+            [(ngModel)]="formData.residenceType">
+            <option value="">{{ 'devis.step1.selectResidence' | translate }}</option>
+            <option *ngFor="let residence of residenceTypes" [value]="residence.value">
+              {{ residence.labelKey | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="mb-6">
+          <label class="mb-2 block text-sm font-semibold text-gray-900">
+            {{ 'devis.step1.estimatedDate' | translate }}
+          </label>
+          <input 
+            type="date" 
+            class="w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3.5 text-base text-gray-900 transition-all focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+            [(ngModel)]="formData.estimatedDate" />
+        </div>
+      </div>
+
+      <!-- Step 2: Project Details -->
+      <div *ngIf="currentStep === 2" class="animate-[stepFadeIn_0.4s_ease-out]">
+        <h2 class="mb-4 text-3xl font-bold text-gray-900 tracking-tight md:text-4xl">
+          {{ 'devis.step2.title' | translate }}
+        </h2>
+        <p class="mb-8 text-base text-gray-600">{{ 'devis.step2.subtitle' | translate }}</p>
+        
+        <!-- Project Types (Checkboxes) -->
+        <div class="mb-8 rounded-xl bg-gray-50 p-6">
+          <h3 class="mb-4 text-lg font-bold text-gray-900">
+            {{ 'devis.step2.projectTypes' | translate }}
+          </h3>
+          
+          <div class="space-y-3">
+            <label class="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-gray-200 bg-white p-4 transition-all hover:border-blue-300 hover:bg-blue-50/50">
+              <input 
+                type="checkbox" 
+                class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded-md border-2 border-gray-300 transition-all checked:bg-blue-600 checked:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+                [(ngModel)]="formData.securityElectronic" />
+              <span class="text-sm font-medium text-gray-900">
+                {{ 'devis.step2.security' | translate }}
+              </span>
+            </label>
+
+            <label class="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-gray-200 bg-white p-4 transition-all hover:border-blue-300 hover:bg-blue-50/50">
+              <input 
+                type="checkbox" 
+                class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded-md border-2 border-gray-300 transition-all checked:bg-blue-600 checked:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+                [(ngModel)]="formData.smartHome" />
+              <span class="text-sm font-medium text-gray-900">
+                {{ 'devis.step2.smartHome' | translate }}
+              </span>
+            </label>
+
+            <label class="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-gray-200 bg-white p-4 transition-all hover:border-blue-300 hover:bg-blue-50/50">
+              <input 
+                type="checkbox" 
+                class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded-md border-2 border-gray-300 transition-all checked:bg-blue-600 checked:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+                [(ngModel)]="formData.solarInstallation" />
+              <span class="text-sm font-medium text-gray-900">
+                {{ 'devis.step2.solar' | translate }}
+              </span>
+            </label>
+
+            <label class="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-gray-200 bg-white p-4 transition-all hover:border-blue-300 hover:bg-blue-50/50">
+              <input 
+                type="checkbox" 
+                class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded-md border-2 border-gray-300 transition-all checked:bg-blue-600 checked:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+                [(ngModel)]="formData.premiumFinishes" />
+              <span class="text-sm font-medium text-gray-900">
+                {{ 'devis.step2.finishes' | translate }}
+              </span>
+            </label>
+
+            <label class="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-gray-200 bg-white p-4 transition-all hover:border-blue-300 hover:bg-blue-50/50">
+              <input 
+                type="checkbox" 
+                class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded-md border-2 border-gray-300 transition-all checked:bg-blue-600 checked:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+                [(ngModel)]="formData.completeProject" />
+              <span class="text-sm font-medium text-gray-900">
+                {{ 'devis.step2.complete' | translate }}
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Installation Site Information -->
+        <div class="mb-8">
+          <h3 class="mb-4 text-lg font-bold text-gray-900">
+            {{ 'devis.step2.siteInfo' | translate }}
+          </h3>
+
+          <div class="mb-6">
+            <label class="mb-2 block text-sm font-semibold text-gray-900">
+              {{ 'devis.step2.propertyType' | translate }}
+            </label>
+            <select 
+              class="w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3.5 text-base text-gray-900 transition-all focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10 appearance-none bg-[url('data:image/svg+xml,%3Csvg%20width=%2712%27%20height=%278%27%20viewBox=%270%200%2012%208%27%20fill=%27none%27%20xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath%20d=%27M1%201L6%206L11%201%27%20stroke=%27%231a1a1a%27%20stroke-width=%272%27%20stroke-linecap=%27round%27/%3E%3C/svg%3E')] bg-[right_1rem_center] bg-no-repeat pr-11"
+              [(ngModel)]="formData.propertyType">
+              <option value="">{{ 'devis.step2.selectProperty' | translate }}</option>
+              <option *ngFor="let type of propertyTypes" [value]="type.value">
+                {{ type.labelKey | translate }}
+              </option>
+            </select>
+          </div>
+
+          <div class="mb-6">
+            <label class="mb-2 block text-sm font-semibold text-gray-900">
+              {{ 'devis.step2.address' | translate }}
+            </label>
+            <input 
+              type="text" 
+              class="w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3.5 text-base text-gray-900 transition-all focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+              [(ngModel)]="formData.address" />
+          </div>
+
+          <div class="mb-6">
+            <label class="mb-2 block text-sm font-semibold text-gray-900">
+              {{ 'devis.step2.surface' | translate }}
+            </label>
+            <input 
+              type="text" 
+              class="w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3.5 text-base text-gray-900 transition-all focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+              [(ngModel)]="formData.surface"
+              placeholder="Ex: 150 m²" />
+          </div>
+
+          <div class="mb-6">
+            <label class="mb-2 block text-sm font-semibold text-gray-900">
+              {{ 'devis.step2.floors' | translate }}
+            </label>
+            <select 
+              class="w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3.5 text-base text-gray-900 transition-all focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10 appearance-none bg-[url('data:image/svg+xml,%3Csvg%20width=%2712%27%20height=%278%27%20viewBox=%270%200%2012%208%27%20fill=%27none%27%20xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath%20d=%27M1%201L6%206L11%201%27%20stroke=%27%231a1a1a%27%20stroke-width=%272%27%20stroke-linecap=%27round%27/%3E%3C/svg%3E')] bg-[right_1rem_center] bg-no-repeat pr-11"
+              [(ngModel)]="formData.floors">
+              <option value="">{{ 'devis.step2.selectFloors' | translate }}</option>
+              <option *ngFor="let floor of floorOptions" [value]="floor.value">
+                {{ floor.labelKey | translate }}
+              </option>
+            </select>
+          </div>
+
+          <div class="mb-6">
+            <label class="mb-2 block text-sm font-semibold text-gray-900">
+              {{ 'devis.step2.currentState' | translate }}
+            </label>
+            <select 
+              class="w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3.5 text-base text-gray-900 transition-all focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10 appearance-none bg-[url('data:image/svg+xml,%3Csvg%20width=%2712%27%20height=%278%27%20viewBox=%270%200%2012%208%27%20fill=%27none%27%20xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath%20d=%27M1%201L6%206L11%201%27%20stroke=%27%231a1a1a%27%20stroke-width=%272%27%20stroke-linecap=%27round%27/%3E%3C/svg%3E')] bg-[right_1rem_center] bg-no-repeat pr-11"
+              [(ngModel)]="formData.currentState">
+              <option value="">{{ 'devis.step2.selectState' | translate }}</option>
+              <option *ngFor="let state of currentStateOptions" [value]="state.value">
+                {{ state.labelKey | translate }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Project Needs Details -->
+        <div class="mb-8">
+          <h3 class="mb-4 text-lg font-bold text-gray-900">
+            {{ 'devis.step2.needsDetails' | translate }}
+          </h3>
+          <p class="mb-3 text-sm text-gray-600">{{ 'devis.step2.needsSubtitle' | translate }}</p>
+          <textarea 
+            rows="4"
+            class="w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3.5 text-base text-gray-900 leading-relaxed transition-all resize-y focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10 placeholder:text-gray-400"
+            [(ngModel)]="formData.projectNeeds"
+            [placeholder]="'devis.step2.needsPlaceholder' | translate">
+          </textarea>
+        </div>
+
+        <!-- Budget (Optional) -->
+        <div class="mb-8">
+          <h3 class="mb-4 text-lg font-bold text-gray-900">
+            {{ 'devis.step2.budgetTitle' | translate }}
+          </h3>
+          
+          <div class="space-y-3">
+            <label *ngFor="let budget of budgetOptions" class="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-gray-200 bg-white p-4 transition-all hover:border-blue-300 hover:bg-blue-50/50">
+              <input 
+                type="radio" 
+                name="budget"
+                [value]="budget.value"
+                class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer border-2 border-gray-300 transition-all checked:bg-blue-600 checked:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+                [(ngModel)]="formData.budget" />
+              <span class="text-sm font-medium text-gray-900">
+                {{ budget.labelKey | translate }}
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Intervention Date -->
+        <div class="mb-6">
+          <label class="mb-2 block text-sm font-semibold text-gray-900">
+            {{ 'devis.step2.interventionDate' | translate }}
+          </label>
+          <input 
+            type="date" 
+            class="w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3.5 text-base text-gray-900 transition-all focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+            [(ngModel)]="formData.interventionDate" />
+        </div>
+      </div>
+
+      <!-- Step 3: Contact Information -->
+      <div *ngIf="currentStep === 3" class="animate-[stepFadeIn_0.4s_ease-out]">
+        <h2 class="mb-8 text-3xl font-bold text-gray-900 tracking-tight md:text-4xl">
+          {{ 'devis.step3.title' | translate }}
+        </h2>
+        
+        <div class="mb-6">
+          <label class="mb-2 block text-sm font-semibold text-gray-900">
+            {{ 'devis.step3.name' | translate }}
+          </label>
+          <input 
+            type="text" 
+            class="w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3.5 text-base text-gray-900 transition-all focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+            [(ngModel)]="formData.name" />
+        </div>
+
+        <div class="mb-6">
+          <label class="mb-2 block text-sm font-semibold text-gray-900">
+            {{ 'devis.step3.phone' | translate }}
+          </label>
+          <input 
+            type="tel" 
+            class="w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3.5 text-base text-gray-900 transition-all focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+            [(ngModel)]="formData.phone" />
+        </div>
+
+        <div class="mb-6">
+          <label class="mb-2 block text-sm font-semibold text-gray-900">
+            {{ 'devis.step3.email' | translate }}
+          </label>
+          <input 
+            type="email" 
+            class="w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3.5 text-base text-gray-900 transition-all focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+            [(ngModel)]="formData.email" />
+        </div>
+
+        <div class="mt-8 rounded-xl bg-blue-50 p-6">
+          <p class="mb-4 text-sm leading-relaxed text-gray-700">
+            {{ 'devis.step3.contactMessage' | translate }}
+          </p>
+          
+          <label class="flex cursor-pointer items-start gap-3">
+            <input 
+              type="checkbox" 
+              class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded-md border-2 border-gray-300 transition-all checked:bg-blue-600 checked:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+              [(ngModel)]="formData.acceptTerms" />
+            <span class="text-sm leading-relaxed text-gray-600">
+              {{ 'devis.step3.acceptTerms' | translate }}
+              <a href="#" class="font-medium text-blue-600 transition-colors hover:text-blue-700 hover:underline">
+                {{ 'devis.step3.termsLink' | translate }}
+              </a>
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div class="mt-10 flex flex-col-reverse gap-3 sm:flex-row sm:gap-3">
+        <button 
+          *ngIf="currentStep > 1"
+          class="flex-1 rounded-xl border-2 border-gray-300 bg-white px-8 py-4 text-base font-semibold text-gray-900 transition-all hover:border-gray-400 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+          (click)="previousStep()">
+          {{ 'devis.buttons.previous' | translate }}
+        </button>
+
+        <button 
+          *ngIf="currentStep < totalSteps"
+          class="flex-1 rounded-xl bg-gradient-to-br from-blue-600 to-blue-500 px-8 py-4 text-base font-semibold text-white shadow-[0_4px_16px_rgba(0,113,227,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,113,227,0.4)] active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
+          [disabled]="!isCurrentStepValid()"
+          (click)="nextStep()">
+          {{ 'devis.buttons.next' | translate }}
+        </button>
+
+  <button 
+  *ngIf="currentStep === totalSteps"
+  class="flex-1 rounded-xl bg-gradient-to-br from-gray-800 to-gray-700 px-8 py-4 text-base font-semibold text-white shadow-[0_4px_16px_rgba(31,41,55,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(31,41,55,0.4)] active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
+  [disabled]="!isCurrentStepValid()"
+  (click)="submitForm()">
+  {{ 'devis.buttons.submit' | translate }}
+</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trust Indicators -->
+  <div class="bg-white px-6 py-20">
+    <div class="mx-auto grid max-w-6xl gap-12 md:grid-cols-3">
+      <div class="text-center animate-[fadeInUp_0.6s_ease-out_backwards]">
+        <div class="mb-4 text-4xl">✓</div>
+        <h3 class="mb-3 text-xl font-bold text-gray-900">
+          {{ 'devis.trust.item1.title' | translate }}
+        </h3>
+        <p class="text-sm leading-relaxed text-gray-600">
+          {{ 'devis.trust.item1.text' | translate }}
+        </p>
+      </div>
+
+      <div class="text-center animate-[fadeInUp_0.6s_ease-out_0.1s_backwards]">
+        <div class="mb-4 text-4xl">⚡</div>
+        <h3 class="mb-3 text-xl font-bold text-gray-900">
+          {{ 'devis.trust.item2.title' | translate }}
+        </h3>
+        <p class="text-sm leading-relaxed text-gray-600">
+          {{ 'devis.trust.item2.text' | translate }}
+        </p>
+      </div>
+
+      <div class="text-center animate-[fadeInUp_0.6s_ease-out_0.2s_backwards]">
+        <div class="mb-4 text-4xl">🔒</div>
+        <h3 class="mb-3 text-xl font-bold text-gray-900">
+          {{ 'devis.trust.item3.title' | translate }}
+        </h3>
+        <p class="text-sm leading-relaxed text-gray-600">
+          {{ 'devis.trust.item3.text' | translate }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

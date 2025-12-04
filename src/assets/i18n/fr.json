@@ -534,8 +534,108 @@
         "cta": "Découvrir"
       }
     }
+  },
+
+
+   "devis": {
+    "title": "Demandez votre devis gratuit",
+    "subtitle": "Faites appel à un professionnel pour un devis gratuit !",
+    "step1": {
+      "title": "Informations sur votre projet",
+      "serviceType": "Type de prestation",
+      "selectService": "Sélectionnez un type de prestation",
+      "residenceType": "Type de résidence",
+      "selectResidence": "Sélectionnez un type de résidence",
+      "estimatedDate": "Date estimée de réalisation"
+    },
+    "step2": {
+      "title": "Je souhaite obtenir un devis pour un projet concernant :",
+      "subtitle": "Cochez / précisez",
+      "projectTypes": "Types de projet",
+      "security": "Sécurité électronique (caméras, alarme, contrôle d'accès...)",
+      "smartHome": "Domotique / maison intelligente",
+      "solar": "Installation solaire (off-grid, hybride ou back-up)",
+      "finishes": "Finitions intérieures haut de gamme",
+      "complete": "Projet complet (sécurité + domotique + solaire + finitions)",
+      "siteInfo": "Informations sur le site d'installation",
+      "propertyType": "Type de bien",
+      "selectProperty": "Sélectionnez un type de bien",
+      "address": "Adresse ou zone",
+      "surface": "Superficie",
+      "floors": "Étages",
+      "selectFloors": "Sélectionnez les étages",
+      "currentState": "État actuel",
+      "selectState": "Sélectionnez l'état actuel",
+      "needsDetails": "Détails du besoin",
+      "needsSubtitle": "Merci d'indiquer brièvement ce que vous recherchez :",
+      "needsPlaceholder": "Décrivez vos besoins en détail...",
+      "budgetTitle": "Budget estimatif (optionnel)",
+      "interventionDate": "Date souhaitée pour l'intervention"
+    },
+    "step3": {
+      "title": "Vos coordonnées",
+      "name": "Nom",
+      "phone": "Téléphone / WhatsApp",
+      "email": "Email",
+      "contactMessage": "Merci de me contacter pour une estimation ou pour organiser une visite technique. Cordialement,",
+      "acceptTerms": "J'ai lu et j'accepte les",
+      "termsLink": "CGS (Conditions Générales de Service)"
+    },
+    "services": {
+      "installation": "Installation complète",
+      "maintenance": "Maintenance et réparation",
+      "consultation": "Consultation et conseil",
+      "upgrade": "Mise à niveau système"
+    },
+    "residence": {
+      "house": "Maison",
+      "apartment": "Appartement",
+      "office": "Bureau",
+      "commercial": "Local commercial"
+    },
+    "propertyTypes": {
+      "villa": "Villa",
+      "apartment": "Appartement",
+      "office": "Bureau"
+    },
+    "floors": {
+      "rdc": "RDC (Rez-de-chaussée)",
+      "r1": "R+1 (1er étage)",
+      "r2": "R+2 (2ème étage)",
+      "basement": "Sous-sol"
+    },
+    "currentState": {
+      "construction": "En construction",
+      "occupied": "Déjà habité",
+      "renovation": "Rénovation"
+    },
+    "budget": {
+      "less1m": "Moins de 1 000 000 FCFA",
+      "range1m3m": "1 000 000 – 3 000 000 FCFA",
+      "range3m7m": "3 000 000 – 7 000 000 FCFA",
+      "more7m": "Plus de 7 000 000 FCFA",
+      "custom": "Je souhaite une proposition personnalisée"
+    },
+    "buttons": {
+      "previous": "Précédent",
+      "next": "Suivant",
+      "submit": "Envoyer ma demande"
+    },
+    "trust": {
+      "item1": {
+        "title": "Devis 100% gratuit",
+        "text": "Recevez une estimation détaillée sans engagement de votre part"
+      },
+      "item2": {
+        "title": "Réponse rapide",
+        "text": "Un expert vous contacte sous 24h pour planifier une visite technique"
+      },
+      "item3": {
+        "title": "Données sécurisées",
+        "text": "Vos informations sont protégées et ne seront jamais partagées"
+      }
+    }
   }
  
-
-  
+ 
 }

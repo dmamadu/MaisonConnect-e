@@ -18,7 +18,7 @@ interface Service {
   styleUrls: ['./services.component.scss'],
 })
 export class ServicesComponent {
-  query = '';
+  query = ''
   filter = 'all';
 
   services: Service[] = [
