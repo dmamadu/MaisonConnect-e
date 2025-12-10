@@ -542,23 +542,26 @@
 },
 "contact": {
     "title": "Contact Us",
-    "subtitle": "We are here to answer your questions. Feel free to send us a message or check our contact info."
-  ,
-  "info": {
-    "title": "Contact Information",
-    "address": "123 Example Street, Dakar, Senegal",
-    "phone": "+221 78 672 22 22",
-    "email": "contact@mycompany.com",
-    "hours": "Mon - Fri: 9am - 6pm"
+    "cta": {
+      "transform": "Transform your space today. Contact us for a free quote.",
+      "technology": "Discover how technology can improve your daily life.",
+      "appointment": "Book an appointment with an expert and start your custom project."
+    },
+    "info": {
+      "title": "Our Contact Information",
+      "address": "Your address",
+      "phone": "Your phone",
+      "email": "Your email",
+      "hours": "Your hours"
+    },
+    "form": {
+      "title": "Send us a message",
+      "name_placeholder": "Your name",
+      "email_placeholder": "Your email",
+      "message_placeholder": "Your message",
+      "submit": "Send"
+    }
   },
-  "form": {
-    "title": "Send us a message",
-    "name_placeholder": "Name",
-    "email_placeholder": "Email",
-    "message_placeholder": "Your message",
-    "submit": "Send"
-  }
-},
 
 "shop": {
     "title": "Shop",

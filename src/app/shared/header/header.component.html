@@ -12,10 +12,8 @@
       </a>
     </div>
 
- 
-
     <!-- CENTER : Desktop Menu -->
-<ul class="hidden lg:flex flex-1 items-center justify-center gap-10  text-xs font-normal text-gray-600 dark:text-gray-400">
+    <ul class="hidden lg:flex flex-1 items-center justify-center gap-10  text-xs font-normal text-gray-600 dark:text-gray-400">
 
       <!-- Normal menu -->
       <li *ngFor="let item of menuItems">
@@ -32,18 +30,22 @@
       <li 
         class="relative"
         (mouseenter)="showSubmenu('boutique')"
-        (mouseleave)="hideSubmenu()"
+        (mouseleave)="scheduleHideSubmenu()"
       >
-        <button 
+        <a 
+          [routerLink]="boutiqueMenu.link"
+          routerLinkActive="text-black dark:text-white"
           class="flex items-center gap-1 hover:text-black dark:hover:text-white transition-colors py-1"
         >
           {{ boutiqueMenu.labelKey | translate }}
           <span class="text-[10px] opacity-50">▾</span>
-        </button>
+        </a>
 
         <!-- Mega menu -->
         <div
           *ngIf="hoverMenu() === 'boutique'"
+          (mouseenter)="cancelHideSubmenu()"
+          (mouseleave)="scheduleHideSubmenu()"
           class="absolute left-1/2 -translate-x-1/2 top-full mt-2
                  bg-white/95 dark:bg-black/95 backdrop-blur-2xl
                  shadow-2xl border border-black/5 dark:border-white/5 rounded-xl
@@ -195,6 +197,17 @@
           *ngIf="mobileSubmenuOpen() === 'boutique'"
           class="mt-0.5 ml-3 space-y-0.5 animate-fadeIn"
         >
+          <!-- Lien vers boutique principale -->
+          <a 
+            [routerLink]="boutiqueMenu.link"
+            (click)="closeMobileMenu()"
+            class="flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm
+                   text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-zinc-800/50 font-semibold"
+          >
+            <span class="text-base">🏪</span>
+            <span class="text-sm">{{ 'nav.boutique.all' | translate }}</span>
+          </a>
+          
           <a 
             *ngFor="let item of boutiqueMenu.submenu"
             [routerLink]="item.link"

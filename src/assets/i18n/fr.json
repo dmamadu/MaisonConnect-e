@@ -561,23 +561,26 @@
 
 "contact": {
     "title": "Contactez-nous",
-    "subtitle": "Nous sommes là pour répondre à vos questions. N’hésitez pas à nous envoyer un message ou à consulter nos coordonnées."
-  ,
-  "info": {
-    "title": "Nos coordonnées",
-    "address": "123 Rue Exemple, Dakar, Sénégal",
-    "phone": "+221 78 672 22 22",
-    "email": "contact@monentreprise.com",
-    "hours": "Lun - Ven : 9h - 18h"
+    "cta": {
+      "transform": "Transformez votre espace dès aujourd'hui. Contactez-nous pour un devis gratuit.",
+      "technology": "Découvrez comment la technologie peut améliorer votre quotidien.",
+      "appointment": "Prenez rendez-vous avec un expert et démarrez votre projet sur mesure."
+    },
+    "info": {
+      "title": "Nos coordonnées",
+      "address": "Votre adresse",
+      "phone": "Votre téléphone",
+      "email": "Votre email",
+      "hours": "Vos horaires"
+    },
+    "form": {
+      "title": "Envoyez-nous un message",
+      "name_placeholder": "Votre nom",
+      "email_placeholder": "Votre email",
+      "message_placeholder": "Votre message",
+      "submit": "Envoyer"
+    }
   },
-  "form": {
-    "title": "Envoyez-nous un message",
-    "name_placeholder": "Nom",
-    "email_placeholder": "Email",
-    "message_placeholder": "Votre message",
-    "submit": "Envoyer"
-  }
-},
 
 "shop": {
     "title": "Boutique",

@@ -88,12 +88,12 @@ export class HeaderComponent {
     labelKey: 'nav.boutique',
     link: '/shop',
     submenu: [
-      { labelKey: 'nav.securite', link: '/shop/securite', icon: '🔒' },
-      { labelKey: 'nav.domotique', link: '/shop/domotique', icon: '🏠' },
-      { labelKey: 'nav.solaire', link: '/shop/solaire', icon: '☀️' },
-      { labelKey: 'nav.packs', link: '/shop/packs', icon: '📦' },
-      { labelKey: 'nav.accessoires', link: '/shop/accessoires', icon: '🔌' },
-      { labelKey: 'nav.finition', link: '/shop/finition', icon: '🎨' }
+      { labelKey: 'nav.securite', link: '/securite', icon: '🔒' },
+      { labelKey: 'nav.domotique', link: '/domotique', icon: '🏠' },
+      { labelKey: 'nav.solaire', link: '/solaire', icon: '☀️' },
+      { labelKey: 'nav.packs', link: '/packs', icon: '📦' },
+      { labelKey: 'nav.accessoires', link: '/accessoires', icon: '🔌' }
+      // { labelKey: 'nav.finition', link: '/shop/finition', icon: '🎨' }
     ]
   };
 
@@ -132,4 +132,21 @@ export class HeaderComponent {
     this.open.set(false);
     this.mobileSubmenuOpen.set(null);
   }
+
+
+  private hideTimeout: any;
+
+scheduleHideSubmenu() {
+  this.hideTimeout = setTimeout(() => {
+    this.hideSubmenu();
+  }, 300); // Délai de 300ms avant de fermer
+}
+
+cancelHideSubmenu() {
+  if (this.hideTimeout) {
+    clearTimeout(this.hideTimeout);
+    this.hideTimeout = null;
+  }
+}
+
 }
