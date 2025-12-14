@@ -1,28 +1,60 @@
 {
   "brand": "Brand",
- "nav": {
+"nav": {
     "accueil": "Home",
-    "a-propos": "About",
+    "a-propos": "About Us",
     "realisations": "Projects",
     "blog": "Blog",
-    "boutique": "Shop",
-    "securite": "Electronic Security",
-    "domotique": "Home Automation",
-    "solaire": "Solar Energy",
-    "packs": "Our Packs",
+    "packs": "Our Packages",
     "accessoires": "Accessories",
     "devis": "Quote",
     "panier": "Cart",
     "langue": "Language",
     "contact": "Contact",
-    "finition": "Finishes",
-    "assistance": "Assistance"
-    
+    "assistance": "Support",
+    "shop": {
+      "boutique": "Shop",
+      "securite": "Security Products",
+      "domotique": "Smart Home Accessories",
+      "solaire": "Solar Equipment",
+      "finition": "Premium Finishing Materials"
+    },
+    "finitionPrestationLuxe": {
+      "finition": "Finishes",
+      "peinture": "Premium Painting & Coatings",
+      "carrelage": "High-End Tiling & Marble",
+      "menuiserie": "Custom Carpentry",
+      "design": "Interior Design",
+      "plafonds": "False Ceilings & Decorative Lighting"
+    },
+    "domotiqueSmartHome": {
+      "domotique": "Smart Home",
+      "eclairage": "Smart Lighting",
+      "controlevolets": "Blinds / Curtains Control",
+      "climatisation": "Air Conditioning & Comfort",
+      "automatisation": "Scene Automation",
+      "controle": "Smartphone Control"
+    },
+    "solaireSolaireEnergie": {
+      "solaire": "Solar",
+      "panneaux": "Photovoltaic Panels",
+      "batteries": "Storage Batteries",
+      "onduleurs": "High-Performance Inverters",
+      "accessoires": "Solar Accessories",
+      "kits": "Complete Solar Kits"
+    },
+    "securiteElectronique": {
+      "securite": "Electronic Security",
+      "alarme": "Alarm & Detection",
+      "videosurveillance": "HD & AI Video Surveillance",
+      "controleacces": "Access Control & Intercom",
+      "detection": "Fire & Gas Detection"
+    }
   },
    "HomePage": {
-    "Hero": {
+    "about": {
       "title": "Your partner for modern, secure and luxurious spaces",
-      "introduction": "Welcome to Itsloneed, specialist in electronic security, home automation, high-performance solar solutions, and premium home finishes.",
+      "introduction": "Welcome to Loneed, specialist in electronic security, home automation, high-performance solar solutions, and premium home finishes.",
       "accompagnement": "We support owners of villas, apartments and offices in designing secure, intelligent and elegant spaces.",
       "mission": "Our mission: to offer a perfect experience, where technology improves daily life and where every detail reflects quality and prestige.",
       "buttonDiscover": "Discover our services",
@@ -43,7 +75,13 @@
     "finishing": "Finishes",
     "finishingDescription": "High-end design"
       
-    }
+    },
+    "hero": {
+  "title": "Welcome to our platform",
+  "subtitle": "Explore our products, packages, and services to secure and automate your home while saving energy.",
+  "shop": "View Shop",
+  "services": "Our Services"
+}
   },
   "Security": {
     "badge": "Electronic Security",
@@ -86,6 +124,10 @@
   },
   "cta": {
     "learnMore": "Learn more",
+    "ourService": "Our services",
+    "title": "Ready to transform your space?",
+    "ourMission": "Our mission",
+    "contatcta":" Contact us today to discuss your project",
     "buy": "Buy"
   },
   "SmartHomeSection": {
@@ -128,6 +170,88 @@
     }
   },
   "promo": "Free delivery & returns — See terms",
+
+  "portfolio": {
+    "hero": {
+      "title": "Our Projects",
+      "subtitle": "Discover our security, home automation, solar and premium finishing projects"
+    },
+    "stats": {
+      "projects": "150+",
+      "projectsLabel": "Completed Projects",
+      "clients": "120+",
+      "clientsLabel": "Satisfied Clients",
+      "experience": "10+",
+      "experienceLabel": "Years of Experience",
+      "satisfaction": "98%",
+      "satisfactionLabel": "Client Satisfaction"
+    },
+    "categories": {
+      "all": "All projects",
+      "villa": "Villas",
+      "apartment": "Apartments",
+      "office": "Offices",
+      "commercial": "Commercial"
+    },
+    "noResults": {
+      "title": "No projects found",
+      "subtitle": "Try another category"
+    },
+    "viewDetails": "View details",
+    "modal": {
+      "location": "Location",
+      "year": "Year",
+      "client": "Client",
+      "duration": "Duration",
+      "services": "Services provided",
+      "getQuote": "Get a quote",
+      "contact": "Contact us"
+    },
+    "cta": {
+      "title": "Similar project in mind?",
+      "subtitle": "Contact us to discuss your project and get a personalized quote",
+      "buttonDevis": "Request a quote",
+      "buttonContact": "Contact us"
+    },
+    "projects": {
+      "project1": {
+        "title": "Modern Villa Almadies - Complete System",
+        "description": "Complete installation including security system with 12 4K IP cameras, full home automation (lighting, air conditioning, shutters), 8kWc solar installation with batteries, and premium finishes (marble, solid wood flooring). A flagship project demonstrating our expertise across all our fields."
+      },
+      "project2": {
+        "title": "Villa Saly - Home Automation & Luxury Finishes",
+        "description": "Complete transformation of a villa into a smart residence. Home automation with voice control, scripted lighting, high-end finishes with Italian marble, premium fitted kitchen and luxurious bathrooms. Modern and elegant design."
+      },
+      "project3": {
+        "title": "Villa Ngor - Autonomous Solar Installation",
+        "description": "10kWc hybrid solar system with 20kWh lithium batteries allowing total autonomy. Consumption optimization with intelligent energy management. 95% reduction in electricity bill."
+      },
+      "project4": {
+        "title": "Premium Apartment Plateau",
+        "description": "4-room apartment transformed into a smart home. Complete home automation, security with cameras and smart alarm, contemporary finishes. Total control via smartphone and voice assistants."
+      },
+      "project5": {
+        "title": "Penthouse Mermoz - Premium Finishes",
+        "description": "Complete renovation with ultra-luxury finishes: Carrara white marble, solid oak flooring, custom Italian kitchen, fitted dressing room, bathrooms with high-end equipment (island bathtub, hammam shower)."
+      },
+      "project6": {
+        "title": "Tech Solutions Offices - Professional Home Automation",
+        "description": "Modern workspace for 50 employees. Office automation (automatic lighting, zoned air conditioning), advanced security (biometric access control, AI video surveillance), connected meeting room."
+      },
+      "project7": {
+        "title": "VDN Building - Security & Solar",
+        "description": "5-story office building. 25kWc solar installation for common areas, 32-camera video surveillance system with AI, centralized access control, smart parking."
+      },
+      "project8": {
+        "title": "Sea Plaza Shopping Center - Global Security",
+        "description": "Major shopping center security project. 80 IP cameras with facial recognition, fire and intrusion alarm, multi-zone access control, 24/7 remote monitoring, police integration."
+      },
+      "project9": {
+        "title": "Le Prestige Restaurant - Automation & Ambiance",
+        "description": "Custom ambiance creation for gourmet restaurant. RGB scripted lighting, ambient music control, air conditioning management, complete automation. Control tablets for staff."
+      }
+    }
+  },
 
 
 
@@ -912,6 +1036,12 @@
     }
   },
   "blog": {
+    "title": "Blog & Conseils",
+    "soustitle": "Stay updated with the latest news and tips in smart homes",
+    "besoin": "Need advice or information?",
+    "ourEquipe": "Our team is here to help you.",
+    "contactUs": "Contact us",
+    "devise": "Request a quote",
     "hero": {
       "title": "Blog",
       "subtitle": "News, tips and trends in smart homes"

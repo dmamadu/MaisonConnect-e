@@ -5,23 +5,56 @@
     "a-propos": "À propos",
     "realisations": "Réalisations",
     "blog": "Blog",
-    "boutique": "Boutique",
-    "securite": "Sécurité électronique",
-    "domotique": "Domotique",
-    "solaire": "Énergie solaire",
     "packs": "Nos packs",
     "accessoires": "Accessoires",
     "devis": "Devis",
     "panier": "Panier",
     "langue": "Langue",
     "contact": "Contact",
-    "finition": "Finitions",
-    "assistance": "Assistance"
+    "assistance": "Assistance",
+    "shop": {
+      "boutique": "Boutique",
+      "securite": "Produits de sécurité",
+      "domotique": "Accessoires domotiques",
+      "solaire": "Équipements solaires",
+      "finition": "Materiaux de finition premium"
+    },
+    "finitionPrestationLuxe":{
+        "finition": "Finitions",
+        "peinture": "Peinture & revêtements premium",
+        "carrelage": "Carrelage & marbre haut de gamme",
+        "menuiserie": "Menuiserie sur mesure",
+        "design": "Design intérieur",
+        "plafonds": "Faux plafonds & éclairages decoratifs"
+    },
+    "domotiqueSmartHome":{
+          "domotique": "Domotique",
+          "eclairage": "Éclairage intelligent",
+          "controlevolets": "Contrôle des volets / rideaux",
+          "climatisation": "Climatisation & confort",
+          "automatisation": "Automatisation des scénes",
+          "controle": "Controle depuis smartphone"
+    },
+    "solaireSolaireEnergie":{
+          "solaire": "Solaire",
+          "panneaux": "Panneaux photovoltaïques",
+          "batteries": "Batteries de stockage",
+          "onduleurs": "Onduleurs haute performance",
+          "accessoires": "Accessoires solaires",
+          "kits": "Kits solaires complets"
+    },
+    "securiteElectronique":{
+          "securite": "Sécurité électronique",
+          "alarme": "Alarme & Detection",
+          "videosurveillance": "Vidéosurveillance HD & IA",
+          "controleacces": "Contrôle d'accès & interphonie",
+          "detection": "Détection incendie & gaz"
+    }
   },
 "HomePage": {
-  "Hero": {
+  "about": {
     "title": "Votre partenaire pour des espaces modernes, sûrs et luxueux",
-    "introduction": "Bienvenue chez Itsloneed, spécialiste de la sécurité électronique, de la domotique, des solutions solaires de haute performance, et des finitions de logements premium.",
+    "introduction": "Bienvenue chez Loneed, spécialiste de la sécurité électronique, de la domotique, des solutions solaires de haute performance, et des finitions de logements premium.",
     "accompagnement": "Nous accompagnons les propriétaires de villas, appartements et bureaux dans la conception d'espaces sécurisés, intelligents et élégants.",
     "mission": "Notre mission : offrir une expérience parfaite, où la technologie améliore la vie quotidienne et où chaque détail reflète la qualité et le prestige.",
     "buttonDiscover": "Découvrir nos services",
@@ -41,7 +74,14 @@
 
     "finishing": "Finitions",
     "finishingDescription": "Design haut de gamme"
-  }
+  },
+  "hero": {
+  "title": "Bienvenue parmi nous",
+  "subtitle": "Découvrez nos produits, nos packs et nos services pour sécuriser et automatiser votre maison tout en économisant de l’énergie.",
+  "shop": "Voir la boutique",
+  "services": "Nos services"
+}
+
 }
 ,
 
@@ -127,6 +167,10 @@
   },
   "cta": {
     "learnMore": "En savoir plus",
+    "contatcta":" Contactez-nous dès aujourd'hui pour discuter de votre projet",
+    "title": "Prêt à transformer votre espace ?",
+    "ourService": "Nos services",
+    "ourMission": "Notre mission",
     "buy": "Acheter"
   },
   "promo": "Livraison et retours gratuits — Voir conditions",
@@ -859,6 +903,87 @@
       }
     }
   },
+  "portfolio": {
+    "hero": {
+      "title": "Nos Réalisations",
+      "subtitle": "Découvrez nos projets de sécurité, domotique, solaire et finitions haut de gamme"
+    },
+    "stats": {
+      "projects": "150+",
+      "projectsLabel": "Projets Réalisés",
+      "clients": "120+",
+      "clientsLabel": "Clients Satisfaits",
+      "experience": "10+",
+      "experienceLabel": "Ans d'Expérience",
+      "satisfaction": "98%",
+      "satisfactionLabel": "Satisfaction Client"
+    },
+    "categories": {
+      "all": "Tous les projets",
+      "villa": "Villas",
+      "apartment": "Appartements",
+      "office": "Bureaux",
+      "commercial": "Commerces"
+    },
+    "noResults": {
+      "title": "Aucun projet trouvé",
+      "subtitle": "Essayez une autre catégorie"
+    },
+    "viewDetails": "Voir les détails",
+    "modal": {
+      "location": "Localisation",
+      "year": "Année",
+      "client": "Client",
+      "duration": "Durée",
+      "services": "Services fournis",
+      "getQuote": "Demander un devis",
+      "contact": "Nous contacter"
+    },
+    "cta": {
+      "title": "Un projet similaire en tête ?",
+      "subtitle": "Contactez-nous pour discuter de votre projet et obtenir un devis personnalisé",
+      "buttonDevis": "Demander un devis",
+      "buttonContact": "Nous contacter"
+    },
+    "projects": {
+      "project1": {
+        "title": "Villa Moderne Almadies - Système Complet",
+        "description": "Installation complète comprenant système de sécurité avec 12 caméras IP 4K, domotique intégrale (éclairage, climatisation, volets), installation solaire 8kWc avec batteries, et finitions premium (marbre, parquet massif). Un projet phare démontrant notre expertise sur tous nos domaines."
+      },
+      "project2": {
+        "title": "Villa Saly - Domotique & Finitions Luxe",
+        "description": "Transformation complète d'une villa en résidence intelligente. Domotique avec contrôle vocal, éclairage scénarisé, finitions haut de gamme avec marbre italien, cuisine équipée premium et salles de bains luxueuses. Design moderne et élégant."
+      },
+      "project3": {
+        "title": "Villa Ngor - Installation Solaire Autonome",
+        "description": "Système solaire 10kWc hybride avec batteries lithium 20kWh permettant une autonomie totale. Optimisation de la consommation avec gestion intelligente de l'énergie. Réduction de 95% de la facture électrique."
+      },
+      "project4": {
+        "title": "Appartement Standing Plateau",
+        "description": "Appartement 4 pièces transformé en smart home. Domotique complète, sécurité avec caméras et alarme intelligente, finitions contemporaines. Contrôle total via smartphone et assistants vocaux."
+      },
+      "project5": {
+        "title": "Penthouse Mermoz - Finitions Premium",
+        "description": "Rénovation complète avec finitions ultra-luxe : marbre blanc de Carrare, parquet en chêne massif, cuisine italienne sur-mesure, dressing aménagé, salles de bains avec équipements haut de gamme (baignoire îlot, douche hammam)."
+      },
+      "project6": {
+        "title": "Bureaux Tech Solutions - Domotique Professionnelle",
+        "description": "Espace de travail moderne pour 50 employés. Domotique bureaux (éclairage automatique, climatisation zonée), sécurité avancée (contrôle d'accès biométrique, vidéosurveillance IA), salle de réunion connectée."
+      },
+      "project7": {
+        "title": "Immeuble VDN - Sécurité & Solaire",
+        "description": "Immeuble de bureaux 5 étages. Installation solaire 25kWc pour parties communes, système de vidéosurveillance 32 caméras avec IA, contrôle d'accès centralisé, parking intelligent."
+      },
+      "project8": {
+        "title": "Centre Commercial Sea Plaza - Sécurité Globale",
+        "description": "Projet majeur de sécurisation d'un centre commercial. 80 caméras IP avec reconnaissance faciale, alarme incendie et intrusion, contrôle d'accès multi-zones, télésurveillance 24/7, intégration avec police."
+      },
+      "project9": {
+        "title": "Restaurant Le Prestige - Domotique & Ambiance",
+        "description": "Création d'ambiances sur-mesure pour restaurant gastronomique. Éclairage scénarisé RGB, contrôle de la musique d'ambiance, gestion climatisation, automatisation complète. Tablettes de contrôle pour le personnel."
+      }
+    }
+  },
 
   "about": {
     "hero": {
@@ -931,6 +1056,12 @@
     }
   },
   "blog": {
+    "title": " Blog & Conseils",
+    "soustitle": "Actualités, guides et astuces pour optimiser votre sécurité, domotique et solutions solaires",
+    "besoin": "Besoin d'un conseil personnalisé ?",
+    "contactUs": "Contactez-nous",
+    "devise": "Demander un devis",
+    "ourEquipe": " Notre équipe d'experts est à votre disposition pour répondre à vos questions et vous accompagner dans vos projets.",
     "hero": {
       "title": "Blog",
       "subtitle": "Actualités, conseils et tendances de la maison connectée"

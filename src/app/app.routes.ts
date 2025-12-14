@@ -99,12 +99,17 @@ export const routes: Routes = [
     import('./pages/blog/blog-detail/blog-detail.component')
       .then(m => m.BlogDetailComponent)
 },
+//  {
+//         path: 'realisations',
+//         loadComponent: () =>
+//           import('./pages/compnents/Smart home carousel.component').then(m => m.SmarthomeCarouselComponent),
+//       },
+
  {
         path: 'realisations',
         loadComponent: () =>
-          import('./pages/compnents/Smart home carousel.component').then(m => m.SmarthomeCarouselComponent),
+          import('./pages/portfolio/portfolio.component').then(m => m.PortfolioComponent),
       },
-
       
 
     ],

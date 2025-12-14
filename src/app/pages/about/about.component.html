@@ -1,6 +1,5 @@
-<div class="min-h-screen bg-white dark:bg-gray-900">
+<!-- <div class="min-h-screen bg-white dark:bg-gray-900">
   
-  <!-- Hero Section -->
   <section class="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 text-white">
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.05),transparent_50%),radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.03),transparent_50%)]"></div>
     
@@ -16,7 +15,6 @@
     </div>
   </section>
 
-  <!-- Stats Section -->
   <section class="py-16 bg-gray-50 dark:bg-gray-800">
     <div class="container-apple px-6">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -32,7 +30,6 @@
     </div>
   </section>
 
-  <!-- Story Section -->
   <section class="py-20">
     <div class="container-apple px-6">
       <div class="max-w-4xl mx-auto">
@@ -48,7 +45,6 @@
     </div>
   </section>
 
-  <!-- Values Section -->
   <section class="py-20 bg-gray-50 dark:bg-gray-800">
     <div class="container-apple px-6">
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-12 text-center">
@@ -69,8 +65,190 @@
     </div>
   </section>
 
+  <section class="py-20">
+    <div class="container-apple px-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-12 text-center">
+        {{ 'about.team.title' | translate }}
+      </h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div *ngFor="let member of team" 
+             class="text-center group">
+          <div class="relative mb-4 overflow-hidden rounded-2xl aspect-square">
+            <img 
+              [src]="member.image" 
+              [alt]="member.name"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">
+            {{ member.name }}
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400">
+            {{ member.roleKey | translate }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+    <div class="container-apple px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        {{ 'about.cta.title' | translate }}
+      </h2>
+      <p class="text-lg text-gray-200 mb-8 max-w-2xl mx-auto">
+        {{ 'about.cta.subtitle' | translate }}
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          routerLink="/devis"
+          class="px-8 py-4 rounded-full bg-white text-gray-900 font-semibold
+                 hover:bg-gray-100 transition-colors shadow-lg"
+        >
+          {{ 'about.cta.buttonDevis' | translate }}
+        </a>
+        <a 
+          routerLink="/contact"
+          class="px-8 py-4 rounded-full border-2 border-white text-white font-semibold
+                 hover:bg-white hover:text-gray-900 transition-colors"
+        >
+          {{ 'about.cta.buttonContact' | translate }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div> -->
+
+<div class="min-h-screen bg-white dark:bg-gray-900">
+  
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.05),transparent_50%),radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.03),transparent_50%)]"></div>
+    
+    <div class="relative z-10 container-apple px-6 py-20 md:py-32">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-[fadeInUp_0.8s_ease-out]">
+          {{ 'HomePage.about.title' | translate }}
+        </h1>
+        <p class="text-lg md:text-xl text-gray-200 mb-6 animate-[fadeInUp_0.8s_ease-out_0.2s_backwards]">
+          {{ 'HomePage.about.introduction' | translate }}
+        </p>
+        <p class="text-base md:text-lg text-gray-300 animate-[fadeInUp_0.8s_ease-out_0.3s_backwards]">
+          {{ 'HomePage.about.accompagnement' | translate }}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <!-- <section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="container-apple px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div *ngFor="let stat of stats" class="text-center animate-[fadeInUp_0.6s_ease-out]">
+          <div class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-2">
+            {{ stat.numberKey | translate }}
+          </div>
+          <div class="text-sm md:text-base text-gray-600 dark:text-gray-400">
+            {{ stat.labelKey | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- Mission Section -->
+  <section class="py-20">
+    <div class="container-apple px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
+          {{ 'cta.ourMission' | translate }}
+        </h2>
+        <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+          {{ 'HomePage.about.mission' | translate }}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <!-- <section class="py-20 bg-gray-50 dark:bg-gray-800">
+    <div class="container-apple px-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-12 text-center">
+        {{ 'cta.ourService' | translate }}
+      </h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="text-5xl mb-4">🔒</div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+            {{ 'HomePage.about.security' | translate }}
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            {{ 'HomePage.about.securityDescription' | translate }}
+          </p>
+        </div>
+        
+        <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="text-5xl mb-4">🏠</div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+            {{ 'HomePage.about.automation' | translate }}
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            {{ 'HomePage.about.automationDescription' | translate }}
+          </p>
+        </div>
+        
+        <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="text-5xl mb-4">☀️</div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+            {{ 'HomePage.about.solar' | translate }}
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            {{ 'HomePage.about.solarDescription' | translate }}
+          </p>
+        </div>
+        
+        <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="text-5xl mb-4">✨</div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+            {{ 'HomePage.about.finishing' | translate }}
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            {{ 'HomePage.about.finishingDescription' | translate }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- Guarantees Section -->
+  <section class="py-16 bg-white dark:bg-gray-900">
+    <div class="container-apple px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center animate-[fadeInUp_0.6s_ease-out]">
+          <div class="text-5xl mb-4">✓</div>
+          <div class="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+            {{ 'HomePage.about.installationCertified' | translate }}
+          </div>
+        </div>
+        <div class="text-center animate-[fadeInUp_0.6s_ease-out]">
+          <div class="text-5xl mb-4">★</div>
+          <div class="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+            {{ 'HomePage.about.premiumWarranty' | translate }}
+          </div>
+        </div>
+        <div class="text-center animate-[fadeInUp_0.6s_ease-out]">
+          <div class="text-5xl mb-4">🕐</div>
+          <div class="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+            {{ 'HomePage.about.Support' | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Team Section -->
-  <!-- <section class="py-20">
+  <!-- <section class="py-20 bg-gray-50 dark:bg-gray-800">
     <div class="container-apple px-6">
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-12 text-center">
         {{ 'about.team.title' | translate }}
@@ -100,10 +278,10 @@
   <section class="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
     <div class="container-apple px-6 text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-6">
-        {{ 'about.cta.title' | translate }}
+        {{ 'cta.title' | translate }}
       </h2>
       <p class="text-lg text-gray-200 mb-8 max-w-2xl mx-auto">
-        {{ 'about.cta.subtitle' | translate }}
+        {{ 'cta.contatcta' | translate }}
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a 
@@ -111,14 +289,14 @@
           class="px-8 py-4 rounded-full bg-white text-gray-900 font-semibold
                  hover:bg-gray-100 transition-colors shadow-lg"
         >
-          {{ 'about.cta.buttonDevis' | translate }}
+          {{ 'HomePage.about.buttonQuote' | translate }}
         </a>
         <a 
-          routerLink="/contact"
+          routerLink="/services"
           class="px-8 py-4 rounded-full border-2 border-white text-white font-semibold
                  hover:bg-white hover:text-gray-900 transition-colors"
         >
-          {{ 'about.cta.buttonContact' | translate }}
+          {{ 'HomePage.about.buttonDiscover' | translate }}
         </a>
       </div>
     </div>
