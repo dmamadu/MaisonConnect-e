@@ -40,7 +40,7 @@ import { RouterLink } from "@angular/router";
     <!-- Reasons Grid -->
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
       
-      <!-- Reason 1: Expertise -->
+      <!-- Reason 1: Qualité de service -->
       <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-gray-900 dark:hover:border-white hover:shadow-xl transition-all duration-300 overflow-hidden">
         
         <div class="relative z-10">
@@ -51,56 +51,56 @@ import { RouterLink } from "@angular/router";
           </div>
           
           <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
-            {{ 'WhyUs.reasons.expertise.title' | translate }}
+            {{ 'WhyUs.reasons.quality.title' | translate }}
           </h3>
           
           <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-            {{ 'WhyUs.reasons.expertise.description' | translate }}
+            {{ 'WhyUs.reasons.quality.description' | translate }}
           </p>
         </div>
       </div>
 
-      <!-- Reason 2: Accompagnement -->
+      <!-- Reason 2: Design -->
       <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-gray-900 dark:hover:border-white hover:shadow-xl transition-all duration-300 overflow-hidden">
         
         <div class="relative z-10">
           <div class="w-16 h-16 bg-gray-900 dark:bg-white rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
             <svg class="w-8 h-8 text-white dark:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
             </svg>
           </div>
           
           <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
-            {{ 'WhyUs.reasons.support.title' | translate }}
+            {{ 'WhyUs.reasons.design.title' | translate }}
           </h3>
           
           <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-            {{ 'WhyUs.reasons.support.description' | translate }}
+            {{ 'WhyUs.reasons.design.description' | translate }}
           </p>
         </div>
       </div>
 
-      <!-- Reason 3: Produits Premium -->
+      <!-- Reason 3: Confort -->
       <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-gray-900 dark:hover:border-white hover:shadow-xl transition-all duration-300 overflow-hidden">
         
         <div class="relative z-10">
           <div class="w-16 h-16 bg-gray-900 dark:bg-white rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
             <svg class="w-8 h-8 text-white dark:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
             </svg>
           </div>
           
           <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
-            {{ 'WhyUs.reasons.premium.title' | translate }}
+            {{ 'WhyUs.reasons.comfort.title' | translate }}
           </h3>
           
           <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-            {{ 'WhyUs.reasons.premium.description' | translate }}
+            {{ 'WhyUs.reasons.comfort.description' | translate }}
           </p>
         </div>
       </div>
 
-      <!-- Reason 4: Support Technique -->
+      <!-- Reason 4: Modernité -->
       <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-gray-900 dark:hover:border-white hover:shadow-xl transition-all duration-300 overflow-hidden">
         
         <div class="relative z-10">
@@ -111,31 +111,111 @@ import { RouterLink } from "@angular/router";
           </div>
           
           <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
-            {{ 'WhyUs.reasons.technical.title' | translate }}
+            {{ 'WhyUs.reasons.modernity.title' | translate }}
           </h3>
           
           <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-            {{ 'WhyUs.reasons.technical.description' | translate }}
+            {{ 'WhyUs.reasons.modernity.description' | translate }}
           </p>
         </div>
       </div>
 
-      <!-- Reason 5: Solutions Adaptées -->
-      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-gray-900 dark:hover:border-white hover:shadow-xl transition-all duration-300 overflow-hidden md:col-span-2 lg:col-span-1">
+      <!-- Reason 5: Sécurité -->
+      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-gray-900 dark:hover:border-white hover:shadow-xl transition-all duration-300 overflow-hidden">
         
         <div class="relative z-10">
           <div class="w-16 h-16 bg-gray-900 dark:bg-white rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
             <svg class="w-8 h-8 text-white dark:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
             </svg>
           </div>
           
           <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
-            {{ 'WhyUs.reasons.solutions.title' | translate }}
+            {{ 'WhyUs.reasons.security.title' | translate }}
           </h3>
           
           <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-            {{ 'WhyUs.reasons.solutions.description' | translate }}
+            {{ 'WhyUs.reasons.security.description' | translate }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Reason 6: Économie d'énergie -->
+      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-gray-900 dark:hover:border-white hover:shadow-xl transition-all duration-300 overflow-hidden">
+        
+        <div class="relative z-10">
+          <div class="w-16 h-16 bg-gray-900 dark:bg-white rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+            <svg class="w-8 h-8 text-white dark:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+            </svg>
+          </div>
+          
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+            {{ 'WhyUs.reasons.energy.title' | translate }}
+          </h3>
+          
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            {{ 'WhyUs.reasons.energy.description' | translate }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Reason 7: Garantie Premium -->
+      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-gray-900 dark:hover:border-white hover:shadow-xl transition-all duration-300 overflow-hidden">
+        
+        <div class="relative z-10">
+          <div class="w-16 h-16 bg-gray-900 dark:bg-white rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+            <svg class="w-8 h-8 text-white dark:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+            </svg>
+          </div>
+          
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+            {{ 'WhyUs.reasons.warranty.title' | translate }}
+          </h3>
+          
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            {{ 'WhyUs.reasons.warranty.description' | translate }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Reason 8: Installation certifiée -->
+      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-gray-900 dark:hover:border-white hover:shadow-xl transition-all duration-300 overflow-hidden">
+        
+        <div class="relative z-10">
+          <div class="w-16 h-16 bg-gray-900 dark:bg-white rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+            <svg class="w-8 h-8 text-white dark:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+          </div>
+          
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+            {{ 'WhyUs.reasons.installation.title' | translate }}
+          </h3>
+          
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            {{ 'WhyUs.reasons.installation.description' | translate }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Reason 9: Support 24/7 -->
+      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-gray-900 dark:hover:border-white hover:shadow-xl transition-all duration-300 overflow-hidden">
+        
+        <div class="relative z-10">
+          <div class="w-16 h-16 bg-gray-900 dark:bg-white rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+            <svg class="w-8 h-8 text-white dark:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
+            </svg>
+          </div>
+          
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+            {{ 'WhyUs.reasons.support.title' | translate }}
+          </h3>
+          
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            {{ 'WhyUs.reasons.support.description' | translate }}
           </p>
         </div>
       </div>

@@ -227,7 +227,7 @@ export class BlogComponent implements OnInit, OnDestroy {
     { value: 'all', label: 'Tous' },
     { value: 'security', label: 'Sécurité' },
     { value: 'domotique', label: 'Domotique' },
-    { value: 'solar', label: 'Solaire' },
+    { value: 'solar', label: 'Énergie' },
     { value: 'finitions', label: 'Finitions' },
     { value: 'tips', label: 'Conseils' }
   ];

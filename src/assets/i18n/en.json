@@ -389,45 +389,61 @@
     "ctaButton": "Start your project",
     "ctaSubtext": "Free consultation for your finishing project"
   },
-  "WhyUs": {
-    "badge": "Why Choose Us ?",
-    "mainSlogan": "Innovation that secures, illuminates and enhances your spaces.",
-    "shortSlogan": "Security. Energy. Luxury. No compromise.",
-    "reasons": {
-      "expertise": {
-        "title": "Certified expertise & professional installation",
-        "description": "Our team of certified technicians guarantees installation in compliance with the strictest standards"
+"WhyUs": {
+      "badge": "WHY CHOOSE US",
+      "mainSlogan": "Your trusted partner for all your projects",
+      "shortSlogan": "Excellence, innovation and commitment at your service",
+      "reasons": {
+        "quality": {
+          "title": "Service Quality",
+          "description": "Impeccable service and special attention to every detail to guarantee your complete satisfaction."
+        },
+        "design": {
+          "title": "Design",
+          "description": "Aesthetic and harmonious solutions that integrate perfectly into your living space."
+        },
+        "comfort": {
+          "title": "Comfort",
+          "description": "Optimization of daily well-being with installations designed for your maximum comfort."
+        },
+        "modernity": {
+          "title": "Modernity",
+          "description": "Cutting-edge technologies and innovative solutions for a modern and connected home."
+        },
+        "security": {
+          "title": "Security",
+          "description": "Installations compliant with the strictest standards to protect your family and property."
+        },
+        "energy": {
+          "title": "Energy Savings",
+          "description": "Eco-friendly solutions that reduce your consumption and preserve the environment."
+        },
+        "warranty": {
+          "title": "Premium Warranty",
+          "description": "Comprehensive warranty on our products and services for absolute peace of mind."
+        },
+        "installation": {
+          "title": "Certified Installation",
+          "description": "Qualified and certified technicians for professional installation."
+        },
+        "support": {
+          "title": "24/7 Support",
+          "description": "A team available at all times to meet your needs and ensure your satisfaction."
+        }
       },
-      "support": {
-        "title": "Personalized support",
-        "description": "A dedicated advisor guides you from A to Z for a tailor-made project adapted to your needs"
+      "stats": {
+        "projects": "Completed Projects",
+        "satisfaction": "Customer Satisfaction",
+        "experience": "Years of Experience",
+        "support": "Available Support"
       },
-      "premium": {
-        "title": "Premium products & official warranties",
-        "description": "We select only premium brands with extended manufacturer warranties"
-      },
-      "technical": {
-        "title": "Fast technical support",
-        "description": "Responsive 24/7 assistance to answer all your questions and urgent interventions"
-      },
-      "solutions": {
-        "title": "Solutions adapted to modern spaces",
-        "description": "Villas, apartments and offices: solutions designed for each type of space"
+      "cta": {
+        "title": "Ready to start your project?",
+        "description": "Contact us today for a free personalized quote. Our team of experts is here to listen.",
+        "button": "Request a Quote",
+        "contact": "Contact Us"
       }
     },
-    "stats": {
-      "projects": "Completed projects",
-      "satisfaction": "Satisfied customers",
-      "experience": "Years of experience",
-      "support": "Support available"
-    },
-    "cta": {
-      "title": "Ready to transform your space?",
-      "description": "Let's discuss your project and discover how we can bring your vision to life",
-      "button": "Request a free quote",
-      "contact": "Contact us"
-    }
-  },
    "home": {
     "hero": {
       "title": "Welcome to Us",
@@ -1090,7 +1106,52 @@
         "excerpt": "All our advice for selecting the alarm system suited to your needs and budget."
       }
     }
-  }
+  },
+  "home3": {
+    "carousel": {
+      "title": "Our Solutions",
+      "subtitle": "Discover our expert services for your smart home",
+      
+      "security": {
+        "category": "24/7 Protection",
+        "title": "Security",
+        "description": "Smart cameras, connected alarms and access control for complete protection of your home",
+        "cta": "Secure my home"
+      },
+      
+      "automation": {
+        "category": "Smart Comfort",
+        "title": "Home Automation",
+        "description": "Control lighting, heating, blinds and all your equipment from a single application",
+        "cta": "Automate my home"
+      },
+      
+      "energy": {
+        "category": "Sustainable Savings",
+        "title": "Energy",
+        "description": "Optimize your consumption with solar panels, batteries and intelligent energy management",
+        "cta": "Reduce my bill"
+      },
+      
+      "finishing": {
+        "category": "Design & Quality",
+        "title": "Finishing",
+        "description": "Designer outlets, switches and premium finishes to enhance your interior",
+        "cta": "Customize my style"
+      }
+    }
+  },
+  "Clients": {
+      "badge": "OUR CLIENTS",
+      "title": "They trust us",
+      "subtitle": "Join hundreds of satisfied businesses and individuals who have chosen our expertise",
+      "stats": {
+        "happy": "Happy Clients",
+        "projects": "Completed Projects",
+        "satisfaction": "Satisfaction Rate",
+        "experience": "Years of Experience"
+      }
+    }
   
 
 }

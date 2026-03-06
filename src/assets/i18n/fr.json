@@ -36,7 +36,7 @@
           "controle": "Controle depuis smartphone"
     },
     "solaireSolaireEnergie":{
-          "solaire": "Solaire",
+          "solaire": "Énergie Solaire",
           "panneaux": "Panneaux photovoltaïques",
           "batteries": "Batteries de stockage",
           "onduleurs": "Onduleurs haute performance",
@@ -69,7 +69,7 @@
     "automation": "Domotique",
     "automationDescription": "Maison intelligente et connectée",
 
-    "solar": "Solaire",
+    "solar": "Énergie Solaire",
     "solarDescription": "Solutions énergétiques durables",
 
     "finishing": "Finitions",
@@ -308,45 +308,61 @@
     "ctaButton": "Démarrer votre projet",
     "ctaSubtext": "Consultation gratuite pour votre projet de finitions"
   },
-  "WhyUs": {
-    "badge": "Pourquoi nous choisir ?",
-    "mainSlogan": "L'innovation qui sécurise, illumine et sublime vos espaces.",
-    "shortSlogan": "Sécurité. Énergie. Luxe. Sans compromis.",
-    "reasons": {
-      "expertise": {
-        "title": "Expertise certifiée & installation professionnelle",
-        "description": "Notre équipe de techniciens certifiés garantit une installation conforme aux normes les plus strictes"
+"WhyUs": {
+      "badge": "POURQUOI NOUS CHOISIR",
+      "mainSlogan": "Votre partenaire de confiance pour tous vos projets",
+      "shortSlogan": "Excellence, innovation et engagement à votre service",
+      "reasons": {
+        "quality": {
+          "title": "Qualité de Service",
+          "description": "Un service irréprochable et une attention particulière à chaque détail pour garantir votre satisfaction totale."
+        },
+        "design": {
+          "title": "Design",
+          "description": "Des solutions esthétiques et harmonieuses qui s'intègrent parfaitement à votre espace de vie."
+        },
+        "comfort": {
+          "title": "Confort",
+          "description": "Optimisation du bien-être quotidien avec des installations pensées pour votre confort maximal."
+        },
+        "modernity": {
+          "title": "Modernité",
+          "description": "Technologies de pointe et solutions innovantes pour un habitat moderne et connecté."
+        },
+        "security": {
+          "title": "Sécurité",
+          "description": "Installations conformes aux normes les plus strictes pour protéger votre famille et vos biens."
+        },
+        "energy": {
+          "title": "Économie d'Énergie",
+          "description": "Solutions éco-responsables qui réduisent votre consommation et préservent l'environnement."
+        },
+        "warranty": {
+          "title": "Garantie Premium",
+          "description": "Une garantie complète sur nos produits et services pour une tranquillité d'esprit absolue."
+        },
+        "installation": {
+          "title": "Installation Certifiée",
+          "description": "Techniciens qualifiés et certifiés pour une installation dans les règles de l'art."
+        },
+        "support": {
+          "title": "Support 24/7",
+          "description": "Une équipe disponible à tout moment pour répondre à vos besoins et assurer votre satisfaction."
+        }
       },
-      "support": {
-        "title": "Accompagnement personnalisé",
-        "description": "Un conseiller dédié vous guide de A à Z pour un projet sur-mesure adapté à vos besoins"
+      "stats": {
+        "projects": "Projets Réalisés",
+        "satisfaction": "Satisfaction Client",
+        "experience": "Ans d'Expérience",
+        "support": "Support Disponible"
       },
-      "premium": {
-        "title": "Produits haut de gamme & garanties officielles",
-        "description": "Nous sélectionnons uniquement des marques premium avec garanties constructeur étendues"
-      },
-      "technical": {
-        "title": "Support technique rapide",
-        "description": "Une assistance réactive 24/7 pour répondre à toutes vos questions et interventions urgentes"
-      },
-      "solutions": {
-        "title": "Solutions adaptées aux espaces modernes",
-        "description": "Villas, appartements et bureaux : des solutions pensées pour chaque type d'espace"
+      "cta": {
+        "title": "Prêt à démarrer votre projet ?",
+        "description": "Contactez-nous dès aujourd'hui pour un devis gratuit et personnalisé. Notre équipe d'experts est à votre écoute.",
+        "button": "Demander un Devis",
+        "contact": "Nous Contacter"
       }
     },
-    "stats": {
-      "projects": "Projets réalisés",
-      "satisfaction": "Clients satisfaits",
-      "experience": "Ans d'expérience",
-      "support": "Support disponible"
-    },
-    "cta": {
-      "title": "Prêt à transformer votre espace ?",
-      "description": "Discutons de votre projet et découvrez comment nous pouvons concrétiser votre vision",
-      "button": "Demander un devis gratuit",
-      "contact": "Nous contacter"
-    }
-  },
 
    "home": {
     "hero": {
@@ -451,7 +467,7 @@
       "blog": "Blog",
       "securite": "Sécurité",
       "domotique": "Domotique",
-      "solaire": "Solaire",
+      "solaire": "Énergie",
       "finitions": "Finitions",
       "devis": "Devis",
       "boutique": "Boutique",
@@ -1110,7 +1126,52 @@
         "excerpt": "Tous nos conseils pour sélectionner le système d'alarme adapté à vos besoins et votre budget."
       }
     }
-  }
+  },
+  "home3": {
+    "carousel": {
+      "title": "Nos Solutions",
+      "subtitle": "Découvrez nos services experts pour votre maison intelligente",
+      
+      "security": {
+        "category": "Protection 24/7",
+        "title": "Sécurité",
+        "description": "Caméras intelligentes, alarmes connectées et contrôle d'accès pour une protection totale de votre domicile",
+        "cta": "Sécuriser ma maison"
+      },
+      
+      "automation": {
+        "category": "Confort intelligent",
+        "title": "Domotique",
+        "description": "Contrôlez l'éclairage, le chauffage, les volets et tous vos équipements depuis une seule application",
+        "cta": "Automatiser mon habitat"
+      },
+      
+      "energy": {
+        "category": "Économies durables",
+        "title": "Énergie",
+        "description": "Optimisez votre consommation avec panneaux solaires, batteries et gestion intelligente de l'énergie",
+        "cta": "Réduire ma facture"
+      },
+      
+      "finishing": {
+        "category": "Design & Qualité",
+        "title": "Finition",
+        "description": "Prises, interrupteurs design et finitions haut de gamme pour sublimer votre intérieur",
+        "cta": "Personnaliser mon style"
+      }
+    }
+  },
+  "Clients": {
+      "badge": "NOS CLIENTS",
+      "title": "Ils nous font confiance",
+      "subtitle": "Rejoignez des centaines d'entreprises et de particuliers satisfaits qui ont choisi notre expertise",
+      "stats": {
+        "happy": "Clients Satisfaits",
+        "projects": "Projets Réalisés",
+        "satisfaction": "Taux de Satisfaction",
+        "experience": "Ans d'Expérience"
+      }
+    }
  
  
 }
