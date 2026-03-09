@@ -1,5 +1,4 @@
-<!-- HERO / BANNIÈRE -->
-<section
+<!-- <section
   class="relative w-full h-[55vh] flex items-center justify-center text-center overflow-hidden"
 >
   <div
@@ -10,7 +9,6 @@
     "
   ></div>
 
-  <!-- Overlay -->
   <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
 
   <div class="relative z-10 text-white px-4">
@@ -23,7 +21,6 @@
   </div>
 </section>
 
-<!-- FILTRES -->
 <div class="w-full max-w-5xl mx-auto px-4 mt-10 flex justify-center gap-4 flex-wrap">
   <button
     (click)="filter = 'all'"
@@ -61,8 +58,6 @@
     {{ 'filters.automation' | translate }}
   </button>
 </div>
-
-<!-- PRODUITS -->
 <section
   class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 max-w-6xl mx-auto mt-12"
 >
@@ -86,14 +81,12 @@
       {{ p.description }}
     </p>
 
-    <!-- Prix -->
     <div class="mt-4">
       <span class="font-bold text-xl text-gray-900 dark:text-white">
         {{ p.price }}
       </span>
     </div>
 
-    <!-- Boutons -->
     <div class="mt-4 flex justify-end gap-2">
       <button
         (click)="openDetail(p)"
@@ -107,17 +100,6 @@
       >
         {{ 'buttons.details' | translate }}
       </button>
-
-      <!-- <a
-        [href]="p.link"
-        target="_blank"
-        class="inline-flex items-center justify-center
-          px-4 py-2 min-w-[120px]
-          rounded-full bg-gray-900 text-white dark:bg-white dark:text-gray-900
-          hover:bg-gray-800 dark:hover:bg-gray-200 transition font-medium"
-      >
-      {{ 'buttons.buy' | translate }}
-      </a> -->
       <button
         (click)="addToCart(p); $event.stopPropagation()"
         class="flex items-center justify-center w-full px-4 py-2
@@ -142,7 +124,6 @@
   </div>
 </section>
 
-<!-- MODAL PRODUIT -->
 <div
   *ngIf="selectedProduct"
   class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50"
@@ -170,7 +151,6 @@
       {{ selectedProduct.description }}
     </p>
 
-    <!-- Points forts -->
     <div class="mt-4" *ngIf="selectedProduct.highlights">
       <h3 class="font-semibold text-gray-900 dark:text-white">
         {{ 'product.highlights' | translate }}
@@ -180,7 +160,6 @@
       </ul>
     </div>
 
-    <!-- Spécifications -->
     <div class="mt-4" *ngIf="selectedProduct.specs">
       <h3 class="font-semibold text-gray-900 dark:text-white">
         {{ 'product.specs' | translate }}
@@ -192,7 +171,6 @@
       </div>
     </div>
 
-    <!-- Prix & bouton -->
     <div class="flex justify-between items-center mt-6">
       <span class="font-bold text-xl text-gray-900 dark:text-white">
         {{ selectedProduct.price }}
@@ -200,6 +178,205 @@
 
       <a
         [href]="selectedProduct.link"
+        target="_blank"
+        class="px-5 py-2 rounded-full bg-gray-900 text-white dark:bg-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-200 transition"
+      >
+        {{ 'buttons.order' | translate }}
+      </a>
+    </div>
+  </div>
+</div>
+
+<app-cart [cart]="cart"></app-cart> -->
+<section
+  class="relative w-full h-[55vh] flex items-center justify-center text-center overflow-hidden"
+>
+  <div
+    class="absolute inset-0 bg-cover bg-center transition-all duration-500"
+    [style.transform]="'translateY(' + bgOffset + 'px)'"
+    style="background-image: url('https://cdn.shopify.com/s/files/1/0267/7336/0303/files/smart-home-banner.jpg?v=1617373807');"
+  ></div>
+
+  <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+
+  <div class="relative z-10 text-white px-4">
+    <h1 class="text-4xl md:text-5xl font-bold drop-shadow-lg animate-fade-in">
+      {{ 'domotique.title' | translate }}
+    </h1>
+    <p class="mt-4 max-w-2xl mx-auto text-lg opacity-90 animate-fade-in-delayed">
+      {{ 'domotique.subtitle' | translate }}
+    </p>
+  </div>
+</section>
+
+<!-- Filtres dynamiques (sous-catégories) -->
+<div class="w-full max-w-5xl mx-auto px-4 mt-10 flex justify-center gap-4 flex-wrap">
+
+  <!-- Skeleton filtres -->
+  <ng-container *ngIf="loadData">
+    <div *ngFor="let i of [1,2,3,4]"
+         class="w-24 h-9 bg-gray-200 dark:bg-gray-700 rounded-full animate-pulse">
+    </div>
+  </ng-container>
+
+  <!-- Boutons filtres -->
+  <ng-container *ngIf="!loadData">
+    <button
+      *ngFor="let f of subFilters"
+      (click)="filter = f.key"
+      [class.bg-gray-900]="filter === f.key"
+      [class.text-white]="filter === f.key"
+      class="px-5 py-2 rounded-full border border-gray-300 dark:border-gray-600 transition hover:bg-gray-100 dark:hover:bg-gray-800"
+    >
+      {{ f.label | translate }}
+    </button>
+  </ng-container>
+
+</div>
+
+<!-- Skeleton produits -->
+<section *ngIf="loadData"
+  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 max-w-6xl mx-auto mt-12"
+>
+  <div *ngFor="let i of [1,2,3,4,5,6]"
+       class="p-4 rounded-2xl bg-white dark:bg-gray-900 shadow-md">
+    <div class="w-full h-56 bg-gray-200 dark:bg-gray-700 rounded-xl mb-4 animate-pulse"></div>
+    <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded animate-pulse w-3/4 mb-2"></div>
+    <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded animate-pulse mb-1"></div>
+    <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded animate-pulse w-2/3"></div>
+  </div>
+</section>
+
+<!-- Grille produits -->
+<section *ngIf="!loadData"
+  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 max-w-6xl mx-auto mt-12"
+>
+  <!-- Empty state -->
+  <div *ngIf="visibleProducts.length === 0"
+       class="col-span-full text-center py-20">
+    <div class="text-5xl mb-4">🏠</div>
+    <h3 class="text-xl font-bold text-gray-900 dark:text-white">Aucun produit domotique disponible</h3>
+    <p class="text-gray-500 dark:text-gray-400 mt-2">Revenez bientôt !</p>
+  </div>
+
+  <div
+    *ngFor="let p of visibleProducts; let i = index"
+    class="p-4 rounded-2xl bg-white dark:bg-gray-900 shadow-md hover:shadow-xl transition
+           opacity-0 animate-fade-up"
+    [style.animationDelay]="delayForIndex(i)"
+  >
+    <img
+      [src]="getImageUrl(p.image)"
+      [alt]="getTitle(p)"
+      class="w-full h-56 object-cover rounded-xl mb-4"
+      (error)="onImageError($event)"
+    />
+
+    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+      {{ getTitle(p) }}
+    </h3>
+
+    <p class="text-sm text-gray-600 dark:text-gray-300 mt-2 line-clamp-2">
+      {{ getDescription(p) }}
+    </p>
+
+    <div class="mt-4">
+      <span class="font-bold text-xl text-gray-900 dark:text-white">
+        {{ formatPrice(p.price) }}
+      </span>
+    </div>
+
+    <div class="mt-4 flex justify-end gap-2">
+      <button
+        (click)="openDetail(p)"
+        class="inline-flex items-center justify-center
+          px-4 py-2 min-w-[120px] rounded-full
+          border border-gray-300 dark:border-gray-700
+          bg-white dark:bg-gray-900
+          text-gray-900 dark:text-gray-100
+          hover:bg-gray-100 dark:hover:bg-gray-800
+          transition font-medium"
+      >
+        {{ 'buttons.details' | translate }}
+      </button>
+      <button
+        (click)="addToCart(p); $event.stopPropagation()"
+        class="flex items-center justify-center px-4 py-2
+               rounded-full border-2 border-gray-900 dark:border-white
+               text-gray-900 dark:text-white
+               hover:bg-gray-900 hover:text-white
+               transition font-medium"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Modal détail -->
+<div
+  *ngIf="selectedProduct"
+  class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+  (click)="closeDetail()"
+>
+  <div
+    class="bg-white dark:bg-gray-900 w-full max-w-xl rounded-2xl p-6 shadow-xl animate-zoom-in overflow-y-auto max-h-[90vh]"
+    (click)="$event.stopPropagation()"
+  >
+    <button
+      (click)="closeDetail()"
+      class="float-right text-gray-800 dark:text-gray-200 text-2xl leading-none"
+    >✕</button>
+
+    <img
+      [src]="getImageUrl(selectedProduct.image)"
+      [alt]="getTitle(selectedProduct)"
+      class="w-full h-64 object-cover rounded-xl"
+      (error)="onImageError($event)"
+    />
+
+    <h2 class="text-2xl font-bold mt-4 text-gray-900 dark:text-white">
+      {{ getTitle(selectedProduct) }}
+    </h2>
+
+    <!-- Description HTML riche -->
+    <div class="text-gray-600 dark:text-gray-300 mt-2 prose dark:prose-invert max-w-none"
+         [innerHTML]="getDescriptionHtml(selectedProduct)">
+    </div>
+
+    <!-- Highlights -->
+    <div class="mt-4" *ngIf="selectedProduct.highlights?.length">
+      <h3 class="font-semibold text-gray-900 dark:text-white">
+        {{ 'product.highlights' | translate }}
+      </h3>
+      <ul class="list-disc ml-6 text-gray-700 dark:text-gray-300 mt-2">
+        <li *ngFor="let h of selectedProduct.highlights">{{ h.text }}</li>
+      </ul>
+    </div>
+
+    <!-- Specs -->
+    <div class="mt-4" *ngIf="selectedProduct.specs?.length">
+      <h3 class="font-semibold text-gray-900 dark:text-white">
+        {{ 'product.specs' | translate }}
+      </h3>
+      <div class="grid grid-cols-2 gap-2 mt-2 text-gray-700 dark:text-gray-300">
+        <div *ngFor="let spec of selectedProduct.specs"
+             class="p-2 bg-gray-50 dark:bg-gray-800 rounded-lg">
+          <div class="text-xs text-gray-500 dark:text-gray-400 font-medium">{{ spec.label }}</div>
+          <div class="text-sm font-semibold text-gray-900 dark:text-white">{{ spec.value }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-between items-center mt-6">
+      <span class="font-bold text-xl text-gray-900 dark:text-white">
+        {{ formatPrice(selectedProduct.price) }}
+      </span>
+      <a
+        [href]="selectedProduct.link || '#'"
         target="_blank"
         class="px-5 py-2 rounded-full bg-gray-900 text-white dark:bg-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-200 transition"
       >

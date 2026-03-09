@@ -434,12 +434,12 @@ export class HeaderComponent {
       labelKey: 'nav.securiteElectronique.securite',
       link: '/securite',
       icon: '🔒',
-      submenu: [
-        { labelKey: 'nav.securiteElectronique.alarme', link: '/securite/alarme' },
-        { labelKey: 'nav.securiteElectronique.videosurveillance', link: '/securite/videosurveillance' },
-        { labelKey: 'nav.securiteElectronique.controleacces', link: '/securite/controle-acces' },
-        { labelKey: 'nav.securiteElectronique.detection', link: '/securite/detection' }
-      ]
+      // submenu: [
+      //   { labelKey: 'nav.securiteElectronique.alarme', link: '/securite/alarme' },
+      //   { labelKey: 'nav.securiteElectronique.videosurveillance', link: '/securite/videosurveillance' },
+      //   { labelKey: 'nav.securiteElectronique.controleacces', link: '/securite/controle-acces' },
+      //   { labelKey: 'nav.securiteElectronique.detection', link: '/securite/detection' }
+      // ]
     },
     
     // 2. DOMOTIQUE & SMART HOME
@@ -447,13 +447,13 @@ export class HeaderComponent {
       labelKey: 'nav.domotiqueSmartHome.domotique',
       link: '/domotique',
       icon: '🏠',
-      submenu: [
-        { labelKey: 'nav.domotiqueSmartHome.eclairage', link: '/domotique/eclairage' },
-        { labelKey: 'nav.domotiqueSmartHome.controlevolets', link: '/domotique/volets' },
-        { labelKey: 'nav.domotiqueSmartHome.climatisation', link: '/domotique/climatisation' },
-        { labelKey: 'nav.domotiqueSmartHome.automatisation', link: '/domotique/automatisation' },
-        { labelKey: 'nav.domotiqueSmartHome.controle', link: '/domotique/controle' }
-      ]
+      // submenu: [
+      //   { labelKey: 'nav.domotiqueSmartHome.eclairage', link: '/domotique/eclairage' },
+      //   { labelKey: 'nav.domotiqueSmartHome.controlevolets', link: '/domotique/volets' },
+      //   { labelKey: 'nav.domotiqueSmartHome.climatisation', link: '/domotique/climatisation' },
+      //   { labelKey: 'nav.domotiqueSmartHome.automatisation', link: '/domotique/automatisation' },
+      //   { labelKey: 'nav.domotiqueSmartHome.controle', link: '/domotique/controle' }
+      // ]
     },
     
     // 3. SOLAIRE & ÉNERGIE
@@ -461,13 +461,13 @@ export class HeaderComponent {
       labelKey: 'nav.solaireSolaireEnergie.solaire',
       link: '/solaire',
       icon: '☀️',
-      submenu: [
-        { labelKey: 'nav.solaireSolaireEnergie.panneaux', link: '/solaire/panneaux' },
-        { labelKey: 'nav.solaireSolaireEnergie.batteries', link: '/solaire/batteries' },
-        { labelKey: 'nav.solaireSolaireEnergie.onduleurs', link: '/solaire/onduleurs' },
-        { labelKey: 'nav.solaireSolaireEnergie.accessoires', link: '/solaire/accessoires' },
-        { labelKey: 'nav.solaireSolaireEnergie.kits', link: '/solaire/kits' }
-      ]
+      // submenu: [
+      //   { labelKey: 'nav.solaireSolaireEnergie.panneaux', link: '/solaire/panneaux' },
+      //   { labelKey: 'nav.solaireSolaireEnergie.batteries', link: '/solaire/batteries' },
+      //   { labelKey: 'nav.solaireSolaireEnergie.onduleurs', link: '/solaire/onduleurs' },
+      //   { labelKey: 'nav.solaireSolaireEnergie.accessoires', link: '/solaire/accessoires' },
+      //   { labelKey: 'nav.solaireSolaireEnergie.kits', link: '/solaire/kits' }
+      // ]
     },
     
     // 4. FINITIONS & PRESTATIONS LUXE
@@ -475,13 +475,13 @@ export class HeaderComponent {
       labelKey: 'nav.finitionPrestationLuxe.finition',
       link: '/finition',
       icon: '🎨',
-      submenu: [
-        { labelKey: 'nav.finitionPrestationLuxe.peinture', link: '/finition/peinture' },
-        { labelKey: 'nav.finitionPrestationLuxe.carrelage', link: '/finition/carrelage' },
-        { labelKey: 'nav.finitionPrestationLuxe.menuiserie', link: '/finition/menuiserie' },
-        { labelKey: 'nav.finitionPrestationLuxe.design', link: '/finition/design' },
-        { labelKey: 'nav.finitionPrestationLuxe.plafonds', link: '/finition/plafonds' }
-      ]
+      // submenu: [
+      //   { labelKey: 'nav.finitionPrestationLuxe.peinture', link: '/finition/peinture' },
+      //   { labelKey: 'nav.finitionPrestationLuxe.carrelage', link: '/finition/carrelage' },
+      //   { labelKey: 'nav.finitionPrestationLuxe.menuiserie', link: '/finition/menuiserie' },
+      //   { labelKey: 'nav.finitionPrestationLuxe.design', link: '/finition/design' },
+      //   { labelKey: 'nav.finitionPrestationLuxe.plafonds', link: '/finition/plafonds' }
+      // ]
     }
   ];
 
@@ -496,12 +496,12 @@ export class HeaderComponent {
     labelKey: 'nav.shop.boutique',
     link: '/shop',
     icon: '🏪',
-    submenu: [
-      { labelKey: 'nav.shop.securite', link: '/shop/securite', icon: '🔒' },
-      { labelKey: 'nav.shop.domotique', link: '/shop/domotique', icon: '🏠' },
-      { labelKey: 'nav.shop.solaire', link: '/shop/solaire', icon: '☀️' },
-      { labelKey: 'nav.shop.finition', link: '/shop/finition', icon: '🎨' }
-    ]
+    // submenu: [
+    //   { labelKey: 'nav.shop.securite', link: '/shop/securite', icon: '🔒' },
+    //   { labelKey: 'nav.shop.domotique', link: '/shop/domotique', icon: '🏠' },
+    //   { labelKey: 'nav.shop.solaire', link: '/shop/solaire', icon: '☀️' },
+    //   { labelKey: 'nav.shop.finition', link: '/shop/finition', icon: '🎨' }
+    // ]
   };
 
   // Menu final

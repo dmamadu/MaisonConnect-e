@@ -48,8 +48,8 @@ export class RootService {
   }
 
   getBlogById(id: number) {
-  return this.all(`blogs/${id}`);
+  return this.all(`posts/${id}`);
 }
-
+  
 
 }
