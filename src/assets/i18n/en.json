@@ -1151,7 +1151,11 @@
         "satisfaction": "Satisfaction Rate",
         "experience": "Years of Experience"
       }
-    }
+    },
+    "energie": {
+  "title": "Energy",
+  "subtitle": "Solar and energy solutions for your home"
+}
   
 
 }

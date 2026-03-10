@@ -1171,7 +1171,12 @@
         "satisfaction": "Taux de Satisfaction",
         "experience": "Ans d'Expérience"
       }
-    }
+    },
+
+  "energie": {
+  "title": "Énergie",
+  "subtitle": "Solutions solaires et énergétiques pour votre habitat"
+}
  
  
 }

@@ -459,7 +459,7 @@ export class HeaderComponent {
     // 3. SOLAIRE & ÉNERGIE
     {
       labelKey: 'nav.solaireSolaireEnergie.solaire',
-      link: '/solaire',
+      link: '/energie',
       icon: '☀️',
       // submenu: [
       //   { labelKey: 'nav.solaireSolaireEnergie.panneaux', link: '/solaire/panneaux' },

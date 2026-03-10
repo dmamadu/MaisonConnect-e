@@ -1,217 +1,289 @@
-<!-- Fond dynamique -->
-<div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-50 dark:from-black/80 dark:to-black/60 -z-10"></div>
+<div class="absolute inset-0 bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-gray-950 dark:to-black -z-10"></div>
 
-<section class="min-h-screen px-6 py-14 lg:py-20 relative">
+<section class="min-h-screen px-4 md:px-6 lg:px-8 py-12 lg:py-20 relative max-w-7xl mx-auto">
 
-  <!-- HERO -->
-  <header class="grid lg:grid-cols-2 gap-8 items-center mb-12 lg:mb-16">
-
-    <!-- Texte -->
-    <div class="space-y-4">
-
-      <h1 class="text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white">
-        {{ 'energy.title' | translate }}
+  <header class="mb-12 lg:mb-16">
+    <div class="text-center mb-8">
+      <h1 class="text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-4">
+        {{ "energie.title" | translate }}
       </h1>
-
-      <p class="text-gray-600 dark:text-gray-300 text-lg">
-        {{ 'energy.subtitle' | translate }}
+      <p class="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
+        {{ "energie.subtitle" | translate }}
       </p>
-
-      <!-- Controls -->
-      <div class="mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-
-        <!-- Filtres -->
-        <div class="flex flex-wrap gap-2" role="tablist" aria-label="Filtres de produits">
-          <button class="px-4 py-2 rounded-full border transition font-medium text-gray-700 dark:text-gray-200"
-                  [class.bg-gray-900]="filter==='all'"
-                  [class.text-white]="filter==='all'"
-                  (click)="filter='all'">
-            {{ 'energy.filtersE.all' | translate }}
-          </button>
-
-          <button class="px-4 py-2 rounded-full border transition font-medium text-gray-700 dark:text-gray-200"
-                  [class.bg-gray-900]="filter==='panel'"
-                  [class.text-white]="filter==='panel'"
-                  (click)="filter='panel'">
-            {{ 'energy.filtersE.panels' | translate }}
-          </button>
-
-          <button class="px-4 py-2 rounded-full border transition font-medium text-gray-700 dark:text-gray-200"
-                  [class.bg-gray-900]="filter==='battery'"
-                  [class.text-white]="filter==='battery'"
-                  (click)="filter='battery'">
-            {{ 'energy.filtersE.batteries' | translate }}
-          </button>
-
-          <button class="px-4 py-2 rounded-full border transition font-medium text-gray-700 dark:text-gray-200"
-                  [class.bg-gray-900]="filter==='inverter'"
-                  [class.text-white]="filter==='inverter'"
-                  (click)="filter='inverter'">
-            {{ 'energy.filtersE.inverters' | translate }}
-          </button>
-
-          <button class="px-4 py-2 rounded-full border transition font-medium text-gray-700 dark:text-gray-200"
-                  [class.bg-gray-900]="filter==='accessory'"
-                  [class.text-white]="filter==='accessory'"
-                  (click)="filter='accessory'">
-            {{ 'energy.filtersE.accessories' | translate }}
-          </button>
-        </div>
-
-        <!-- Recherche -->
-        <div class="mt-2 sm:mt-0">
-          <input
-            type="search"
-            [(ngModel)]="query"
-            placeholder="{{ 'energy.search.placeholder' | translate }}"
-           
-            class="w-full sm:w-64 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition"
-          />
-        </div>
-
-      </div>
     </div>
 
-    <!-- Visuel -->
-    <div class="flex justify-center lg:justify-end relative">
-      <div class="w-80 h-64 lg:w-96 lg:h-72 bg-white/30 dark:bg-black/40 backdrop-blur-xl rounded-3xl shadow-xl flex items-center justify-center overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.0.3&s=0c0d1b2a6c3d2aa9a3b5e3b4b2e2c3f4"
-          alt="{{ 'energy.image.alt' | translate }}"
-          class="w-72 lg:w-80 object-contain transform hover:scale-105 transition"
-          loading="lazy"
+    <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg flex flex-col lg:flex-row items-center justify-between gap-6">
+
+      <!-- Filtres dynamiques -->
+      <div class="flex flex-wrap gap-2 justify-center lg:justify-start" role="tablist">
+
+        <!-- Skeleton filtres -->
+        <ng-container *ngIf="loadData">
+          <div *ngFor="let i of [1,2,3,4]"
+               class="w-24 h-9 bg-gray-200 dark:bg-gray-700 rounded-full animate-pulse">
+          </div>
+        </ng-container>
+
+        <!-- Boutons filtre -->
+        <ng-container *ngIf="!loadData">
+          <button
+            *ngFor="let f of subFilters"
+            (click)="filter = f.key"
+            [class]="filter === f.key
+              ? 'bg-amber-500 text-white shadow-lg scale-105'
+              : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-amber-100 dark:hover:bg-gray-700'"
+            class="px-5 py-2.5 rounded-full font-semibold transition-all duration-300 transform"
+          >
+            {{ f.label }}
+          </button>
+        </ng-container>
+
+      </div>
+
+      <!-- Recherche -->
+      <div class="relative w-full lg:w-80">
+        <input
+          type="search"
+          placeholder="Rechercher un produit énergie…"
+          [(ngModel)]="query"
+          aria-label="Rechercher"
+          class="w-full pl-12 pr-4 py-3 rounded-full border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:border-amber-500 dark:focus:border-amber-400 focus:outline-none transition-all duration-300"
         />
+        <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
       </div>
     </div>
-
   </header>
 
-  <!-- GRID PRODUITS -->
-  <section class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+  <!-- Skeleton produits -->
+  <section *ngIf="loadData" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <div *ngFor="let i of [1,2,3,4,5,6,7,8]"
+         class="bg-white dark:bg-gray-900 rounded-2xl shadow-md overflow-hidden border border-gray-100 dark:border-gray-800">
+      <div class="h-56 bg-gray-200 dark:bg-gray-700 animate-pulse"></div>
+      <div class="p-5 space-y-3">
+        <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded animate-pulse w-3/4"></div>
+        <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></div>
+        <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded animate-pulse w-2/3"></div>
+        <div class="h-8 bg-gray-200 dark:bg-gray-700 rounded-full animate-pulse mt-4"></div>
+      </div>
+    </div>
+  </section>
 
-    <article *ngFor="let p of visibleProducts; let i = index"
-             class="bg-white dark:bg-gray-900 rounded-2xl shadow-md dark:shadow-lg overflow-hidden flex flex-col transition transform hover:-translate-y-1 hover:scale-[1.02]"
-             [style.animationDelay]="delayForIndex(i)"
-             tabindex="0">
+  <!-- Grille produits -->
+  <section *ngIf="!loadData" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 
-      <div class="h-44 bg-gray-50 dark:bg-gray-800 flex items-center justify-center overflow-hidden">
-        <img [src]="p.image" [alt]="p.title" class="object-contain w-full h-full" loading="lazy" />
+    <!-- Empty state -->
+    <div *ngIf="visibleProducts.length === 0" class="col-span-full text-center py-20">
+      <svg class="w-24 h-24 mx-auto text-gray-300 dark:text-gray-700 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+      <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Aucun produit trouvé</h3>
+      <p class="text-gray-600 dark:text-gray-400">Essayez de modifier vos filtres</p>
+    </div>
+
+    <article
+      *ngFor="let p of visibleProducts; let i = index"
+      class="group bg-white dark:bg-gray-900 rounded-2xl shadow-md hover:shadow-2xl overflow-hidden flex flex-col transition-all duration-300 transform hover:-translate-y-2 cursor-pointer border border-gray-100 dark:border-gray-800"
+      [style.animationDelay]="delayForIndex(i)"
+      tabindex="0"
+    >
+      <div class="relative h-56 bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
+        <img
+          [src]="getImageUrl(p.image)"
+          [alt]="getTitle(p)"
+          class="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-500"
+          loading="lazy"
+          (error)="onImageError($event)"
+        />
+        <span class="absolute top-3 left-3 px-3 py-1 bg-amber-500/90 backdrop-blur-sm text-xs font-semibold text-white rounded-full shadow-md">
+          {{ getCategoryName(p) }}
+        </span>
       </div>
 
-      <div class="p-4 flex flex-col flex-1">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ p.title }}</h3>
-        <p class="text-gray-600 dark:text-gray-300 flex-1 mt-2">{{ p.description }}</p>
+      <div class="p-5 flex flex-col flex-1">
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-1 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+          {{ getTitle(p) }}
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 flex-1 mb-4">
+          {{ getDescription(p) }}
+        </p>
 
-        <!-- Prix -->
-        <div class="mt-4">
-          <span class="font-bold text-xl text-gray-900 dark:text-white">{{ p.price }}</span>
-        </div>
-
-        <!-- Boutons -->
-        <div class="mt-4 flex flex-col gap-3">
+        <div class="mt-auto space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl font-extrabold text-gray-900 dark:text-white">
+              {{ formatPrice(p.price) }}
+            </span>
+            <button
+              (click)="openDetail(p)"
+              class="text-sm font-medium text-amber-500 hover:text-amber-600 dark:text-amber-400 dark:hover:text-amber-300 transition-colors flex items-center gap-1">
+              Détails
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
           <button
-            (click)="openDetail(p)"
-            class="inline-flex items-center justify-center px-4 py-2 mx-2 min-w-[140px] rounded-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition font-medium">
-            {{ 'energy.buttonsE.details' | translate }}
+            (click)="addToCart(p); $event.stopPropagation()"
+            class="flex items-center justify-center w-full px-4 py-2
+                   rounded-full border-2 border-amber-500
+                   text-amber-600 dark:text-amber-400
+                   hover:bg-amber-500 hover:text-white
+                   transition font-medium"
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            Ajouter au panier
           </button>
-
-          <!-- <a
-            [href]="p.link || '#'"
-            target="_blank"
-            rel="noopener"
-            class="inline-flex items-center justify-center px-4 py-2 min-w-[140px] rounded-full bg-gray-900 text-white dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition font-medium">
-            {{ 'energy.buttonsE.order' | translate }}
-          </a> -->
-           <button
-    (click)="addToCart(p)"
-    class="inline-flex items-center justify-center px-4 py-2 min-w-[140px] rounded-full 
-           border-2 border-gray-900 dark:border-white 
-           text-gray-900 dark:text-white 
-           hover:bg-gray-900 hover:text-white 
-           dark:hover:bg-white dark:hover:text-gray-900 
-           font-semibold transition-all duration-300 
-           flex items-center gap-2">
-    
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-    </svg>
-
-    {{ 'shop.buttons.add_to_cart' | translate }}
-  </button>
-
-
         </div>
       </div>
-
     </article>
-
   </section>
 
 </section>
 
-<!-- MODAL DETAIL PRODUIT -->
-<div *ngIf="selectedProduct"
-     class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm"
-     role="dialog"
-     aria-modal="true"
-     (click)="closeDetail()">
+<!-- Modal détail -->
+<div
+  *ngIf="selectedProduct"
+  class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md p-4 animate-fade-in"
+  role="dialog"
+  aria-modal="true"
+  (click)="closeDetail()"
+>
+  <div
+    class="bg-white dark:bg-gray-900 rounded-3xl max-w-5xl w-full shadow-2xl overflow-hidden animate-scale-in"
+    (click)="$event.stopPropagation()"
+  >
+    <div class="relative">
+      <button
+        aria-label="Fermer"
+        (click)="closeDetail()"
+        class="absolute right-4 top-4 z-10 w-10 h-10 rounded-full bg-white/90 dark:bg-black/80 backdrop-blur-sm text-gray-900 dark:text-white hover:bg-white dark:hover:bg-black transition-all duration-300 flex items-center justify-center shadow-lg"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
 
-  <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-5xl w-full mx-4 overflow-auto"
-       (click)="$event.stopPropagation()">
+      <div class="grid lg:grid-cols-2 gap-0">
 
-    <button
-     
-      (click)="closeDetail()"
-      class="absolute top-4 right-4 text-gray-700 dark:text-gray-200 text-2xl hover:text-gray-900 dark:hover:text-white transition">
-      ✕
-    </button>
-
-    <div class="grid lg:grid-cols-2 gap-6 p-6">
-
-      <div class="flex items-center justify-center bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden">
-        <img [src]="selectedProduct?.image"
-             [alt]="selectedProduct?.title"
-             class="object-contain w-full h-full"
-             loading="lazy" />
-      </div>
-
-      <div class="flex flex-col">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">{{ selectedProduct?.title }}</h2>
-        <p class="text-gray-600 dark:text-gray-300 mt-2">{{ selectedProduct?.description }}</p>
-
-        <ul *ngIf="selectedProduct?.highlights?.length"
-            class="flex flex-wrap gap-2 mt-4">
-          <li *ngFor="let h of selectedProduct!.highlights"
-              class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-sm text-gray-900 dark:text-white font-semibold">
-            {{ h }}
-          </li>
-        </ul>
-
-        <table *ngIf="selectedProduct?.specs" class="mt-4 w-full text-left border-collapse">
-          <tbody>
-            <tr *ngFor="let k of (selectedProduct?.specs | keyvalue)">
-              <td class="font-semibold text-gray-900 dark:text-white pr-4 py-1">{{ k.key }}</td>
-              <td class="text-gray-600 dark:text-gray-300 py-1">{{ k.value }}</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="mt-6 flex items-center justify-between">
-          <span class="text-2xl font-extrabold text-gray-900 dark:text-white">{{ selectedProduct?.price }}</span>
-
-          <a
-            [href]="selectedProduct?.link || '#'"
-            target="_blank"
-            rel="noopener"
-            class="px-5 py-2 rounded-full bg-gray-900 text-white hover:bg-gray-800 transition font-semibold">
-            {{ 'energy.buttonsE.orderNow' | translate }}
-          </a>
+        <!-- Image -->
+        <div class="relative h-96 lg:h-auto bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-gray-800 dark:to-gray-900 p-8 flex items-center justify-center">
+          <img
+            [src]="getImageUrl(selectedProduct.image)"
+            [alt]="getTitle(selectedProduct)"
+            class="w-full h-full object-contain"
+            loading="lazy"
+            (error)="onImageError($event)"
+          />
         </div>
 
-      </div>
+        <!-- Contenu -->
+        <div class="p-8 lg:p-10 flex flex-col overflow-y-auto max-h-[80vh]">
+          <div class="flex-1">
 
+            <span class="inline-block px-4 py-1.5 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs font-semibold rounded-full mb-4">
+              {{ getCategoryName(selectedProduct) }}
+            </span>
+
+            <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">
+              {{ getTitle(selectedProduct) }}
+            </h2>
+
+            <!-- Description HTML -->
+            <div class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-6 prose dark:prose-invert max-w-none"
+                 [innerHTML]="getDescriptionHtml(selectedProduct)">
+            </div>
+
+            <!-- Highlights -->
+            <div *ngIf="selectedProduct.highlights?.length" class="mb-6">
+              <h3 class="font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                <svg class="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                Caractéristiques
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  *ngFor="let h of selectedProduct.highlights"
+                  class="px-4 py-2 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 rounded-full text-sm text-amber-800 dark:text-amber-300 font-medium"
+                >
+                  {{ h.text }}
+                </span>
+              </div>
+            </div>
+
+            <!-- Specs -->
+            <div *ngIf="selectedProduct.specs?.length" class="mb-6">
+              <h3 class="font-bold text-gray-900 dark:text-white mb-3">Spécifications techniques</h3>
+              <div class="space-y-2">
+                <div
+                  *ngFor="let spec of selectedProduct.specs"
+                  class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg"
+                >
+                  <span class="text-sm text-gray-600 dark:text-gray-400 font-medium">{{ spec.label }}</span>
+                  <span class="text-sm text-gray-900 dark:text-white font-semibold">{{ spec.value }}</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Prix + action -->
+          <div class="pt-6 border-t border-gray-200 dark:border-gray-800">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">Prix</div>
+                <span class="text-4xl font-extrabold text-gray-900 dark:text-white">
+                  {{ formatPrice(selectedProduct.price) }}
+                </span>
+              </div>
+            </div>
+
+            <div class="flex gap-3">
+              <button
+                (click)="addToCart(selectedProduct)"
+                class="flex-1 px-6 py-3.5 rounded-full border-2 border-amber-500 text-amber-600 dark:text-amber-400
+                       hover:bg-amber-500 hover:text-white font-semibold transition-all duration-300
+                       flex items-center justify-center gap-2"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                Ajouter au panier
+              </button>
+
+              <a
+                [href]="selectedProduct.link || '#'"
+                target="_blank"
+                rel="noopener"
+                class="flex-1 text-center px-6 py-3.5 rounded-full bg-amber-500 text-white
+                       hover:bg-amber-600 font-semibold transition-all duration-300
+                       shadow-lg hover:shadow-xl flex items-center justify-center"
+              >
+                Commander
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-<app-cart [cart]="cart"></app-cart>
+
+<style>
+  @keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes scale-in {
+    0% { opacity: 0; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  .animate-fade-in  { animation: fade-in 0.3s ease forwards; }
+  .animate-scale-in { animation: scale-in 0.3s ease forwards; }
+  .line-clamp-1 { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+  .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+</style>

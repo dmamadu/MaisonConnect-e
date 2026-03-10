@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BaseService } from '../../core/services/base.service';
 
 interface Product {
   title: string;
@@ -246,4 +247,39 @@ interface Product {
     }
   `]
 })
-export class ProductsGridComponent {}
+export class ProductsGridComponent {
+
+  datas:any[] = [];
+  loadData: boolean = false;
+  isLoading: boolean = false;
+  pageSize: number = 10;
+  pageIndex: number = 0;
+  offset: number = 0;
+  private baseService = inject(BaseService);
+
+
+
+  //   getQuartier(page,size) {
+  //   this.loadData = true;
+  //   return this.baseService.list('geolocation/quartiers', page, size).subscribe({
+  //     next:(response: any) => {
+  //       if (response['success']) {    
+  //         const data = response['data']['content'] || [];
+  //         this.loadData = false;
+  //         this.dataSource = new MatTableDataSource(data);
+  //         this.dataSource.paginator = this.paginator;
+  //         this.dataSource.sort = this.sort;
+  //         this.datas = data;
+  //         this.length = data["totalElements"] || data['content'].length;
+  //         this._changeDetectorRef.markForCheck();
+  //       } else {
+  //         this.loadData = false;
+  //         this.dataSource = new MatTableDataSource();
+  //       }
+  //     },
+  //     error:(err) => {
+  //       console.log(err);
+  //     }
+  //   })
+  // }
+}
