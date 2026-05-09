@@ -586,44 +586,25 @@ import { RouterLink } from "@angular/router";
     </p>
 
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <button class="btn-primary">
-        {{ 'SmartHomeHub.HomeAutomation.buttonDiscover' | translate }}
-      </button>
       <a routerLink="/devis">
-        <button class="btn-secondary">
+        <button class="btn-primary">
           {{ 'SmartHomeHub.HomeAutomation.buttonQuote' | translate }}
         </button>
       </a>
-    </div>
-
-    <!-- Stats row -->
-    <div class="mt-16 grid grid-cols-3 gap-6 max-w-lg mx-auto">
-      <div class="stat-item">
-      <div class="stat-value">500+</div>
-        <div class="stat-label">Installations</div>
-      </div>
-      <div class="stat-item stat-item--center">
-        <div class="stat-value">24/7</div>
-        <div class="stat-label">Support</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value">99%</div>
-        <div class="stat-label">Satisfaction</div>
-      </div>
     </div>
   </div>
 
 </section>
   `,
   styles: [`
-    /* ─── LONEED Color Palette ─────────────────────────────── */
+    /* ─── Brand Color Palette ─────────────────────────────── */
     :host {
-      --loneed-teal-dark:  #0a1f1f;
-      --loneed-teal-mid:   #0d2e2e;
-      --loneed-teal-base:  #0d9488;
-      --loneed-teal-light: #14b8a6;
-      --loneed-teal-bright:#2dd4bf;
-      --loneed-teal-pale:  #5eead4;
+      --loneed-teal-dark:  #005f6b;
+      --loneed-teal-mid:   #007a8a;
+      --loneed-teal-base:  #0097A7;
+      --loneed-teal-light: #42B7C4;
+      --loneed-teal-bright:#42B7C4;
+      --loneed-teal-pale:  #80d4dc;
     }
 
     /* ─── Section background ───────────────────────────────── */

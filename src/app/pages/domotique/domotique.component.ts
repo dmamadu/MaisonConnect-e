@@ -202,7 +202,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CartService } from '../../shared/services/cart.service';
-import { CartComponent } from '../cart/cart.component';
 import { Subject, takeUntil } from 'rxjs';
 import { RootService } from '../../shared/services/root.service';
 import { SnackBarService } from '../../shared/services/snackBar.service';
@@ -231,7 +230,7 @@ export interface ApiProduct {
 @Component({
   selector: 'app-domotique',
   standalone: true,
-  imports: [CommonModule, FormsModule, TranslateModule, CartComponent],
+  imports: [CommonModule, FormsModule, TranslateModule],
   templateUrl: './domotique.component.html',
   styleUrl: './domotique.component.scss'
 })
@@ -240,7 +239,6 @@ export class DomotiqueComponent implements OnInit, OnDestroy {
   loadData = false;
   products: ApiProduct[] = [];
   selectedProduct: ApiProduct | null = null;
-  cart: { product: ApiProduct; quantity: number }[] = [];
   bgOffset = 0;
 
   // Filtres construits dynamiquement depuis les sous-catégories
@@ -363,12 +361,6 @@ export class DomotiqueComponent implements OnInit, OnDestroy {
 
   // ─── Panier ──────────────────────────────────────────────────────────────────
   addToCart(product: ApiProduct): void {
-    const existing = this.cart.find(c => c.product.id === product.id);
-    if (existing) {
-      existing.quantity++;
-    } else {
-      this.cart.push({ product, quantity: 1 });
-    }
     this.cartService.addToCart(product);
   }
 

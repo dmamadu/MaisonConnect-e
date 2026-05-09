@@ -1,8 +1,7 @@
 // import { CommonModule } from '@angular/common';
 // import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 // import { FormsModule } from '@angular/forms';
-// import { CartComponent } from '../cart/cart.component';
-// import { CartService } from '../../shared/services/cart.service';
+// // import { CartService } from '../../shared/services/cart.service';
 // import { TranslateModule } from '@ngx-translate/core';
 // import { Subject, takeUntil } from 'rxjs';
 // import { RootService } from '../../shared/services/root.service';
@@ -188,7 +187,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CartComponent } from '../cart/cart.component';
+import { Router } from '@angular/router';
 import { CartService } from '../../shared/services/cart.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Subject, takeUntil } from 'rxjs';
@@ -221,7 +220,7 @@ export interface ApiProduct {
 @Component({
   selector: 'app-shop',
   standalone: true,
-  imports: [CommonModule, FormsModule, CartComponent, TranslateModule],
+  imports: [CommonModule, FormsModule, TranslateModule],
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.scss'],
 })
@@ -232,8 +231,6 @@ export class ShopComponent implements OnInit, OnDestroy {
   loadData: boolean = false;
   products: ApiProduct[] = [];
   selectedProduct?: ApiProduct;
-  cart: { product: ApiProduct; quantity: number }[] = [];
-
   // Catégories construites dynamiquement depuis l'API
   categories: { key: string; label: string }[] = [
     { key: 'all', label: 'shop.categories.all' }
@@ -243,6 +240,7 @@ export class ShopComponent implements OnInit, OnDestroy {
   private baseService = inject(RootService);
   private snackbar    = inject(SnackBarService);
   private translate   = inject(TranslateService);
+  private router      = inject(Router);
   constructor(public cartService: CartService) {}
 
   ngOnInit(): void {
@@ -357,13 +355,12 @@ export class ShopComponent implements OnInit, OnDestroy {
 
   // ─── Panier ──────────────────────────────────────────────────────────────────
   addToCart(product: ApiProduct): void {
-    const existing = this.cart.find(c => c.product.id === product.id);
-    if (existing) {
-      existing.quantity++;
-    } else {
-      this.cart.push({ product, quantity: 1 });
-    }
     this.cartService.addToCart(product);
+  }
+
+  buyNow(product: ApiProduct): void {
+    this.cartService.addToCart(product);
+    this.router.navigate(['/cart']);
   }
 
   delayForIndex(i: number): string {

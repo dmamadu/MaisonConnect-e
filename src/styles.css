@@ -5,6 +5,7 @@
 :root{ --container: 980px; }
 .container-apple { margin-left:auto; margin-right:auto; padding-left:1rem; padding-right:1rem; max-width: var(--container); }
 
+html { scroll-behavior: smooth; }
 html, body { height: 100%; }
 body { @apply bg-white text-black dark:bg-[#0b0b0c] dark:text-white; }
 .btn { @apply inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium transition; }

@@ -1,66 +1,75 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { CartService } from '../../shared/services/cart.service';
-
-interface CartItem {
-  product: any;
-  quantity: number;
-  added?: boolean;
-}
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
+import { CartService, CartItem } from '../../shared/services/cart.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
 })
-export class CartComponent {
-  @Input() cart: CartItem[] = [];
+export class CartComponent implements OnInit, OnDestroy {
+  items: CartItem[] = [];
+  private destroy$ = new Subject<void>();
 
-  get total() {
-    return this.cart.reduce((sum, item) => {
-      const priceNumber = Number(item.product.price.replace(/[^0-9.-]+/g, ''));
-      return sum + priceNumber * item.quantity;
-    }, 0);
+  constructor(public cartService: CartService, private translate: TranslateService) {}
+
+  ngOnInit(): void {
+    this.cartService.cart$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(items => (this.items = items));
   }
 
-  constructor(public cartService: CartService) {}
-
-
-  increment(item: CartItem) {
-    item.quantity++;
-    this.triggerPop(item);
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
-  decrement(item: CartItem) {
-    if(item.quantity > 1) {
-      item.quantity--;
-      this.triggerPop(item);
-    }
+  private get lang(): 'fr' | 'en' {
+    return (this.translate.currentLang || 'fr') as 'fr' | 'en';
   }
-  remove(item: CartItem) {
-  this.cart = this.cart.filter(i => i !== item);
-  this.cartService.removeFromCart(item.product.id);
+
+  getTitle(item: CartItem): string {
+    const t = item.product.title;
+    if (typeof t === 'string') return t;
+    return t[this.lang] ?? t['fr'];
+  }
+
+  formatPrice(price: string): string {
+    const num = parseFloat(price);
+    return isNaN(num) ? price : num.toLocaleString('fr-FR') + ' FCFA';
+  }
+
+  lineTotal(item: CartItem): string {
+    const num = parseFloat(item.product.price);
+    return isNaN(num) ? '' : (num * item.quantity).toLocaleString('fr-FR') + ' FCFA';
+  }
+
+  increment(item: CartItem): void {
+    this.cartService.updateQuantity(item.product.id, item.quantity + 1);
+  }
+
+  decrement(item: CartItem): void {
+    this.cartService.updateQuantity(item.product.id, item.quantity - 1);
+  }
+
+  remove(item: CartItem): void {
+    this.cartService.removeFromCart(item.product.id);
+  }
+
+  clearCart(): void {
+    this.cartService.clearCart();
+  }
+
+  get total(): string {
+    return this.cartService.getTotalFormatted();
+  }
+
+  get isEmpty(): boolean {
+    return this.items.length === 0;
+  }
 }
-  addProduct(product: any) {
-    const existing = this.cart.find(c => c.product.id === product.id);
-    if(existing) {
-      this.increment(existing);
-    } else {
-      this.cart.push({ product, quantity: 1, added: true });
-      setTimeout(() => (existing!.added = false), 300);
-    }
-  }
-
-  triggerPop(item: CartItem) {
-    item.added = true;
-    setTimeout(() => (item.added = false), 200);
-  }
-    isOpen = false;
-
-  toggle() {
-    this.isOpen = !this.isOpen;
-  }
-}
-

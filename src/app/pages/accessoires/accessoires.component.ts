@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { CartService } from '../../shared/services/cart.service';
-import { CartComponent } from "../cart/cart.component";
 import { RootService } from '../../shared/services/root.service';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -21,7 +20,7 @@ interface Product {
 @Component({
   selector: 'app-accessoires',
   standalone: true,
-  imports: [CommonModule, TranslateModule, CartComponent],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './accessoires.component.html',
   styleUrls: ['./accessoires.component.scss']
 })
@@ -124,15 +123,8 @@ ngOnDestroy(): void {
   }
 
 
-  cart: { product: Product, quantity: number }[] = [];
-    addToCart(product: any) {
-    const existing = this.cart.find(c => c.product.id === product.id);
-    if(existing) {
-      existing.quantity++;
-    } else {
-      this.cart.push({ product, quantity: 1 });
-    }
-        this.cartService.addToCart(product);
+  addToCart(product: any) {
+    this.cartService.addToCart(product);
   }
 
 

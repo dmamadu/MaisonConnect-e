@@ -17,10 +17,10 @@
 
       <!-- Accueil, À propos -->
       <li *ngFor="let item of menuItems">
-        <a 
+        <a
           [routerLink]="item.link"
-          routerLinkActive="text-black dark:text-white"
-          class="hover:text-black dark:hover:text-white transition-colors py-1 whitespace-nowrap"
+          routerLinkActive="text-[#0097A7]"
+          class="hover:text-[#0097A7] transition-colors py-1 whitespace-nowrap"
         >
           {{ item.labelKey | translate }}
         </a>
@@ -33,10 +33,10 @@
         (mouseenter)="showSubmenu(menu.labelKey)"
         (mouseleave)="scheduleHideSubmenu()"
       >
-        <a 
+        <a
           [routerLink]="menu.link"
-          routerLinkActive="text-black dark:text-white"
-          class="flex items-center gap-0.5 hover:text-black dark:hover:text-white transition-colors py-1 whitespace-nowrap"
+          routerLinkActive="text-[#0097A7]"
+          class="flex items-center gap-0.5 hover:text-[#0097A7] transition-colors py-1 whitespace-nowrap"
         >
           <span class="hidden xl:inline">{{ menu.labelKey | translate }}</span>
           <span class="xl:hidden">{{ menu.icon }}</span>
@@ -74,10 +74,10 @@
 
       <!-- Réalisations, Blog -->
       <li *ngFor="let item of menuItemsAfter">
-        <a 
+        <a
           [routerLink]="item.link"
-          routerLinkActive="text-black dark:text-white"
-          class="hover:text-black dark:hover:text-white transition-colors py-1 whitespace-nowrap"
+          routerLinkActive="text-[#0097A7]"
+          class="hover:text-[#0097A7] transition-colors py-1 whitespace-nowrap"
         >
           {{ item.labelKey | translate }}
         </a>
@@ -89,10 +89,10 @@
         (mouseenter)="showSubmenu(boutiqueMenu.labelKey)"
         (mouseleave)="scheduleHideSubmenu()"
       >
-        <a 
+        <a
           [routerLink]="boutiqueMenu.link"
-          routerLinkActive="text-black dark:text-white"
-          class="flex items-center gap-0.5 hover:text-black dark:hover:text-white transition-colors py-1 whitespace-nowrap"
+          routerLinkActive="text-[#0097A7]"
+          class="flex items-center gap-0.5 hover:text-[#0097A7] transition-colors py-1 whitespace-nowrap"
         >
           <span class="hidden xl:inline">{{ boutiqueMenu.labelKey | translate }}</span>
           <span class="xl:hidden">{{ boutiqueMenu.icon }}</span>
@@ -130,10 +130,10 @@
 
       <!-- Assistance -->
       <li *ngFor="let item of menuItemsFinal">
-        <a 
+        <a
           [routerLink]="item.link"
-          routerLinkActive="text-black dark:text-white"
-          class="hover:text-black dark:hover:text-white transition-colors py-1 whitespace-nowrap"
+          routerLinkActive="text-[#0097A7]"
+          class="hover:text-[#0097A7] transition-colors py-1 whitespace-nowrap"
         >
           {{ item.labelKey | translate }}
         </a>
@@ -172,11 +172,11 @@
       </a>
 
       <!-- Devis -->
-      <a 
+      <a
         routerLink="/devis"
-        class="px-2 xl:px-3 py-1 rounded-md bg-black dark:bg-white 
-               text-white dark:text-black text-[11px] xl:text-xs font-medium
-               hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors whitespace-nowrap"
+        class="px-2 xl:px-3 py-1 rounded-md bg-[#0097A7]
+               text-white text-[11px] xl:text-xs font-medium
+               hover:bg-[#42B7C4] transition-colors whitespace-nowrap"
       >
         {{ 'nav.devis' | translate }}
       </a>
@@ -432,12 +432,12 @@
 
       <!-- Devis -->
       <li class="pt-2">
-        <a 
+        <a
           routerLink="/devis"
           (click)="closeMobileMenu()"
           class="block py-2.5 px-3 rounded-lg text-center text-sm
-                 bg-black dark:bg-white text-white dark:text-black
-                 font-semibold hover:bg-gray-800 dark:hover:bg-gray-200"
+                 bg-[#0097A7] text-white
+                 font-semibold hover:bg-[#42B7C4]"
         >
           {{ 'nav.devis' | translate }}
         </a>

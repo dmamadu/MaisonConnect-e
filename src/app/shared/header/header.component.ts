@@ -473,7 +473,7 @@ export class HeaderComponent {
     // 4. FINITIONS & PRESTATIONS LUXE
     {
       labelKey: 'nav.finitionPrestationLuxe.finition',
-      link: '/finition',
+      link: '/services',
       icon: '🎨',
       // submenu: [
       //   { labelKey: 'nav.finitionPrestationLuxe.peinture', link: '/finition/peinture' },

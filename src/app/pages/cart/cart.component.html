@@ -1,32 +1,163 @@
-<div class="fixed bottom-6 right-6 w-80 bg-white dark:bg-gray-900 rounded-3xl shadow-xl p-4 overflow-auto z-50 transition-transform duration-500 transform translate-x-0">
-  <h2 class="font-bold text-gray-900 dark:text-white mb-4">🛒 Panier ({{ cart.length }})</h2>
+<section class="min-h-screen bg-[#F2F2F2] dark:bg-black py-12 px-4 transition-colors duration-300">
+  <div class="max-w-5xl mx-auto">
 
-  <ul class="flex flex-col gap-2">
-    <li *ngFor="let item of cart" 
-        class="flex justify-between items-center transition-transform duration-200"
-        [class.scale-110]="item.added">
-      <div class="flex flex-col">
-        <span class="text-gray-700 dark:text-gray-300">{{ item.product.title }}</span>
-        <span class="text-gray-500 dark:text-gray-400">Prix: {{ item.product.price }}</span>
+    <!-- En-tête -->
+    <div class="mb-10">
+      <a routerLink="/shop"
+         class="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400
+                hover:text-[#0097A7] transition-colors mb-4">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Continuer mes achats
+      </a>
+      <h1 class="text-4xl font-bold text-[#1A1A1A] dark:text-white">Mon Panier</h1>
+      <p class="text-gray-500 dark:text-gray-400 mt-1">
+        {{ isEmpty ? 'Votre panier est vide' : items.length + ' article(s)' }}
+      </p>
+    </div>
+
+    <!-- Panier vide -->
+    <div *ngIf="isEmpty" class="text-center py-20">
+      <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-[#0097A7]/10 flex items-center justify-center">
+        <svg class="w-12 h-12 text-[#0097A7]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+        </svg>
+      </div>
+      <h2 class="text-2xl font-bold text-[#1A1A1A] dark:text-white mb-3">Votre panier est vide</h2>
+      <p class="text-gray-500 dark:text-gray-400 mb-8">
+        Découvrez nos produits et ajoutez-les à votre panier.
+      </p>
+      <a routerLink="/shop"
+         class="inline-block bg-[#0097A7] hover:bg-[#42B7C4] text-white
+                px-8 py-3 rounded-full font-semibold transition-colors duration-300">
+        Voir la boutique
+      </a>
+    </div>
+
+    <!-- Contenu panier -->
+    <div *ngIf="!isEmpty" class="grid lg:grid-cols-3 gap-8">
+
+      <!-- Liste des articles -->
+      <div class="lg:col-span-2 space-y-4">
+
+        <div *ngFor="let item of items"
+             class="bg-white dark:bg-zinc-900 rounded-2xl p-5 flex items-center gap-5
+                    border border-gray-100 dark:border-zinc-800 shadow-sm
+                    transition-all duration-200 hover:shadow-md">
+
+          <!-- Icône produit (placeholder) -->
+          <div class="w-20 h-20 flex-shrink-0 rounded-xl bg-[#0097A7]/10
+                      flex items-center justify-center">
+            <svg class="w-10 h-10 text-[#0097A7]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+            </svg>
+          </div>
+
+          <!-- Infos produit -->
+          <div class="flex-1 min-w-0">
+            <h3 class="font-semibold text-[#1A1A1A] dark:text-white truncate">
+              {{ getTitle(item) }}
+            </h3>
+            <p class="text-[#0097A7] font-bold mt-0.5">{{ formatPrice(item.product.price) }}</p>
+            <p *ngIf="item.quantity > 1" class="text-sm text-gray-400 mt-0.5">
+              Total : {{ lineTotal(item) }}
+            </p>
+          </div>
+
+          <!-- Contrôle quantité -->
+          <div class="flex items-center gap-2 flex-shrink-0">
+            <button (click)="decrement(item)"
+                    class="w-8 h-8 rounded-full border border-gray-200 dark:border-zinc-700
+                           flex items-center justify-center text-gray-600 dark:text-gray-300
+                           hover:border-[#0097A7] hover:text-[#0097A7] transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/>
+              </svg>
+            </button>
+            <span class="w-6 text-center font-semibold text-[#1A1A1A] dark:text-white">
+              {{ item.quantity }}
+            </span>
+            <button (click)="increment(item)"
+                    class="w-8 h-8 rounded-full border border-gray-200 dark:border-zinc-700
+                           flex items-center justify-center text-gray-600 dark:text-gray-300
+                           hover:border-[#0097A7] hover:text-[#0097A7] transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Supprimer -->
+          <button (click)="remove(item)"
+                  class="w-8 h-8 rounded-full flex items-center justify-center
+                         text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20
+                         transition-all duration-200 flex-shrink-0"
+                  title="Supprimer">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Vider le panier -->
+        <div class="text-right">
+          <button (click)="clearCart()"
+                  class="text-sm text-gray-400 hover:text-red-500 transition-colors underline">
+            Vider le panier
+          </button>
+        </div>
       </div>
 
-      <div class="flex items-center gap-2">
-        <button (click)="decrement(item)" class="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded">-</button>
-        <span>{{ item.quantity }}</span>
-        <button (click)="increment(item)" class="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded">+</button>
-        <button (click)="remove(item)" class="text-red-500 hover:text-red-700 ml-2">✕</button>
+      <!-- Récapitulatif commande -->
+      <div class="lg:col-span-1">
+        <div class="bg-white dark:bg-zinc-900 rounded-2xl p-6
+                    border border-gray-100 dark:border-zinc-800 shadow-sm sticky top-24">
+
+          <h2 class="text-lg font-bold text-[#1A1A1A] dark:text-white mb-6">
+            Récapitulatif
+          </h2>
+
+          <div class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+            <div *ngFor="let item of items" class="flex justify-between">
+              <span class="truncate pr-2">{{ getTitle(item) }} × {{ item.quantity }}</span>
+              <span class="font-medium text-[#1A1A1A] dark:text-white flex-shrink-0">
+                {{ lineTotal(item) }}
+              </span>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-100 dark:border-zinc-800 my-5"></div>
+
+          <div class="flex justify-between items-center mb-6">
+            <span class="font-bold text-[#1A1A1A] dark:text-white">Total</span>
+            <span class="text-xl font-bold text-[#0097A7]">{{ total }}</span>
+          </div>
+
+          <!-- Commander -->
+          <a routerLink="/devis"
+             class="block w-full text-center bg-[#0097A7] hover:bg-[#42B7C4] text-white
+                    py-3.5 rounded-full font-semibold transition-colors duration-300 shadow-md
+                    hover:shadow-lg mb-3">
+            Demander un devis
+          </a>
+
+          <a routerLink="/contact"
+             class="block w-full text-center border border-[#0097A7] text-[#0097A7]
+                    hover:bg-[#0097A7] hover:text-white
+                    py-3.5 rounded-full font-semibold transition-all duration-300">
+            Nous contacter
+          </a>
+
+          <p class="text-xs text-center text-gray-400 dark:text-gray-500 mt-4">
+            Nos experts vous répondent sous 24h
+          </p>
+        </div>
       </div>
-    </li>
-  </ul>
 
-  <div class="mt-4 flex justify-between font-bold text-gray-900 dark:text-white transition-all duration-300">
-    <span>Total:</span>
-    <span>{{ total  }}</span>
+    </div>
   </div>
-
-  <div class="mt-4">
-    <button class="w-full px-4 py-2 rounded-full bg-gray-900 text-white dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition font-semibold">
-      Commander tout
-    </button>
-  </div>
-</div>
+</section>

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-produits-grid-domotique',
   standalone: true,
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, TranslateModule, RouterLink],
   template: `
     <section class="min-h-screen bg-white dark:bg-black py-20 px-4 transition-colors duration-300">
       <div class="max-w-7xl mx-auto">
@@ -30,15 +31,15 @@ import { TranslateModule } from '@ngx-translate/core';
                 {{ 'home2.products.cameras.feature2' | translate }}
               </p>
               <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                <button class="bg-white dark:bg-black text-black dark:text-white 
-                             px-5 py-2 rounded-full text-sm font-medium 
-                             hover:bg-gray-100 dark:hover:bg-zinc-900
+                <button class="bg-[#0097A7] text-white
+                             px-5 py-2 rounded-full text-sm font-medium
+                             hover:bg-[#42B7C4]
                              transition-all duration-300">
                   {{ 'home2.products.cameras.cta1' | translate }}
                 </button>
-                <button class="border border-white dark:border-black text-white dark:text-black 
-                             px-5 py-2 rounded-full text-sm font-medium 
-                             hover:bg-white/10 dark:hover:bg-black/10
+                <button class="border border-[#42B7C4] text-[#42B7C4]
+                             px-5 py-2 rounded-full text-sm font-medium
+                             hover:bg-[#42B7C4]/10
                              transition-all duration-300">
                   {{ 'home2.products.cameras.cta2' | translate }}
                 </button>
@@ -131,9 +132,9 @@ import { TranslateModule } from '@ngx-translate/core';
               <p class="text-base md:text-lg text-gray-600 dark:text-gray-400 mb-6">
                 {{ 'home2.products.switches.description' | translate }}
               </p>
-              <button class="bg-black dark:bg-white text-white dark:text-black 
-                           px-6 py-2.5 rounded-full text-sm font-medium 
-                           hover:bg-gray-800 dark:hover:bg-gray-200
+              <button class="bg-[#0097A7] text-white
+                           px-6 py-2.5 rounded-full text-sm font-medium
+                           hover:bg-[#42B7C4]
                            transition-all duration-300 inline-block mx-auto">
                 {{ 'home2.products.switches.cta' | translate }}
               </button>
@@ -155,15 +156,16 @@ import { TranslateModule } from '@ngx-translate/core';
                 {{ 'home2.products.thermostats.description' | translate }}
               </p>
               <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                <button class="bg-black dark:bg-white text-white dark:text-black 
-                             px-5 py-2 rounded-full text-sm font-medium 
-                             hover:bg-gray-800 dark:hover:bg-gray-200
+                <button class="bg-[#0097A7] text-white
+                             px-5 py-2 rounded-full text-sm font-medium
+                             hover:bg-[#42B7C4]
                              transition-all duration-300">
                   {{ 'home2.products.thermostats.cta1' | translate }}
                 </button>
-                <button class="border border-black dark:border-white text-black dark:text-white 
-                             px-5 py-2 rounded-full text-sm font-medium 
-                             hover:bg-black/5 dark:hover:bg-white/5
+                <button class="border border-[#0097A7] text-[#0097A7]
+                             dark:border-[#42B7C4] dark:text-[#42B7C4]
+                             px-5 py-2 rounded-full text-sm font-medium
+                             hover:bg-[#0097A7]/5
                              transition-all duration-300">
                   {{ 'home2.products.thermostats.cta2' | translate }}
                 </button>
@@ -234,15 +236,15 @@ import { TranslateModule } from '@ngx-translate/core';
                 {{ 'home2.products.locks.description' | translate }}
               </p>
               <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                <button class="bg-white dark:bg-black text-black dark:text-white 
-                             px-5 py-2 rounded-full text-sm font-medium 
-                             hover:bg-gray-100 dark:hover:bg-zinc-900
+                <button class="bg-[#0097A7] text-white
+                             px-5 py-2 rounded-full text-sm font-medium
+                             hover:bg-[#42B7C4]
                              transition-all duration-300">
                   {{ 'home2.products.locks.cta1' | translate }}
                 </button>
-                <button class="border border-white dark:border-black text-white dark:text-black 
-                             px-5 py-2 rounded-full text-sm font-medium 
-                             hover:bg-white/10 dark:hover:bg-black/10
+                <button class="border border-[#42B7C4] text-[#42B7C4]
+                             px-5 py-2 rounded-full text-sm font-medium
+                             hover:bg-[#42B7C4]/10
                              transition-all duration-300">
                   {{ 'home2.products.locks.cta2' | translate }}
                 </button>
@@ -343,12 +345,14 @@ import { TranslateModule } from '@ngx-translate/core';
                   {{ 'home2.products.installation.description' | translate }}
                 </p>
                 <div>
-                  <button class="bg-black dark:bg-white text-white dark:text-black 
-                               px-6 py-2.5 rounded-full text-sm font-medium 
-                               hover:bg-gray-800 dark:hover:bg-gray-200
-                               transition-all duration-300 inline-block">
-                    {{ 'home2.products.installation.cta' | translate }}
-                  </button>
+                  <a routerLink="/contact">
+                    <button class="bg-[#0097A7] text-white
+                                 px-6 py-2.5 rounded-full text-sm font-medium
+                                 hover:bg-[#42B7C4]
+                                 transition-all duration-300 inline-block">
+                      Nous contacter
+                    </button>
+                  </a>
                 </div>
               </div>
               
@@ -380,12 +384,14 @@ import { TranslateModule } from '@ngx-translate/core';
                   {{ 'home2.products.support.description' | translate }}
                 </p>
                 <div>
-                  <button class="bg-black dark:bg-white text-white dark:text-black 
-                               px-6 py-2.5 rounded-full text-sm font-medium 
-                               hover:bg-gray-800 dark:hover:bg-gray-200
-                               transition-all duration-300 inline-block">
-                    {{ 'home2.products.support.cta' | translate }}
-                  </button>
+                  <a routerLink="/support">
+                    <button class="bg-[#0097A7] text-white
+                                 px-6 py-2.5 rounded-full text-sm font-medium
+                                 hover:bg-[#42B7C4]
+                                 transition-all duration-300 inline-block">
+                      {{ 'home2.products.support.cta' | translate }}
+                    </button>
+                  </a>
                 </div>
               </div>
             </div>

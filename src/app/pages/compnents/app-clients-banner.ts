@@ -172,9 +172,9 @@ import { BaseService } from '../../core/services/base.service';
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
     <div class="text-center">
       <div class="inline-block mb-6">
-        <div class="flex items-center gap-3 bg-black dark:bg-white px-6 py-3 rounded-full">
-          <div class="w-2 h-2 bg-white dark:bg-black rounded-full animate-pulse"></div>
-          <span class="text-white dark:text-black text-sm font-medium tracking-wider">
+        <div class="flex items-center gap-3 bg-[#0097A7] px-6 py-3 rounded-full">
+          <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+          <span class="text-white text-sm font-medium tracking-wider">
             {{ 'Clients.badge' | translate }}
           </span>
         </div>
@@ -249,43 +249,6 @@ import { BaseService } from '../../core/services/base.service';
     </div>
   </div>
 
-  <!-- Trust Indicators -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-      <div class="text-center">
-        <div class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-          {{ trustStats.clients }}+
-        </div>
-        <div class="text-sm text-gray-600 dark:text-gray-400">
-          {{ 'Clients.stats.happy' | translate }}
-        </div>
-      </div>
-      <div class="text-center">
-        <div class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-          {{ trustStats.projects }}+
-        </div>
-        <div class="text-sm text-gray-600 dark:text-gray-400">
-          {{ 'Clients.stats.projects' | translate }}
-        </div>
-      </div>
-      <div class="text-center">
-        <div class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-          {{ trustStats.satisfaction }}%
-        </div>
-        <div class="text-sm text-gray-600 dark:text-gray-400">
-          {{ 'Clients.stats.satisfaction' | translate }}
-        </div>
-      </div>
-      <div class="text-center">
-        <div class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-          {{ trustStats.years }}+
-        </div>
-        <div class="text-sm text-gray-600 dark:text-gray-400">
-          {{ 'Clients.stats.experience' | translate }}
-        </div>
-      </div>
-    </div>
-  </div>
 
 </section>
   `,

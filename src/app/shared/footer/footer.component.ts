@@ -27,8 +27,8 @@ export class FooterComponent {
       links: [
         { label: 'securite', route: '/securite' },
         { label: 'domotique', route: '/domotique' },
-        { label: 'solaire', route: '/solaire' },
-        { label: 'finitions', route: '/finitions' }
+        { label: 'solaire', route: '/energie' },
+        { label: 'finitions', route: '/services' }
       ]
     },
     {
