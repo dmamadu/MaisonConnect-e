@@ -137,13 +137,19 @@
             <span class="text-xl font-bold text-[#0097A7]">{{ total }}</span>
           </div>
 
-          <!-- Commander -->
-          <a routerLink="/devis"
-             class="block w-full text-center bg-[#0097A7] hover:bg-[#42B7C4] text-white
-                    py-3.5 rounded-full font-semibold transition-colors duration-300 shadow-md
-                    hover:shadow-lg mb-3">
-            Demander un devis
-          </a>
+          <!-- Envoyer par email -->
+          <button (click)="openOrderForm()"
+                  class="block w-full text-center bg-[#0097A7] hover:bg-[#42B7C4] text-white
+                         py-3.5 rounded-full font-semibold transition-colors duration-300 shadow-md
+                         hover:shadow-lg mb-3">
+            <span class="flex items-center justify-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+              Envoyer mon panier par email
+            </span>
+          </button>
 
           <a routerLink="/contact"
              class="block w-full text-center border border-[#0097A7] text-[#0097A7]
@@ -161,3 +167,149 @@
     </div>
   </div>
 </section>
+
+<!-- ── Modal : informations pour l'envoi du panier ─────────────────────── -->
+<div *ngIf="showOrderForm"
+     class="fixed inset-0 z-50 flex items-center justify-center p-4"
+     (click)="closeOrderForm()">
+
+  <!-- Fond sombre -->
+  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+
+  <!-- Carte du formulaire -->
+  <div class="relative z-10 w-full max-w-lg bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl
+              border border-gray-100 dark:border-zinc-800 overflow-hidden"
+       (click)="$event.stopPropagation()">
+
+    <!-- En-tête modal -->
+    <div class="bg-[#0097A7] px-6 py-5">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-xl font-bold text-white">Envoyer mon panier</h2>
+          <p class="text-[#B2EBF2] text-sm mt-0.5">Renseignez vos coordonnées pour recevoir votre devis</p>
+        </div>
+        <button (click)="closeOrderForm()"
+                class="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center
+                       text-white transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Récap rapide du panier -->
+    <div class="px-6 pt-5 pb-3 border-b border-gray-100 dark:border-zinc-800">
+      <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500 mb-2">
+        Récapitulatif ({{ items.length }} article{{ items.length > 1 ? 's' : '' }})
+      </p>
+      <div class="space-y-1 max-h-28 overflow-y-auto">
+        <div *ngFor="let item of items" class="flex justify-between text-sm">
+          <span class="text-gray-600 dark:text-gray-300 truncate pr-2">
+            {{ getTitle(item) }} × {{ item.quantity }}
+          </span>
+          <span class="font-medium text-[#1A1A1A] dark:text-white flex-shrink-0">{{ lineTotal(item) }}</span>
+        </div>
+      </div>
+      <div class="flex justify-between items-center mt-3 pt-2 border-t border-gray-100 dark:border-zinc-800">
+        <span class="font-bold text-[#1A1A1A] dark:text-white text-sm">Total</span>
+        <span class="font-bold text-[#0097A7]">{{ total }}</span>
+      </div>
+    </div>
+
+    <!-- Formulaire -->
+    <div class="px-6 py-5 space-y-4">
+
+      <!-- Nom -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          Nom complet <span class="text-red-500">*</span>
+        </label>
+        <input type="text"
+               [(ngModel)]="orderForm.name"
+               name="orderName"
+               placeholder="Ex : Amadou Diallo"
+               class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-zinc-700
+                      bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-white
+                      placeholder-gray-400 dark:placeholder-gray-500
+                      focus:ring-2 focus:ring-[#0097A7] focus:border-transparent focus:outline-none
+                      transition" />
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          Adresse email <span class="text-red-500">*</span>
+        </label>
+        <input type="email"
+               [(ngModel)]="orderForm.email"
+               name="orderEmail"
+               placeholder="Ex : amadou@email.com"
+               class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-zinc-700
+                      bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-white
+                      placeholder-gray-400 dark:placeholder-gray-500
+                      focus:ring-2 focus:ring-[#0097A7] focus:border-transparent focus:outline-none
+                      transition" />
+      </div>
+
+      <!-- Téléphone -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          Téléphone <span class="text-red-500">*</span>
+        </label>
+        <input type="tel"
+               [(ngModel)]="orderForm.phone"
+               name="orderPhone"
+               placeholder="Ex : +221 77 000 00 00"
+               class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-zinc-700
+                      bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-white
+                      placeholder-gray-400 dark:placeholder-gray-500
+                      focus:ring-2 focus:ring-[#0097A7] focus:border-transparent focus:outline-none
+                      transition" />
+      </div>
+
+      <!-- Message optionnel -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          Message <span class="text-gray-400 font-normal">(optionnel)</span>
+        </label>
+        <textarea [(ngModel)]="orderForm.message"
+                  name="orderMessage"
+                  rows="3"
+                  placeholder="Précisions sur votre projet, délai souhaité…"
+                  class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-zinc-700
+                         bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-white
+                         placeholder-gray-400 dark:placeholder-gray-500
+                         focus:ring-2 focus:ring-[#0097A7] focus:border-transparent focus:outline-none
+                         transition resize-none"></textarea>
+      </div>
+
+      <!-- Boutons -->
+      <div class="flex gap-3 pt-1">
+        <button (click)="closeOrderForm()"
+                class="flex-1 py-3 rounded-full border border-gray-200 dark:border-zinc-700
+                       text-gray-600 dark:text-gray-300 font-semibold
+                       hover:border-gray-300 transition-colors">
+          Annuler
+        </button>
+        <button (click)="submitOrder()"
+                [disabled]="!isFormValid || loadData"
+                class="flex-1 py-3 rounded-full bg-[#0097A7] text-white font-semibold
+                       hover:bg-[#42B7C4] transition-colors disabled:opacity-50
+                       disabled:cursor-not-allowed shadow-md hover:shadow-lg
+                       flex items-center justify-center gap-2">
+          <svg *ngIf="loadData" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
+          </svg>
+          <svg *ngIf="!loadData" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          {{ loadData ? 'Envoi...' : 'Envoyer' }}
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

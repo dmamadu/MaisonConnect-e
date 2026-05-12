@@ -156,7 +156,7 @@ export class DevisComponent implements OnInit, OnDestroy {
         if (result['value'] == true) {
           this.loadData = true;
           this.baseService
-            .add('contact', this.formData)
+            .add('devis', this.formData)
             .pipe(takeUntil(this.destroy$))
             .subscribe(
               (resp) => {

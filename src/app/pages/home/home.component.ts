@@ -54,27 +54,13 @@ interface WhyUs {
   description: string;
 }
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { SmartHomeSectionComponent } from "./smart-home-section/smart-home-section.component";
 import { TranslateModule } from '@ngx-translate/core';
 import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/router';
 import { Article, ArticleService } from '../services/article.service';
-import { HeroShoppingEventComponent } from "../compnents/Hero shopping event.component";
-import { IphoneProComponent } from "../compnents/ Iphone pro.component";
-import { IphoneAirComponent } from "../compnents/Iphone air.component";
-import { ProductsGridComponent } from "../compnents/Products grid.component";
-import { TvCarouselComponent } from "../compnents/  Tv carousel.component";
-import { ServicesCarouselComponent } from "../compnents/Services grid.component ";
 import { HeroDomotiqueComponent } from "../compnents/hero-domotique.component";
-import { ProduitsDomotiqueComponent } from "../compnents/product-domotique.component";
-import { ServicesDomotiqueComponent } from "../compnents/service-domotique.component";
+
 import { ProduitsGridDomotiqueComponent } from "../compnents/produits-grid-domotique.component";
-import { ProjetsCarouselDomotiqueComponent } from "../compnents/ projet-carousel-domotique.component";
-import { ScenariosCarouselDomotiqueComponent } from "../compnents/Scenarios carousel domotique.component";
-import { SmartHubProComponent } from "../compnents/smart-home-hero";
-import { SecuritySectionComponent } from "../compnents/security-section";
-import { SmartHomeSectionSectionComponent } from "../compnents/app-smart-home-section";
-import { SolarSectionComponent } from "../compnents/app-solar-section";
-import { LuxuryFinishesSectionComponent } from "../compnents/luxury-finishes-section";
+
 import { WhyChooseUsSectionComponent } from "../compnents/why-choose-us-section";
 import { SmarthomeCarouselComponent } from "../app-smart-home-carousel";
 import { ClientsBannerComponent } from "../compnents/app-clients-banner";
@@ -82,7 +68,7 @@ import { ClientsBannerComponent } from "../compnents/app-clients-banner";
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, SmartHomeSectionComponent, TranslateModule, RouterModule, RouterLink, HeroShoppingEventComponent, IphoneProComponent, IphoneAirComponent, ProductsGridComponent, TvCarouselComponent, ServicesCarouselComponent, HeroDomotiqueComponent, ProduitsDomotiqueComponent, ServicesDomotiqueComponent, ProduitsGridDomotiqueComponent, ProjetsCarouselDomotiqueComponent, ScenariosCarouselDomotiqueComponent, SmartHubProComponent, SecuritySectionComponent, SmartHomeSectionSectionComponent, SolarSectionComponent, LuxuryFinishesSectionComponent, WhyChooseUsSectionComponent, SmarthomeCarouselComponent, ClientsBannerComponent],
+  imports: [CommonModule, TranslateModule, RouterModule, HeroDomotiqueComponent, ProduitsGridDomotiqueComponent, WhyChooseUsSectionComponent, SmarthomeCarouselComponent, ClientsBannerComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   animations: [

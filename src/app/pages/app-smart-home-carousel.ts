@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-smart-home-carousel',
   standalone: true,
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, TranslateModule,RouterLink],
   template: `
     <section class="relative min-h-screen bg-white dark:bg-black py-20 transition-colors duration-300 overflow-hidden">
       
@@ -625,6 +626,38 @@ import { TranslateModule } from '@ngx-translate/core';
           </svg>
         </button>
       </div>
+
+          <!-- CTA Section -->
+    <div class="text-center py-16 px-4">
+      <div class="inline-block bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-3xl p-8 md:p-12">
+        <h3 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">
+          {{ 'WhyUs.cta.title' | translate }}
+        </h3>
+        
+        <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
+          {{ 'WhyUs.cta.description' | translate }}
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a  routerLink="/devis">
+            <button class="group relative bg-[#0097A7] hover:bg-[#42B7C4] text-white px-8 py-4 rounded-full text-base font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+              <span class="flex items-center gap-2">
+                {{ 'WhyUs.cta.button' | translate }}
+                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                </svg>
+              </span>
+            </button>
+          </a>
+          
+          <a routerLink="/contact">
+            <button class="bg-white dark:bg-slate-800 hover:bg-gray-50 dark:hover:bg-slate-700 text-[#0097A7] dark:text-[#42B7C4] border border-[#0097A7] dark:border-[#42B7C4] hover:border-[#42B7C4] px-8 py-4 rounded-full text-base font-semibold transition-all duration-300">
+              {{ 'WhyUs.cta.contact' | translate }}
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
     </section>
   `,
   styles: [`

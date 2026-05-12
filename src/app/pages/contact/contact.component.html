@@ -52,8 +52,13 @@
           <textarea placeholder="{{ 'contact.form.message_placeholder' | translate }}" [(ngModel)]="form.message" name="message" rows="5"
                     class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition"></textarea>
           <button type="submit"
-                  class="px-6 py-3 rounded-full bg-gray-900 text-white dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition font-semibold">
-            {{ 'contact.form.submit' | translate }}
+                  [disabled]="!isFormValid || loadData"
+                  class="px-6 py-3 rounded-full bg-gray-900 text-white dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+            <svg *ngIf="loadData" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
+            </svg>
+            {{ loadData ? 'Envoi...' : ('contact.form.submit' | translate) }}
           </button>
         </div>
       </form>
@@ -138,8 +143,13 @@
           <textarea placeholder="{{ 'contact.form.message_placeholder' | translate }}" [(ngModel)]="form.message" name="message" rows="5"
                     class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition"></textarea>
           <button type="submit"
-                  class="px-6 py-3 rounded-full bg-gray-900 text-white dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition font-semibold">
-            {{ 'contact.form.submit' | translate }}
+                  [disabled]="!isFormValid || loadData"
+                  class="px-6 py-3 rounded-full bg-gray-900 text-white dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+            <svg *ngIf="loadData" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
+            </svg>
+            {{ loadData ? 'Envoi...' : ('contact.form.submit' | translate) }}
           </button>
         </div>
       </form>

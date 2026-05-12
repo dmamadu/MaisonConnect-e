@@ -34,37 +34,36 @@ export class ContactComponent {
   
   form = { name: '', email: '', message: '' };
 
+  get isFormValid(): boolean {
+    return !!(this.form.name.trim() && this.form.email.trim() && this.form.message.trim());
+  }
 
-    submitForm(): void {
-      if (1) {
-        console.log('Form submitted:', this.form);
-        // Ici vous pouvez ajouter votre logique d'envoi
-        alert('Votre demande de devis a été envoyée avec succès !');
-      }
-       this.snackbar
-        .showConfirmation(`Voulez-vous vraiment envoyer ce message ?`)
-        .then((result) => {
-          if (result["value"] == true) {
-            this.loadData = true;
-            this.baseService.add("contact",this.form)
-             .pipe(takeUntil(this.destroy$))
-            .subscribe(
-              (resp) => {
+  submitForm(): void {
+    if (!this.isFormValid) return;
+
+    this.snackbar
+      .showConfirmation(`Voulez-vous vraiment envoyer ce message ?`)
+      .then((result) => {
+        if (result['value'] === true) {
+          this.loadData = true;
+          this.baseService
+            .add('contact', this.form)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe({
+              next: (resp) => {
+                this.loadData = false;
                 if (resp) {
-                  this.snackbar.showSimpleNotification(
-                    "Ok",
-                    "Message envoyé avec succès",
-                  );
-                  this.loadData = false;
-                } else {
-                  this.loadData = false;
+                  this.snackbar.showSimpleNotification('Ok', 'Message envoyé avec succès');
+                  this.form = { name: '', email: '', message: '' };
                 }
               },
-              (error) => {
-                console.log(error);
-              }
-            );
-          }
-        });
-     }
+              error: (err) => {
+                console.error(err);
+                this.loadData = false;
+                this.snackbar.showSimpleNotification('Erreur', 'Une erreur est survenue. Veuillez réessayer.');
+              },
+            });
+        }
+      });
+  }
 }
