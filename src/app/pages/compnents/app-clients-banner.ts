@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { BaseService } from '../../core/services/base.service';
 
-const STORAGE_BASE = 'https://bo.itsloneed.com/storage/';
+const STORAGE_BASE = 'https://admin.itsloneed.com/storage/';
 
 @Component({
   selector: 'app-clients-banner',

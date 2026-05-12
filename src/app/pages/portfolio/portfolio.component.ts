@@ -257,7 +257,7 @@ import { RouterLink } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { RootService } from '../../shared/services/root.service';
 
-const STORAGE_BASE = 'https://bo.itsloneed.com/storage/';
+const STORAGE_BASE = 'https://admin.itsloneed.com/storage/';
 
 // ─── Interfaces alignées sur la réponse API ───────────────────────────────────
 export interface ProjectType {

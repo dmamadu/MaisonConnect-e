@@ -206,7 +206,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { RootService } from '../../shared/services/root.service';
 import { SnackBarService } from '../../shared/services/snackBar.service';
 
-const STORAGE_BASE = 'https://bo.itsloneed.com/storage/';
+const STORAGE_BASE = 'https://admin.itsloneed.com/storage/';
 
 // Slug(s) correspondant à la catégorie domotique dans ton API
 const DOMOTIQUE_SLUGS = ['domotics', 'smart-home', 'home-automation'];

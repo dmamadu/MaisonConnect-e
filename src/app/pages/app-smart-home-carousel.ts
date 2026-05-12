@@ -331,11 +331,11 @@ import { RouterLink } from '@angular/router';
                         </div>
                         
                         <!-- Percentage display -->
-                        <div class="absolute inset-0 flex items-center justify-center">
+                        <!-- <div class="absolute inset-0 flex items-center justify-center">
                           <div class="text-center mt-8">
                             <p class="text-6xl md:text-7xl font-semibold text-black dark:text-white">-35%</p>
                           </div>
-                        </div>
+                        </div> -->
                       </div>
                     </div>
                     

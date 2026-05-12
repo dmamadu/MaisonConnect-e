@@ -206,7 +206,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { SnackBarService } from '../../shared/services/snackBar.service';
 import { RootService } from '../../shared/services/root.service';
 
-const STORAGE_BASE = 'https://bo.itsloneed.com/storage/';
+const STORAGE_BASE = 'https://admin.itsloneed.com/storage/';
 
 // Slug(s) de la catégorie énergie dans ton API
 const ENERGIE_SLUGS = ['energie', 'energy', 'solar', 'solaire', 'energie-solaire'];

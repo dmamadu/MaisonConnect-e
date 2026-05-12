@@ -639,7 +639,7 @@ export interface BlogPost {
 }
 
 // URL de base du storage Laravel
-const STORAGE_BASE = 'https://bo.itsloneed.com/storage/';
+const STORAGE_BASE = 'https://admin.itsloneed.com/storage/';
 
 @Component({
   selector: 'app-blog',
