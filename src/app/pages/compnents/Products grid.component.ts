@@ -257,29 +257,4 @@ export class ProductsGridComponent {
   offset: number = 0;
   private baseService = inject(BaseService);
 
-
-
-  //   getQuartier(page,size) {
-  //   this.loadData = true;
-  //   return this.baseService.list('geolocation/quartiers', page, size).subscribe({
-  //     next:(response: any) => {
-  //       if (response['success']) {    
-  //         const data = response['data']['content'] || [];
-  //         this.loadData = false;
-  //         this.dataSource = new MatTableDataSource(data);
-  //         this.dataSource.paginator = this.paginator;
-  //         this.dataSource.sort = this.sort;
-  //         this.datas = data;
-  //         this.length = data["totalElements"] || data['content'].length;
-  //         this._changeDetectorRef.markForCheck();
-  //       } else {
-  //         this.loadData = false;
-  //         this.dataSource = new MatTableDataSource();
-  //       }
-  //     },
-  //     error:(err) => {
-  //       console.log(err);
-  //     }
-  //   })
-  // }
 }
