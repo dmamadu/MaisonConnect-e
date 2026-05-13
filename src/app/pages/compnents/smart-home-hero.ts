@@ -6,14 +6,14 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <section class="relative min-h-screen bg-black overflow-hidden flex items-center justify-center px-4 py-20">
+    <section class="relative min-h-screen bg-black overflow-hidden flex items-center justify-center px-4 py-12 md:py-20">
       <!-- Content Container -->
       <div class="relative z-10 text-center max-w-7xl mx-auto">
         <!-- Title -->
-        <h2 class="text-5xl md:text-6xl lg:text-7xl font-semibold text-white mb-4 tracking-tight fade-in">
+        <h2 class="text-3xl md:text-5xl lg:text-7xl font-semibold text-white mb-4 tracking-tight fade-in">
           SmartHub Pro
         </h2>
-        <p class="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-8 font-light fade-in" style="animation-delay: 0.2s;">
+        <p class="text-base md:text-xl lg:text-3xl text-gray-300 mb-8 font-light fade-in" style="animation-delay: 0.2s;">
           Le cerveau de votre maison intelligente.
         </p>
         

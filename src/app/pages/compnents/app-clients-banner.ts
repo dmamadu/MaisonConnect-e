@@ -10,7 +10,7 @@ const STORAGE_BASE = 'https://admin.itsloneed.com/storage/';
   standalone: true,
   imports: [CommonModule, TranslateModule],
   template: `
-<section class="relative py-16 md:py-24 bg-white dark:bg-slate-900 overflow-hidden transition-colors duration-300">
+<section class="relative py-10 md:py-16 lg:py-24 bg-white dark:bg-slate-900 overflow-hidden transition-colors duration-300">
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
     <div class="text-center">
@@ -23,7 +23,7 @@ const STORAGE_BASE = 'https://admin.itsloneed.com/storage/';
         </div>
       </div>
 
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+      <h2 class="text-2xl md:text-3xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
         {{ 'Clients.title' | translate }}
       </h2>
 

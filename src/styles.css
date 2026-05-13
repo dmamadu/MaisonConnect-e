@@ -4,6 +4,8 @@
 
 :root{ --container: 980px; }
 .container-apple { margin-left:auto; margin-right:auto; padding-left:1rem; padding-right:1rem; max-width: var(--container); }
+@media (min-width: 640px) { .container-apple { padding-left: 1.5rem; padding-right: 1.5rem; } }
+@media (min-width: 1024px) { .container-apple { padding-left: 2rem; padding-right: 2rem; } }
 
 html { scroll-behavior: smooth; }
 html, body { height: 100%; }

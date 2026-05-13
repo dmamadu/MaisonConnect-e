@@ -1174,9 +1174,14 @@
     },
 
   "energie": {
-  "title": "Énergie",
-  "subtitle": "Solutions solaires et énergétiques pour votre habitat"
-}
- 
- 
+    "title": "Énergie",
+    "subtitle": "Solutions solaires et énergétiques pour votre habitat"
+  },
+
+  "finitions": {
+    "badge": "Prestations & Luxe",
+    "title": "Finitions & Prestations",
+    "subtitle": "Des finitions haut de gamme pour sublimer votre intérieur. Peinture, carrelage, menuiserie, design d'intérieur et plafonds réalisés par nos artisans experts.",
+    "cta": "Demander un devis gratuit"
+  }
 }

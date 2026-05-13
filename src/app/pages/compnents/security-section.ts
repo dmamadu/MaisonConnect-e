@@ -8,21 +8,21 @@ import { RouterLink } from "@angular/router";
   standalone: true,
   imports: [CommonModule, TranslateModule, RouterLink],
   template: `
-<section class="relative py-20 md:py-32 bg-gray-50 dark:bg-slate-950 overflow-hidden transition-colors duration-300">
+<section class="relative py-12 md:py-20 lg:py-32 bg-gray-50 dark:bg-slate-950 overflow-hidden transition-colors duration-300">
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Section Header -->
-    <div class="text-center mb-20">
-      <div class="inline-block bg-black dark:bg-white text-white dark:text-black px-5 py-2 rounded-full text-xs font-semibold tracking-widest uppercase mb-8">
+    <div class="text-center mb-10 md:mb-16 lg:mb-20">
+      <div class="inline-block bg-black dark:bg-white text-white dark:text-black px-5 py-2 rounded-full text-xs font-semibold tracking-widest uppercase mb-6 md:mb-8">
         {{ 'Security.badge' | translate }}
       </div>
-      
-      <h2 class="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+
+      <h2 class="text-3xl md:text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
         {{ 'Security.title' | translate }}
       </h2>
       
-      <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8">
+      <p class="text-base md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8">
         {{ 'Security.description' | translate }}
       </p>
 
@@ -41,7 +41,7 @@ import { RouterLink } from "@angular/router";
       <div class="relative bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-gray-200 dark:border-slate-800 shadow-2xl">
         <div class="grid md:grid-cols-2 gap-0">
           <!-- Left: Image/Visual -->
-          <div class="relative bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 p-12 flex items-center justify-center min-h-[400px]">
+          <div class="relative bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 p-6 md:p-12 flex items-center justify-center min-h-[220px] md:min-h-[400px]">
             <div class="relative">
               <!-- Shield icon large -->
               <div class="w-48 h-48 bg-black dark:bg-white rounded-full flex items-center justify-center shadow-2xl">

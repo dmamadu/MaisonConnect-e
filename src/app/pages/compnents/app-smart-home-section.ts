@@ -8,13 +8,13 @@ import { RouterLink } from "@angular/router";
   standalone: true,
   imports: [CommonModule, TranslateModule, RouterLink],
   template: `
-<section class="relative min-h-screen bg-white dark:bg-black overflow-hidden flex items-center justify-center px-4 py-20 transition-colors duration-300">
+<section class="relative min-h-screen bg-white dark:bg-black overflow-hidden flex items-center justify-center px-4 py-12 md:py-20 transition-colors duration-300">
 
   <!-- Content Container -->
   <div class="relative z-10 w-full max-w-7xl mx-auto">
     
     <!-- Section Header -->
-    <div class="text-center mb-16">
+    <div class="text-center mb-10 md:mb-16">
       <!-- Badge -->
       <div class="inline-flex items-center gap-2 bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-full text-sm font-medium mb-6 fade-in">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -24,11 +24,11 @@ import { RouterLink } from "@angular/router";
       </div>
 
       <!-- Title -->
-      <h2 class="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight fade-in transition-colors" style="animation-delay: 0.1s;">
+      <h2 class="text-3xl md:text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight fade-in transition-colors" style="animation-delay: 0.1s;">
         {{ 'SmartHomeSection.title' | translate }}
       </h2>
 
-      <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 font-light max-w-4xl mx-auto fade-in transition-colors" style="animation-delay: 0.2s;">
+      <p class="text-base md:text-xl lg:text-2xl text-gray-700 dark:text-gray-300 mb-8 font-light max-w-4xl mx-auto fade-in transition-colors" style="animation-delay: 0.2s;">
         {{ 'SmartHomeSection.description' | translate }}
       </p>
 
@@ -54,7 +54,7 @@ import { RouterLink } from "@angular/router";
     </div>
 
     <!-- Features Grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 fade-in" style="animation-delay: 0.6s;">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mb-10 md:mb-16 fade-in" style="animation-delay: 0.6s;">
       
       <!-- Feature 1: Éclairage -->
       <div class="group bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-6 hover:shadow-xl hover:border-gray-900 dark:hover:border-white transition-all duration-300 hover:-translate-y-2">

@@ -8,7 +8,7 @@ import { RouterLink } from "@angular/router";
   standalone: true,
   imports: [CommonModule, TranslateModule, RouterLink],
   template: `
-<section class="relative py-20 md:py-32 bg-gray-50 dark:bg-slate-950 overflow-hidden transition-colors duration-300">
+<section class="relative py-12 md:py-20 lg:py-32 bg-gray-50 dark:bg-slate-950 overflow-hidden transition-colors duration-300">
   
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
@@ -18,7 +18,7 @@ import { RouterLink } from "@angular/router";
         {{ 'Luxury.badge' | translate }}
       </div>
       
-      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+      <h2 class="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
         {{ 'Luxury.title' | translate }}
       </h2>
       
@@ -28,7 +28,7 @@ import { RouterLink } from "@angular/router";
     </div>
 
     <!-- Services Grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mb-10 md:mb-16">
       
       <!-- Service 1 -->
       <div class="group bg-white dark:bg-slate-900 p-8 rounded-2xl border border-gray-200 dark:border-slate-800 hover:border-gray-900 dark:hover:border-white transition-all duration-300 hover:shadow-xl">

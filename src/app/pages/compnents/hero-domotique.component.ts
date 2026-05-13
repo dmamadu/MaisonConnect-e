@@ -476,13 +476,13 @@ import { RouterLink } from "@angular/router";
   standalone: true,
   imports: [CommonModule, TranslateModule, RouterLink],
   template: `
-<section class="hero-section relative min-h-screen overflow-hidden flex items-center justify-center px-4 py-20">
+<section class="hero-section relative min-h-screen overflow-hidden flex items-center justify-center px-4 py-12 md:py-20">
 
   <!-- Dot grid background (inspired by LONEED logo pattern) -->
   <div class="dot-grid absolute inset-0 z-0"></div>
 
-  <!-- Animated background elements -->
-  <div class="absolute inset-0 overflow-hidden z-10">
+  <!-- Animated background elements (hidden on very small screens to avoid overflow) -->
+  <div class="absolute inset-0 overflow-hidden z-10 hidden sm:block">
 
     <!-- Floating smart device cards -->
     <div class="floating-icon" style="top: 14%; left: 8%; animation-delay: 0s;">
@@ -573,15 +573,15 @@ import { RouterLink } from "@angular/router";
       <span class="text-teal-600 dark:text-teal-300 text-sm font-medium tracking-widest uppercase">LONEED IT Solutions</span>
     </div>
 
-    <h1 class="text-4xl md:text-6xl lg:text-7xl font-semibold text-gray-900 dark:text-white mb-6 tracking-tight leading-tight">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-semibold text-gray-900 dark:text-white mb-4 md:mb-6 tracking-tight leading-tight">
       {{ 'SmartHomeHub.HomeAutomation.title' | translate }}
     </h1>
 
-    <p class="text-lg md:text-xl lg:text-2xl text-teal-700 dark:text-teal-200 mb-4 font-light">
+    <p class="text-base md:text-lg lg:text-2xl text-teal-700 dark:text-teal-200 mb-3 md:mb-4 font-light">
       {{ 'SmartHomeHub.HomeAutomation.subtitle' | translate }}
     </p>
 
-    <p class="text-base md:text-lg text-gray-500 dark:text-slate-400 mb-10 font-light max-w-2xl mx-auto">
+    <p class="text-sm md:text-base lg:text-lg text-gray-500 dark:text-slate-400 mb-8 md:mb-10 font-light max-w-2xl mx-auto">
       {{ 'SmartHomeHub.HomeAutomation.description' | translate }}
     </p>
 

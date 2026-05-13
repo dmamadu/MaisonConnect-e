@@ -1,5 +1,5 @@
 <!-- <section
-  class="relative w-full h-[55vh] flex items-center justify-center text-center overflow-hidden"
+  class="relative w-full min-h-[40vh] md:h-[55vh] flex items-center justify-center text-center overflow-hidden"
 >
   <div
     class="absolute inset-0 bg-cover bg-center transition-all duration-500"
@@ -189,7 +189,7 @@
 
 <app-cart [cart]="cart"></app-cart> -->
 <section
-  class="relative w-full h-[55vh] flex items-center justify-center text-center overflow-hidden"
+  class="relative w-full min-h-[40vh] md:h-[55vh] flex items-center justify-center text-center overflow-hidden"
 >
   <div
     class="absolute inset-0 bg-cover bg-center transition-all duration-500"
@@ -200,17 +200,17 @@
   <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
 
   <div class="relative z-10 text-white px-4">
-    <h1 class="text-4xl md:text-5xl font-bold drop-shadow-lg animate-fade-in">
+    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold drop-shadow-lg animate-fade-in">
       {{ 'domotique.title' | translate }}
     </h1>
-    <p class="mt-4 max-w-2xl mx-auto text-lg opacity-90 animate-fade-in-delayed">
+    <p class="mt-4 max-w-2xl mx-auto text-base md:text-lg opacity-90 animate-fade-in-delayed">
       {{ 'domotique.subtitle' | translate }}
     </p>
   </div>
 </section>
 
 <!-- Filtres dynamiques (sous-catégories) -->
-<div class="w-full max-w-5xl mx-auto px-4 mt-10 flex justify-center gap-4 flex-wrap">
+<div class="w-full max-w-5xl mx-auto px-4 mt-6 md:mt-10 flex justify-center gap-2 md:gap-4 flex-wrap">
 
   <!-- Skeleton filtres -->
   <ng-container *ngIf="loadData">
@@ -323,7 +323,7 @@
   (click)="closeDetail()"
 >
   <div
-    class="bg-white dark:bg-gray-900 w-full max-w-xl rounded-2xl p-6 shadow-xl animate-zoom-in overflow-y-auto max-h-[90vh]"
+    class="bg-white dark:bg-gray-900 w-full max-w-sm md:max-w-xl rounded-2xl p-4 md:p-6 shadow-xl animate-zoom-in overflow-y-auto max-h-[90vh]"
     (click)="$event.stopPropagation()"
   >
     <button

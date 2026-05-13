@@ -258,40 +258,55 @@
         <div class="border-t border-black/5 dark:border-white/5"></div>
       </li>
 
-      <!-- Sécurité, Domotique, Énergie, Finitions (avec sous-menus) -->
+      <!-- Sécurité, Domotique, Énergie, Finitions (avec ou sans sous-menus) -->
       <li *ngFor="let menu of menuWithSubmenu">
-        <button
-          (click)="toggleMobileSubmenu(menu.labelKey)"
-          class="w-full flex items-center justify-between py-2.5 px-3 rounded-lg text-sm
-                 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-800/50"
-        >
-          <div class="flex items-center gap-2">
-            <span *ngIf="menu.icon">{{ menu.icon }}</span>
-            <span class="font-medium">{{ menu.labelKey | translate }}</span>
-          </div>
-          <span 
-            class="text-base transition-transform duration-200"
-            [ngClass]="{'rotate-180': mobileSubmenuOpen() === menu.labelKey}"
-          >
-            ▾
-          </span>
-        </button>
 
-        <div
-          *ngIf="mobileSubmenuOpen() === menu.labelKey"
-          class="mt-0.5 ml-6 space-y-0.5 animate-fadeIn"
+        <!-- Lien direct si pas de sous-menu -->
+        <a
+          *ngIf="!menu.submenu || menu.submenu.length === 0"
+          [routerLink]="menu.link"
+          (click)="closeMobileMenu()"
+          routerLinkActive="bg-gray-100 dark:bg-zinc-800 font-semibold"
+          class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-sm
+                 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition-colors"
         >
-          <a 
-            *ngFor="let item of menu.submenu"
-            [routerLink]="item.link"
-            (click)="closeMobileMenu()"
-            class="flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm
-                   text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-zinc-800/50"
+          <span *ngIf="menu.icon">{{ menu.icon }}</span>
+          <span class="font-medium">{{ menu.labelKey | translate }}</span>
+        </a>
+
+        <!-- Accordéon si sous-menu présent -->
+        <ng-container *ngIf="menu.submenu && menu.submenu.length > 0">
+          <button
+            (click)="toggleMobileSubmenu(menu.labelKey)"
+            class="w-full flex items-center justify-between py-2.5 px-3 rounded-lg text-sm
+                   text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-800/50"
           >
-            <span *ngIf="item.icon" class="text-base">{{ item.icon }}</span>
-            <span class="text-sm">{{ item.labelKey | translate }}</span>
-          </a>
-        </div>
+            <div class="flex items-center gap-2">
+              <span *ngIf="menu.icon">{{ menu.icon }}</span>
+              <span class="font-medium">{{ menu.labelKey | translate }}</span>
+            </div>
+            <span
+              class="text-base transition-transform duration-200"
+              [ngClass]="{'rotate-180': mobileSubmenuOpen() === menu.labelKey}"
+            >▾</span>
+          </button>
+
+          <div
+            *ngIf="mobileSubmenuOpen() === menu.labelKey"
+            class="mt-0.5 ml-6 space-y-0.5 animate-fadeIn"
+          >
+            <a
+              *ngFor="let item of menu.submenu"
+              [routerLink]="item.link"
+              (click)="closeMobileMenu()"
+              class="flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm
+                     text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-zinc-800/50"
+            >
+              <span *ngIf="item.icon" class="text-base">{{ item.icon }}</span>
+              <span class="text-sm">{{ item.labelKey | translate }}</span>
+            </a>
+          </div>
+        </ng-container>
       </li>
 
       <!-- Divider -->
@@ -317,40 +332,54 @@
         <div class="border-t border-black/5 dark:border-white/5"></div>
       </li>
 
-      <!-- Boutique (avec sous-menu) -->
+      <!-- Boutique -->
       <li>
-        <button
-          (click)="toggleMobileSubmenu(boutiqueMenu.labelKey)"
-          class="w-full flex items-center justify-between py-2.5 px-3 rounded-lg text-sm
-                 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-800/50"
+        <!-- Lien direct si pas de sous-menu -->
+        <a
+          *ngIf="!boutiqueMenu.submenu || boutiqueMenu.submenu.length === 0"
+          [routerLink]="boutiqueMenu.link"
+          (click)="closeMobileMenu()"
+          routerLinkActive="bg-gray-100 dark:bg-zinc-800 font-semibold"
+          class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-sm
+                 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition-colors"
         >
-          <div class="flex items-center gap-2">
-            <span *ngIf="boutiqueMenu.icon">{{ boutiqueMenu.icon }}</span>
-            <span class="font-medium">{{ boutiqueMenu.labelKey | translate }}</span>
-          </div>
-          <span 
-            class="text-base transition-transform duration-200"
-            [ngClass]="{'rotate-180': mobileSubmenuOpen() === boutiqueMenu.labelKey}"
-          >
-            ▾
-          </span>
-        </button>
+          <span *ngIf="boutiqueMenu.icon">{{ boutiqueMenu.icon }}</span>
+          <span class="font-medium">{{ boutiqueMenu.labelKey | translate }}</span>
+        </a>
 
-        <div
-          *ngIf="mobileSubmenuOpen() === boutiqueMenu.labelKey"
-          class="mt-0.5 ml-6 space-y-0.5 animate-fadeIn"
-        >
-          <a 
-            *ngFor="let item of boutiqueMenu.submenu"
-            [routerLink]="item.link"
-            (click)="closeMobileMenu()"
-            class="flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm
-                   text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-zinc-800/50"
+        <!-- Accordéon si sous-menu présent -->
+        <ng-container *ngIf="boutiqueMenu.submenu && boutiqueMenu.submenu.length > 0">
+          <button
+            (click)="toggleMobileSubmenu(boutiqueMenu.labelKey)"
+            class="w-full flex items-center justify-between py-2.5 px-3 rounded-lg text-sm
+                   text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-800/50"
           >
-            <span *ngIf="item.icon" class="text-base">{{ item.icon }}</span>
-            <span class="text-sm">{{ item.labelKey | translate }}</span>
-          </a>
-        </div>
+            <div class="flex items-center gap-2">
+              <span *ngIf="boutiqueMenu.icon">{{ boutiqueMenu.icon }}</span>
+              <span class="font-medium">{{ boutiqueMenu.labelKey | translate }}</span>
+            </div>
+            <span
+              class="text-base transition-transform duration-200"
+              [ngClass]="{'rotate-180': mobileSubmenuOpen() === boutiqueMenu.labelKey}"
+            >▾</span>
+          </button>
+
+          <div
+            *ngIf="mobileSubmenuOpen() === boutiqueMenu.labelKey"
+            class="mt-0.5 ml-6 space-y-0.5 animate-fadeIn"
+          >
+            <a
+              *ngFor="let item of boutiqueMenu.submenu"
+              [routerLink]="item.link"
+              (click)="closeMobileMenu()"
+              class="flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm
+                     text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-zinc-800/50"
+            >
+              <span *ngIf="item.icon" class="text-base">{{ item.icon }}</span>
+              <span class="text-sm">{{ item.labelKey | translate }}</span>
+            </a>
+          </div>
+        </ng-container>
       </li>
 
       <!-- Assistance -->

@@ -7,10 +7,10 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [CommonModule, TranslateModule],
   template: `
-<div class="bg-white dark:bg-black transition-colors duration-300 py-16">
-  <div class=" mx-auto px-6">
-    <div class="text-center mb-12">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4 
+<div class="bg-white dark:bg-black transition-colors duration-300 py-10 md:py-16">
+  <div class="mx-auto px-4 md:px-6">
+    <div class="text-center mb-8 md:mb-12">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4
                  bg-gradient-to-r from-gray-800 to-gray-600 dark:from-gray-100 dark:to-gray-400 
                  bg-clip-text text-transparent">
         {{ 'home.services.title' | translate }}

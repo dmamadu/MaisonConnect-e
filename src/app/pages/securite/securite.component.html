@@ -287,15 +287,15 @@
 
   <header class="mb-12 lg:mb-16">
     <div class="text-center mb-8">
-      <h1 class="text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-4">
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-4">
         {{ "securite.title" | translate }}
       </h1>
-      <p class="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
+      <p class="text-gray-600 dark:text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
         {{ "securite.subtitle" | translate }}
       </p>
     </div>
 
-    <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg flex flex-col lg:flex-row items-center justify-between gap-6">
+    <div class="bg-white dark:bg-gray-900 rounded-2xl p-4 md:p-6 shadow-lg flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
 
       <!-- Filtres dynamiques -->
       <div class="flex flex-wrap gap-2 justify-center lg:justify-start" role="tablist">
@@ -436,7 +436,7 @@
   (click)="closeDetail()"
 >
   <div
-    class="bg-white dark:bg-gray-900 rounded-3xl max-w-5xl w-full shadow-2xl overflow-hidden animate-scale-in"
+    class="bg-white dark:bg-gray-900 rounded-3xl max-w-lg md:max-w-5xl w-full shadow-2xl overflow-y-auto max-h-[90vh] animate-scale-in"
     (click)="$event.stopPropagation()"
   >
     <div class="relative">
@@ -453,7 +453,7 @@
       <div class="grid lg:grid-cols-2 gap-0">
 
         <!-- Image -->
-        <div class="relative h-96 lg:h-auto bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-8 flex items-center justify-center">
+        <div class="relative h-48 sm:h-64 md:h-96 lg:h-auto bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-4 md:p-8 flex items-center justify-center">
           <img
             [src]="getImageUrl(selectedProduct.image)"
             [alt]="getTitle(selectedProduct)"
@@ -464,7 +464,7 @@
         </div>
 
         <!-- Contenu -->
-        <div class="p-8 lg:p-10 flex flex-col overflow-y-auto max-h-[80vh]">
+        <div class="p-4 md:p-8 lg:p-10 flex flex-col">
           <div class="flex-1">
 
             <span class="inline-block px-4 py-1.5 bg-gray-100 dark:bg-gray-800 text-xs font-semibold text-gray-900 dark:text-white rounded-full mb-4">

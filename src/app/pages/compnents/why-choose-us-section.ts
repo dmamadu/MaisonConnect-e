@@ -7,7 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [CommonModule, TranslateModule],
   template: `
-<section class="relative py-20 md:py-32 bg-white dark:bg-black overflow-hidden transition-colors duration-300">
+<section class="relative py-12 md:py-20 lg:py-32 bg-white dark:bg-black overflow-hidden transition-colors duration-300">
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
@@ -20,11 +20,11 @@ import { TranslateModule } from '@ngx-translate/core';
         </div>
       </div>
 
-      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-8 leading-tight">
+      <h2 class="text-3xl md:text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 md:mb-8 leading-tight">
         {{ 'WhyUs.mainSlogan' | translate }}
       </h2>
       
-      <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-light mb-4">
+      <p class="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 font-light mb-4">
         {{ 'WhyUs.shortSlogan' | translate }}
       </p>
 
@@ -37,10 +37,10 @@ import { TranslateModule } from '@ngx-translate/core';
     </div>
 
     <!-- Reasons Grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-10 md:mb-16">
       
       <!-- Reason 1: Qualité de service -->
-      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-[#0097A7] hover:shadow-xl transition-all duration-300 overflow-hidden">
+      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-5 md:p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-[#0097A7] hover:shadow-xl transition-all duration-300 overflow-hidden">
         
         <div class="relative z-10">
           <div class="w-16 h-16 bg-[#0097A7] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
@@ -60,7 +60,7 @@ import { TranslateModule } from '@ngx-translate/core';
       </div>
 
       <!-- Reason 2: Design -->
-      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-[#0097A7] hover:shadow-xl transition-all duration-300 overflow-hidden">
+      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-5 md:p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-[#0097A7] hover:shadow-xl transition-all duration-300 overflow-hidden">
         
         <div class="relative z-10">
           <div class="w-16 h-16 bg-[#0097A7] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
@@ -80,7 +80,7 @@ import { TranslateModule } from '@ngx-translate/core';
       </div>
 
       <!-- Reason 3: Confort -->
-      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-[#0097A7] hover:shadow-xl transition-all duration-300 overflow-hidden">
+      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-5 md:p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-[#0097A7] hover:shadow-xl transition-all duration-300 overflow-hidden">
         
         <div class="relative z-10">
           <div class="w-16 h-16 bg-[#0097A7] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
@@ -100,7 +100,7 @@ import { TranslateModule } from '@ngx-translate/core';
       </div>
 
       <!-- Reason 4: Modernité -->
-      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-[#0097A7] hover:shadow-xl transition-all duration-300 overflow-hidden">
+      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-5 md:p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-[#0097A7] hover:shadow-xl transition-all duration-300 overflow-hidden">
         
         <div class="relative z-10">
           <div class="w-16 h-16 bg-[#0097A7] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
@@ -120,7 +120,7 @@ import { TranslateModule } from '@ngx-translate/core';
       </div>
 
       <!-- Reason 5: Sécurité -->
-      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-[#0097A7] hover:shadow-xl transition-all duration-300 overflow-hidden">
+      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-5 md:p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-[#0097A7] hover:shadow-xl transition-all duration-300 overflow-hidden">
         
         <div class="relative z-10">
           <div class="w-16 h-16 bg-[#0097A7] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
@@ -140,7 +140,7 @@ import { TranslateModule } from '@ngx-translate/core';
       </div>
 
       <!-- Reason 6: Économie d'énergie -->
-      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-[#0097A7] hover:shadow-xl transition-all duration-300 overflow-hidden">
+      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-5 md:p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-[#0097A7] hover:shadow-xl transition-all duration-300 overflow-hidden">
         
         <div class="relative z-10">
           <div class="w-16 h-16 bg-[#0097A7] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
@@ -160,7 +160,7 @@ import { TranslateModule } from '@ngx-translate/core';
       </div>
 
       <!-- Reason 7: Garantie Premium -->
-      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-[#0097A7] hover:shadow-xl transition-all duration-300 overflow-hidden">
+      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-5 md:p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-[#0097A7] hover:shadow-xl transition-all duration-300 overflow-hidden">
         
         <div class="relative z-10">
           <div class="w-16 h-16 bg-[#0097A7] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
@@ -180,7 +180,7 @@ import { TranslateModule } from '@ngx-translate/core';
       </div>
 
       <!-- Reason 8: Installation certifiée -->
-      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-[#0097A7] hover:shadow-xl transition-all duration-300 overflow-hidden">
+      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-5 md:p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-[#0097A7] hover:shadow-xl transition-all duration-300 overflow-hidden">
         
         <div class="relative z-10">
           <div class="w-16 h-16 bg-[#0097A7] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
@@ -200,7 +200,7 @@ import { TranslateModule } from '@ngx-translate/core';
       </div>
 
       <!-- Reason 9: Support 24/7 -->
-      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-[#0097A7] hover:shadow-xl transition-all duration-300 overflow-hidden">
+      <div class="group relative bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-5 md:p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-[#0097A7] hover:shadow-xl transition-all duration-300 overflow-hidden">
         
         <div class="relative z-10">
           <div class="w-16 h-16 bg-[#0097A7] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">

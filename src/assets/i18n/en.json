@@ -1153,9 +1153,14 @@
       }
     },
     "energie": {
-  "title": "Energy",
-  "subtitle": "Solar and energy solutions for your home"
-}
-  
+    "title": "Energy",
+    "subtitle": "Solar and energy solutions for your home"
+  },
 
+  "finitions": {
+    "badge": "Premium Finishes & Services",
+    "title": "Finishes & Prestations",
+    "subtitle": "High-end finishes to elevate your interior. Painting, tiling, joinery, interior design and ceilings crafted by our expert artisans.",
+    "cta": "Request a free quote"
+  }
 }
