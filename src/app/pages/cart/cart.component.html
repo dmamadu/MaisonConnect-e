@@ -1,4 +1,6 @@
-<section class="min-h-screen bg-[#F2F2F2] dark:bg-black py-12 px-4 transition-colors duration-300">
+<div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-black -z-10"></div>
+
+<section class="min-h-screen py-12 px-4 md:px-6 lg:px-8 relative">
   <div class="max-w-5xl mx-auto">
 
     <!-- En-tête -->
@@ -11,7 +13,7 @@
         </svg>
         Continuer mes achats
       </a>
-      <h1 class="text-4xl font-bold text-[#1A1A1A] dark:text-white">Mon Panier</h1>
+      <h1 class="page-title">Mon Panier</h1>
       <p class="text-gray-500 dark:text-gray-400 mt-1">
         {{ isEmpty ? 'Votre panier est vide' : items.length + ' article(s)' }}
       </p>
@@ -25,7 +27,7 @@
                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
         </svg>
       </div>
-      <h2 class="text-2xl font-bold text-[#1A1A1A] dark:text-white mb-3">Votre panier est vide</h2>
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Votre panier est vide</h2>
       <p class="text-gray-500 dark:text-gray-400 mb-8">
         Découvrez nos produits et ajoutez-les à votre panier.
       </p>
@@ -43,22 +45,21 @@
       <div class="lg:col-span-2 space-y-4">
 
         <div *ngFor="let item of items"
-             class="bg-white dark:bg-zinc-900 rounded-2xl p-5 flex items-center gap-5
-                    border border-gray-100 dark:border-zinc-800 shadow-sm
+             class="bg-white dark:bg-gray-900 rounded-2xl p-5 flex items-center gap-5
+                    border border-gray-100 dark:border-gray-800 shadow-sm
                     transition-all duration-200 hover:shadow-md">
 
-          <!-- Icône produit (placeholder) -->
-          <div class="w-20 h-20 flex-shrink-0 rounded-xl bg-[#0097A7]/10
-                      flex items-center justify-center">
-            <svg class="w-10 h-10 text-[#0097A7]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
-            </svg>
+          <!-- Image produit -->
+          <div class="w-20 h-20 flex-shrink-0 rounded-xl overflow-hidden bg-[#0097A7]/10">
+            <img [src]="getImageUrl(item.product.image)"
+                 [alt]="getTitle(item)"
+                 class="w-full h-full object-cover"
+                 (error)="$any($event.target).src='assets/images/placeholder.png'" />
           </div>
 
           <!-- Infos produit -->
           <div class="flex-1 min-w-0">
-            <h3 class="font-semibold text-[#1A1A1A] dark:text-white truncate">
+            <h3 class="font-semibold text-gray-900 dark:text-white truncate">
               {{ getTitle(item) }}
             </h3>
             <p class="text-[#0097A7] font-bold mt-0.5">{{ formatPrice(item.product.price) }}</p>
@@ -70,18 +71,18 @@
           <!-- Contrôle quantité -->
           <div class="flex items-center gap-2 flex-shrink-0">
             <button (click)="decrement(item)"
-                    class="w-8 h-8 rounded-full border border-gray-200 dark:border-zinc-700
+                    class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-700
                            flex items-center justify-center text-gray-600 dark:text-gray-300
                            hover:border-[#0097A7] hover:text-[#0097A7] transition-colors">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/>
               </svg>
             </button>
-            <span class="w-6 text-center font-semibold text-[#1A1A1A] dark:text-white">
+            <span class="w-6 text-center font-semibold text-gray-900 dark:text-white">
               {{ item.quantity }}
             </span>
             <button (click)="increment(item)"
-                    class="w-8 h-8 rounded-full border border-gray-200 dark:border-zinc-700
+                    class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-700
                            flex items-center justify-center text-gray-600 dark:text-gray-300
                            hover:border-[#0097A7] hover:text-[#0097A7] transition-colors">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -114,26 +115,26 @@
 
       <!-- Récapitulatif commande -->
       <div class="lg:col-span-1">
-        <div class="bg-white dark:bg-zinc-900 rounded-2xl p-6
-                    border border-gray-100 dark:border-zinc-800 shadow-sm sticky top-24">
+        <div class="bg-white dark:bg-gray-900 rounded-2xl p-6
+                    border border-gray-100 dark:border-gray-800 shadow-sm sticky top-24">
 
-          <h2 class="text-lg font-bold text-[#1A1A1A] dark:text-white mb-6">
+          <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-6">
             Récapitulatif
           </h2>
 
           <div class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
             <div *ngFor="let item of items" class="flex justify-between">
               <span class="truncate pr-2">{{ getTitle(item) }} × {{ item.quantity }}</span>
-              <span class="font-medium text-[#1A1A1A] dark:text-white flex-shrink-0">
+              <span class="font-medium text-gray-900 dark:text-white flex-shrink-0">
                 {{ lineTotal(item) }}
               </span>
             </div>
           </div>
 
-          <div class="border-t border-gray-100 dark:border-zinc-800 my-5"></div>
+          <div class="border-t border-gray-100 dark:border-gray-800 my-5"></div>
 
           <div class="flex justify-between items-center mb-6">
-            <span class="font-bold text-[#1A1A1A] dark:text-white">Total</span>
+            <span class="font-bold text-gray-900 dark:text-white">Total</span>
             <span class="text-xl font-bold text-[#0097A7]">{{ total }}</span>
           </div>
 
@@ -177,8 +178,8 @@
   <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
 
   <!-- Carte du formulaire -->
-  <div class="relative z-10 w-full max-w-lg bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl
-              border border-gray-100 dark:border-zinc-800 overflow-hidden"
+  <div class="relative z-10 w-full max-w-lg bg-white dark:bg-gray-900 rounded-2xl shadow-2xl
+              border border-gray-100 dark:border-gray-800 overflow-hidden"
        (click)="$event.stopPropagation()">
 
     <!-- En-tête modal -->
@@ -199,7 +200,7 @@
     </div>
 
     <!-- Récap rapide du panier -->
-    <div class="px-6 pt-5 pb-3 border-b border-gray-100 dark:border-zinc-800">
+    <div class="px-6 pt-5 pb-3 border-b border-gray-100 dark:border-gray-800">
       <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500 mb-2">
         Récapitulatif ({{ items.length }} article{{ items.length > 1 ? 's' : '' }})
       </p>
@@ -208,11 +209,11 @@
           <span class="text-gray-600 dark:text-gray-300 truncate pr-2">
             {{ getTitle(item) }} × {{ item.quantity }}
           </span>
-          <span class="font-medium text-[#1A1A1A] dark:text-white flex-shrink-0">{{ lineTotal(item) }}</span>
+          <span class="font-medium text-gray-900 dark:text-white flex-shrink-0">{{ lineTotal(item) }}</span>
         </div>
       </div>
-      <div class="flex justify-between items-center mt-3 pt-2 border-t border-gray-100 dark:border-zinc-800">
-        <span class="font-bold text-[#1A1A1A] dark:text-white text-sm">Total</span>
+      <div class="flex justify-between items-center mt-3 pt-2 border-t border-gray-100 dark:border-gray-800">
+        <span class="font-bold text-gray-900 dark:text-white text-sm">Total</span>
         <span class="font-bold text-[#0097A7]">{{ total }}</span>
       </div>
     </div>
@@ -229,8 +230,8 @@
                [(ngModel)]="orderForm.name"
                name="orderName"
                placeholder="Ex : Amadou Diallo"
-               class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-zinc-700
-                      bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-white
+               class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700
+                      bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white
                       placeholder-gray-400 dark:placeholder-gray-500
                       focus:ring-2 focus:ring-[#0097A7] focus:border-transparent focus:outline-none
                       transition" />
@@ -245,8 +246,8 @@
                [(ngModel)]="orderForm.email"
                name="orderEmail"
                placeholder="Ex : amadou@email.com"
-               class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-zinc-700
-                      bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-white
+               class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700
+                      bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white
                       placeholder-gray-400 dark:placeholder-gray-500
                       focus:ring-2 focus:ring-[#0097A7] focus:border-transparent focus:outline-none
                       transition" />
@@ -261,8 +262,8 @@
                [(ngModel)]="orderForm.phone"
                name="orderPhone"
                placeholder="Ex : +221 77 000 00 00"
-               class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-zinc-700
-                      bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-white
+               class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700
+                      bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white
                       placeholder-gray-400 dark:placeholder-gray-500
                       focus:ring-2 focus:ring-[#0097A7] focus:border-transparent focus:outline-none
                       transition" />
@@ -277,8 +278,8 @@
                   name="orderMessage"
                   rows="3"
                   placeholder="Précisions sur votre projet, délai souhaité…"
-                  class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-zinc-700
-                         bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-white
+                  class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700
+                         bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white
                          placeholder-gray-400 dark:placeholder-gray-500
                          focus:ring-2 focus:ring-[#0097A7] focus:border-transparent focus:outline-none
                          transition resize-none"></textarea>
@@ -287,7 +288,7 @@
       <!-- Boutons -->
       <div class="flex gap-3 pt-1">
         <button (click)="closeOrderForm()"
-                class="flex-1 py-3 rounded-full border border-gray-200 dark:border-zinc-700
+                class="flex-1 py-3 rounded-full border border-gray-200 dark:border-gray-700
                        text-gray-600 dark:text-gray-300 font-semibold
                        hover:border-gray-300 transition-colors">
           Annuler

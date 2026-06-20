@@ -6,10 +6,10 @@
   <header class="mb-12 lg:mb-16">
     <!-- Titre et sous-titre -->
     <div class="text-center mb-8">
-      <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-4">
+      <h1 class="page-title mb-4">
         {{ 'packs.title' | translate }}
       </h1>
-      <p class="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
+      <p class="page-subtitle">
         {{ 'packs.subtitle' | translate }}
       </p>
     </div>
@@ -116,11 +116,11 @@
           </a> -->
           <button
   (click)="addToCart(p); $event.stopPropagation()"
-  class="flex items-center justify-center w-full px-4 py-2.5 
-         rounded-full border-2 border-gray-900 dark:border-white
-         text-gray-900 dark:text-white
-         hover:bg-gray-900 hover:text-white
-         dark:hover:bg-white dark:hover:text-gray-900
+  class="flex items-center justify-center w-full px-4 py-2.5
+         rounded-full border-2 border-[#0097A7]
+         text-[#0097A7] dark:text-[#42B7C4]
+         hover:bg-[#0097A7] hover:text-white
+         dark:hover:bg-[#0097A7] dark:hover:text-white dark:border-[#0097A7]
          transition-all duration-300 font-semibold
          shadow-lg hover:shadow-xl gap-2">
 
@@ -191,7 +191,7 @@
           <div class="flex-1">
   
 
-            <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">
+            <h2 class="section-title mb-4">
               {{ selectedPack?.title }}
             </h2>
             
@@ -250,7 +250,7 @@
               [href]="selectedPack?.link || '#'"
               target="_blank"
               rel="noopener"
-              class="block w-full text-center px-6 py-3.5 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+              class="block w-full text-center px-6 py-3.5 rounded-full bg-[#0097A7] hover:bg-[#42B7C4] text-white font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               {{ 'packs.buttons.orderNow' | translate }}
             </a>

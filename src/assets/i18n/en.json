@@ -14,13 +14,13 @@
     "assistance": "Support",
     "shop": {
       "boutique": "Shop",
-      "securite": "Security Products",
+      "securite": "Electronic Security Products",
       "domotique": "Smart Home Accessories",
       "solaire": "Solar Equipment",
       "finition": "Premium Finishing Materials"
     },
     "finitionPrestationLuxe": {
-      "finition": "Finishes",
+      "finition": "Premium Finishing",
       "peinture": "Premium Painting & Coatings",
       "carrelage": "High-End Tiling & Marble",
       "menuiserie": "Custom Carpentry",
@@ -63,7 +63,7 @@
     "premiumWarranty": "Premium Warranty",
     "Support": "Support 24/7",
 
-    "security": "SSecurity",
+    "security": "Electronic Security",
     "securityDescription": "Advanced surveillance systems",
 
     "automation": "Home Automation",
@@ -72,7 +72,7 @@
     "solar": "Solar",
     "solarDescription": "Sustainable energy solutions",
 
-    "finishing": "Finishes",
+    "finishing": "Premium Finishing",
     "finishingDescription": "High-end design"
       
     },
@@ -529,7 +529,7 @@
   },
 
 "footer": {
-  "promo": "Take advantage of our exceptional offers!",
+  "promo": "Loneed — Your home, smarter, safer, more energy-efficient",
   "rights": "All rights reserved",
   "privacy": "Privacy Policy",
   "terms": "Terms and Conditions",
@@ -544,10 +544,10 @@
       "a-propos": "About",
       "realisations": "Projects",
       "blog": "Blog",
-      "securite": "Security",
+      "securite": "Electronic Security",
       "domotique": "Home Automation",
-      "solaire": "Solar",
-      "finitions": "Finishes",
+      "solaire": "Solar Energy",
+      "finitions": "Premium Finishing",
       "devis": "Quote",
       "boutique": "Shop",
       "assistance": "Support",
@@ -719,9 +719,9 @@
   },
   "categories": {
     "all": "All",
-    "securite": "Security",
+    "securite": "Electronic Security",
     "domotique": "Home Automation",
-    "energie": "Energy",
+    "energie": "Solar Energy",
     "packs": "Packs",
     "accessory": "Accessories"
   }
@@ -1064,7 +1064,7 @@
     },
     "categories": {
       "all": "All",
-      "security": "Security",
+      "security": "Electronic Security",
       "domotique": "Home Automation",
       "solar": "Solar",
       "tips": "Tips"
@@ -1114,28 +1114,28 @@
       
       "security": {
         "category": "24/7 Protection",
-        "title": "Security",
+        "title": "Electronic Security",
         "description": "Smart cameras, connected alarms and access control for complete protection of your home",
         "cta": "Secure my home"
       },
-      
+
       "automation": {
         "category": "Smart Comfort",
         "title": "Home Automation",
         "description": "Control lighting, heating, blinds and all your equipment from a single application",
         "cta": "Automate my home"
       },
-      
+
       "energy": {
         "category": "Sustainable Savings",
-        "title": "Energy",
+        "title": "Solar Energy",
         "description": "Optimize your consumption with solar panels, batteries and intelligent energy management",
         "cta": "Reduce my bill"
       },
-      
+
       "finishing": {
         "category": "Design & Quality",
-        "title": "Finishing",
+        "title": "Premium Finishing",
         "description": "Designer outlets, switches and premium finishes to enhance your interior",
         "cta": "Customize my style"
       }
@@ -1159,7 +1159,7 @@
 
   "finitions": {
     "badge": "Premium Finishes & Services",
-    "title": "Finishes & Prestations",
+    "title": "Premium Finishing & Prestations",
     "subtitle": "High-end finishes to elevate your interior. Painting, tiling, joinery, interior design and ceilings crafted by our expert artisans.",
     "cta": "Request a free quote"
   }

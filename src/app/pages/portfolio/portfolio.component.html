@@ -1,441 +1,188 @@
-<!-- <div class="min-h-screen bg-white dark:bg-gray-900">
-  <section class="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 text-white">
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.05),transparent_50%),radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.03),transparent_50%)]"></div>
-    <div class="relative z-10 container-apple px-6 py-20 md:py-32">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-[fadeInUp_0.8s_ease-out]">
-          {{ 'portfolio.hero.title' | translate }}
-        </h1>
-        <p class="text-lg md:text-xl text-gray-200 animate-[fadeInUp_0.8s_ease-out_0.2s_backwards]">
-          {{ 'portfolio.hero.subtitle' | translate }}
-        </p>
-      </div>
-    </div>
-  </section>
-  <section class="sticky top-16 z-40 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-black/5 dark:border-white/10">
-    <div class="container-apple px-6 py-4">
-      <div class="flex flex-wrap gap-3 justify-center">
+Fond dynamique
+<div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-black -z-10"></div>
+
+<!-- Hero -->
+<section class="px-4 md:px-6 lg:px-8 pt-12 pb-6 lg:pt-20 lg:pb-8 max-w-7xl mx-auto text-center">
+  <h1 class="page-title mb-4">
+    {{ 'portfolio.hero.title' | translate }}
+  </h1>
+  <p class="page-subtitle">
+    {{ 'portfolio.hero.subtitle' | translate }}
+  </p>
+</section>
+
+<!-- Filtres (sticky) -->
+<div class="sticky top-16 z-40 bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border-b border-gray-100 dark:border-gray-800">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 py-4">
+    <div class="flex flex-wrap gap-2 justify-center">
+
+      <!-- Skeleton filtres -->
+      <ng-container *ngIf="loadData">
+        <div *ngFor="let i of [1,2,3,4,5]"
+             class="w-24 h-9 bg-gray-200 dark:bg-gray-700 rounded-full animate-pulse"></div>
+      </ng-container>
+
+      <!-- Boutons filtres dynamiques -->
+      <ng-container *ngIf="!loadData">
         <button
           *ngFor="let cat of categories"
           (click)="setCategory(cat.value)"
           [ngClass]="{
-            'bg-gray-900 text-white dark:bg-white dark:text-black': selectedCategory() === cat.value,
-            'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300': selectedCategory() !== cat.value
+            'bg-[#0097A7] text-white shadow-lg scale-105': selectedCategory() === cat.value,
+            'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700': selectedCategory() !== cat.value
           }"
-          class="px-6 py-2 rounded-full font-medium text-sm
-                 hover:bg-gray-200 dark:hover:bg-gray-700
-                 transition-colors"
+          class="px-5 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 transform"
         >
-          {{ cat.labelKey | translate }}
+          {{ cat.label }}
         </button>
-      </div>
+      </ng-container>
+
     </div>
-  </section>
-
-  <section class="py-16">
-    <div class="container-apple px-6">
-      <div *ngIf="filteredProjects.length === 0" class="text-center py-20">
-        <div class="text-6xl mb-4">🏗️</div>
-        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-          {{ 'portfolio.noResults.title' | translate }}
-        </h3>
-        <p class="text-gray-600 dark:text-gray-400">
-          {{ 'portfolio.noResults.subtitle' | translate }}
-        </p>
-      </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div 
-          *ngFor="let project of filteredProjects"
-          (click)="openProject(project)"
-          class="group cursor-pointer bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
-        >
-          <div class="relative overflow-hidden aspect-[4/3]">
-            <img 
-              [src]="project.thumbnail" 
-              [alt]="project.titleKey | translate"
-              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            
-            <div class="absolute top-4 left-4">
-              <span class="px-3 py-1 bg-white/90 dark:bg-black/70 backdrop-blur-sm rounded-full text-xs font-semibold">
-                {{ 'portfolio.categories.' + project.category | translate }}
-              </span>
-            </div>
-
-            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <button class="px-6 py-3 bg-white text-gray-900 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-                {{ 'portfolio.viewDetails' | translate }}
-              </button>
-            </div>
-          </div>
-
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-              {{ project.titleKey | translate }}
-            </h3>
-
-            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
-              {{ project.descriptionKey | translate }}
-            </p>
-
-            <div class="flex flex-wrap gap-4 text-xs text-gray-500 dark:text-gray-400 mb-4">
-              <div class="flex items-center gap-1">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
-                {{ project.location }}
-              </div>
-              <div class="flex items-center gap-1">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                </svg>
-                {{ project.year }}
-              </div>
-            </div>
-
-            <div class="flex flex-wrap gap-2">
-              <span 
-                *ngFor="let tag of project.tags.slice(0, 3)" 
-                class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-xs"
-              >
-                {{ tag }}
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
-    <div class="container-apple px-6 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">
-        {{ 'portfolio.cta.title' | translate }}
-      </h2>
-      <p class="text-lg text-gray-200 mb-8 max-w-2xl mx-auto">
-        {{ 'portfolio.cta.subtitle' | translate }}
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a 
-          routerLink="/devis"
-          class="px-8 py-4 rounded-full bg-white text-gray-900 font-semibold
-                 hover:bg-gray-100 transition-colors shadow-lg"
-        >
-          {{ 'portfolio.cta.buttonDevis' | translate }}
-        </a>
-        <a 
-          routerLink="/contact"
-          class="px-8 py-4 rounded-full border-2 border-white text-white font-semibold
-                 hover:bg-white hover:text-gray-900 transition-colors"
-        >
-          {{ 'portfolio.cta.buttonContact' | translate }}
-        </a>
-      </div>
-    </div>
-  </section>
-
+  </div>
 </div>
 
-<div 
-  *ngIf="showModal() && selectedProject()"
-  class="fixed inset-0 z-50 overflow-y-auto"
-  (click)="closeModal()"
->
-  <div class="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity"></div>
+<!-- Grille projets -->
+<section class="py-12 lg:py-16 px-4 md:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
 
-  <div class="relative min-h-screen flex items-center justify-center p-4">
-    <div 
-      class="relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto"
-      (click)="$event.stopPropagation()"
-    >
-      <button 
-        (click)="closeModal()"
-        class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm
-               flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-      >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-        </svg>
-      </button>
-
-      <div class="grid md:grid-cols-2 gap-2 p-2">
-        <img 
-          *ngFor="let image of selectedProject()!.images; let i = index"
-          [src]="image" 
-          [alt]="selectedProject()!.titleKey | translate"
-          [ngClass]="{ 'md:col-span-2': i === 0 }"
-          class="w-full h-44 sm:h-56 md:h-64 object-cover rounded-lg"
-        />
+    <!-- Skeleton projets -->
+    <div *ngIf="loadData" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8">
+      <div *ngFor="let i of [1,2,3,4,5,6]"
+           class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md border border-gray-100 dark:border-gray-800">
+        <div class="aspect-[4/3] bg-gray-200 dark:bg-gray-700 animate-pulse"></div>
+        <div class="p-6 space-y-3">
+          <div class="h-5 bg-gray-200 dark:bg-gray-700 rounded animate-pulse w-3/4"></div>
+          <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></div>
+          <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded animate-pulse w-2/3"></div>
+        </div>
       </div>
+    </div>
 
-      <div class="p-8">
-        <div class="mb-4">
-          <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full text-sm font-semibold">
-            {{ 'portfolio.categories.' + selectedProject()!.category | translate }}
-          </span>
+    <!-- Empty state -->
+    <div *ngIf="!loadData && filteredProjects.length === 0" class="text-center py-20">
+      <div class="w-20 h-20 rounded-full bg-[#0097A7]/10 flex items-center justify-center mx-auto mb-6">
+        <svg class="w-10 h-10 text-[#0097A7]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+        </svg>
+      </div>
+      <h3 class="section-title mb-2">
+        {{ 'portfolio.noResults.title' | translate }}
+      </h3>
+      <p class="text-gray-600 dark:text-gray-400">
+        {{ 'portfolio.noResults.subtitle' | translate }}
+      </p>
+    </div>
+
+    <!-- Grille -->
+    <div *ngIf="!loadData && filteredProjects.length > 0"
+         class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8">
+
+      <div
+        *ngFor="let project of filteredProjects"
+        (click)="openProject(project)"
+        class="group cursor-pointer bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl
+               border border-gray-100 dark:border-gray-800
+               hover:border-[#0097A7] dark:hover:border-[#0097A7]
+               transition-all duration-300 transform hover:-translate-y-1"
+      >
+        <!-- Thumbnail -->
+        <div class="relative overflow-hidden aspect-[4/3]">
+          <img
+            [src]="getThumbnail(project)"
+            [alt]="getTitle(project)"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            (error)="onImageError($event)"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+          <!-- Badge type -->
+          <div class="absolute top-4 left-4">
+            <span class="px-3 py-1 bg-white/90 dark:bg-black/70 backdrop-blur-sm rounded-full text-xs font-semibold text-gray-800 dark:text-gray-100">
+              {{ getCategoryName(project) }}
+            </span>
+          </div>
+
+          <!-- Bouton survol -->
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span class="px-6 py-3 bg-[#0097A7] text-white rounded-full font-semibold shadow-lg">
+              {{ 'portfolio.viewDetails' | translate }}
+            </span>
+          </div>
         </div>
-        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-          {{ selectedProject()!.titleKey | translate }}
-        </h2>
-        <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-          {{ selectedProject()!.descriptionKey | translate }}
-        </p>
-        <div class="grid md:grid-cols-2 gap-6 mb-6">
-          <div>
-            <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-2">
-              {{ 'portfolio.modal.location' | translate }}
-            </h3>
-            <p class="text-gray-900 dark:text-white">{{ selectedProject()!.location }}</p>
-          </div>
-          <div>
-            <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-2">
-              {{ 'portfolio.modal.year' | translate }}
-            </h3>
-            <p class="text-gray-900 dark:text-white">{{ selectedProject()!.year }}</p>
-          </div>
-          <div *ngIf="selectedProject()!.client">
-            <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-2">
-              {{ 'portfolio.modal.client' | translate }}
-            </h3>
-            <p class="text-gray-900 dark:text-white">{{ selectedProject()!.client }}</p>
-          </div>
-          <div *ngIf="selectedProject()!.duration">
-            <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-2">
-              {{ 'portfolio.modal.duration' | translate }}
-            </h3>
-            <p class="text-gray-900 dark:text-white">{{ selectedProject()!.duration }}</p>
-          </div>
-        </div>
-        <div class="mb-6">
-          <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-3">
-            {{ 'portfolio.modal.services' | translate }}
+
+        <!-- Contenu carte -->
+        <div class="p-6">
+          <h3 class="block-title mb-2
+                     group-hover:text-[#0097A7] dark:group-hover:text-[#42B7C4] transition-colors">
+            {{ getTitle(project) }}
           </h3>
-          <div class="flex flex-wrap gap-3">
-            <div 
-              *ngFor="let service of selectedProject()!.services"
-              class="flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-lg"
-            >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
+            {{ getDescription(project) }}
+          </p>
+          <div class="flex flex-wrap gap-4 text-xs text-gray-500 dark:text-gray-400 mb-4">
+            <div class="flex items-center gap-1">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
               </svg>
-              {{ 'services.' + service + '.title' | translate }}
+              {{ project.location }}
+            </div>
+            <div class="flex items-center gap-1">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+              {{ project.year }}
             </div>
           </div>
-        </div>
-        <div>
-          <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-3">
-            Tags
-          </h3>
           <div class="flex flex-wrap gap-2">
-            <span 
-              *ngFor="let tag of selectedProject()!.tags" 
-              class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm"
+            <span
+              *ngFor="let tag of getTags(project).slice(0, 3)"
+              class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs"
             >
               {{ tag }}
             </span>
           </div>
         </div>
-        <div class="mt-8 flex gap-4">
-          <a 
-            routerLink="/devis"
-            class="flex-1 px-6 py-3 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-semibold text-center
-                   hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
-          >
-            {{ 'portfolio.modal.getQuote' | translate }}
-          </a>
-          <a 
-            routerLink="/contact"
-            class="flex-1 px-6 py-3 rounded-full border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white font-semibold text-center
-                   hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-gray-900 transition-colors"
-          >
-            {{ 'portfolio.modal.contact' | translate }}
-          </a>
-        </div>
       </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-16 md:py-20 px-4 md:px-6">
+  <div class="max-w-3xl mx-auto text-center bg-white dark:bg-gray-900
+              rounded-3xl shadow-xl border border-gray-100 dark:border-gray-800 p-8 md:p-12">
+    <h2 class="section-title mb-4">
+      {{ 'portfolio.cta.title' | translate }}
+    </h2>
+    <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-xl mx-auto">
+      {{ 'portfolio.cta.subtitle' | translate }}
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a routerLink="/devis"
+         class="inline-flex items-center justify-center gap-2 bg-[#0097A7] hover:bg-[#42B7C4]
+                text-white font-semibold px-8 py-3.5 rounded-full
+                transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+        {{ 'portfolio.cta.buttonDevis' | translate }}
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+      <a routerLink="/contact"
+         class="inline-flex items-center justify-center px-8 py-3.5 rounded-full
+                border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300
+                hover:border-[#0097A7] hover:text-[#0097A7]
+                dark:hover:border-[#0097A7] dark:hover:text-[#42B7C4]
+                font-semibold transition-all duration-300">
+        {{ 'portfolio.cta.buttonContact' | translate }}
+      </a>
     </div>
   </div>
-</div> -->
-<div class="min-h-screen bg-white dark:bg-gray-900">
+</section>
 
-  <!-- ── Hero ──────────────────────────────────────────────────────────────── -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 text-white">
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.05),transparent_50%),radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.03),transparent_50%)]"></div>
-    <div class="relative z-10 container-apple py-12 md:py-20 lg:py-32">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 animate-[fadeInUp_0.8s_ease-out]">
-          {{ 'portfolio.hero.title' | translate }}
-        </h1>
-        <p class="text-lg md:text-xl text-gray-200 animate-[fadeInUp_0.8s_ease-out_0.2s_backwards]">
-          {{ 'portfolio.hero.subtitle' | translate }}
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Filtres ────────────────────────────────────────────────────────────── -->
-  <section class="sticky top-16 z-40 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-black/5 dark:border-white/10">
-    <div class="container-apple px-6 py-4">
-      <div class="flex flex-wrap gap-3 justify-center">
-
-        <!-- Skeleton filtres -->
-        <ng-container *ngIf="loadData">
-          <div *ngFor="let i of [1,2,3,4,5]"
-               class="w-24 h-9 bg-gray-200 dark:bg-gray-700 rounded-full animate-pulse">
-          </div>
-        </ng-container>
-
-        <!-- Boutons filtres dynamiques -->
-        <ng-container *ngIf="!loadData">
-          <button
-            *ngFor="let cat of categories"
-            (click)="setCategory(cat.value)"
-            [ngClass]="{
-              'bg-gray-900 text-white dark:bg-white dark:text-black': selectedCategory() === cat.value,
-              'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300': selectedCategory() !== cat.value
-            }"
-            class="px-6 py-2 rounded-full font-medium text-sm hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-          >
-            {{ cat.label }}
-          </button>
-        </ng-container>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Grille projets ─────────────────────────────────────────────────────── -->
-  <section class="py-16">
-    <div class="container-apple px-6">
-
-      <!-- Skeleton projets -->
-      <div *ngIf="loadData" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8">
-        <div *ngFor="let i of [1,2,3,4,5,6]"
-             class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg">
-          <div class="aspect-[4/3] bg-gray-200 dark:bg-gray-700 animate-pulse"></div>
-          <div class="p-6 space-y-3">
-            <div class="h-5 bg-gray-200 dark:bg-gray-700 rounded animate-pulse w-3/4"></div>
-            <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></div>
-            <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded animate-pulse w-2/3"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Empty state -->
-      <div *ngIf="!loadData && filteredProjects.length === 0" class="text-center py-20">
-        <div class="text-6xl mb-4">🏗️</div>
-        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-          {{ 'portfolio.noResults.title' | translate }}
-        </h3>
-        <p class="text-gray-600 dark:text-gray-400">
-          {{ 'portfolio.noResults.subtitle' | translate }}
-        </p>
-      </div>
-
-      <!-- Grille -->
-      <div *ngIf="!loadData && filteredProjects.length > 0"
-           class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8">
-
-        <div
-          *ngFor="let project of filteredProjects"
-          (click)="openProject(project)"
-          class="group cursor-pointer bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
-        >
-          <!-- Thumbnail -->
-          <div class="relative overflow-hidden aspect-[4/3]">
-            <img
-              [src]="getThumbnail(project)"
-              [alt]="getTitle(project)"
-              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              (error)="onImageError($event)"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-            <!-- Badge type -->
-            <div class="absolute top-4 left-4">
-              <span class="px-3 py-1 bg-white/90 dark:bg-black/70 backdrop-blur-sm rounded-full text-xs font-semibold">
-                {{ getCategoryName(project) }}
-              </span>
-            </div>
-
-            <!-- Bouton survol -->
-            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <button class="px-6 py-3 bg-white text-gray-900 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-                {{ 'portfolio.viewDetails' | translate }}
-              </button>
-            </div>
-          </div>
-
-          <!-- Contenu carte -->
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2
-                       group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
-              {{ getTitle(project) }}
-            </h3>
-
-            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
-              {{ getDescription(project) }}
-            </p>
-
-            <!-- Meta -->
-            <div class="flex flex-wrap gap-4 text-xs text-gray-500 dark:text-gray-400 mb-4">
-              <div class="flex items-center gap-1">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
-                {{ project.location }}
-              </div>
-              <div class="flex items-center gap-1">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                </svg>
-                {{ project.year }}
-              </div>
-            </div>
-
-            <!-- Tags -->
-            <div class="flex flex-wrap gap-2">
-              <span
-                *ngFor="let tag of getTags(project).slice(0, 3)"
-                class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-xs"
-              >
-                {{ tag }}
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ── CTA ────────────────────────────────────────────────────────────────── -->
-  <section class="py-12 md:py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
-    <div class="container-apple text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">
-        {{ 'portfolio.cta.title' | translate }}
-      </h2>
-      <p class="text-lg text-gray-200 mb-8 max-w-2xl mx-auto">
-        {{ 'portfolio.cta.subtitle' | translate }}
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a routerLink="/devis"
-           class="px-8 py-4 rounded-full bg-white text-gray-900 font-semibold hover:bg-gray-100 transition-colors shadow-lg">
-          {{ 'portfolio.cta.buttonDevis' | translate }}
-        </a>
-        <a routerLink="/contact"
-           class="px-8 py-4 rounded-full border-2 border-white text-white font-semibold hover:bg-white hover:text-gray-900 transition-colors">
-          {{ 'portfolio.cta.buttonContact' | translate }}
-        </a>
-      </div>
-    </div>
-  </section>
-
-</div>
-
-<!-- ── Modal détail ───────────────────────────────────────────────────────────── -->
+<!-- Modal détail -->
 <div
   *ngIf="showModal() && selectedProject()"
   class="fixed inset-0 z-50 overflow-y-auto"
@@ -451,8 +198,11 @@
       <!-- Bouton fermer -->
       <button
         (click)="closeModal()"
-        class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/90
-               backdrop-blur-sm flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+        class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full
+               bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm
+               text-gray-900 dark:text-white
+               hover:bg-white dark:hover:bg-gray-700
+               flex items-center justify-center transition-colors shadow-lg"
       >
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -473,19 +223,20 @@
 
       <!-- Détail -->
       <div class="p-4 md:p-8">
-        <!-- Badge type -->
+        <!-- Badge -->
         <div class="mb-4">
-          <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full text-sm font-semibold">
+          <span class="inline-block px-4 py-1.5 bg-gray-100 dark:bg-gray-800
+                       text-xs font-semibold text-gray-900 dark:text-white rounded-full">
             {{ getCategoryName(selectedProject()!) }}
           </span>
         </div>
 
         <!-- Titre -->
-        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+        <h2 class="section-title mb-4">
           {{ getTitle(selectedProject()!) }}
         </h2>
 
-        <!-- Description HTML -->
+        <!-- Description -->
         <div class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed prose dark:prose-invert max-w-none"
              [innerHTML]="getDescriptionHtml(selectedProject()!)">
         </div>
@@ -493,25 +244,25 @@
         <!-- Infos -->
         <div class="grid md:grid-cols-2 gap-6 mb-6">
           <div>
-            <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-2">
+            <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase mb-2">
               {{ 'portfolio.modal.location' | translate }}
             </h3>
             <p class="text-gray-900 dark:text-white">{{ selectedProject()!.location }}</p>
           </div>
           <div>
-            <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-2">
+            <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase mb-2">
               {{ 'portfolio.modal.year' | translate }}
             </h3>
             <p class="text-gray-900 dark:text-white">{{ selectedProject()!.year }}</p>
           </div>
           <div *ngIf="selectedProject()!.client">
-            <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-2">
+            <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase mb-2">
               {{ 'portfolio.modal.client' | translate }}
             </h3>
             <p class="text-gray-900 dark:text-white">{{ selectedProject()!.client }}</p>
           </div>
           <div *ngIf="selectedProject()!.duration">
-            <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-2">
+            <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase mb-2">
               {{ 'portfolio.modal.duration' | translate }}
             </h3>
             <p class="text-gray-900 dark:text-white">{{ selectedProject()!.duration }} mois</p>
@@ -520,15 +271,16 @@
 
         <!-- Services -->
         <div *ngIf="getServices(selectedProject()!).length > 0" class="mb-6">
-          <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-3">
+          <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase mb-3">
             {{ 'portfolio.modal.services' | translate }}
           </h3>
           <div class="flex flex-wrap gap-3">
             <div
               *ngFor="let service of getServices(selectedProject()!)"
-              class="flex items-center gap-2 px-4 py-2 bg-teal-50 dark:bg-teal-900/20 text-teal-600 dark:text-teal-400 rounded-lg"
+              class="flex items-center gap-2 px-4 py-2 bg-[#0097A7]/10 dark:bg-[#0097A7]/20
+                     text-[#0097A7] dark:text-[#42B7C4] rounded-lg text-sm font-medium"
             >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
               </svg>
               {{ 'services.' + service + '.title' | translate }}
@@ -538,7 +290,7 @@
 
         <!-- Tags -->
         <div *ngIf="getTags(selectedProject()!).length > 0">
-          <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-3">Tags</h3>
+          <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase mb-3">Tags</h3>
           <div class="flex flex-wrap gap-2">
             <span
               *ngFor="let tag of getTags(selectedProject()!)"
@@ -552,11 +304,18 @@
         <!-- Actions -->
         <div class="mt-6 md:mt-8 flex flex-col sm:flex-row gap-3 md:gap-4">
           <a routerLink="/devis"
-             class="flex-1 px-6 py-3 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-semibold text-center hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors">
+             class="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full
+                    bg-[#0097A7] hover:bg-[#42B7C4] text-white font-semibold text-center
+                    transition-all duration-300 shadow-lg hover:shadow-xl">
             {{ 'portfolio.modal.getQuote' | translate }}
           </a>
           <a routerLink="/contact"
-             class="flex-1 px-6 py-3 rounded-full border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white font-semibold text-center hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-gray-900 transition-colors">
+             class="flex-1 inline-flex items-center justify-center px-6 py-3.5 rounded-full
+                    border-2 border-gray-300 dark:border-gray-700
+                    text-gray-700 dark:text-gray-300 font-semibold text-center
+                    hover:border-[#0097A7] hover:text-[#0097A7]
+                    dark:hover:border-[#0097A7] dark:hover:text-[#42B7C4]
+                    transition-all duration-300">
             {{ 'portfolio.modal.contact' | translate }}
           </a>
         </div>

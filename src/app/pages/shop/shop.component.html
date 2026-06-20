@@ -4,10 +4,10 @@
 
   <header class="mb-12 lg:mb-16">
     <div class="text-center mb-8">
-      <h1 class="text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-4">
+      <h1 class="page-title mb-4">
         {{ 'shop.title' | translate }}
       </h1>
-      <p class="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
+      <p class="page-subtitle">
         {{ 'shop.subtitle' | translate }}
       </p>
     </div>
@@ -28,7 +28,7 @@
         <input type="search" 
                placeholder="{{ 'shop.search.placeholder' | translate }}" 
                [(ngModel)]="query"
-               class="w-full pl-12 pr-4 py-3 rounded-full border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:border-gray-900 dark:focus:border-white focus:outline-none transition-all duration-300"/>
+               class="w-full pl-12 pr-4 py-3 rounded-full border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:border-[#0097A7] dark:focus:border-[#0097A7] focus:outline-none transition-all duration-300"/>
         <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
@@ -38,7 +38,7 @@
 
   <section class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
     <article *ngFor="let p of visibleProducts; let i = index"
-             class="group bg-white dark:bg-gray-900 rounded-2xl shadow-md hover:shadow-2xl overflow-hidden flex flex-col transition-all duration-300 transform hover:-translate-y-2 cursor-pointer opacity-0 animate-fade-up border border-gray-100 dark:border-gray-800"
+             class="group bg-white dark:bg-gray-900 rounded-2xl shadow-md hover:shadow-xl overflow-hidden flex flex-col transition-all duration-300 transform hover:-translate-y-1 cursor-pointer opacity-0 animate-fade-up border border-gray-100 dark:border-gray-800 hover:border-[#0097A7] dark:hover:border-[#0097A7]"
              [style.animationDelay]="delayForIndex(i)"
              (click)="openDetail(p)">
       
@@ -53,7 +53,7 @@
       </div>
 
       <div class="p-5 flex flex-col flex-1">
-        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-1 group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors">
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-1 group-hover:text-[#0097A7] dark:group-hover:text-[#42B7C4] transition-colors">
           {{ p.title }}
         </h3>
         <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 flex-1 mb-4">
@@ -77,7 +77,7 @@
              target="_blank" 
              rel="noopener"
              (click)="$event.stopPropagation()"
-             class="block w-full text-center px-4 py-2.5 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl">
+             class="block w-full text-center px-4 py-2.5 rounded-full bg-[#0097A7] hover:bg-[#42B7C4] text-white transition-all duration-300 font-semibold shadow-lg hover:shadow-xl">
             {{ 'shop.buttons.buy' | translate }}
           </a>
         </div>
@@ -89,7 +89,7 @@
     <svg class="w-24 h-24 mx-auto text-gray-300 dark:text-gray-700 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
     </svg>
-    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Aucun produit trouvé</h3>
+    <h3 class="section-title mb-2">Aucun produit trouvé</h3>
     <p class="text-gray-600 dark:text-gray-400">Essayez de modifier vos filtres ou votre recherche</p>
   </div>
 
@@ -127,7 +127,7 @@
               {{ selectedProduct.category }}
             </span>
 
-            <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">
+            <h2 class="section-title mb-4">
               {{ selectedProduct.title }}
             </h2>
             
@@ -179,7 +179,7 @@
             
             <div class="flex gap-3">
               <button (click)="addToCart(selectedProduct)" 
-                      class="flex-1 px-6 py-3.5 rounded-full border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-gray-900 font-semibold transition-all duration-300 flex items-center justify-center gap-2">
+                      class="flex-1 px-6 py-3.5 rounded-full border-2 border-[#0097A7] text-[#0097A7] dark:text-[#42B7C4] dark:border-[#0097A7] hover:bg-[#0097A7] hover:text-white dark:hover:bg-[#0097A7] dark:hover:text-white font-semibold transition-all duration-300 flex items-center justify-center gap-2">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
@@ -189,7 +189,7 @@
               <a [href]="selectedProduct.link || '#'" 
                  target="_blank" 
                  rel="noopener"
-                 class="flex-1 px-6 py-3.5 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+                 class="flex-1 px-6 py-3.5 rounded-full bg-[#0097A7] hover:bg-[#42B7C4] text-white font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
@@ -253,10 +253,10 @@
 
   <header class="mb-12 lg:mb-16">
     <div class="text-center mb-8">
-      <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-4">
+      <h1 class="page-title mb-4">
         {{ 'shop.title' | translate }}
       </h1>
-      <p class="text-gray-600 dark:text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
+      <p class="page-subtitle">
         {{ 'shop.subtitle' | translate }}
       </p>
     </div>
@@ -266,7 +266,7 @@
         <button *ngFor="let cat of categories"
                 (click)="filter = cat.key"
                 [class]="filter === cat.key
-                  ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900 shadow-lg scale-105'
+                  ? 'bg-[#0097A7] text-white shadow-lg scale-105'
                   : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'"
                 class="px-4 md:px-6 py-2 md:py-2.5 rounded-full font-semibold transition-all duration-300 transform text-sm md:text-base">
           {{ cat.label | translate }}
@@ -277,7 +277,7 @@
         <input type="search"
                placeholder="{{ 'shop.search.placeholder' | translate }}"
                [(ngModel)]="query"
-               class="w-full pl-12 pr-4 py-3 rounded-full border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:border-gray-900 dark:focus:border-white focus:outline-none transition-all duration-300"/>
+               class="w-full pl-12 pr-4 py-3 rounded-full border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:border-[#0097A7] dark:focus:border-[#0097A7] focus:outline-none transition-all duration-300"/>
         <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
@@ -302,7 +302,7 @@
   <!-- Grille produits -->
   <section *ngIf="!loadData" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
     <article *ngFor="let p of visibleProducts; let i = index"
-             class="group bg-white dark:bg-gray-900 rounded-2xl shadow-md hover:shadow-2xl overflow-hidden flex flex-col transition-all duration-300 transform hover:-translate-y-2 cursor-pointer opacity-0 animate-fade-up border border-gray-100 dark:border-gray-800"
+             class="group bg-white dark:bg-gray-900 rounded-2xl shadow-md hover:shadow-xl overflow-hidden flex flex-col transition-all duration-300 transform hover:-translate-y-1 cursor-pointer opacity-0 animate-fade-up border border-gray-100 dark:border-gray-800 hover:border-[#0097A7] dark:hover:border-[#0097A7]"
              [style.animationDelay]="delayForIndex(i)"
              (click)="openDetail(p)">
 
@@ -318,7 +318,7 @@
       </div>
 
       <div class="p-5 flex flex-col flex-1">
-        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-1 group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors">
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-1 group-hover:text-[#0097A7] dark:group-hover:text-[#42B7C4] transition-colors">
           {{ getTitle(p) }}
         </h3>
         <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 flex-1 mb-4">
@@ -331,7 +331,7 @@
               {{ formatPrice(p.price) }}
             </span>
             <button (click)="addToCart(p); $event.stopPropagation()"
-                    class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-900 dark:hover:bg-white text-gray-900 dark:text-white hover:text-white dark:hover:text-gray-900 transition-all duration-300 flex items-center justify-center">
+                    class="w-10 h-10 rounded-full bg-[#0097A7]/10 hover:bg-[#0097A7] text-[#0097A7] hover:text-white transition-all duration-300 flex items-center justify-center">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
@@ -352,7 +352,7 @@
     <svg class="w-24 h-24 mx-auto text-gray-300 dark:text-gray-700 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
     </svg>
-    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Aucun produit trouvé</h3>
+    <h3 class="section-title mb-2">Aucun produit trouvé</h3>
     <p class="text-gray-600 dark:text-gray-400">Essayez de modifier vos filtres ou votre recherche</p>
   </div>
 
@@ -452,7 +452,7 @@
 
             <div class="flex gap-3">
               <button (click)="addToCart(selectedProduct)"
-                      class="flex-1 px-6 py-3.5 rounded-full border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-gray-900 font-semibold transition-all duration-300 flex items-center justify-center gap-2">
+                      class="flex-1 px-6 py-3.5 rounded-full border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-[#0097A7] hover:text-[#0097A7] dark:hover:border-[#0097A7] dark:hover:text-[#42B7C4] font-semibold transition-all duration-300 flex items-center justify-center gap-2">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>

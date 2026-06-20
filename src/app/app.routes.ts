@@ -18,16 +18,6 @@ export const routes: Routes = [
           import('./pages/home/article-detail/article-detail.component').then(m => m.ArticleDetailComponent),
       },
       {
-        path: 'iphone',
-        loadComponent: () =>
-          import('./pages/iphone/iphone.page').then(m => m.IphonePage),
-      },
-      {
-        path: 'mac',
-        loadComponent: () =>
-          import('./pages/mac/mac.page').then(m => m.MacPage),
-      },
-      {
         path: 'securite',
         loadComponent: () =>
           import('./pages/securite/securite.component').then(m => m.SecuriteComponent),

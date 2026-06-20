@@ -8,6 +8,8 @@ import { RootService } from '../../shared/services/root.service';
 import { SnackBarService } from '../../shared/services/snackBar.service';
 import { TranslateService } from '@ngx-translate/core';
 
+const STORAGE_BASE = 'https://admin.itsloneed.com/storage/';
+
 @Component({
   selector: 'app-cart',
   standalone: true,
@@ -82,6 +84,12 @@ export class CartComponent implements OnInit, OnDestroy {
     return this.items.length === 0;
   }
 
+  getImageUrl(path: string): string {
+    if (!path) return 'assets/images/placeholder.png';
+    if (path.startsWith('http')) return path;
+    return STORAGE_BASE + path;
+  }
+
   openOrderForm(): void {
     this.showOrderForm = true;
     document.body.style.overflow = 'hidden';
@@ -111,28 +119,23 @@ export class CartComponent implements OnInit, OnDestroy {
       total: this.total,
     };
 
-    this.snackbar
-      .showConfirmation('Voulez-vous envoyer votre panier par email ?')
-      .then((result) => {
-        if (result['value'] === true) {
-          this.loadData = true;
-          this.rootService
-            .add('commande', payload)
-            .pipe(takeUntil(this.destroy$))
-            .subscribe({
-              next: () => {
-                this.loadData = false;
-                this.closeOrderForm();
-                this.orderForm = { name: '', email: '', phone: '', message: '' };
-                this.snackbar.showSimpleNotification('Ok', 'Votre panier a été envoyé avec succès. Nous vous contacterons sous 24h.');
-              },
-              error: (err) => {
-                console.error(err);
-                this.loadData = false;
-                this.snackbar.showSimpleNotification('Erreur', 'Une erreur est survenue. Veuillez réessayer.');
-              },
-            });
-        }
+    this.loadData = true;
+    this.rootService
+      .add('commande', payload)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: () => {
+          this.loadData = false;
+          this.closeOrderForm();
+          this.cartService.clearCart();
+          this.orderForm = { name: '', email: '', phone: '', message: '' };
+          this.snackbar.showSimpleNotification('Ok', 'Votre commande a été envoyée avec succès. Nous vous contacterons sous 24h.');
+        },
+        error: (err) => {
+          console.error(err);
+          this.loadData = false;
+          this.snackbar.showSimpleNotification('Erreur', 'Une erreur est survenue. Veuillez réessayer.');
+        },
       });
   }
 }

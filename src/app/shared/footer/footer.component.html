@@ -1,16 +1,16 @@
 <footer class="bg-gray-50 dark:bg-gray-900 text-gray-600 dark:text-gray-400 border-t border-black/5 mt-16">
-  <div class="container-apple py-8 text-sm">
+  <div class="container-apple py-8">
 
     <!-- Message promo -->
-    <p class="mb-6 text-center md:text-left">{{ 'footer.promo' | translate }}</p>
+    <p class="footer-col-link mb-6 text-center md:text-left">{{ 'footer.promo' | translate }}</p>
 
     <!-- Colonnes -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
       <div *ngFor="let c of cols">
-        <h3 class="text-gray-900 dark:text-white font-semibold mb-3">{{ c.titleKey | translate }}</h3>
+        <h3 class="footer-col-title">{{ c.titleKey | translate }}</h3>
         <ul class="space-y-2">
           <li *ngFor="let link of c.links">
-            <a [routerLink]="link.route" class="hover:text-gray-900 dark:hover:text-white transition-colors">
+            <a [routerLink]="link.route" class="footer-col-link">
               {{ getLinkTranslation(link.label) }}
             </a>
           </li>
@@ -20,16 +20,13 @@
 
     <!-- Bas du footer -->
     <div class="mt-8 border-t border-black/10 dark:border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-      <span class="text-xs">© {{ currentYear }} MonEntreprise. {{ 'footer.rights' | translate }}</span>
-      <div class="flex gap-6 text-xs">
-        <a routerLink="/privacy" class="hover:text-gray-900 dark:hover:text-white transition-colors">
+      <span class="footer-legal">© Loneedonline. {{ 'footer.rights' | translate }}</span>
+      <div class="flex gap-6">
+        <a routerLink="/privacy" class="footer-legal hover:text-gray-900 dark:hover:text-white transition-colors">
           {{ 'footer.privacy' | translate }}
         </a>
-        <a routerLink="/terms" class="hover:text-gray-900 dark:hover:text-white transition-colors">
+        <a routerLink="/terms" class="footer-legal hover:text-gray-900 dark:hover:text-white transition-colors">
           {{ 'footer.terms' | translate }}
-        </a>
-        <a routerLink="/sitemap" class="hover:text-gray-900 dark:hover:text-white transition-colors">
-          {{ 'footer.sitemap' | translate }}
         </a>
       </div>
     </div>

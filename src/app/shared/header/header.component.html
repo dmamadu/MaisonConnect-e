@@ -7,23 +7,23 @@
         <img
           src="assets/images/logo_loneed.jpg"
           alt="LONEED Logo"
-          class="h-8 sm:h-9 w-auto object-contain"
+          class="h-10 sm:h-12 w-auto object-contain"
         />
-        <span class="hidden sm:inline text-sm font-bold tracking-tight text-gray-900 dark:text-white">
+        <span class="hidden sm:inline nav-brand">
           LONEED
         </span>
       </a>
     </div>
 
     <!-- CENTER : Desktop Menu -->
-    <ul class="hidden lg:flex items-center gap-4 xl:gap-6 text-[11px] xl:text-xs font-normal text-gray-600 dark:text-gray-400 absolute left-1/2 -translate-x-1/2">
+    <ul class="hidden lg:flex items-center gap-4 xl:gap-6 text-gray-600 dark:text-gray-400 absolute left-1/2 -translate-x-1/2">
 
       <!-- Accueil, À propos -->
       <li *ngFor="let item of menuItems">
         <a
           [routerLink]="item.link"
           routerLinkActive="text-[#0097A7]"
-          class="hover:text-[#0097A7] transition-colors py-1 whitespace-nowrap"
+          class="nav-item py-1"
         >
           {{ item.labelKey | translate }}
         </a>
@@ -39,7 +39,7 @@
         <a
           [routerLink]="menu.link"
           routerLinkActive="text-[#0097A7]"
-          class="flex items-center gap-0.5 hover:text-[#0097A7] transition-colors py-1 whitespace-nowrap"
+          class="nav-item flex items-center gap-0.5 py-1"
         >
           <span class="hidden xl:inline">{{ menu.labelKey | translate }}</span>
           <span class="xl:hidden">{{ menu.icon }}</span>
@@ -57,11 +57,10 @@
                  py-3 px-2 min-w-[220px] animate-fadeIn z-50"
         >
           <div class="space-y-1">
-            <a 
+            <a
               *ngFor="let item of menu.submenu"
               [routerLink]="item.link"
               class="flex items-center gap-2.5 px-3 py-2 rounded-lg
-                     text-sm text-gray-700 dark:text-gray-300
                      hover:bg-gray-100 dark:hover:bg-zinc-800/80
                      hover:text-black dark:hover:text-white
                      transition-all group"
@@ -69,7 +68,7 @@
               <span *ngIf="item.icon" class="text-lg group-hover:scale-105 transition-transform">
                 {{ item.icon }}
               </span>
-              <span class="font-medium text-xs">{{ item.labelKey | translate }}</span>
+              <span class="nav-dropdown-item">{{ item.labelKey | translate }}</span>
             </a>
           </div>
         </div>
@@ -80,14 +79,14 @@
         <a
           [routerLink]="item.link"
           routerLinkActive="text-[#0097A7]"
-          class="hover:text-[#0097A7] transition-colors py-1 whitespace-nowrap"
+          class="nav-item py-1"
         >
           {{ item.labelKey | translate }}
         </a>
       </li>
 
       <!-- Boutique (avec sous-menu) -->
-      <li 
+      <li
         class="relative"
         (mouseenter)="showSubmenu(boutiqueMenu.labelKey)"
         (mouseleave)="scheduleHideSubmenu()"
@@ -95,7 +94,7 @@
         <a
           [routerLink]="boutiqueMenu.link"
           routerLinkActive="text-[#0097A7]"
-          class="flex items-center gap-0.5 hover:text-[#0097A7] transition-colors py-1 whitespace-nowrap"
+          class="nav-item flex items-center gap-0.5 py-1"
         >
           <span class="hidden xl:inline">{{ boutiqueMenu.labelKey | translate }}</span>
           <span class="xl:hidden">{{ boutiqueMenu.icon }}</span>
@@ -113,11 +112,10 @@
                  py-3 px-2 min-w-[220px] animate-fadeIn z-50"
         >
           <div class="space-y-1">
-            <a 
+            <a
               *ngFor="let item of boutiqueMenu.submenu"
               [routerLink]="item.link"
               class="flex items-center gap-2.5 px-3 py-2 rounded-lg
-                     text-sm text-gray-700 dark:text-gray-300
                      hover:bg-gray-100 dark:hover:bg-zinc-800/80
                      hover:text-black dark:hover:text-white
                      transition-all group"
@@ -125,7 +123,7 @@
               <span *ngIf="item.icon" class="text-lg group-hover:scale-105 transition-transform">
                 {{ item.icon }}
               </span>
-              <span class="font-medium text-xs">{{ item.labelKey | translate }}</span>
+              <span class="nav-dropdown-item">{{ item.labelKey | translate }}</span>
             </a>
           </div>
         </div>
@@ -136,7 +134,7 @@
         <a
           [routerLink]="item.link"
           routerLinkActive="text-[#0097A7]"
-          class="hover:text-[#0097A7] transition-colors py-1 whitespace-nowrap"
+          class="nav-item py-1"
         >
           {{ item.labelKey | translate }}
         </a>
@@ -242,11 +240,11 @@
 
       <!-- Accueil, À propos -->
       <li *ngFor="let item of menuItems">
-        <a 
+        <a
           [routerLink]="item.link"
           (click)="closeMobileMenu()"
           routerLinkActive="bg-gray-100 dark:bg-zinc-800 font-semibold"
-          class="block py-2.5 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 
+          class="nav-mobile-item block py-2.5 px-3 rounded-lg
                  hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition-colors"
         >
           {{ item.labelKey | translate }}
@@ -267,8 +265,8 @@
           [routerLink]="menu.link"
           (click)="closeMobileMenu()"
           routerLinkActive="bg-gray-100 dark:bg-zinc-800 font-semibold"
-          class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-sm
-                 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition-colors"
+          class="nav-mobile-item flex items-center gap-2 py-2.5 px-3 rounded-lg
+                 hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition-colors"
         >
           <span *ngIf="menu.icon">{{ menu.icon }}</span>
           <span class="font-medium">{{ menu.labelKey | translate }}</span>
@@ -278,8 +276,8 @@
         <ng-container *ngIf="menu.submenu && menu.submenu.length > 0">
           <button
             (click)="toggleMobileSubmenu(menu.labelKey)"
-            class="w-full flex items-center justify-between py-2.5 px-3 rounded-lg text-sm
-                   text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-800/50"
+            class="nav-mobile-item w-full flex items-center justify-between py-2.5 px-3 rounded-lg
+                   hover:bg-gray-50 dark:hover:bg-zinc-800/50"
           >
             <div class="flex items-center gap-2">
               <span *ngIf="menu.icon">{{ menu.icon }}</span>
@@ -299,11 +297,11 @@
               *ngFor="let item of menu.submenu"
               [routerLink]="item.link"
               (click)="closeMobileMenu()"
-              class="flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm
-                     text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-zinc-800/50"
+              class="nav-mobile-item flex items-center gap-2.5 py-2 px-3 rounded-lg
+                     hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition-colors"
             >
               <span *ngIf="item.icon" class="text-base">{{ item.icon }}</span>
-              <span class="text-sm">{{ item.labelKey | translate }}</span>
+              <span>{{ item.labelKey | translate }}</span>
             </a>
           </div>
         </ng-container>
@@ -316,11 +314,11 @@
 
       <!-- Réalisations, Blog -->
       <li *ngFor="let item of menuItemsAfter">
-        <a 
+        <a
           [routerLink]="item.link"
           (click)="closeMobileMenu()"
           routerLinkActive="bg-gray-100 dark:bg-zinc-800 font-semibold"
-          class="block py-2.5 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 
+          class="nav-mobile-item block py-2.5 px-3 rounded-lg
                  hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition-colors"
         >
           {{ item.labelKey | translate }}
@@ -340,8 +338,8 @@
           [routerLink]="boutiqueMenu.link"
           (click)="closeMobileMenu()"
           routerLinkActive="bg-gray-100 dark:bg-zinc-800 font-semibold"
-          class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-sm
-                 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition-colors"
+          class="nav-mobile-item flex items-center gap-2 py-2.5 px-3 rounded-lg
+                 hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition-colors"
         >
           <span *ngIf="boutiqueMenu.icon">{{ boutiqueMenu.icon }}</span>
           <span class="font-medium">{{ boutiqueMenu.labelKey | translate }}</span>
@@ -351,8 +349,8 @@
         <ng-container *ngIf="boutiqueMenu.submenu && boutiqueMenu.submenu.length > 0">
           <button
             (click)="toggleMobileSubmenu(boutiqueMenu.labelKey)"
-            class="w-full flex items-center justify-between py-2.5 px-3 rounded-lg text-sm
-                   text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-800/50"
+            class="nav-mobile-item w-full flex items-center justify-between py-2.5 px-3 rounded-lg
+                   hover:bg-gray-50 dark:hover:bg-zinc-800/50"
           >
             <div class="flex items-center gap-2">
               <span *ngIf="boutiqueMenu.icon">{{ boutiqueMenu.icon }}</span>
@@ -372,11 +370,11 @@
               *ngFor="let item of boutiqueMenu.submenu"
               [routerLink]="item.link"
               (click)="closeMobileMenu()"
-              class="flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm
-                     text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-zinc-800/50"
+              class="nav-mobile-item flex items-center gap-2.5 py-2 px-3 rounded-lg
+                     hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition-colors"
             >
               <span *ngIf="item.icon" class="text-base">{{ item.icon }}</span>
-              <span class="text-sm">{{ item.labelKey | translate }}</span>
+              <span>{{ item.labelKey | translate }}</span>
             </a>
           </div>
         </ng-container>
@@ -384,11 +382,11 @@
 
       <!-- Assistance -->
       <li *ngFor="let item of menuItemsFinal">
-        <a 
+        <a
           [routerLink]="item.link"
           (click)="closeMobileMenu()"
           routerLinkActive="bg-gray-100 dark:bg-zinc-800 font-semibold"
-          class="block py-2.5 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 
+          class="nav-mobile-item block py-2.5 px-3 rounded-lg
                  hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition-colors"
         >
           {{ item.labelKey | translate }}

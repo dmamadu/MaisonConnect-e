@@ -179,6 +179,7 @@ import { Component, HostListener, inject, OnDestroy, OnInit } from '@angular/cor
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { RouterLink } from '@angular/router';
 import { CartService } from '../../shared/services/cart.service';
 import { Subject, takeUntil } from 'rxjs';
 import { SnackBarService } from '../../shared/services/snackBar.service';
@@ -208,7 +209,7 @@ export interface ApiProduct {
 @Component({
   selector: 'app-securite',
   standalone: true,
-  imports: [CommonModule, FormsModule, TranslateModule],
+  imports: [CommonModule, FormsModule, TranslateModule, RouterLink],
   templateUrl: './securite.component.html',
   styleUrl: './securite.component.scss'
 })

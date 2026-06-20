@@ -4,10 +4,10 @@
 
   <header class="mb-12 lg:mb-16">
     <div class="text-center mb-8">
-      <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-4">
+      <h1 class="page-title mb-4">
         {{ "energie.title" | translate }}
       </h1>
-      <p class="text-gray-600 dark:text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
+      <p class="page-subtitle">
         {{ "energie.subtitle" | translate }}
       </p>
     </div>
@@ -47,11 +47,7 @@
           placeholder="Rechercher un produit énergie…"
           [(ngModel)]="query"
           aria-label="Rechercher"
-          class="w-full pl-12 pr-4 py-3 rounded-full border-2 border-gray-200 dark:border-gray-700
-                 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white
-                 placeholder-gray-400 dark:placeholder-gray-500
-                 focus:border-[#0097A7] dark:focus:border-[#42B7C4]
-                 focus:outline-none transition-all duration-300"
+          class="search-input"
         />
         <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -88,13 +84,12 @@
 
     <article
       *ngFor="let p of visibleProducts; let i = index"
-      class="group bg-white dark:bg-gray-900 rounded-2xl shadow-md hover:shadow-2xl overflow-hidden
-             flex flex-col transition-all duration-300 transform hover:-translate-y-2 cursor-pointer
-             border border-gray-100 dark:border-gray-800"
+      class="product-card group"
       [style.animationDelay]="delayForIndex(i)"
+      (click)="openDetail(p)"
       tabindex="0"
     >
-      <div class="relative h-56 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
+      <div class="product-card-img-wrap">
         <img
           [src]="getImageUrl(p.image)"
           [alt]="getTitle(p)"
@@ -102,17 +97,11 @@
           loading="lazy"
           (error)="onImageError($event)"
         />
-        <span class="absolute top-3 left-3 px-3 py-1 bg-[#0097A7]/90 backdrop-blur-sm
-                     text-xs font-semibold text-white rounded-full shadow-md">
-          {{ getCategoryName(p) }}
-        </span>
+        <span class="badge-category">{{ getCategoryName(p) }}</span>
       </div>
 
       <div class="p-5 flex flex-col flex-1">
-        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-1
-                   group-hover:text-[#0097A7] dark:group-hover:text-[#42B7C4] transition-colors">
-          {{ getTitle(p) }}
-        </h3>
+        <h3 class="card-title">{{ getTitle(p) }}</h3>
         <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 flex-1 mb-4">
           {{ getDescription(p) }}
         </p>
@@ -122,37 +111,61 @@
             <span class="text-2xl font-extrabold text-gray-900 dark:text-white">
               {{ formatPrice(p.price) }}
             </span>
-            <button
-              (click)="openDetail(p)"
-              class="text-sm font-medium text-[#0097A7] hover:text-[#42B7C4]
-                     dark:text-[#42B7C4] dark:hover:text-white
-                     transition-colors flex items-center gap-1">
+            <button (click)="openDetail(p)" class="card-link-details">
               Détails
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
             </button>
           </div>
-          <button
-            (click)="addToCart(p); $event.stopPropagation()"
-            class="flex items-center justify-center w-full px-4 py-2
-                   rounded-full border-2 border-[#0097A7]
-                   text-[#0097A7] dark:text-[#42B7C4]
-                   hover:bg-[#0097A7] hover:text-white
-                   transition font-medium"
-          >
+          <button (click)="addToCart(p); $event.stopPropagation()" class="btn-cart">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
             Ajouter au panier
           </button>
+          <a routerLink="/devis" (click)="$event.stopPropagation()" class="btn-devis">
+            Demander un devis
+          </a>
         </div>
       </div>
     </article>
   </section>
 
 </section>
+
+<!-- CTA bas de page -->
+<div class="border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900">
+  <div class="max-w-3xl mx-auto px-6 py-12 md:py-16 text-center">
+    <h2 class="section-title mb-4">
+      Passez à l'énergie solaire
+    </h2>
+    <p class="section-subtitle mb-8 max-w-xl mx-auto">
+      Réduisez vos factures et devenez autonome en énergie.
+      Nos équipes vous proposent une solution sur mesure avec devis gratuit sous 24h.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a routerLink="/devis"
+         class="inline-flex items-center gap-2 justify-center bg-[#0097A7] hover:bg-[#42B7C4]
+                text-white font-semibold px-8 py-3.5 rounded-full
+                transition-all duration-300 shadow-md hover:shadow-lg">
+        Demander un devis gratuit
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+      <a routerLink="/contact"
+         class="inline-flex items-center justify-center border-2 border-gray-300 dark:border-gray-700
+                text-gray-700 dark:text-gray-300 font-semibold px-8 py-3.5 rounded-full
+                hover:border-[#0097A7] hover:text-[#0097A7]
+                dark:hover:border-[#0097A7] dark:hover:text-[#42B7C4]
+                transition-all duration-300">
+        Nous contacter
+      </a>
+    </div>
+  </div>
+</div>
 
 <!-- Modal détail -->
 <div
@@ -201,11 +214,11 @@
           <div class="flex-1">
 
             <span class="inline-block px-4 py-1.5 bg-teal-100 dark:bg-teal-900/30
-                         text-teal-700 dark:text-teal-400 text-xs font-semibold rounded-full mb-4">
+                         text-gray-900 dark:text-white text-xs font-semibold rounded-full mb-4">
               {{ getCategoryName(selectedProduct) }}
             </span>
 
-            <h2 class="text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">
+            <h2 class="section-title mb-4">
               {{ getTitle(selectedProduct) }}
             </h2>
 
@@ -225,9 +238,7 @@
               <div class="flex flex-wrap gap-2">
                 <span
                   *ngFor="let h of selectedProduct.highlights"
-                  class="px-4 py-2 bg-teal-50 dark:bg-teal-900/20
-                         border border-teal-200 dark:border-teal-700
-                         rounded-full text-sm text-teal-800 dark:text-teal-300 font-medium"
+                  class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full text-sm text-gray-900 dark:text-white font-medium border border-gray-200 dark:border-gray-700"
                 >
                   {{ h.text }}
                 </span>
@@ -264,11 +275,7 @@
             <div class="flex flex-col sm:flex-row gap-3">
               <button
                 (click)="addToCart(selectedProduct)"
-                class="flex-1 px-6 py-3.5 rounded-full border-2 border-[#0097A7]
-                       text-[#0097A7] dark:text-[#42B7C4]
-                       hover:bg-[#0097A7] hover:text-white
-                       font-semibold transition-all duration-300
-                       flex items-center justify-center gap-2"
+                class="btn-cart flex-1 gap-2"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -280,14 +287,16 @@
                 [href]="selectedProduct.link || '#'"
                 target="_blank"
                 rel="noopener"
-                class="flex-1 text-center px-6 py-3.5 rounded-full
-                       bg-[#0097A7] hover:bg-[#42B7C4] text-white
-                       font-semibold transition-all duration-300
-                       shadow-lg flex items-center justify-center"
+                class="btn-devis flex-1"
               >
                 Commander
               </a>
             </div>
+            <a routerLink="/devis"
+               (click)="closeDetail()"
+               class="btn-devis mt-3">
+              Demander un devis
+            </a>
           </div>
         </div>
       </div>

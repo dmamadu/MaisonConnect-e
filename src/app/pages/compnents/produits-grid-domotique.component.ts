@@ -21,6 +21,7 @@ interface GridCard {
   categorySlug: string;
   categoryRoute: string;
   label: string;
+  fallbackImage: string;
 }
 
 @Component({
@@ -47,13 +48,12 @@ interface GridCard {
                         group transition-all duration-500 hover:scale-[1.01] hover:shadow-2xl
                         min-h-[200px] md:h-[35vh] bg-zinc-900">
 
-              <!-- Image produit -->
-              <img *ngIf="card.product"
-                   [src]="imageUrl(card.product.image)"
-                   [alt]="getTitle(card.product)"
+              <!-- Image produit ou repli catégorie -->
+              <img [src]="card.product ? imageUrl(card.product.image) : card.fallbackImage"
+                   [alt]="card.product ? getTitle(card.product) : card.label"
                    class="absolute inset-0 w-full h-full object-cover
                           group-hover:scale-105 transition-transform duration-700 ease-out"
-                   (error)="onImgError($event)" />
+                   (error)="onImgError($event, card)" />
 
               <!-- Overlay gradient -->
               <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/10"></div>
@@ -69,7 +69,7 @@ interface GridCard {
                 <!-- Titre produit -->
                 <h3 class="text-sm md:text-base font-semibold text-white leading-snug mb-3
                            overflow-hidden" style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">
-                  {{ card.product ? getTitle(card.product) : card.label }}
+                  {{ card.product ? getTitle(card.product) : ('Découvrir ' + card.label) }}
                 </h3>
 
                 <!-- Bouton -->
@@ -91,7 +91,7 @@ interface GridCard {
           </ng-container>
 
           <!-- 5e carte : Support — pleine largeur -->
-          <div class="relative bg-white dark:bg-black rounded-3xl overflow-hidden
+          <!-- <div class="relative bg-white dark:bg-black rounded-3xl overflow-hidden
                       group cursor-pointer transition-all duration-500 hover:scale-[1.01]
                       hover:shadow-2xl border-2 border-gray-200 dark:border-zinc-800
                       p-6 md:p-8 md:col-span-2
@@ -130,7 +130,9 @@ interface GridCard {
                 </button>
               </a>
             </div>
-          </div>
+          </div> -->
+
+          
 
         </div>
       </div>
@@ -142,10 +144,10 @@ export class ProduitsGridDomotiqueComponent implements OnInit, OnDestroy {
 
   loading = true;
   cards: GridCard[] = [
-    { product: null, categorySlug: 'domotique', categoryRoute: '/domotique', label: 'Domotique' },
-    { product: null, categorySlug: 'domotique', categoryRoute: '/domotique', label: 'Domotique' },
-    { product: null, categorySlug: 'energie',   categoryRoute: '/energie',   label: 'Énergie Solaire' },
-    { product: null, categorySlug: 'securite',  categoryRoute: '/securite',  label: 'Sécurité Électronique' },
+    { product: null, categorySlug: 'securite',   categoryRoute: '/securite',   label: 'Sécurité Électronique', fallbackImage: 'https://i.pinimg.com/1200x/3b/2e/f2/3b2ef28bfb6d62e21e88f1c1c5f12345.jpg' },
+    { product: null, categorySlug: 'smart-home', categoryRoute: '/domotique',  label: 'Domotique',             fallbackImage: 'https://i.pinimg.com/1200x/fa/09/26/fa0926e1a56aaa1c1d5eb8bb84f3f29f.jpg' },
+    { product: null, categorySlug: 'energie',    categoryRoute: '/energie',    label: 'Énergie',               fallbackImage: 'https://i.pinimg.com/1200x/e4/4d/a5/e44da5f0251f003cb6e5a3054b24e670.jpg' },
+    { product: null, categorySlug: 'finitions',  categoryRoute: '/finitions',  label: 'Finitions Premium',     fallbackImage: 'https://i.pinimg.com/1200x/7b/12/4f/7b124f42aefb35999bab0f52ebf07e85.jpg' },
   ];
 
   private destroy$ = new Subject<void>();
@@ -157,17 +159,18 @@ export class ProduitsGridDomotiqueComponent implements OnInit, OnDestroy {
       next: (response: any) => {
         const all: ApiProduct[] = Array.isArray(response) ? response : (response?.data ?? []);
 
-        const bySlug = (slug: string) =>
-          all.filter(p => p.category?.slug?.toLowerCase() === slug);
+        const bySlugs = (slugs: string[]) =>
+          all.filter(p => slugs.includes(p.category?.slug?.toLowerCase() ?? ''));
 
-        const domotique = bySlug('domotics');
-        const energie   = bySlug('energie');
-        const securite  = bySlug('electronics');
+        const securite  = bySlugs(['securite', 'security', 'electronics', 'electronic-security']);
+        const domotique = bySlugs(['smart-home', 'domotics', 'home-automation', 'domotique']);
+        const energie   = bySlugs(['energie', 'energy', 'solar', 'solaire', 'energie-solaire']);
+        const finitions = bySlugs(['finitions', 'finition', 'luxury', 'luxe', 'finishing', 'prestations']);
 
-        this.cards[0].product = domotique[0] ?? null;
-        this.cards[1].product = domotique[1] ?? domotique[0] ?? null;
-        this.cards[2].product = energie[0] ?? null;
-        this.cards[3].product = securite[0] ?? null;
+        this.cards[0].product = securite[0]  ?? null;
+        this.cards[1].product = domotique[0] ?? null;
+        this.cards[2].product = energie[0]   ?? null;
+        this.cards[3].product = finitions[0] ?? null;
 
         this.loading = false;
       },
@@ -191,8 +194,13 @@ export class ProduitsGridDomotiqueComponent implements OnInit, OnDestroy {
     return image.startsWith('http') ? image : STORAGE_BASE + image;
   }
 
-  onImgError(event: Event): void {
-    (event.target as HTMLImageElement).style.display = 'none';
+  onImgError(event: Event, card: GridCard): void {
+    const img = event.target as HTMLImageElement;
+    if (img.src !== card.fallbackImage) {
+      img.src = card.fallbackImage;
+    } else {
+      img.style.display = 'none';
+    }
   }
 }
 

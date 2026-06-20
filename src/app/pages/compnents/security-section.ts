@@ -18,11 +18,11 @@ import { RouterLink } from "@angular/router";
         {{ 'Security.badge' | translate }}
       </div>
 
-      <h2 class="text-3xl md:text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+      <h2 class="section-title mb-6 leading-tight">
         {{ 'Security.title' | translate }}
       </h2>
-      
-      <p class="text-base md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8">
+
+      <p class="section-subtitle max-w-3xl mx-auto mb-8">
         {{ 'Security.description' | translate }}
       </p>
 
@@ -57,7 +57,7 @@ import { RouterLink } from "@angular/router";
 
           <!-- Right: Content -->
           <div class="p-12 flex flex-col justify-center">
-            <h3 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+            <h3 class="section-title mb-6">
               {{ 'Security.quality.title' | translate }}
             </h3>
             <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
@@ -98,7 +98,7 @@ import { RouterLink } from "@angular/router";
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
           </svg>
         </div>
-        <h4 class="text-base font-bold text-gray-900 dark:text-white mb-2">
+        <h4 class="block-title mb-2">
           {{ 'Security.services.alarm.title' | translate }}
         </h4>
         <p class="text-sm text-gray-600 dark:text-gray-400">
@@ -113,7 +113,7 @@ import { RouterLink } from "@angular/router";
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
           </svg>
         </div>
-        <h4 class="text-base font-bold text-gray-900 dark:text-white mb-2">
+        <h4 class="block-title mb-2">
           {{ 'Security.services.cctv.title' | translate }}
         </h4>
         <p class="text-sm text-gray-600 dark:text-gray-400">
@@ -128,7 +128,7 @@ import { RouterLink } from "@angular/router";
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
           </svg>
         </div>
-        <h4 class="text-base font-bold text-gray-900 dark:text-white mb-2">
+        <h4 class="block-title mb-2">
           {{ 'Security.services.access.title' | translate }}
         </h4>
         <p class="text-sm text-gray-600 dark:text-gray-400">
@@ -143,7 +143,7 @@ import { RouterLink } from "@angular/router";
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
           </svg>
         </div>
-        <h4 class="text-base font-bold text-gray-900 dark:text-white mb-2">
+        <h4 class="block-title mb-2">
           {{ 'Security.services.intercom.title' | translate }}
         </h4>
         <p class="text-sm text-gray-600 dark:text-gray-400">
@@ -158,7 +158,7 @@ import { RouterLink } from "@angular/router";
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/>
           </svg>
         </div>
-        <h4 class="text-base font-bold text-gray-900 dark:text-white mb-2">
+        <h4 class="block-title mb-2">
           {{ 'Security.services.detection.title' | translate }}
         </h4>
         <p class="text-sm text-gray-600 dark:text-gray-400">

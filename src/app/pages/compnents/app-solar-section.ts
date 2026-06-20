@@ -18,11 +18,11 @@ import { RouterLink } from "@angular/router";
         {{ 'Solar.badge' | translate }}
       </div>
       
-      <h2 class="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+      <h2 class="section-title mb-6">
         {{ 'Solar.title' | translate }}
       </h2>
-      
-      <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+
+      <p class="section-subtitle max-w-3xl mx-auto">
         {{ 'Solar.description' | translate }}
       </p>
     </div>
@@ -40,7 +40,7 @@ import { RouterLink } from "@angular/router";
           </svg>
         </div>
         
-        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+        <h3 class="block-title mb-3">
           {{ 'Solar.installations.kits.title' | translate }}
         </h3>
         
@@ -57,7 +57,7 @@ import { RouterLink } from "@angular/router";
           </svg>
         </div>
         
-        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+        <h3 class="block-title mb-3">
           {{ 'Solar.installations.batteries.title' | translate }}
         </h3>
         
@@ -74,7 +74,7 @@ import { RouterLink } from "@angular/router";
           </svg>
         </div>
         
-        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+        <h3 class="block-title mb-3">
           {{ 'Solar.installations.inverters.title' | translate }}
         </h3>
         
@@ -91,7 +91,7 @@ import { RouterLink } from "@angular/router";
           </svg>
         </div>
         
-        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+        <h3 class="block-title mb-3">
           {{ 'Solar.installations.hybrid.title' | translate }}
         </h3>
         
@@ -108,7 +108,7 @@ import { RouterLink } from "@angular/router";
           </svg>
         </div>
         
-        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+        <h3 class="block-title mb-3">
           {{ 'Solar.installations.backup.title' | translate }}
         </h3>
         

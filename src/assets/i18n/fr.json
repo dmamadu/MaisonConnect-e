@@ -14,13 +14,13 @@
     "assistance": "Assistance",
     "shop": {
       "boutique": "Boutique",
-      "securite": "Produits de sécurité",
+      "securite": "Produits de sécurité électronique",
       "domotique": "Accessoires domotiques",
       "solaire": "Équipements solaires",
       "finition": "Materiaux de finition premium"
     },
     "finitionPrestationLuxe":{
-        "finition": "Finitions",
+        "finition": "Finition Premium",
         "peinture": "Peinture & revêtements premium",
         "carrelage": "Carrelage & marbre haut de gamme",
         "menuiserie": "Menuiserie sur mesure",
@@ -63,7 +63,7 @@
     "premiumWarranty": "Garantie Premium",
     "Support": "Support 24/7",
 
-    "security": "Sécurité",
+    "security": "Sécurité Électronique",
     "securityDescription": "Systèmes de surveillance avancés",
 
     "automation": "Domotique",
@@ -72,7 +72,7 @@
     "solar": "Énergie Solaire",
     "solarDescription": "Solutions énergétiques durables",
 
-    "finishing": "Finitions",
+    "finishing": "Finition Premium",
     "finishingDescription": "Design haut de gamme"
   },
   "hero": {
@@ -450,7 +450,7 @@
 
 
 "footer": {
-  "promo": "Profitez de nos offres exceptionnelles !",
+  "promo": "Loneed — Votre maison, plus intelligente, plus sûre, plus économe",
   "rights": "Tous droits réservés",
   "privacy": "Politique de confidentialité",
   "terms": "Conditions générales",
@@ -465,10 +465,10 @@
       "a-propos": "À propos",
       "realisations": "Réalisations",
       "blog": "Blog",
-      "securite": "Sécurité",
+      "securite": "Sécurité Électronique",
       "domotique": "Domotique",
-      "solaire": "Énergie",
-      "finitions": "Finitions",
+      "solaire": "Énergie Solaire",
+      "finitions": "Finition Premium",
       "devis": "Devis",
       "boutique": "Boutique",
       "assistance": "Assistance",
@@ -658,9 +658,9 @@
   },
   "categories": {
     "all": "Tous",
-    "securite": "Sécurité",
+    "securite": "Sécurité Électronique",
     "domotique": "Domotique",
-    "energie": "Énergie",
+    "energie": "Énergie Solaire",
     "packs": "Packs",
     "accessory": "Accessoires"
   }
@@ -1084,7 +1084,7 @@
     },
     "categories": {
       "all": "Tous",
-      "security": "Sécurité",
+      "security": "Sécurité Électronique",
       "domotique": "Domotique",
       "solar": "Solaire",
       "tips": "Conseils"
@@ -1134,28 +1134,28 @@
       
       "security": {
         "category": "Protection 24/7",
-        "title": "Sécurité",
+        "title": "Sécurité Électronique",
         "description": "Caméras intelligentes, alarmes connectées et contrôle d'accès pour une protection totale de votre domicile",
         "cta": "Sécuriser ma maison"
       },
-      
+
       "automation": {
         "category": "Confort intelligent",
         "title": "Domotique",
         "description": "Contrôlez l'éclairage, le chauffage, les volets et tous vos équipements depuis une seule application",
         "cta": "Automatiser mon habitat"
       },
-      
+
       "energy": {
         "category": "Économies durables",
-        "title": "Énergie",
+        "title": "Énergie Solaire",
         "description": "Optimisez votre consommation avec panneaux solaires, batteries et gestion intelligente de l'énergie",
         "cta": "Réduire ma facture"
       },
-      
+
       "finishing": {
         "category": "Design & Qualité",
-        "title": "Finition",
+        "title": "Finition Premium",
         "description": "Prises, interrupteurs design et finitions haut de gamme pour sublimer votre intérieur",
         "cta": "Personnaliser mon style"
       }
@@ -1180,7 +1180,7 @@
 
   "finitions": {
     "badge": "Prestations & Luxe",
-    "title": "Finitions & Prestations",
+    "title": "Finition Premium & Prestations",
     "subtitle": "Des finitions haut de gamme pour sublimer votre intérieur. Peinture, carrelage, menuiserie, design d'intérieur et plafonds réalisés par nos artisans experts.",
     "cta": "Demander un devis gratuit"
   }

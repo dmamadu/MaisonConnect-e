@@ -23,11 +23,11 @@ const STORAGE_BASE = 'https://admin.itsloneed.com/storage/';
         </div>
       </div>
 
-      <h2 class="text-2xl md:text-3xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+      <h2 class="section-title mb-4">
         {{ 'Clients.title' | translate }}
       </h2>
 
-      <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+      <p class="section-subtitle max-w-3xl mx-auto">
         {{ 'Clients.subtitle' | translate }}
       </p>
     </div>

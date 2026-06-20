@@ -1,106 +1,107 @@
-<div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-  <!-- Hero Section -->
-  <div class="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 text-white">
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.05),transparent_50%),radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.03),transparent_50%)]"></div>
-    
-    <div class="relative z-10 mx-auto max-w-4xl px-4 md:px-6 py-12 md:py-20 text-center lg:py-32">
-      <h1 class="mb-6 text-3xl font-bold leading-tight tracking-tight md:text-5xl lg:text-6xl animate-[fadeInUp_0.8s_ease-out]">
-        {{ 'devis.title' | translate }}
-      </h1>
-      <p class="text-lg text-gray-200 md:text-xl lg:text-2xl animate-[fadeInUp_0.8s_ease-out_0.2s_backwards]">
-        {{ 'devis.subtitle' | translate }}
-      </p>
-    </div>
-  </div>
+<!-- Fond dynamique -->
+<div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-black -z-10"></div>
 
-  <!-- Form Section -->
-  <div class="px-4 md:px-6 py-10 md:py-12 lg:py-16">
-    <div class="mx-auto max-w-3xl rounded-3xl bg-white p-5 md:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.08),0_4px_16px_rgba(0,0,0,0.04)] animate-[fadeInScale_0.6s_ease-out_0.3s_backwards] lg:p-12">
-      
-      <!-- Progress Bar -->
+<section class="min-h-screen px-4 md:px-6 lg:px-8 py-12 lg:py-20 relative max-w-7xl mx-auto">
+
+  <!-- Hero -->
+  <header class="text-center mb-12 lg:mb-16">
+    <h1 class="page-title mb-4">
+      {{ 'devis.title' | translate }}
+    </h1>
+    <p class="page-subtitle">
+      {{ 'devis.subtitle' | translate }}
+    </p>
+  </header>
+
+  <!-- Formulaire multi-étapes -->
+  <div class="max-w-3xl mx-auto">
+    <div class="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800
+                p-5 md:p-8 shadow-xl lg:p-12">
+
+      <!-- Barre de progression -->
       <div class="mb-12 flex items-center gap-4">
-        <div class="flex-1 h-1 bg-gray-200 rounded-full overflow-hidden">
-          <div 
-            class="h-full bg-gradient-to-r from-blue-600 to-blue-500 rounded-full transition-all duration-400 shadow-[0_0_12px_rgba(0,113,227,0.3)]"
+        <div class="flex-1 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+          <div
+            class="h-full bg-[#0097A7] rounded-full transition-all duration-500"
             [style.width.%]="progressPercentage">
           </div>
         </div>
-        <span class="min-w-[48px] text-right text-sm font-semibold text-gray-900">
+        <span class="min-w-[48px] text-right text-sm font-semibold text-gray-900 dark:text-white">
           {{ currentStep }} / {{ totalSteps }}
         </span>
       </div>
 
-      <!-- Step 1: Types de projets -->
+      <!-- Étape 1 : Types de projets -->
       <div *ngIf="currentStep === 1" class="animate-[stepFadeIn_0.4s_ease-out]">
-        <h2 class="mb-8 text-3xl font-bold text-gray-900 tracking-tight md:text-4xl">
+        <h2 class="section-title mb-8 tracking-tight">
           {{ 'devis.step1.title' | translate }}
         </h2>
-        
+
         <div class="space-y-3">
-          <label class="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-gray-200 bg-white p-4 transition-all hover:border-blue-300 hover:bg-blue-50/50">
-            <input 
-              type="checkbox" 
-              class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded-md border-2 border-gray-300 transition-all checked:bg-blue-600 checked:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+          <label class="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 transition-all hover:border-[#0097A7] hover:bg-[#0097A7]/5">
+            <input
+              type="checkbox"
+              class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded-md border-2 border-gray-300 transition-all checked:bg-[#0097A7] checked:border-[#0097A7] focus:outline-none focus:ring-4 focus:ring-[#0097A7]/10"
               [(ngModel)]="formData.securityElectronic" />
-            <span class="text-sm font-medium text-gray-900">
+            <span class="text-sm font-medium text-gray-900 dark:text-white">
               {{ 'devis.step1.security' | translate }}
             </span>
           </label>
 
-          <label class="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-gray-200 bg-white p-4 transition-all hover:border-blue-300 hover:bg-blue-50/50">
-            <input 
-              type="checkbox" 
-              class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded-md border-2 border-gray-300 transition-all checked:bg-blue-600 checked:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+          <label class="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 transition-all hover:border-[#0097A7] hover:bg-[#0097A7]/5">
+            <input
+              type="checkbox"
+              class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded-md border-2 border-gray-300 transition-all checked:bg-[#0097A7] checked:border-[#0097A7] focus:outline-none focus:ring-4 focus:ring-[#0097A7]/10"
               [(ngModel)]="formData.smartHome" />
-            <span class="text-sm font-medium text-gray-900">
+            <span class="text-sm font-medium text-gray-900 dark:text-white">
               {{ 'devis.step1.smartHome' | translate }}
             </span>
           </label>
 
-          <label class="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-gray-200 bg-white p-4 transition-all hover:border-blue-300 hover:bg-blue-50/50">
-            <input 
-              type="checkbox" 
-              class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded-md border-2 border-gray-300 transition-all checked:bg-blue-600 checked:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+          <label class="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 transition-all hover:border-[#0097A7] hover:bg-[#0097A7]/5">
+            <input
+              type="checkbox"
+              class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded-md border-2 border-gray-300 transition-all checked:bg-[#0097A7] checked:border-[#0097A7] focus:outline-none focus:ring-4 focus:ring-[#0097A7]/10"
               [(ngModel)]="formData.solarInstallation" />
-            <span class="text-sm font-medium text-gray-900">
+            <span class="text-sm font-medium text-gray-900 dark:text-white">
               {{ 'devis.step1.solar' | translate }}
             </span>
           </label>
 
-          <label class="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-gray-200 bg-white p-4 transition-all hover:border-blue-300 hover:bg-blue-50/50">
-            <input 
-              type="checkbox" 
-              class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded-md border-2 border-gray-300 transition-all checked:bg-blue-600 checked:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+          <label class="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 transition-all hover:border-[#0097A7] hover:bg-[#0097A7]/5">
+            <input
+              type="checkbox"
+              class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded-md border-2 border-gray-300 transition-all checked:bg-[#0097A7] checked:border-[#0097A7] focus:outline-none focus:ring-4 focus:ring-[#0097A7]/10"
               [(ngModel)]="formData.premiumFinishes" />
-            <span class="text-sm font-medium text-gray-900">
+            <span class="text-sm font-medium text-gray-900 dark:text-white">
               {{ 'devis.step1.finishes' | translate }}
             </span>
           </label>
 
-          <label class="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-gray-200 bg-white p-4 transition-all hover:border-blue-300 hover:bg-blue-50/50">
-            <input 
-              type="checkbox" 
-              class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded-md border-2 border-gray-300 transition-all checked:bg-blue-600 checked:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+          <label class="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 transition-all hover:border-[#0097A7] hover:bg-[#0097A7]/5">
+            <input
+              type="checkbox"
+              class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded-md border-2 border-gray-300 transition-all checked:bg-[#0097A7] checked:border-[#0097A7] focus:outline-none focus:ring-4 focus:ring-[#0097A7]/10"
               [(ngModel)]="formData.completeProject" />
-            <span class="text-sm font-medium text-gray-900">
+            <span class="text-sm font-medium text-gray-900 dark:text-white">
               {{ 'devis.step1.complete' | translate }}
             </span>
           </label>
         </div>
       </div>
 
-      <!-- Step 2: Informations sur le site -->
+      <!-- Étape 2 : Informations sur le site -->
       <div *ngIf="currentStep === 2" class="animate-[stepFadeIn_0.4s_ease-out]">
-        <h2 class="mb-8 text-3xl font-bold text-gray-900 tracking-tight md:text-4xl">
+        <h2 class="section-title mb-8 tracking-tight">
           {{ 'devis.step2.title' | translate }}
         </h2>
 
         <div class="mb-6">
-          <label class="mb-2 block text-sm font-semibold text-gray-900">
+          <label class="mb-2 block text-sm font-semibold text-gray-900 dark:text-white">
             {{ 'devis.step2.propertyType' | translate }}
           </label>
-          <select 
-            class="w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3.5 text-base text-gray-900 transition-all focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10 appearance-none bg-[url('data:image/svg+xml,%3Csvg%20width=%2712%27%20height=%278%27%20viewBox=%270%200%2012%208%27%20fill=%27none%27%20xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath%20d=%27M1%201L6%206L11%201%27%20stroke=%27%231a1a1a%27%20stroke-width=%272%27%20stroke-linecap=%27round%27/%3E%3C/svg%3E')] bg-[right_1rem_center] bg-no-repeat pr-11"
+          <select
+            class="w-full rounded-xl border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-3.5 text-base text-gray-900 dark:text-white transition-all focus:border-[#0097A7] focus:outline-none focus:ring-4 focus:ring-[#0097A7]/10 appearance-none bg-[url('data:image/svg+xml,%3Csvg%20width=%2712%27%20height=%278%27%20viewBox=%270%200%2012%208%27%20fill=%27none%27%20xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath%20d=%27M1%201L6%206L11%201%27%20stroke=%27%231a1a1a%27%20stroke-width=%272%27%20stroke-linecap=%27round%27/%3E%3C/svg%3E')] bg-[right_1rem_center] bg-no-repeat pr-11"
             [(ngModel)]="formData.propertyType">
             <option value="">{{ 'devis.step2.selectProperty' | translate }}</option>
             <option *ngFor="let type of propertyTypes" [value]="type.value">
@@ -110,32 +111,32 @@
         </div>
 
         <div class="mb-6">
-          <label class="mb-2 block text-sm font-semibold text-gray-900">
+          <label class="mb-2 block text-sm font-semibold text-gray-900 dark:text-white">
             {{ 'devis.step2.address' | translate }}
           </label>
-          <input 
-            type="text" 
-            class="w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3.5 text-base text-gray-900 transition-all focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+          <input
+            type="text"
+            class="w-full rounded-xl border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-3.5 text-base text-gray-900 dark:text-white transition-all focus:border-[#0097A7] focus:outline-none focus:ring-4 focus:ring-[#0097A7]/10"
             [(ngModel)]="formData.address" />
         </div>
 
         <div class="mb-6">
-          <label class="mb-2 block text-sm font-semibold text-gray-900">
+          <label class="mb-2 block text-sm font-semibold text-gray-900 dark:text-white">
             {{ 'devis.step2.surface' | translate }}
           </label>
-          <input 
-            type="text" 
-            class="w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3.5 text-base text-gray-900 transition-all focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+          <input
+            type="text"
+            class="w-full rounded-xl border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-3.5 text-base text-gray-900 dark:text-white transition-all focus:border-[#0097A7] focus:outline-none focus:ring-4 focus:ring-[#0097A7]/10"
             [(ngModel)]="formData.surface"
             placeholder="Ex: 150 m²" />
         </div>
 
         <div class="mb-6">
-          <label class="mb-2 block text-sm font-semibold text-gray-900">
+          <label class="mb-2 block text-sm font-semibold text-gray-900 dark:text-white">
             {{ 'devis.step2.floors' | translate }}
           </label>
-          <select 
-            class="w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3.5 text-base text-gray-900 transition-all focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10 appearance-none bg-[url('data:image/svg+xml,%3Csvg%20width=%2712%27%20height=%278%27%20viewBox=%270%200%2012%208%27%20fill=%27none%27%20xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath%20d=%27M1%201L6%206L11%201%27%20stroke=%27%231a1a1a%27%20stroke-width=%272%27%20stroke-linecap=%27round%27/%3E%3C/svg%3E')] bg-[right_1rem_center] bg-no-repeat pr-11"
+          <select
+            class="w-full rounded-xl border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-3.5 text-base text-gray-900 dark:text-white transition-all focus:border-[#0097A7] focus:outline-none focus:ring-4 focus:ring-[#0097A7]/10 appearance-none bg-[url('data:image/svg+xml,%3Csvg%20width=%2712%27%20height=%278%27%20viewBox=%270%200%2012%208%27%20fill=%27none%27%20xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath%20d=%27M1%201L6%206L11%201%27%20stroke=%27%231a1a1a%27%20stroke-width=%272%27%20stroke-linecap=%27round%27/%3E%3C/svg%3E')] bg-[right_1rem_center] bg-no-repeat pr-11"
             [(ngModel)]="formData.floors">
             <option value="">{{ 'devis.step2.selectFloors' | translate }}</option>
             <option *ngFor="let floor of floorOptions" [value]="floor.value">
@@ -145,11 +146,11 @@
         </div>
 
         <div class="mb-6">
-          <label class="mb-2 block text-sm font-semibold text-gray-900">
+          <label class="mb-2 block text-sm font-semibold text-gray-900 dark:text-white">
             {{ 'devis.step2.currentState' | translate }}
           </label>
-          <select 
-            class="w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3.5 text-base text-gray-900 transition-all focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10 appearance-none bg-[url('data:image/svg+xml,%3Csvg%20width=%2712%27%20height=%278%27%20viewBox=%270%200%2012%208%27%20fill=%27none%27%20xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath%20d=%27M1%201L6%206L11%201%27%20stroke=%27%231a1a1a%27%20stroke-width=%272%27%20stroke-linecap=%27round%27/%3E%3C/svg%3E')] bg-[right_1rem_center] bg-no-repeat pr-11"
+          <select
+            class="w-full rounded-xl border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-3.5 text-base text-gray-900 dark:text-white transition-all focus:border-[#0097A7] focus:outline-none focus:ring-4 focus:ring-[#0097A7]/10 appearance-none bg-[url('data:image/svg+xml,%3Csvg%20width=%2712%27%20height=%278%27%20viewBox=%270%200%2012%208%27%20fill=%27none%27%20xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath%20d=%27M1%201L6%206L11%201%27%20stroke=%27%231a1a1a%27%20stroke-width=%272%27%20stroke-linecap=%27round%27/%3E%3C/svg%3E')] bg-[right_1rem_center] bg-no-repeat pr-11"
             [(ngModel)]="formData.currentState">
             <option value="">{{ 'devis.step2.selectState' | translate }}</option>
             <option *ngFor="let state of currentStateOptions" [value]="state.value">
@@ -159,32 +160,31 @@
         </div>
 
         <div class="mb-8">
-          <h3 class="mb-4 text-lg font-bold text-gray-900">
+          <h3 class="mb-4 text-lg font-bold text-gray-900 dark:text-white">
             {{ 'devis.step2.needsDetails' | translate }}
           </h3>
-          <p class="mb-3 text-sm text-gray-600">{{ 'devis.step2.needsSubtitle' | translate }}</p>
-          <textarea 
+          <p class="mb-3 text-sm text-gray-600 dark:text-gray-400">{{ 'devis.step2.needsSubtitle' | translate }}</p>
+          <textarea
             rows="4"
-            class="w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3.5 text-base text-gray-900 leading-relaxed transition-all resize-y focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10 placeholder:text-gray-400"
+            class="w-full rounded-xl border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-3.5 text-base text-gray-900 dark:text-white leading-relaxed transition-all resize-y focus:border-[#0097A7] focus:outline-none focus:ring-4 focus:ring-[#0097A7]/10 placeholder:text-gray-400"
             [(ngModel)]="formData.projectNeeds"
             [placeholder]="'devis.step2.needsPlaceholder' | translate">
           </textarea>
         </div>
 
         <div class="mb-8">
-          <h3 class="mb-4 text-lg font-bold text-gray-900">
+          <h3 class="mb-4 text-lg font-bold text-gray-900 dark:text-white">
             {{ 'devis.step2.budgetTitle' | translate }}
           </h3>
-          
           <div class="space-y-3">
-            <label *ngFor="let budget of budgetOptions" class="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-gray-200 bg-white p-4 transition-all hover:border-blue-300 hover:bg-blue-50/50">
-              <input 
-                type="radio" 
+            <label *ngFor="let budget of budgetOptions" class="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 transition-all hover:border-[#0097A7] hover:bg-[#0097A7]/5">
+              <input
+                type="radio"
                 name="budget"
                 [value]="budget.value"
-                class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer border-2 border-gray-300 transition-all checked:bg-blue-600 checked:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+                class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer border-2 border-gray-300 transition-all checked:bg-[#0097A7] checked:border-[#0097A7] focus:outline-none focus:ring-4 focus:ring-[#0097A7]/10"
                 [(ngModel)]="formData.budget" />
-              <span class="text-sm font-medium text-gray-900">
+              <span class="text-sm font-medium text-gray-900 dark:text-white">
                 {{ budget.labelKey | translate }}
               </span>
             </label>
@@ -192,79 +192,79 @@
         </div>
 
         <div class="mb-6">
-          <label class="mb-2 block text-sm font-semibold text-gray-900">
+          <label class="mb-2 block text-sm font-semibold text-gray-900 dark:text-white">
             {{ 'devis.step2.interventionDate' | translate }}
           </label>
-          <input 
-            type="date" 
-            class="w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3.5 text-base text-gray-900 transition-all focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+          <input
+            type="date"
+            class="w-full rounded-xl border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-3.5 text-base text-gray-900 dark:text-white transition-all focus:border-[#0097A7] focus:outline-none focus:ring-4 focus:ring-[#0097A7]/10"
             [(ngModel)]="formData.interventionDate" />
         </div>
       </div>
 
-      <!-- Step 3: Coordonnées -->
+      <!-- Étape 3 : Coordonnées -->
       <div *ngIf="currentStep === 3" class="animate-[stepFadeIn_0.4s_ease-out]">
-        <h2 class="mb-8 text-3xl font-bold text-gray-900 tracking-tight md:text-4xl">
+        <h2 class="section-title mb-8 tracking-tight">
           {{ 'devis.step3.title' | translate }}
         </h2>
-        
+
         <div class="mb-6">
-          <label class="mb-2 block text-sm font-semibold text-gray-900">
+          <label class="mb-2 block text-sm font-semibold text-gray-900 dark:text-white">
             {{ 'devis.step3.name' | translate }}
           </label>
-          <input 
-            type="text" 
-            class="w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3.5 text-base text-gray-900 transition-all focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+          <input
+            type="text"
+            class="w-full rounded-xl border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-3.5 text-base text-gray-900 dark:text-white transition-all focus:border-[#0097A7] focus:outline-none focus:ring-4 focus:ring-[#0097A7]/10"
             [(ngModel)]="formData.name" />
         </div>
 
         <div class="mb-6">
-          <label class="mb-2 block text-sm font-semibold text-gray-900">
+          <label class="mb-2 block text-sm font-semibold text-gray-900 dark:text-white">
             {{ 'devis.step3.phone' | translate }}
           </label>
-          <input 
-            type="tel" 
-            class="w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3.5 text-base text-gray-900 transition-all focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+          <input
+            type="tel"
+            class="w-full rounded-xl border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-3.5 text-base text-gray-900 dark:text-white transition-all focus:border-[#0097A7] focus:outline-none focus:ring-4 focus:ring-[#0097A7]/10"
             [(ngModel)]="formData.phone" />
         </div>
 
         <div class="mb-6">
-          <label class="mb-2 block text-sm font-semibold text-gray-900">
+          <label class="mb-2 block text-sm font-semibold text-gray-900 dark:text-white">
             {{ 'devis.step3.email' | translate }}
           </label>
-          <input 
-            type="email" 
-            class="w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3.5 text-base text-gray-900 transition-all focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10"
+          <input
+            type="email"
+            class="w-full rounded-xl border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-3.5 text-base text-gray-900 dark:text-white transition-all focus:border-[#0097A7] focus:outline-none focus:ring-4 focus:ring-[#0097A7]/10"
             [(ngModel)]="formData.email" />
         </div>
 
-        <div class="mt-8 rounded-xl bg-blue-50 p-6">
-          <p class="text-sm leading-relaxed text-gray-700">
+        <div class="mt-8 rounded-xl bg-[#0097A7]/5 dark:bg-gray-800 border border-[#0097A7]/20 p-6">
+          <p class="text-sm leading-relaxed text-gray-700 dark:text-gray-300">
             {{ 'devis.step3.contactMessage' | translate }}
           </p>
         </div>
       </div>
 
-      <!-- Navigation Buttons -->
+      <!-- Boutons de navigation -->
       <div class="mt-10 flex flex-col-reverse gap-3 sm:flex-row sm:gap-3">
-        <button 
+        <button
           *ngIf="currentStep > 1"
-          class="flex-1 rounded-xl border-2 border-gray-300 bg-white px-8 py-4 text-base font-semibold text-gray-900 transition-all hover:border-gray-400 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+          class="flex-1 rounded-xl border-2 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-8 py-4 text-base font-semibold text-gray-900 dark:text-white transition-all hover:border-[#0097A7] hover:text-[#0097A7] dark:hover:border-[#0097A7] dark:hover:text-[#42B7C4] disabled:cursor-not-allowed disabled:opacity-50"
           (click)="previousStep()">
           {{ 'devis.buttons.previous' | translate }}
         </button>
 
-        <button 
+        <button
           *ngIf="currentStep < totalSteps"
-          class="flex-1 rounded-xl bg-gradient-to-br from-gray-800 to-gray-700 px-8 py-4 text-base font-semibold text-white shadow-[0_4px_16px_rgba(31,41,55,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(31,41,55,0.4)] active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
+          class="flex-1 rounded-xl bg-[#0097A7] hover:bg-[#42B7C4] px-8 py-4 text-base font-semibold text-white shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
           [disabled]="!isCurrentStepValid()"
           (click)="nextStep()">
           {{ 'devis.buttons.next' | translate }}
         </button>
 
-        <button 
+        <button
           *ngIf="currentStep === totalSteps"
-          class="flex-1 rounded-xl bg-gradient-to-br from-gray-800 to-gray-700 px-8 py-4 text-base font-semibold text-white shadow-[0_4px_16px_rgba(31,41,55,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(31,41,55,0.4)] active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
+          class="flex-1 rounded-xl bg-[#0097A7] hover:bg-[#42B7C4] px-8 py-4 text-base font-semibold text-white shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
           [disabled]="!isCurrentStepValid() || loadData"
           (click)="submitForm()">
           <span *ngIf="!loadData">{{ 'devis.buttons.submit' | translate }}</span>
@@ -274,38 +274,61 @@
     </div>
   </div>
 
-  <!-- Trust Indicators -->
-  <div class="bg-white px-6 py-20">
-    <div class="mx-auto grid max-w-6xl gap-12 md:grid-cols-3">
-      <div class="text-center animate-[fadeInUp_0.6s_ease-out_backwards]">
-        <div class="mb-4 text-4xl">✓</div>
-        <h3 class="mb-3 text-xl font-bold text-gray-900">
+  <!-- Indicateurs de confiance -->
+  <div class="mt-16 md:mt-20">
+    <div class="grid max-w-4xl mx-auto gap-6 md:grid-cols-3">
+
+      <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-md border border-gray-100 dark:border-gray-800
+                  hover:border-[#0097A7] dark:hover:border-[#0097A7] transition-all duration-300 text-center group">
+        <div class="w-14 h-14 rounded-full bg-[#0097A7]/10 flex items-center justify-center mx-auto mb-4
+                    group-hover:bg-[#0097A7]/20 transition-colors">
+          <svg class="w-7 h-7 text-[#0097A7]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h3 class="mb-3 text-lg font-bold text-gray-900 dark:text-white group-hover:text-[#0097A7] dark:group-hover:text-[#42B7C4] transition-colors">
           {{ 'devis.trust.item1.title' | translate }}
         </h3>
-        <p class="text-sm leading-relaxed text-gray-600">
+        <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
           {{ 'devis.trust.item1.text' | translate }}
         </p>
       </div>
 
-      <div class="text-center animate-[fadeInUp_0.6s_ease-out_0.1s_backwards]">
-        <div class="mb-4 text-4xl">⚡</div>
-        <h3 class="mb-3 text-xl font-bold text-gray-900">
+      <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-md border border-gray-100 dark:border-gray-800
+                  hover:border-[#0097A7] dark:hover:border-[#0097A7] transition-all duration-300 text-center group">
+        <div class="w-14 h-14 rounded-full bg-[#0097A7]/10 flex items-center justify-center mx-auto mb-4
+                    group-hover:bg-[#0097A7]/20 transition-colors">
+          <svg class="w-7 h-7 text-[#0097A7]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <h3 class="mb-3 text-lg font-bold text-gray-900 dark:text-white group-hover:text-[#0097A7] dark:group-hover:text-[#42B7C4] transition-colors">
           {{ 'devis.trust.item2.title' | translate }}
         </h3>
-        <p class="text-sm leading-relaxed text-gray-600">
+        <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
           {{ 'devis.trust.item2.text' | translate }}
         </p>
       </div>
 
-      <div class="text-center animate-[fadeInUp_0.6s_ease-out_0.2s_backwards]">
-        <div class="mb-4 text-4xl">🔒</div>
-        <h3 class="mb-3 text-xl font-bold text-gray-900">
+      <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-md border border-gray-100 dark:border-gray-800
+                  hover:border-[#0097A7] dark:hover:border-[#0097A7] transition-all duration-300 text-center group">
+        <div class="w-14 h-14 rounded-full bg-[#0097A7]/10 flex items-center justify-center mx-auto mb-4
+                    group-hover:bg-[#0097A7]/20 transition-colors">
+          <svg class="w-7 h-7 text-[#0097A7]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+          </svg>
+        </div>
+        <h3 class="mb-3 text-lg font-bold text-gray-900 dark:text-white group-hover:text-[#0097A7] dark:group-hover:text-[#42B7C4] transition-colors">
           {{ 'devis.trust.item3.title' | translate }}
         </h3>
-        <p class="text-sm leading-relaxed text-gray-600">
+        <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
           {{ 'devis.trust.item3.text' | translate }}
         </p>
       </div>
+
     </div>
   </div>
-</div>
+
+</section>

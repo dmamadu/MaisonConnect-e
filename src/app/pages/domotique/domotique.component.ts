@@ -201,6 +201,7 @@ import { Component, HostListener, inject, OnDestroy, OnInit } from '@angular/cor
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { RouterLink } from '@angular/router';
 import { CartService } from '../../shared/services/cart.service';
 import { Subject, takeUntil } from 'rxjs';
 import { RootService } from '../../shared/services/root.service';
@@ -230,7 +231,7 @@ export interface ApiProduct {
 @Component({
   selector: 'app-domotique',
   standalone: true,
-  imports: [CommonModule, FormsModule, TranslateModule],
+  imports: [CommonModule, FormsModule, TranslateModule, RouterLink],
   templateUrl: './domotique.component.html',
   styleUrl: './domotique.component.scss'
 })
@@ -243,6 +244,7 @@ export class DomotiqueComponent implements OnInit, OnDestroy {
 
   // Filtres construits dynamiquement depuis les sous-catégories
   filter = 'all';
+  query  = '';
   subFilters: { key: string; label: string }[] = [
     { key: 'all', label: 'filters.all' }
   ];
@@ -314,6 +316,11 @@ export class DomotiqueComponent implements OnInit, OnDestroy {
     return (this.translate.currentLang || 'fr') as 'fr' | 'en';
   }
 
+  getCategoryName(p: ApiProduct): string {
+    return p.sub_category?.name?.[this.lang] ?? p.sub_category?.name?.['fr']
+      ?? p.category?.name?.[this.lang] ?? p.category?.name?.['fr'] ?? '';
+  }
+
   getTitle(p: ApiProduct): string {
     return p.title[this.lang] ?? p.title['fr'];
   }
@@ -344,8 +351,17 @@ export class DomotiqueComponent implements OnInit, OnDestroy {
 
   // ─── Filtrage ────────────────────────────────────────────────────────────────
   get visibleProducts(): ApiProduct[] {
-    if (this.filter === 'all') return this.products;
-    return this.products.filter(p => p.sub_category?.slug === this.filter);
+    let result = this.filter === 'all'
+      ? this.products
+      : this.products.filter(p => p.sub_category?.slug === this.filter);
+    if (this.query.trim()) {
+      const q = this.query.toLowerCase();
+      result = result.filter(p =>
+        this.getTitle(p).toLowerCase().includes(q) ||
+        this.getDescription(p).toLowerCase().includes(q)
+      );
+    }
+    return result;
   }
 
   // ─── Détail ──────────────────────────────────────────────────────────────────

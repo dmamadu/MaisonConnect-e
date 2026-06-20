@@ -2,34 +2,177 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{ --container: 980px; }
+/* ── Tokens de marque ─────────────────────────────────────────── */
+:root {
+  --container: 980px;
+  --color-primary:       #0097A7;
+  --color-primary-hover: #42B7C4;
+  --color-primary-dark:  #007a8a;
+}
+
+/* ── Layout ───────────────────────────────────────────────────── */
 .container-apple { margin-left:auto; margin-right:auto; padding-left:1rem; padding-right:1rem; max-width: var(--container); }
-@media (min-width: 640px) { .container-apple { padding-left: 1.5rem; padding-right: 1.5rem; } }
-@media (min-width: 1024px) { .container-apple { padding-left: 2rem; padding-right: 2rem; } }
+@media (min-width: 640px)  { .container-apple { padding-left: 1.5rem; padding-right: 1.5rem; } }
+@media (min-width: 1024px) { .container-apple { padding-left: 2rem;   padding-right: 2rem;   } }
 
-html { scroll-behavior: smooth; }
-html, body { height: 100%; }
-body { @apply bg-white text-black dark:bg-[#0b0b0c] dark:text-white; }
-.btn { @apply inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium transition; }
-.btn-dark { @apply bg-black text-white hover:bg-neutral-800; }
-.btn-light{ @apply bg-white text-black hover:bg-neutral-100; }
+html           { scroll-behavior: smooth; }
+html, body     { height: 100%; }
+body           { @apply bg-white text-black dark:bg-[#0b0b0c] dark:text-white; }
 
-:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; }
+/* ── Boutons génériques ───────────────────────────────────────── */
+.btn           { @apply inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium transition; }
+.btn-dark      { @apply bg-black text-white hover:bg-neutral-800; }
+.btn-light     { @apply bg-white text-black hover:bg-neutral-100; }
+
+/* ── Design system — Cartes produits ─────────────────────────── */
+/* Carte de base — ajouter la classe "group" séparément dans le HTML */
+.product-card {
+  @apply bg-white dark:bg-gray-900 rounded-2xl shadow-md hover:shadow-2xl
+         overflow-hidden flex flex-col transition-all duration-300
+         transform hover:-translate-y-2 cursor-pointer
+         border border-gray-100 dark:border-gray-800
+         hover:border-[#0097A7] dark:hover:border-[#0097A7];
+}
+/* Zone image de la carte */
+.product-card-img-wrap {
+  @apply relative h-56 bg-gradient-to-br from-gray-50 to-gray-100
+         dark:from-gray-800 dark:to-gray-900 overflow-hidden;
+}
+/* Badge catégorie en haut à gauche */
+.badge-category {
+  @apply absolute top-3 left-3 px-3 py-1
+         bg-white/90 dark:bg-black/80 backdrop-blur-sm
+         text-xs font-semibold text-gray-900 dark:text-white
+         rounded-full shadow-md;
+}
+/* Titre de la carte */
+.card-title {
+  @apply text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-1
+         group-hover:text-[#0097A7] dark:group-hover:text-[#42B7C4] transition-colors;
+}
+/* Description de la carte */
+.card-description {
+  @apply text-sm text-gray-600 dark:text-gray-400 line-clamp-2 flex-1 mb-4;
+}
+/* Lien "Détails" */
+.card-link-details {
+  @apply text-sm font-medium text-gray-600 dark:text-gray-400
+         hover:text-[#0097A7] dark:hover:text-[#42B7C4]
+         transition-colors flex items-center gap-1;
+}
+/* Bouton Ajouter au panier */
+.btn-cart {
+  @apply flex items-center justify-center w-full px-4 py-2
+         rounded-full border-2 border-gray-900 dark:border-white
+         text-gray-900 dark:text-white font-medium
+         hover:bg-[#0097A7] hover:border-[#0097A7] hover:text-white
+         dark:hover:bg-[#0097A7] dark:hover:border-[#0097A7] dark:hover:text-white
+         transition duration-300;
+}
+/* Bouton Demander un devis (teal) */
+.btn-devis {
+  @apply flex items-center justify-center w-full px-4 py-2
+         rounded-full bg-[#0097A7] hover:bg-[#42B7C4]
+         text-white font-medium transition-all duration-300;
+}
+
+/* ── Design system — Filtres / Recherche ─────────────────────── */
+/* Bouton filtre inactif */
+.filter-btn {
+  @apply px-5 py-2.5 rounded-full font-semibold
+         transition-all duration-300 transform;
+}
+/* État actif */
+.filter-btn-active {
+  @apply bg-[#0097A7] text-white shadow-lg scale-105;
+}
+/* État inactif au repos */
+.filter-btn-inactive {
+  @apply bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300
+         hover:bg-[#0097A7]/10 hover:text-[#0097A7]
+         dark:hover:bg-[#0097A7]/20 dark:hover:text-[#42B7C4];
+}
+/* Input de recherche */
+.search-input {
+  @apply w-full pl-12 pr-4 py-3 rounded-full
+         border-2 border-gray-200 dark:border-gray-700
+         bg-gray-50 dark:bg-gray-800
+         text-gray-900 dark:text-white
+         placeholder-gray-400 dark:placeholder-gray-500
+         focus:border-[#0097A7] dark:focus:border-[#0097A7]
+         focus:outline-none transition-all duration-300;
+}
+
+/* ── Typographie — Hiérarchie globale ─────────────────────────── */
+/* H1 : Titre principal de chaque page */
+.page-title {
+  @apply text-3xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white;
+}
+/* Description/sous-titre sous le H1 */
+.page-subtitle {
+  @apply text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto;
+}
+/* H2 : Titre de section */
+.section-title {
+  @apply text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white;
+}
+/* Description sous un H2 */
+.section-subtitle {
+  @apply text-base md:text-lg text-gray-600 dark:text-gray-400;
+}
+/* H3/H4 : Titre de carte ou de bloc */
+.block-title {
+  @apply text-base md:text-lg font-bold text-gray-900 dark:text-white;
+}
+
+/* ── Typographie — Navbar ─────────────────────────────────────── */
+/* Nom de la marque dans le header */
+.nav-brand {
+  @apply text-sm font-bold tracking-tight text-gray-900 dark:text-white;
+}
+/* Lien de navigation desktop */
+.nav-item {
+  @apply text-[11px] xl:text-xs font-normal hover:text-[#0097A7] transition-colors whitespace-nowrap;
+}
+/* Item dans un dropdown desktop */
+.nav-dropdown-item {
+  @apply text-xs font-medium text-gray-700 dark:text-gray-300;
+}
+/* Lien de navigation mobile */
+.nav-mobile-item {
+  @apply text-sm text-gray-700 dark:text-gray-300;
+}
+
+/* ── Typographie — Footer ─────────────────────────────────────── */
+/* Titre de colonne footer (h3) */
+.footer-col-title {
+  @apply text-sm font-semibold text-gray-900 dark:text-white mb-3;
+}
+/* Lien dans le footer */
+.footer-col-link {
+  @apply text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors;
+}
+/* Texte légal (copyright, mentions) */
+.footer-legal {
+  @apply text-xs text-gray-500 dark:text-gray-500;
+}
+
+/* ── Accessibilité ────────────────────────────────────────────── */
+:focus-visible { outline: 2px solid #0097A7; outline-offset: 2px; }
+
+/* ── Animations globales ─────────────────────────────────────── */
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
-@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
-
+@keyframes fade-in         { from { opacity: 0; } to { opacity: 1; } }
 @keyframes fade-in-delayed { from { opacity: 0; } to { opacity: 1; } }
-
 @keyframes zoom-in {
   from { transform: scale(0.95); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  to   { transform: scale(1);    opacity: 1; }
 }
 
-.animate-fade-up { animation: fade-up 0.5s forwards ease-out; }
-.animate-fade-in { animation: fade-in 0.8s forwards ease-out; }
-.animate-fade-in-delayed { animation: fade-in 1.2s forwards ease-out; }
-.animate-zoom-in { animation: zoom-in 0.4s ease-out; }
+.animate-fade-up          { animation: fade-up 0.5s forwards ease-out; }
+.animate-fade-in          { animation: fade-in 0.8s forwards ease-out; }
+.animate-fade-in-delayed  { animation: fade-in 1.2s forwards ease-out; }
+.animate-zoom-in          { animation: zoom-in 0.4s ease-out; }

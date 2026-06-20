@@ -10,7 +10,12 @@ export default {
       colors:{
         ink: "#111113",
         gray1:"#1d1d1f",
-        gray2:"#6e6e73"
+        gray2:"#6e6e73",
+        primary: {
+          DEFAULT: "#0097A7",
+          hover:   "#42B7C4",
+          dark:    "#007a8a"
+        }
       },
       keyframes: {
     fadeIn: {

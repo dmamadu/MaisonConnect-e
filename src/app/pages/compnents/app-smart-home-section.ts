@@ -24,11 +24,11 @@ import { RouterLink } from "@angular/router";
       </div>
 
       <!-- Title -->
-      <h2 class="text-3xl md:text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight fade-in transition-colors" style="animation-delay: 0.1s;">
+      <h2 class="section-title mb-6 tracking-tight fade-in transition-colors" style="animation-delay: 0.1s;">
         {{ 'SmartHomeSection.title' | translate }}
       </h2>
 
-      <p class="text-base md:text-xl lg:text-2xl text-gray-700 dark:text-gray-300 mb-8 font-light max-w-4xl mx-auto fade-in transition-colors" style="animation-delay: 0.2s;">
+      <p class="section-subtitle mb-8 font-light max-w-4xl mx-auto fade-in transition-colors" style="animation-delay: 0.2s;">
         {{ 'SmartHomeSection.description' | translate }}
       </p>
 
@@ -63,7 +63,7 @@ import { RouterLink } from "@angular/router";
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
           </svg>
         </div>
-        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 transition-colors">
+        <h3 class="block-title mb-2 transition-colors">
           {{ 'SmartHomeSection.features.lighting.title' | translate }}
         </h3>
         <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed transition-colors">
@@ -78,7 +78,7 @@ import { RouterLink } from "@angular/router";
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"/>
           </svg>
         </div>
-        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 transition-colors">
+        <h3 class="block-title mb-2 transition-colors">
           {{ 'SmartHomeSection.features.climate.title' | translate }}
         </h3>
         <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed transition-colors">
@@ -93,7 +93,7 @@ import { RouterLink } from "@angular/router";
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
           </svg>
         </div>
-        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 transition-colors">
+        <h3 class="block-title mb-2 transition-colors">
           {{ 'SmartHomeSection.features.blinds.title' | translate }}
         </h3>
         <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed transition-colors">
@@ -108,7 +108,7 @@ import { RouterLink } from "@angular/router";
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
           </svg>
         </div>
-        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 transition-colors">
+        <h3 class="block-title mb-2 transition-colors">
           {{ 'SmartHomeSection.features.scenarios.title' | translate }}
         </h3>
         <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed transition-colors">
@@ -123,7 +123,7 @@ import { RouterLink } from "@angular/router";
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
           </svg>
         </div>
-        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 transition-colors">
+        <h3 class="block-title mb-2 transition-colors">
           {{ 'SmartHomeSection.features.monitoring.title' | translate }}
         </h3>
         <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed transition-colors">

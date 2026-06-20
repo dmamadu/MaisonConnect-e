@@ -15,7 +15,7 @@ import { TranslateModule } from '@ngx-translate/core';
                  bg-clip-text text-transparent">
         {{ 'home.services.title' | translate }}
       </h2>
-      <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+      <p class="section-subtitle max-w-2xl mx-auto">
         {{ 'home.services.subtitle' | translate }}
       </p>
     </div>
