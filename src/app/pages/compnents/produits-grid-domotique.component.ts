@@ -146,7 +146,7 @@ export class ProduitsGridDomotiqueComponent implements OnInit, OnDestroy {
   cards: GridCard[] = [
     { product: null, categorySlug: 'securite',   categoryRoute: '/securite',   label: 'Sécurité Électronique', fallbackImage: 'https://i.pinimg.com/1200x/3b/2e/f2/3b2ef28bfb6d62e21e88f1c1c5f12345.jpg' },
     { product: null, categorySlug: 'smart-home', categoryRoute: '/domotique',  label: 'Domotique',             fallbackImage: 'https://i.pinimg.com/1200x/fa/09/26/fa0926e1a56aaa1c1d5eb8bb84f3f29f.jpg' },
-    { product: null, categorySlug: 'energie',    categoryRoute: '/energie',    label: 'Énergie',               fallbackImage: 'https://i.pinimg.com/1200x/e4/4d/a5/e44da5f0251f003cb6e5a3054b24e670.jpg' },
+    { product: null, categorySlug: 'energie',    categoryRoute: '/energie',    label: 'Énergie Solaire',       fallbackImage: 'https://i.pinimg.com/1200x/e4/4d/a5/e44da5f0251f003cb6e5a3054b24e670.jpg' },
     { product: null, categorySlug: 'finitions',  categoryRoute: '/finitions',  label: 'Finitions Premium',     fallbackImage: 'https://i.pinimg.com/1200x/7b/12/4f/7b124f42aefb35999bab0f52ebf07e85.jpg' },
   ];
 

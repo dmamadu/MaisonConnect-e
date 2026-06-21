@@ -10,112 +10,98 @@ const STORAGE_BASE = 'https://admin.itsloneed.com/storage/';
   standalone: true,
   imports: [CommonModule, TranslateModule],
   template: `
-<section class="relative py-10 md:py-16 lg:py-24 bg-white dark:bg-slate-900 overflow-hidden transition-colors duration-300">
+<section class="relative bg-black py-12 md:py-16 overflow-hidden transition-colors duration-300">
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-    <div class="text-center">
-      <div class="inline-block mb-6">
-        <div class="flex items-center gap-3 bg-[#0097A7] px-6 py-3 rounded-full">
-          <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-          <span class="text-white text-sm font-medium tracking-wider">
-            {{ 'Clients.badge' | translate }}
-          </span>
-        </div>
-      </div>
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent"></div>
 
-      <h2 class="section-title mb-4">
-        {{ 'Clients.title' | translate }}
-      </h2>
+  <!-- Background glow -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[200px]
+              bg-[#0097A7]/5 rounded-full blur-3xl pointer-events-none"></div>
 
-      <p class="section-subtitle max-w-3xl mx-auto">
-        {{ 'Clients.subtitle' | translate }}
-      </p>
-    </div>
+  <!-- Header -->
+  <div class="relative z-10 max-w-3xl mx-auto px-6 text-center mb-10 md:mb-12">
+    <p class="text-xs font-semibold tracking-[0.2em] uppercase text-[#0097A7] mb-4">
+      {{ 'Clients.badge' | translate }}
+    </p>
+    <h2 class="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight">
+      {{ 'Clients.title' | translate }}
+    </h2>
+    <p class="text-sm md:text-base text-gray-400 font-light">
+      {{ 'Clients.subtitle' | translate }}
+    </p>
   </div>
 
-  <!-- Scrolling Banner -->
-  <div class="relative">
-    <!-- Gradient Overlays -->
-    <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white dark:from-slate-900 to-transparent z-10 pointer-events-none"></div>
-    <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white dark:from-slate-900 to-transparent z-10 pointer-events-none"></div>
-
-    <!-- Loading skeleton -->
-    <div *ngIf="isLoading" class="flex gap-6 px-8 overflow-hidden">
-      <div *ngFor="let i of [1,2,3,4,5]"
-           class="flex-shrink-0 w-44 h-28 bg-gray-100 dark:bg-slate-800 rounded-2xl animate-pulse">
-      </div>
-    </div>
-
-    <!-- Scrolling Container -->
-    <div *ngIf="!isLoading && clients.length > 0" class="flex overflow-hidden">
-      <div class="flex animate-scroll">
-
-        <!-- First Set -->
-        <div *ngFor="let client of clients"
-             class="flex-shrink-0 mx-6 md:mx-10 flex items-center justify-center">
-          <div class="logo-card bg-white dark:bg-slate-800 rounded-2xl px-8 py-6
-                      shadow-sm hover:shadow-lg border border-gray-100 dark:border-slate-700
-                      hover:border-[#0097A7] dark:hover:border-[#0097A7]
-                      transition-all duration-300 group cursor-default">
-            <img
-              [src]="getLogoUrl(client.logo)"
-              [alt]="client.name"
-              class="h-14 md:h-20 w-auto max-w-[160px] object-contain
-                     transition-transform duration-300 group-hover:scale-105"
-              (error)="onImageError($event)"
-            />
-          </div>
-        </div>
-
-        <!-- Duplicate Set for Seamless Loop -->
-        <div *ngFor="let client of clients"
-             class="flex-shrink-0 mx-6 md:mx-10 flex items-center justify-center">
-          <div class="logo-card bg-white dark:bg-slate-800 rounded-2xl px-8 py-6
-                      shadow-sm hover:shadow-lg border border-gray-100 dark:border-slate-700
-                      hover:border-[#0097A7] dark:hover:border-[#0097A7]
-                      transition-all duration-300 group cursor-default">
-            <img
-              [src]="getLogoUrl(client.logo)"
-              [alt]="client.name"
-              class="h-14 md:h-20 w-auto max-w-[160px] object-contain
-                     transition-transform duration-300 group-hover:scale-105"
-              (error)="onImageError($event)"
-            />
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Empty state -->
-    <div *ngIf="!isLoading && clients.length === 0"
-         class="text-center py-8 text-gray-400 dark:text-slate-500 text-sm">
-      Aucun client disponible.
-    </div>
+  <!-- Skeleton -->
+  <div *ngIf="isLoading" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto px-6">
+    <div *ngFor="let i of [1,2,3,4,5,6,7,8]"
+         class="aspect-[4/3] bg-zinc-900 rounded-2xl animate-pulse"></div>
   </div>
+
+  <!-- Cards grid -->
+  <div *ngIf="!isLoading && clients.length > 0"
+       class="relative z-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto px-6">
+
+    <div *ngFor="let client of clients"
+         class="group relative aspect-[4/3] rounded-2xl overflow-hidden
+                bg-zinc-900 border border-zinc-800
+                hover:border-[#0097A7]/60
+                transition-all duration-300 cursor-default">
+
+      <!-- Photo fills the whole card, no empty bands -->
+      <img
+        [src]="getLogoUrl(client.logo)"
+        [alt]="client.name"
+        width="320"
+        height="240"
+        loading="lazy"
+        decoding="async"
+        class="absolute inset-0 w-full h-full object-cover
+               saturate-75 brightness-90
+               group-hover:saturate-100 group-hover:brightness-100
+               group-hover:scale-105
+               transition-all duration-500 ease-out"
+        (error)="onImageError($event)"
+      />
+
+      <!-- Gradient overlay so text stays readable -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+
+      <!-- Info -->
+      <div class="absolute bottom-0 left-0 right-0 p-3 md:p-4">
+        <p class="text-white text-sm md:text-base font-semibold leading-tight truncate">
+          {{ client.name }}
+        </p>
+        <p *ngIf="client.city" class="text-zinc-400 text-xs mt-0.5 truncate">
+          {{ client.city }}<span *ngIf="client.industry"> · {{ client.industry }}</span>
+        </p>
+      </div>
+
+      <!-- Featured badge -->
+      <div *ngIf="client.is_featured"
+           class="absolute top-3 right-3 px-2 py-0.5 rounded-full
+                  bg-[#0097A7]/90 text-white text-[10px] font-semibold uppercase tracking-wide">
+        {{ 'Clients.featured' | translate }}
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Empty state -->
+  <div *ngIf="!isLoading && clients.length === 0"
+       class="text-center py-10 text-zinc-600 text-sm">
+    Aucun partenaire disponible.
+  </div>
+
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent"></div>
 
 </section>
   `,
-  styles: [`
-    @keyframes scroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    .animate-scroll {
-      animation: scroll 40s linear infinite;
-    }
-    .animate-scroll:hover {
-      animation-play-state: paused;
-    }
-    @media (max-width: 768px) {
-      .animate-scroll { animation-duration: 30s; }
-    }
-  `]
+  styles: [``]
 })
 export class ClientsBannerComponent implements OnInit {
 
   clients: any[] = [];
-  isLoading: boolean = false;
+  isLoading = false;
 
   private baseService = inject(BaseService);
   private _changeDetectorRef = inject(ChangeDetectorRef);
@@ -128,13 +114,11 @@ export class ClientsBannerComponent implements OnInit {
     this.isLoading = true;
     this.baseService.all('clients').subscribe({
       next: (response: any) => {
-        const data = response?.data || [];
-        this.clients = data.filter((c: any) => c.is_active);
+        this.clients = (response?.data || []).filter((c: any) => c.is_active);
         this.isLoading = false;
         this._changeDetectorRef.markForCheck();
       },
-      error: (err: any) => {
-        console.error('Erreur chargement clients :', err);
+      error: () => {
         this.isLoading = false;
         this._changeDetectorRef.markForCheck();
       }
@@ -148,7 +132,6 @@ export class ClientsBannerComponent implements OnInit {
   }
 
   onImageError(event: Event): void {
-    const img = event.target as HTMLImageElement;
-    img.src = 'assets/images/placeholder-logo.png';
+    (event.target as HTMLImageElement).src = 'assets/images/placeholder-logo.png';
   }
 }

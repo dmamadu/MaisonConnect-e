@@ -8,28 +8,28 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [CommonModule, TranslateModule, RouterLink],
   template: `
-<section class="relative py-12 md:py-20 lg:py-32 bg-white dark:bg-black overflow-hidden transition-colors duration-300">
+<section class="relative py-8 md:py-12 lg:py-16 bg-black overflow-hidden transition-colors duration-300">
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <!-- En-tête -->
-    <div class="text-center mb-12 md:mb-16">
-      <div class="inline-block mb-8">
+    <div class="text-center mb-6 md:mb-8">
+      <div class="inline-block mb-4">
         <div class="flex items-center gap-3 bg-[#0097A7] px-6 py-3 rounded-full">
           <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
           <span class="text-white text-sm font-medium tracking-wider">{{ 'WhyUs.badge' | translate }}</span>
         </div>
       </div>
-      <h2 class="section-title mb-6 leading-tight">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
         {{ 'WhyUs.mainSlogan' | translate }}
       </h2>
-      <p class="section-subtitle font-light mb-4">
+      <p class="text-base md:text-lg text-gray-400 font-light mb-4">
         {{ 'WhyUs.shortSlogan' | translate }}
       </p>
       <div class="flex items-center justify-center gap-3 mt-6">
-        <div class="h-px w-16 bg-gradient-to-r from-transparent to-gray-900 dark:to-white"></div>
-        <div class="w-2 h-2 bg-gray-900 dark:bg-white rounded-full"></div>
-        <div class="h-px w-16 bg-gradient-to-l from-transparent to-gray-900 dark:to-white"></div>
+        <div class="h-px w-16 bg-gradient-to-r from-transparent to-white"></div>
+        <div class="w-2 h-2 bg-white rounded-full"></div>
+        <div class="h-px w-16 bg-gradient-to-l from-transparent to-white"></div>
       </div>
     </div>
 
@@ -41,14 +41,14 @@ import { RouterLink } from '@angular/router';
         <!-- ── Slide 1 : 3 premières raisons ── -->
         <div class="min-w-full">
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
-            <div *ngFor="let r of slide1" class="group bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-5 md:p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-[#0097A7] hover:shadow-xl transition-all duration-300">
+            <div *ngFor="let r of slide1" class="group bg-zinc-900 border border-zinc-800 rounded-2xl p-5 md:p-8 hover:bg-zinc-800 hover:border-[#0097A7] hover:shadow-xl hover:shadow-[#0097A7]/10 transition-all duration-300">
               <div class="w-16 h-16 bg-[#0097A7] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="r.icon"/>
                 </svg>
               </div>
-              <h3 class="block-title mb-3">{{ r.title | translate }}</h3>
-              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">{{ r.desc | translate }}</p>
+              <h3 class="text-base md:text-lg font-bold text-white mb-3">{{ r.title | translate }}</h3>
+              <p class="text-gray-400 leading-relaxed">{{ r.desc | translate }}</p>
             </div>
           </div>
         </div>
@@ -56,14 +56,14 @@ import { RouterLink } from '@angular/router';
         <!-- ── Slide 2 : 6 raisons restantes ── -->
         <div class="min-w-full">
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            <div *ngFor="let r of slide2" class="group bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-5 md:p-8 hover:bg-white dark:hover:bg-slate-800 hover:border-[#0097A7] hover:shadow-xl transition-all duration-300">
+            <div *ngFor="let r of slide2" class="group bg-zinc-900 border border-zinc-800 rounded-2xl p-5 md:p-8 hover:bg-zinc-800 hover:border-[#0097A7] hover:shadow-xl hover:shadow-[#0097A7]/10 transition-all duration-300">
               <div class="w-16 h-16 bg-[#0097A7] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="r.icon"/>
                 </svg>
               </div>
-              <h3 class="block-title mb-3">{{ r.title | translate }}</h3>
-              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">{{ r.desc | translate }}</p>
+              <h3 class="text-base md:text-lg font-bold text-white mb-3">{{ r.title | translate }}</h3>
+              <p class="text-gray-400 leading-relaxed">{{ r.desc | translate }}</p>
             </div>
           </div>
         </div>
@@ -75,7 +75,7 @@ import { RouterLink } from '@angular/router';
     <div class="flex items-center justify-center gap-6 mt-10">
       <button (click)="prev()"
               [disabled]="activeSlide === 0"
-              class="w-10 h-10 rounded-full border-2 border-gray-300 dark:border-slate-700
+              class="w-10 h-10 rounded-full border-2 border-zinc-700 text-white
                      flex items-center justify-center
                      hover:border-[#0097A7] hover:text-[#0097A7]
                      disabled:opacity-30 disabled:cursor-not-allowed
@@ -98,7 +98,7 @@ import { RouterLink } from '@angular/router';
 
       <button (click)="next()"
               [disabled]="activeSlide === 1"
-              class="w-10 h-10 rounded-full border-2 border-gray-300 dark:border-slate-700
+              class="w-10 h-10 rounded-full border-2 border-zinc-700 text-white
                      flex items-center justify-center
                      hover:border-[#0097A7] hover:text-[#0097A7]
                      disabled:opacity-30 disabled:cursor-not-allowed
@@ -110,7 +110,7 @@ import { RouterLink } from '@angular/router';
     </div>
 
     <!-- Support 24/7 -->
-    <div class="mt-16 md:mt-20 bg-gray-50 dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-3xl p-8 md:p-12">
+    <div class="mt-8 bg-zinc-900 border border-zinc-800 rounded-3xl p-6 md:p-8">
       <div class="text-center mb-10">
         <div class="w-16 h-16 bg-[#0097A7]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
           <svg class="w-8 h-8 text-[#0097A7]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -127,13 +127,13 @@ import { RouterLink } from '@angular/router';
       <div class="grid sm:grid-cols-2 gap-4 mb-8 max-w-2xl mx-auto">
 
         <!-- WhatsApp -->
-        <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 border border-gray-100 dark:border-gray-800 hover:border-[#25D366] dark:hover:border-[#25D366] hover:shadow-lg transition-all duration-300">
+        <div class="bg-zinc-900 rounded-2xl p-6 border border-zinc-800 hover:border-[#25D366] hover:shadow-lg transition-all duration-300">
           <div class="w-12 h-12 bg-[#25D366]/10 rounded-xl flex items-center justify-center mb-4">
             <svg class="w-6 h-6 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
             </svg>
           </div>
-          <h4 class="font-bold text-gray-900 dark:text-white mb-1">WhatsApp</h4>
+          <h4 class="font-bold text-white mb-1">WhatsApp</h4>
           <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Réponse rapide en moins de 5 minutes</p>
           <a href="https://wa.me/+221786722222" target="_blank" rel="noopener noreferrer"
              class="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-full
@@ -147,13 +147,13 @@ import { RouterLink } from '@angular/router';
         </div>
 
         <!-- Email -->
-        <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 border border-gray-100 dark:border-gray-800 hover:border-[#0097A7] dark:hover:border-[#0097A7] hover:shadow-lg transition-all duration-300">
+        <div class="bg-zinc-900 rounded-2xl p-6 border border-zinc-800 hover:border-[#0097A7] hover:shadow-lg transition-all duration-300">
           <div class="w-12 h-12 bg-[#0097A7]/10 rounded-xl flex items-center justify-center mb-4">
             <svg class="w-6 h-6 text-[#0097A7]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
             </svg>
           </div>
-          <h4 class="font-bold text-gray-900 dark:text-white mb-1">Email</h4>
+          <h4 class="font-bold text-white mb-1">Email</h4>
           <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Réponse garantie sous 24h</p>
           <a href="mailto:contact@itsloneed.com"
              class="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-full
@@ -181,10 +181,9 @@ import { RouterLink } from '@angular/router';
         </a>
         <a routerLink="/support"
            class="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full
-                  border-2 border-gray-300 dark:border-gray-700
-                  text-gray-700 dark:text-gray-300 font-semibold
+                  border-2 border-zinc-700
+                  text-gray-300 font-semibold
                   hover:border-[#0097A7] hover:text-[#0097A7]
-                  dark:hover:border-[#0097A7] dark:hover:text-[#42B7C4]
                   transition-all duration-300">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>

@@ -565,7 +565,7 @@ import { RouterLink } from "@angular/router";
   </div>
 
   <!-- Content -->
-  <div class="relative z-20 text-center max-w-5xl mx-auto mt-16">
+  <div class="relative z-20 text-center max-w-5xl mx-auto mt-8">
 
     <!-- Badge LONEED style -->
     <div class="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full badge-loneed">

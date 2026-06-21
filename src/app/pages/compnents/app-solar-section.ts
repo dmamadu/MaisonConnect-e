@@ -8,12 +8,12 @@ import { RouterLink } from "@angular/router";
   standalone: true,
   imports: [CommonModule, TranslateModule, RouterLink],
   template: `
-<section class="relative py-12 md:py-20 lg:py-32 bg-white dark:bg-black overflow-hidden transition-colors duration-300">
+<section class="relative py-6 md:py-12 lg:py-16 bg-white dark:bg-black overflow-hidden transition-colors duration-300">
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Section Header -->
-    <div class="text-center mb-16">
+    <div class="text-center mb-8">
       <div class="inline-block bg-black dark:bg-white text-white dark:text-black px-5 py-2 rounded-full text-xs font-semibold tracking-widest uppercase mb-6">
         {{ 'Solar.badge' | translate }}
       </div>
@@ -137,7 +137,7 @@ import { RouterLink } from "@angular/router";
     </div>
 
     <!-- Marketing Hooks -->
-    <div class="bg-gray-50 dark:bg-slate-900 rounded-3xl p-12 border border-gray-200 dark:border-slate-800 mb-16">
+    <div class="bg-gray-50 dark:bg-slate-900 rounded-3xl p-6 border border-gray-200 dark:border-slate-800 mb-16">
       <div class="max-w-4xl mx-auto space-y-8">
         
         <div class="flex items-start gap-4">

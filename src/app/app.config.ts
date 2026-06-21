@@ -5,7 +5,6 @@ import { provideHttpClient, withFetch, HttpClient } from '@angular/common/http';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
-// 👇 Loader custom sans arguments
 function customHttpLoader(http: HttpClient): TranslateLoader {
   return {
     getTranslation: (lang: string) =>

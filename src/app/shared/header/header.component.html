@@ -23,6 +23,7 @@
         <a
           [routerLink]="item.link"
           routerLinkActive="text-[#0097A7]"
+          [routerLinkActiveOptions]="{exact: true}"
           class="nav-item py-1"
         >
           {{ item.labelKey | translate }}
@@ -244,6 +245,7 @@
           [routerLink]="item.link"
           (click)="closeMobileMenu()"
           routerLinkActive="bg-gray-100 dark:bg-zinc-800 font-semibold"
+          [routerLinkActiveOptions]="{exact: true}"
           class="nav-mobile-item block py-2.5 px-3 rounded-lg
                  hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition-colors"
         >

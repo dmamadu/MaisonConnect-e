@@ -8,7 +8,7 @@ import { RouterLink } from "@angular/router";
   standalone: true,
   imports: [CommonModule, TranslateModule, RouterLink],
   template: `
-<section class="relative min-h-screen bg-white dark:bg-black overflow-hidden flex items-center justify-center px-4 py-12 md:py-20 transition-colors duration-300">
+<section class="relative min-h-screen bg-white dark:bg-black overflow-hidden flex items-center justify-center px-4 py-6 md:py-20 transition-colors duration-300">
 
   <!-- Content Container -->
   <div class="relative z-10 w-full max-w-7xl mx-auto">
@@ -47,7 +47,7 @@ import { RouterLink } from "@angular/router";
     </div>
 
     <!-- Smart Home Hub Product Display -->
-    <div class="relative w-full max-w-5xl mx-auto mb-20 product-reveal">
+    <div class="relative w-full max-w-5xl mx-auto mb-10 product-reveal">
       <div class="relative flex items-center justify-center">
         <!-- Smart Hub Device -->
       </div>
