@@ -1,5 +1,5 @@
-<header class="sticky top-0 z-50 bg-white/80 dark:bg-black/80 border-b border-black/10 dark:border-white/10 backdrop-blur-xl">
-  <nav class="mr-6 h-11 flex items-center justify-between px-2 sm:px-4 max-w-[1400px] mx-auto w-full">
+<header #headerEl class="sticky top-0 z-50 bg-white/80 dark:bg-black/80 border-b border-black/10 dark:border-white/10 backdrop-blur-xl">
+  <nav class="h-11 flex items-center justify-between px-2 sm:px-4 max-w-[1400px] mx-auto w-full">
 
     <!-- LEFT : Logo -->
     <div class="flex items-center flex-shrink-0">
@@ -16,7 +16,7 @@
     </div>
 
     <!-- CENTER : Desktop Menu -->
-    <ul class="hidden lg:flex items-center gap-4 xl:gap-6 text-gray-600 dark:text-gray-400 absolute left-1/2 -translate-x-1/2">
+    <ul class="hidden lg:flex flex-1 min-w-0 items-center justify-center gap-3 xl:gap-6 text-gray-600 dark:text-gray-400">
 
       <!-- Accueil, À propos -->
       <li *ngFor="let item of menuItems">
@@ -24,7 +24,7 @@
           [routerLink]="item.link"
           routerLinkActive="text-[#0097A7]"
           [routerLinkActiveOptions]="{exact: true}"
-          class="nav-item py-1"
+          class="nav-item flex items-center py-1"
         >
           {{ item.labelKey | translate }}
         </a>
@@ -42,8 +42,7 @@
           routerLinkActive="text-[#0097A7]"
           class="nav-item flex items-center gap-0.5 py-1"
         >
-          <span class="hidden xl:inline">{{ menu.labelKey | translate }}</span>
-          <span class="xl:hidden">{{ menu.icon }}</span>
+          <span>{{ menu.labelKey | translate }}</span>
           <span class="text-[10px] opacity-50">▾</span>
         </a>
 
@@ -80,7 +79,7 @@
         <a
           [routerLink]="item.link"
           routerLinkActive="text-[#0097A7]"
-          class="nav-item py-1"
+          class="nav-item flex items-center py-1"
         >
           {{ item.labelKey | translate }}
         </a>
@@ -97,8 +96,7 @@
           routerLinkActive="text-[#0097A7]"
           class="nav-item flex items-center gap-0.5 py-1"
         >
-          <span class="hidden xl:inline">{{ boutiqueMenu.labelKey | translate }}</span>
-          <span class="xl:hidden">{{ boutiqueMenu.icon }}</span>
+          <span>{{ boutiqueMenu.labelKey | translate }}</span>
           <span class="text-[10px] opacity-50">▾</span>
         </a>
 
@@ -135,7 +133,7 @@
         <a
           [routerLink]="item.link"
           routerLinkActive="text-[#0097A7]"
-          class="nav-item py-1"
+          class="nav-item flex items-center py-1"
         >
           {{ item.labelKey | translate }}
         </a>
@@ -143,7 +141,7 @@
     </ul>
 
     <!-- RIGHT : Actions -->
-    <div class="hidden lg:flex items-center gap-2 xl:gap-3 flex-shrink-0 ml-auto">
+    <div class="hidden lg:flex items-center gap-2 xl:gap-3 flex-shrink-0">
 
       <!-- Theme Toggle -->
       <button
@@ -270,7 +268,6 @@
           class="nav-mobile-item flex items-center gap-2 py-2.5 px-3 rounded-lg
                  hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition-colors"
         >
-          <span *ngIf="menu.icon">{{ menu.icon }}</span>
           <span class="font-medium">{{ menu.labelKey | translate }}</span>
         </a>
 
@@ -282,7 +279,6 @@
                    hover:bg-gray-50 dark:hover:bg-zinc-800/50"
           >
             <div class="flex items-center gap-2">
-              <span *ngIf="menu.icon">{{ menu.icon }}</span>
               <span class="font-medium">{{ menu.labelKey | translate }}</span>
             </div>
             <span
@@ -302,7 +298,6 @@
               class="nav-mobile-item flex items-center gap-2.5 py-2 px-3 rounded-lg
                      hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition-colors"
             >
-              <span *ngIf="item.icon" class="text-base">{{ item.icon }}</span>
               <span>{{ item.labelKey | translate }}</span>
             </a>
           </div>
@@ -343,7 +338,6 @@
           class="nav-mobile-item flex items-center gap-2 py-2.5 px-3 rounded-lg
                  hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition-colors"
         >
-          <span *ngIf="boutiqueMenu.icon">{{ boutiqueMenu.icon }}</span>
           <span class="font-medium">{{ boutiqueMenu.labelKey | translate }}</span>
         </a>
 
@@ -355,7 +349,6 @@
                    hover:bg-gray-50 dark:hover:bg-zinc-800/50"
           >
             <div class="flex items-center gap-2">
-              <span *ngIf="boutiqueMenu.icon">{{ boutiqueMenu.icon }}</span>
               <span class="font-medium">{{ boutiqueMenu.labelKey | translate }}</span>
             </div>
             <span
@@ -375,7 +368,6 @@
               class="nav-mobile-item flex items-center gap-2.5 py-2 px-3 rounded-lg
                      hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition-colors"
             >
-              <span *ngIf="item.icon" class="text-base">{{ item.icon }}</span>
               <span>{{ item.labelKey | translate }}</span>
             </a>
           </div>
@@ -415,7 +407,7 @@
                 'bg-black text-white dark:bg-white dark:text-black': currentLang() === l,
                 'bg-gray-100 dark:bg-zinc-800': currentLang() !== l
               }"
-              class="flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg text-xs
+              class="flex items-center justify-center gap-1.5 min-h-[44px] px-2 rounded-lg text-xs
                      hover:bg-gray-200 dark:hover:bg-zinc-700 transition-colors"
             >
               <span class="text-sm">{{ flags[l] }}</span>

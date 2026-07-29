@@ -1,5 +1,5 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { routes } from './app.routes';
 import { provideHttpClient, withFetch, HttpClient } from '@angular/common/http';
 
@@ -14,7 +14,13 @@ function customHttpLoader(http: HttpClient): TranslateLoader {
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes),
+    provideRouter(
+      routes,
+      withInMemoryScrolling({
+        scrollPositionRestoration: 'enabled',
+        anchorScrolling: 'enabled'
+      })
+    ),
     provideHttpClient(withFetch()),
     importProvidersFrom(
       TranslateModule.forRoot({

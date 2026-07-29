@@ -350,7 +350,7 @@
 //     }
 //   }
 // }
-import { Component, signal, inject, effect } from '@angular/core';
+import { Component, signal, inject, effect, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -371,7 +371,10 @@ interface MenuItem {
   imports: [RouterLink, RouterLinkActive, TranslateModule, CommonModule],
   templateUrl: './header.component.html'
 })
-export class HeaderComponent {
+export class HeaderComponent implements AfterViewInit, OnDestroy {
+  @ViewChild('headerEl') headerEl?: ElementRef<HTMLElement>;
+  private resizeObserver?: ResizeObserver;
+
   cartLength = 0;
 
   // Mobile menu
@@ -559,9 +562,26 @@ export class HeaderComponent {
     this.mobileSubmenuOpen.set(null);
   }
 
+  ngAfterViewInit(): void {
+    const el = this.headerEl?.nativeElement;
+    if (!el || typeof ResizeObserver === 'undefined') return;
+
+    const updateHeaderHeight = () => {
+      // Ignore the taller measurement while the mobile dropdown is open —
+      // --header-height should track only the persistent top bar.
+      if (this.open()) return;
+      document.documentElement.style.setProperty('--header-height', `${el.offsetHeight}px`);
+    };
+
+    updateHeaderHeight();
+    this.resizeObserver = new ResizeObserver(updateHeaderHeight);
+    this.resizeObserver.observe(el);
+  }
+
   ngOnDestroy() {
     if (this.hideTimeout) {
       clearTimeout(this.hideTimeout);
     }
+    this.resizeObserver?.disconnect();
   }
 }

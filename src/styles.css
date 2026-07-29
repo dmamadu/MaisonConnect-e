@@ -8,6 +8,7 @@
   --color-primary:       #0097A7;
   --color-primary-hover: #42B7C4;
   --color-primary-dark:  #007a8a;
+  --header-height: 44px;
 }
 
 /* ── Layout ───────────────────────────────────────────────────── */
@@ -15,8 +16,16 @@
 @media (min-width: 640px)  { .container-apple { padding-left: 1.5rem; padding-right: 1.5rem; } }
 @media (min-width: 1024px) { .container-apple { padding-left: 2rem;   padding-right: 2rem;   } }
 
-html           { scroll-behavior: smooth; }
+html           { scroll-snap-type: y proximity; }
 html, body     { height: 100%; }
+
+/* ── Slides plein écran (hero, sections en pleine hauteur) ──────── */
+/* Chaque section marquée .slide-section occupe exactement l'écran
+   sous le header fixe, et s'arrête au scroll grâce au scroll-snap. */
+.slide-section {
+  scroll-snap-align: start;
+  scroll-margin-top: var(--header-height);
+}
 body           { @apply bg-white text-black dark:bg-[#0b0b0c] dark:text-white; }
 
 /* ── Boutons génériques ───────────────────────────────────────── */

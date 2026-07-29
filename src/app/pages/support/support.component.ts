@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { SettingService } from '../../shared/services/setting.service';
 
 interface SupportItem {
   title: string;
@@ -19,6 +20,11 @@ interface SupportItem {
   styleUrls: ['./support.component.scss'],
 })
 export class SupportComponent {
+  private settingService = inject(SettingService);
+
+  whatsappLink$ = this.settingService.getWhatsappLink();
+  supportEmail$ = this.settingService.getEmail('support_email', 'admin@maison-connecte.sn');
+
   // supportItems: SupportItem[] = [
   //   { title: 'Assistance technique', description: 'Aide pour tous vos problèmes techniques.', icon: '/assets/icons/support.svg', link: '/support/technique' },
   //   { title: 'FAQ', description: 'Réponses aux questions les plus fréquentes.', icon: '/assets/icons/faq.svg', link: '/support/faq' },

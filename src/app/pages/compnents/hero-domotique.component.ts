@@ -466,17 +466,19 @@
 // })
 // export class HeroDomotiqueComponent {}
 
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { RouterLink } from "@angular/router";
+import { Subscription } from 'rxjs';
+import { SettingService, SettingsMap } from '../../shared/services/setting.service';
 
 @Component({
   selector: 'app-hero-domotique',
   standalone: true,
   imports: [CommonModule, TranslateModule, RouterLink],
   template: `
-<section class="hero-section relative min-h-screen overflow-hidden flex items-center justify-center px-4 py-12 md:py-20">
+<section class="hero-section slide-section relative h-[calc(100svh-var(--header-height))] max-h-[calc(100svh-var(--header-height))] overflow-hidden flex items-center justify-center px-4 py-4">
 
   <!-- Dot grid background (inspired by LONEED logo pattern) -->
   <div class="dot-grid absolute inset-0 z-0"></div>
@@ -565,33 +567,33 @@ import { RouterLink } from "@angular/router";
   </div>
 
   <!-- Content -->
-  <div class="relative z-20 text-center max-w-5xl mx-auto mt-8">
+  <div class="relative z-20 text-center max-w-5xl mx-auto">
 
     <!-- Badge LONEED style -->
-    <div class="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full badge-loneed">
+    <div class="inline-flex items-center gap-2 mb-3 sm:mb-4 md:mb-6 px-4 py-2 rounded-full badge-loneed">
       <span class="w-2 h-2 rounded-full bg-teal-500 dark:bg-teal-400 animate-pulse inline-block"></span>
       <span class="text-teal-600 dark:text-teal-300 text-sm font-medium tracking-widest uppercase">LONEED IT Solutions</span>
     </div>
 
-    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-semibold text-gray-900 dark:text-white mb-4 md:mb-6 tracking-tight leading-tight">
-      {{ 'SmartHomeHub.HomeAutomation.title' | translate }}
+    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-semibold text-gray-900 dark:text-white mb-2 sm:mb-3 md:mb-4 tracking-tight leading-tight">
+      {{ heroTitleOverride || ('SmartHomeHub.HomeAutomation.title' | translate) }}
     </h1>
 
-    <p class="text-base md:text-lg lg:text-2xl text-teal-700 dark:text-teal-200 mb-3 md:mb-4 font-light">
-      {{ 'SmartHomeHub.HomeAutomation.subtitle' | translate }}
+    <p class="text-sm sm:text-base md:text-lg lg:text-2xl text-teal-700 dark:text-teal-200 mb-2 md:mb-3 font-light">
+      {{ heroSubtitleOverride || ('SmartHomeHub.HomeAutomation.subtitle' | translate) }}
     </p>
 
-    <p class="text-sm md:text-base lg:text-lg text-gray-500 dark:text-slate-400 mb-8 md:mb-10 font-light max-w-2xl mx-auto">
-      {{ 'SmartHomeHub.HomeAutomation.description' | translate }}
+    <p class="text-xs sm:text-sm md:text-base lg:text-lg text-gray-500 dark:text-slate-400 mb-4 md:mb-6 font-light max-w-2xl mx-auto line-clamp-3 sm:line-clamp-none">
+      {{ heroDescriptionOverride || ('SmartHomeHub.HomeAutomation.description' | translate) }}
     </p>
 
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
       <a routerLink="/devis">
         <button class="btn-primary">
           {{ 'SmartHomeHub.HomeAutomation.buttonQuote' | translate }}
         </button>
       </a>
-      <a href="https://wa.me/+221786722222" target="_blank" rel="noopener noreferrer"
+      <a [href]="whatsappLink" target="_blank" rel="noopener noreferrer"
          class="inline-flex items-center gap-2 justify-center bg-[#25D366] hover:bg-[#1ebe5d]
                 text-white font-semibold px-8 py-3 rounded-full transition-all duration-300
                 shadow-lg hover:shadow-xl transform hover:scale-105">
@@ -801,4 +803,41 @@ import { RouterLink } from "@angular/router";
     }
   `]
 })
-export class HeroDomotiqueComponent {}
+export class HeroDomotiqueComponent implements OnInit, OnDestroy {
+  private settingService = inject(SettingService);
+  private translate = inject(TranslateService);
+  private sub = new Subscription();
+
+  private settings: SettingsMap = {};
+
+  heroTitleOverride: string | null = null;
+  heroSubtitleOverride: string | null = null;
+  heroDescriptionOverride: string | null = null;
+  whatsappLink = 'https://wa.me/+221786722222';
+
+  ngOnInit(): void {
+    this.sub.add(
+      this.settingService.getSettings().subscribe((settings) => {
+        this.settings = settings;
+        this.applyOverrides();
+      })
+    );
+    this.sub.add(
+      this.translate.onLangChange.subscribe(() => this.applyOverrides())
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
+
+  private applyOverrides(): void {
+    const lang = this.translate.currentLang || 'fr';
+    this.heroTitleOverride = this.settingService.getTranslatable(this.settings, 'hero_title', lang);
+    this.heroSubtitleOverride = this.settingService.getTranslatable(this.settings, 'hero_subtitle', lang);
+    this.heroDescriptionOverride = this.settingService.getTranslatable(this.settings, 'hero_description', lang);
+
+    const whatsappNumber = this.settingService.getText(this.settings, 'whatsapp_number');
+    this.whatsappLink = `https://wa.me/${whatsappNumber || '+221786722222'}`;
+  }
+}

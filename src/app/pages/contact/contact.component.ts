@@ -5,6 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { Subject, takeUntil } from 'rxjs';
 import { RootService } from '../../shared/services/root.service';
 import { SnackBarService } from '../../shared/services/snackBar.service';
+import { SettingService } from '../../shared/services/setting.service';
 
 @Component({
   selector: 'app-contact',
@@ -21,7 +22,10 @@ export class ContactComponent {
     private destroy$ = new Subject<void>();
     private  baseService= inject(RootService)
     private snackbar= inject(SnackBarService)
-  
+    private settingService = inject(SettingService)
+
+    whatsappLink$ = this.settingService.getWhatsappLink();
+
     ngOnDestroy(): void {
       this.destroy$.next();
       this.destroy$.complete();

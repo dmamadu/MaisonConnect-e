@@ -51,7 +51,7 @@
 
   <!-- BOUTONS CONTACT RAPIDE : WhatsApp + Email -->
   <div class="max-w-3xl w-full mx-auto mb-8 md:mb-10 flex flex-col sm:flex-row gap-4 justify-center">
-    <a href="https://wa.me/+221786722222"
+    <a [href]="whatsappLink$ | async"
        target="_blank" rel="noopener noreferrer"
        class="flex items-center justify-center gap-3 px-6 py-4 rounded-2xl
               bg-[#25D366] hover:bg-[#1ebe5d] text-white font-semibold text-base
@@ -62,7 +62,7 @@
       Discuter sur WhatsApp
     </a>
 
-    <a href="mailto:admin@maison-connecte.sn"
+    <a [href]="'mailto:' + (supportEmail$ | async)"
        class="flex items-center justify-center gap-3 px-6 py-4 rounded-2xl
               bg-white dark:bg-gray-800 border-2 border-[#0097A7]
               text-[#0097A7] dark:text-[#42B7C4] font-semibold text-base

@@ -1161,6 +1161,11 @@
       }
     }
   },
+  "HomeVideo": {
+    "badge": "DÉCOUVREZ",
+    "title": "Notre solution en vidéo",
+    "iframeTitle": "Vidéo de présentation"
+  },
   "Clients": {
       "badge": "NOS CLIENTS",
       "title": "Ils nous font confiance",

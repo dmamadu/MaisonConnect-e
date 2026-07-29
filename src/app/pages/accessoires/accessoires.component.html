@@ -1,7 +1,7 @@
 <!-- Fond dynamique -->
 <div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-50 dark:from-black/80 dark:to-black/60 -z-10"></div>
 
-<section class="min-h-screen px-4 md:px-6 py-10 md:py-14 lg:py-20 relative">
+<section class="min-h-screen px-4 md:px-6 py-10 md:py-14 lg:py-20 relative max-w-7xl mx-auto">
 
   <!-- HERO -->
   <header class="grid lg:grid-cols-2 gap-8 items-center mb-6 lg:mb-8">
@@ -59,13 +59,14 @@
 
     <!-- Image -->
     <div class="flex justify-center lg:justify-end relative">
-      <div class="w-80 h-64 lg:w-96 lg:h-72 bg-white/30 dark:bg-black/40 backdrop-blur-xl 
+      <div class="w-64 h-52 sm:w-80 sm:h-64 lg:w-96 lg:h-72 bg-white/30 dark:bg-black/40 backdrop-blur-xl
                   rounded-3xl shadow-xl flex items-center justify-center overflow-hidden">
-        <img 
+        <img
           src="https://i.pinimg.com/1200x/7b/12/4f/7b124f42aefb35999bab0f52ebf07e85.jpg"
           alt="{{ 'accessories.title' | translate }}"
-          class="w-72 lg:w-80 object-contain transform hover:scale-105 transition"
+          class="w-56 sm:w-72 lg:w-80 object-contain transform hover:scale-105 transition"
           loading="lazy"
+          (error)="onImageError($event)"
         />
       </div>
     </div>
@@ -84,7 +85,7 @@
     >
       
       <div class="h-44 bg-gray-50 dark:bg-gray-800 flex items-center justify-center overflow-hidden">
-        <img [src]="p.image" [alt]="p.title" class="object-contain w-full h-full" loading="lazy" />
+        <img [src]="p.image" [alt]="p.title" class="object-contain w-full h-full" loading="lazy" (error)="onImageError($event)" />
       </div>
 
       <div class="p-4 flex flex-col flex-1">
@@ -173,12 +174,13 @@
 
     <div class="grid lg:grid-cols-2 gap-6 p-6">
 
-      <div class="flex items-center justify-center bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden">
-        <img 
+      <div class="h-48 sm:h-64 md:h-96 flex items-center justify-center bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden">
+        <img
           [src]="selectedProduct?.image"
           [alt]="selectedProduct?.title"
           class="object-contain w-full h-full"
           loading="lazy"
+          (error)="onImageError($event)"
         />
       </div>
 

@@ -117,6 +117,10 @@ ngOnDestroy(): void {
     this.selectedProduct = null;
   }
 
+  onImageError(event: Event): void {
+    (event.target as HTMLImageElement).src = 'assets/images/placeholder.png';
+  }
+
   // Optionnel : pour l'animation des cartes
   delayForIndex(index: number): string {
     return `${index * 100}ms`;

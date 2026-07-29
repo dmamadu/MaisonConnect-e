@@ -64,11 +64,12 @@ import { ProduitsGridDomotiqueComponent } from "../compnents/produits-grid-domot
 import { WhyChooseUsSectionComponent } from "../compnents/why-choose-us-section";
 import { SmarthomeCarouselComponent } from "../app-smart-home-carousel";
 import { ClientsBannerComponent } from "../compnents/app-clients-banner";
+import { HomeVideoSectionComponent } from "../compnents/home-video-section.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, TranslateModule, RouterModule, HeroDomotiqueComponent, ProduitsGridDomotiqueComponent, WhyChooseUsSectionComponent, SmarthomeCarouselComponent, ClientsBannerComponent],
+  imports: [CommonModule, TranslateModule, RouterModule, HeroDomotiqueComponent, HomeVideoSectionComponent, ProduitsGridDomotiqueComponent, WhyChooseUsSectionComponent, SmarthomeCarouselComponent, ClientsBannerComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   animations: [

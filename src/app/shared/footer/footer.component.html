@@ -10,7 +10,7 @@
         <h3 class="footer-col-title">{{ c.titleKey | translate }}</h3>
         <ul class="space-y-2">
           <li *ngFor="let link of c.links">
-            <a [routerLink]="link.route" class="footer-col-link">
+            <a [routerLink]="link.route" class="footer-col-link inline-block py-2 -my-2">
               {{ getLinkTranslation(link.label) }}
             </a>
           </li>
@@ -20,12 +20,12 @@
 
     <!-- Bas du footer -->
     <div class="mt-8 border-t border-black/10 dark:border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-      <span class="footer-legal">© Loneedonline. {{ 'footer.rights' | translate }}</span>
+      <span class="footer-legal">© Loneed. {{ 'footer.rights' | translate }}</span>
       <div class="flex gap-6">
-        <a routerLink="/privacy" class="footer-legal hover:text-gray-900 dark:hover:text-white transition-colors">
+        <a routerLink="/privacy" class="footer-legal inline-block py-2 -my-2 hover:text-gray-900 dark:hover:text-white transition-colors">
           {{ 'footer.privacy' | translate }}
         </a>
-        <a routerLink="/terms" class="footer-legal hover:text-gray-900 dark:hover:text-white transition-colors">
+        <a routerLink="/terms" class="footer-legal inline-block py-2 -my-2 hover:text-gray-900 dark:hover:text-white transition-colors">
           {{ 'footer.terms' | translate }}
         </a>
       </div>

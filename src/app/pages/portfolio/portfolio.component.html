@@ -12,7 +12,7 @@ Fond dynamique
 </section>
 
 <!-- Filtres (sticky) -->
-<div class="sticky top-16 z-40 bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border-b border-gray-100 dark:border-gray-800">
+<div class="sticky top-[var(--header-height)] z-40 bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border-b border-gray-100 dark:border-gray-800">
   <div class="max-w-7xl mx-auto px-4 md:px-6 py-4">
     <div class="flex flex-wrap gap-2 justify-center">
 
@@ -237,7 +237,7 @@ Fond dynamique
         </h2>
 
         <!-- Description -->
-        <div class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed prose dark:prose-invert max-w-none"
+        <div class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed prose dark:prose-invert max-w-none overflow-x-auto"
              [innerHTML]="getDescriptionHtml(selectedProject()!)">
         </div>
 

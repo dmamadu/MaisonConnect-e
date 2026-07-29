@@ -45,12 +45,12 @@
       <div class="lg:col-span-2 space-y-4">
 
         <div *ngFor="let item of items"
-             class="bg-white dark:bg-gray-900 rounded-2xl p-5 flex items-center gap-5
+             class="bg-white dark:bg-gray-900 rounded-2xl p-5 flex flex-wrap sm:flex-nowrap items-center gap-4 sm:gap-5
                     border border-gray-100 dark:border-gray-800 shadow-sm
                     transition-all duration-200 hover:shadow-md">
 
           <!-- Image produit -->
-          <div class="w-20 h-20 flex-shrink-0 rounded-xl overflow-hidden bg-[#0097A7]/10">
+          <div class="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 rounded-xl overflow-hidden bg-[#0097A7]/10">
             <img [src]="getImageUrl(item.product.image)"
                  [alt]="getTitle(item)"
                  class="w-full h-full object-cover"
@@ -58,7 +58,7 @@
           </div>
 
           <!-- Infos produit -->
-          <div class="flex-1 min-w-0">
+          <div class="flex-1 min-w-[140px]">
             <h3 class="font-semibold text-gray-900 dark:text-white truncate">
               {{ getTitle(item) }}
             </h3>
@@ -68,40 +68,42 @@
             </p>
           </div>
 
-          <!-- Contrôle quantité -->
-          <div class="flex items-center gap-2 flex-shrink-0">
-            <button (click)="decrement(item)"
-                    class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-700
-                           flex items-center justify-center text-gray-600 dark:text-gray-300
-                           hover:border-[#0097A7] hover:text-[#0097A7] transition-colors">
+          <!-- Contrôle quantité + Supprimer -->
+          <div class="w-full sm:w-auto flex items-center justify-between sm:justify-end gap-3 sm:gap-2 flex-shrink-0">
+            <div class="flex items-center gap-2">
+              <button (click)="decrement(item)"
+                      class="w-10 h-10 rounded-full border border-gray-200 dark:border-gray-700
+                             flex items-center justify-center text-gray-600 dark:text-gray-300
+                             hover:border-[#0097A7] hover:text-[#0097A7] transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/>
+                </svg>
+              </button>
+              <span class="w-6 text-center font-semibold text-gray-900 dark:text-white">
+                {{ item.quantity }}
+              </span>
+              <button (click)="increment(item)"
+                      class="w-10 h-10 rounded-full border border-gray-200 dark:border-gray-700
+                             flex items-center justify-center text-gray-600 dark:text-gray-300
+                             hover:border-[#0097A7] hover:text-[#0097A7] transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Supprimer -->
+            <button (click)="remove(item)"
+                    class="w-10 h-10 rounded-full flex items-center justify-center
+                           text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20
+                           transition-all duration-200 flex-shrink-0"
+                    title="Supprimer">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/>
-              </svg>
-            </button>
-            <span class="w-6 text-center font-semibold text-gray-900 dark:text-white">
-              {{ item.quantity }}
-            </span>
-            <button (click)="increment(item)"
-                    class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-700
-                           flex items-center justify-center text-gray-600 dark:text-gray-300
-                           hover:border-[#0097A7] hover:text-[#0097A7] transition-colors">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
               </svg>
             </button>
           </div>
-
-          <!-- Supprimer -->
-          <button (click)="remove(item)"
-                  class="w-8 h-8 rounded-full flex items-center justify-center
-                         text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20
-                         transition-all duration-200 flex-shrink-0"
-                  title="Supprimer">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-            </svg>
-          </button>
         </div>
 
         <!-- Vider le panier -->
@@ -178,8 +180,8 @@
   <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
 
   <!-- Carte du formulaire -->
-  <div class="relative z-10 w-full max-w-lg bg-white dark:bg-gray-900 rounded-2xl shadow-2xl
-              border border-gray-100 dark:border-gray-800 overflow-hidden"
+  <div class="relative z-10 w-full max-w-lg max-h-[90vh] overflow-y-auto bg-white dark:bg-gray-900 rounded-2xl shadow-2xl
+              border border-gray-100 dark:border-gray-800"
        (click)="$event.stopPropagation()">
 
     <!-- En-tête modal -->

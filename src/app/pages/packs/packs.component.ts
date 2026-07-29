@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { CartService } from '../../shared/services/cart.service';
 import { Subject, takeUntil } from 'rxjs';
@@ -20,7 +21,7 @@ interface Product {
 @Component({
   selector: 'app-packs',
   standalone: true,
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, TranslateModule, FormsModule],
   templateUrl: './packs.component.html',
   styleUrls: ['./packs.component.scss']
 })
@@ -141,6 +142,10 @@ getPacks() {
 
   closeDetail() {
     this.selectedPack = undefined;
+  }
+
+  onImageError(event: Event): void {
+    (event.target as HTMLImageElement).src = 'assets/images/placeholder.png';
   }
 
 
